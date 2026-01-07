@@ -27,7 +27,7 @@ export default function Benefits() {
     {
       icon: Shield,
       title: 'Documenti sempre aggiornati e tracciabili',
-      color: '#6057A0',
+      color: '#324D7A',
       points: [
         'Versioning automatico di tutti i documenti',
         'Storico completo delle modifiche',

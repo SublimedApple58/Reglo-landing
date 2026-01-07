@@ -19,7 +19,7 @@ export default function Navigation() {
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold" style={{ color: '#6057A0' }}>
+          <Link to="/" className="text-2xl font-bold" style={{ color: '#324D7A' }}>
             <img src="/Logo.png" alt="Reglo Logo" style={{height: "40px"}}/>
           </Link>
 
@@ -30,8 +30,8 @@ export default function Navigation() {
                 to={path}
                 className={`font-medium transition-colors ${
                   isActive(path)
-                    ? 'text-[#6057A0]'
-                    : 'text-black/70 hover:text-[#6057A0]'
+                    ? 'text-[#324D7A]'
+                    : 'text-black/70 hover:text-[#324D7A]'
                 }`}
               >
                 {label}
@@ -40,7 +40,7 @@ export default function Navigation() {
             <Link
               to="/demo"
               className="px-6 py-2 rounded-lg text-white font-semibold transition-all hover:shadow-lg"
-              style={{ backgroundColor: '#6057A0' }}
+              style={{ backgroundColor: '#324D7A' }}
             >
               Demo
             </Link>
@@ -63,8 +63,8 @@ export default function Navigation() {
                 onClick={() => setIsOpen(false)}
                 className={`block py-2 font-medium transition-colors ${
                   isActive(path)
-                    ? 'text-[#6057A0]'
-                    : 'text-black/70 hover:text-[#6057A0]'
+                    ? 'text-[#324D7A]'
+                    : 'text-black/70 hover:text-[#324D7A]'
                 }`}
               >
                 {label}
@@ -74,7 +74,7 @@ export default function Navigation() {
               to="/demo"
               onClick={() => setIsOpen(false)}
               className="block px-6 py-2 rounded-lg text-white font-semibold text-center"
-              style={{ backgroundColor: '#6057A0' }}
+              style={{ backgroundColor: '#324D7A' }}
             >
               Demo
             </Link>

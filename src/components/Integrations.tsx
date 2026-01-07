@@ -6,7 +6,7 @@ export default function Integrations() {
       name: 'Gestionale Aziendale',
       description: 'Connessione nativa con il tuo ERP',
       icon: Database,
-      color: '#6057A0',
+      color: '#324D7A',
     },
     {
       name: 'Slack',
@@ -76,7 +76,7 @@ export default function Integrations() {
           })}
         </div>
 
-        <div className="bg-gradient-to-br from-[#AFE2D4]/20 to-[#6057A0]/20 rounded-3xl p-8 lg:p-12 shadow-xl">
+        <div className="bg-gradient-to-br from-[#AFE2D4]/20 to-[#324D7A]/20 rounded-3xl p-8 lg:p-12 shadow-xl">
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl lg:text-3xl font-bold mb-4" style={{ color: '#324D7A' }}>
               Integrazione rapida con il tuo gestionale

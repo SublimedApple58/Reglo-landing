@@ -62,7 +62,7 @@ export default function FinalCTA() {
                   required
                   value={formData.nome}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#6057A0] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#324D7A] focus:outline-none transition-colors"
                   placeholder="Mario Rossi"
                 />
               </div>
@@ -78,7 +78,7 @@ export default function FinalCTA() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#6057A0] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#324D7A] focus:outline-none transition-colors"
                   placeholder="mario.rossi@azienda.it"
                 />
               </div>
@@ -94,7 +94,7 @@ export default function FinalCTA() {
                   required
                   value={formData.azienda}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#6057A0] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#324D7A] focus:outline-none transition-colors"
                   placeholder="Acme S.r.l."
                 />
               </div>
@@ -110,7 +110,7 @@ export default function FinalCTA() {
                   value={formData.processo}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#6057A0] focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#324D7A] focus:outline-none transition-colors resize-none"
                   placeholder="Es. Gestione ordini clienti, emissione fatture, conferme d'ordine..."
                 />
               </div>
@@ -118,7 +118,7 @@ export default function FinalCTA() {
               <button
                 type="submit"
                 className="w-full py-4 rounded-xl text-white font-semibold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5"
-                style={{ backgroundColor: '#6057A0' }}
+                style={{ backgroundColor: '#324D7A' }}
               >
                 Richiedi demo gratuita
                 <Send className="w-5 h-5" />
@@ -133,15 +133,15 @@ export default function FinalCTA() {
 
         <footer className="mt-16 text-center space-y-4">
           <div className="flex items-center justify-center gap-2">
-            <div className="text-3xl font-bold" style={{ color: '#6057A0' }}>Reglo</div>
+            <div className="text-3xl font-bold" style={{ color: '#324D7A' }}>Reglo</div>
           </div>
           <p className="text-black/60">
             La piattaforma cloud per automatizzare i processi aziendali
           </p>
           <div className="flex justify-center gap-8 text-sm text-black/60">
-            <a href="#" className="hover:text-[#6057A0] transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-[#6057A0] transition-colors">Termini di Servizio</a>
-            <a href="#" className="hover:text-[#6057A0] transition-colors">Contatti</a>
+            <a href="#" className="hover:text-[#324D7A] transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[#324D7A] transition-colors">Termini di Servizio</a>
+            <a href="#" className="hover:text-[#324D7A] transition-colors">Contatti</a>
           </div>
           <p className="text-sm text-black/50 pt-4">
             © 2024 Reglo. Tutti i diritti riservati.

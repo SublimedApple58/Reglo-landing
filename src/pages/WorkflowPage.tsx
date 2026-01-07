@@ -26,7 +26,7 @@ export default function WorkflowPage() {
       type: 'AZIONE 1',
       title: 'Aggiorna stato nel gestionale',
       description: 'Modifica automaticamente lo stato dell\'ordine da "In attesa" a "In lavorazione"',
-      color: '#6057A0',
+      color: '#324D7A',
     },
     {
       id: 3,
@@ -58,7 +58,7 @@ export default function WorkflowPage() {
       type: 'AZIONE 5',
       title: 'Notifica Slack al team vendite',
       description: 'Invia un messaggio automatico su Slack per informare il reparto vendite del nuovo ordine',
-      color: '#6057A0',
+      color: '#324D7A',
     },
   ]);
 
@@ -98,7 +98,7 @@ export default function WorkflowPage() {
           <div className="flex flex-col items-center py-8">
             <ChevronDown
               className="w-6 h-6 animate-bounce"
-              style={{ color: '#6057A0', opacity: 0.4 }}
+              style={{ color: '#324D7A', opacity: 0.4 }}
             />
           </div>
         )}

@@ -29,22 +29,22 @@ export default function WorkflowVisual() {
               </div>
 
               <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#AFE2D4] to-[#6057A0] rounded-full"></div>
+                <div className="w-1 h-12 bg-gradient-to-b from-[#AFE2D4] to-[#324D7A] rounded-full"></div>
               </div>
 
               <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#6057A0' }}>
+                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#324D7A' }}>
                   <GitBranch className="w-8 h-8 text-white" />
                 </div>
                 <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#6057A0' }}>AZIONE 1</div>
+                  <div className="text-sm font-semibold mb-1" style={{ color: '#324D7A' }}>AZIONE 1</div>
                   <div className="text-xl font-bold mb-1" style={{ color: '#324D7A' }}>Aggiorna stato nel gestionale</div>
                   <div className="text-black/60">Modifica automaticamente lo stato dell'ordine da "In attesa" a "In lavorazione"</div>
                 </div>
               </div>
 
               <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#6057A0] to-[#5B93FF] rounded-full"></div>
+                <div className="w-1 h-12 bg-gradient-to-b from-[#324D7A] to-[#5B93FF] rounded-full"></div>
               </div>
 
               <div className="flex items-center gap-6">
@@ -89,22 +89,22 @@ export default function WorkflowVisual() {
               </div>
 
               <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#58CFAE] to-[#6057A0] rounded-full"></div>
+                <div className="w-1 h-12 bg-gradient-to-b from-[#58CFAE] to-[#324D7A] rounded-full"></div>
               </div>
 
               <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#6057A0' }}>
+                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#324D7A' }}>
                   <MessageSquare className="w-8 h-8 text-white" />
                 </div>
                 <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#6057A0' }}>AZIONE 5</div>
+                  <div className="text-sm font-semibold mb-1" style={{ color: '#324D7A' }}>AZIONE 5</div>
                   <div className="text-xl font-bold mb-1" style={{ color: '#324D7A' }}>Notifica Slack al team vendite</div>
                   <div className="text-black/60">Invia un messaggio automatico su Slack per informare il reparto vendite del nuovo ordine</div>
                 </div>
               </div>
 
               <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#6057A0] to-[#58CFAE] rounded-full"></div>
+                <div className="w-1 h-12 bg-gradient-to-b from-[#324D7A] to-[#58CFAE] rounded-full"></div>
               </div>
 
               <div className="flex items-center gap-6">

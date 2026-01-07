@@ -53,7 +53,7 @@ export default function Testimonials() {
                   {testimonial.author}
                 </div>
                 <div className="text-sm text-black/60 mt-1">{testimonial.role}</div>
-                <div className="text-sm font-medium mt-1" style={{ color: '#6057A0' }}>
+                <div className="text-sm font-medium mt-1" style={{ color: '#324D7A' }}>
                   {testimonial.company}
                 </div>
               </div>
@@ -62,9 +62,9 @@ export default function Testimonials() {
         </div>
 
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-8 bg-gradient-to-r from-[#AFE2D4]/20 to-[#6057A0]/20 px-12 py-6 rounded-2xl shadow-lg">
+          <div className="inline-flex items-center gap-8 bg-gradient-to-r from-[#AFE2D4]/20 to-[#324D7A]/20 px-12 py-6 rounded-2xl shadow-lg">
             <div className="text-center">
-              <div className="text-4xl font-bold" style={{ color: '#6057A0' }}>150+</div>
+              <div className="text-4xl font-bold" style={{ color: '#324D7A' }}>150+</div>
               <div className="text-sm text-black/60 mt-1">PMI italiane</div>
             </div>
             <div className="w-px h-12 bg-gray-300"></div>

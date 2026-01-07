@@ -50,7 +50,7 @@ export default function AboutPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md" style={{ backgroundColor: '#6057A0' }}>
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md" style={{ backgroundColor: '#324D7A' }}>
                   <Database className="w-4 h-4 text-white" />
                 </div>
                 <div>
@@ -71,8 +71,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-white to-[#6057A0]/10 rounded-3xl p-8 shadow-xl">
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg" style={{ backgroundColor: '#6057A0' }}>
+          <div className="bg-gradient-to-br from-white to-[#324D7A]/10 rounded-3xl p-8 shadow-xl">
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg" style={{ backgroundColor: '#324D7A' }}>
               <Workflow className="w-8 h-8 text-white" />
             </div>
 

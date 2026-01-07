@@ -101,7 +101,7 @@ export default function PricingPage() {
                 {plan.highlighted && (
                   <div
                     className="inline-block px-4 py-1 rounded-full text-sm font-bold text-white mb-4"
-                    style={{ backgroundColor: '#6057A0' }}
+                    style={{ backgroundColor: '#324D7A' }}
                   >
                     Più popolare
                   </div>
@@ -117,7 +117,7 @@ export default function PricingPage() {
 
                 <div className="mb-8">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold" style={{ color: '#6057A0' }}>
+                    <span className="text-5xl font-bold" style={{ color: '#324D7A' }}>
                       €{plan.price}
                     </span>
                     <span className="text-black/60">/mese per utente</span>
@@ -137,7 +137,7 @@ export default function PricingPage() {
                       : 'text-white'
                   }`}
                   style={{
-                    backgroundColor: plan.highlighted ? '#6057A0' : '#AFE2D4',
+                    backgroundColor: plan.highlighted ? '#324D7A' : '#AFE2D4',
                     color: plan.highlighted ? 'white' : '#324D7A',
                   }}
                 >
@@ -207,7 +207,7 @@ export default function PricingPage() {
           <Link
             to="/demo"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
-            style={{ backgroundColor: '#6057A0' }}
+            style={{ backgroundColor: '#324D7A' }}
           >
             Parla con il nostro team
             <ArrowRight className="w-5 h-5" />

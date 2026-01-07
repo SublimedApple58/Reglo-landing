@@ -21,7 +21,7 @@ export default function Hero() {
               <button
                 onClick={scrollToDemo}
                 className="px-8 py-4 rounded-xl text-white font-semibold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
-                style={{ backgroundColor: '#6057A0' }}
+                style={{ backgroundColor: '#324D7A' }}
               >
                 Richiedi una demo
                 <ArrowRight className="w-5 h-5" />
@@ -29,7 +29,7 @@ export default function Hero() {
               <button
                 onClick={() => document.getElementById('workflow-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="px-8 py-4 bg-white rounded-xl font-semibold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
-                style={{ color: '#6057A0' }}
+                style={{ color: '#324D7A' }}
               >
                 <Play className="w-5 h-5" />
                 Scopri come funziona
@@ -53,16 +53,16 @@ export default function Hero() {
                   </div>
 
                   <div className="flex justify-center">
-                    <div className="w-0.5 h-6 bg-gradient-to-b from-[#AFE2D4] to-[#6057A0]"></div>
+                    <div className="w-0.5 h-6 bg-gradient-to-b from-[#AFE2D4] to-[#324D7A]"></div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-[#6057A0]/20 to-transparent p-4 rounded-xl border-l-4 border-[#6057A0]">
+                  <div className="bg-gradient-to-r from-[#324D7A]/20 to-transparent p-4 rounded-xl border-l-4 border-[#324D7A]">
                     <div className="text-sm font-medium" style={{ color: '#324D7A' }}>Azione</div>
                     <div className="text-base mt-1 text-black/70">Genera documento con DocManager</div>
                   </div>
 
                   <div className="flex justify-center">
-                    <div className="w-0.5 h-6 bg-gradient-to-b from-[#6057A0] to-[#58CFAE]"></div>
+                    <div className="w-0.5 h-6 bg-gradient-to-b from-[#324D7A] to-[#58CFAE]"></div>
                   </div>
 
                   <div className="bg-gradient-to-r from-[#58CFAE]/20 to-transparent p-4 rounded-xl border-l-4 border-[#58CFAE]">
