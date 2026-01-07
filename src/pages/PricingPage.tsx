@@ -1,12 +1,12 @@
 import { Check, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 
 interface PricingPlan {
   name: string;
   price: number;
   description: string;
-  features: string[];
+  features: ReactNode[];
   highlighted: boolean;
   delay: number;
 }
@@ -17,53 +17,41 @@ export default function PricingPage() {
   useEffect(() => {
     setPlans([
       {
-        name: 'Basic',
-        price: 80,
-        description: 'Per aziende che iniziano ad automatizzare',
+        name: 'Core',
+        price: 159,
+        description: 'Per iniziare con l\'automazione e volumi controllati',
         features: [
-          'Fino a 5 workflow attivi',
-          'DocManager con editor PDF',
-          'Trigger e azioni di base',
-          'Supporto via email',
-          'Integrazione gestionale basic',
-          'Archiviazione documenti fino a 10GB',
+          'Doc manager + AI',
+          'Workflow limitato a utilizzo doc manager',
+          <span className="font-semibold">300 documenti compilati / mese</span>,
+          <span className="font-semibold">30 workflow eseguiti / mese</span>,
         ],
         highlighted: false,
         delay: 100,
       },
       {
-        name: 'Premium',
-        price: 150,
-        description: 'Per PMI con processi complessi',
+        name: 'Growth',
+        price: 269,
+        description: 'Per PMI in crescita con workflow piu completi',
         features: [
-          'Workflow illimitati',
-          'DocManager con AI auto-compilazione',
-          'Trigger e azioni avanzate',
-          'Firma digitale integrata',
-          'Integrazione multi-gestionale',
-          'Archiviazione documenti fino a 100GB',
-          'Supporto via chat e email',
-          'Webhooks e API personalizzate',
-          'Priorità nelle nuove feature',
+          'Doc manager + AI',
+          'Workflow engine senza limitazioni',
+          <span className="font-semibold">500 documenti compilati / mese</span>,
+          <span className="font-semibold">80 workflow eseguiti / mese</span>,
         ],
         highlighted: true,
         delay: 200,
       },
       {
-        name: 'Professional',
-        price: 200,
-        description: 'Per aziende in crescita con esigenze custom',
+        name: 'Scale',
+        price: 429,
+        description: 'Per team con volumi elevati e automazioni avanzate',
         features: [
-          'Tutto da Premium',
-          'Account manager dedicato',
-          'Sviluppo custom di workflow',
-          'SLA garantiti 99.9%',
-          'Backup e disaster recovery',
-          'Archiviazione documenti illimitata',
-          'Training personalizzato per il team',
-          'Integrazioni custom con sistemi terzi',
-          'Audit trail completo',
-          'White-label disponibile',
+          'Doc manager + AI',
+          'Workflow engine senza limitazioni + AI',
+          'Reglo AI',
+          <span className="font-semibold">800 documenti compilati / mese</span>,
+          <span className="font-semibold">100 workflow eseguiti / mese</span>,
         ],
         highlighted: false,
         delay: 300,
@@ -120,13 +108,8 @@ export default function PricingPage() {
                     <span className="text-5xl font-bold" style={{ color: '#324D7A' }}>
                       €{plan.price}
                     </span>
-                    <span className="text-black/60">/mese per utente</span>
+                    <span className="text-black/60">/mese</span>
                   </div>
-                  {plan.name !== "Basic" && (
-                    <p className="text-sm text-black/50 mt-2">
-                      Fatturazione annuale: sconto 10%
-                    </p>
-                  )}
                 </div>
 
                 <Link
@@ -163,6 +146,33 @@ export default function PricingPage() {
           ))}
         </div>
 
+        <div className="mb-12">
+          <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl lg:text-3xl font-bold mb-2" style={{ color: '#324D7A' }}>
+                Extra
+              </h2>
+              <p className="text-black/60">
+                Aggiunte opzionali per aumentare i volumi quando ti serve.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="bg-gradient-to-br from-[#AFE2D4]/20 to-white rounded-2xl p-6 text-center shadow-md">
+                <div className="text-3xl font-bold mb-2" style={{ color: '#324D7A' }}>
+                  49€
+                </div>
+                <div className="text-black/70 font-semibold">+150 documenti</div>
+              </div>
+              <div className="bg-gradient-to-br from-[#AFE2D4]/20 to-white rounded-2xl p-6 text-center shadow-md">
+                <div className="text-3xl font-bold mb-2" style={{ color: '#324D7A' }}>
+                  49€
+                </div>
+                <div className="text-black/70 font-semibold">+30 workflow aggiuntivi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-center" style={{ color: '#324D7A' }}>
@@ -184,7 +194,7 @@ export default function PricingPage() {
                   Che supporto ricevo con ogni piano?
                 </h3>
                 <p className="text-black/70">
-                  Basic: email. Premium: chat e email prioritario. Professional: account manager dedicato e supporto telefonico prioritario.
+                  Core: email. Growth: chat e email prioritario. Scale: account manager dedicato e supporto telefonico prioritario.
                 </p>
               </div>
 
