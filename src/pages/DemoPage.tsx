@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
+import Toast from '../components/Toast';
+import { useToast } from '../hooks/useToast';
+import { submitContact } from '../lib/contact';
 
 export default function DemoPage() {
   const [formData, setFormData] = useState({
@@ -9,14 +12,38 @@ export default function DemoPage() {
     processo: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast, showToast, clearToast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => () => clearToast(), [clearToast]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await submitContact({
+        fullName: formData.nome.trim(),
+        email: formData.email.trim(),
+        company: formData.azienda.trim(),
+        process: formData.processo.trim() || undefined,
+        source: 'demo',
+      });
+      setSubmitted(true);
+      showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
       setFormData({ nome: '', email: '', azienda: '', processo: '' });
-      setSubmitted(false);
-    }, 3000);
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (error) {
+      showToast(
+        'error',
+        error instanceof Error
+          ? error.message
+          : 'Impossibile inviare la richiesta. Riprova.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -25,6 +52,11 @@ export default function DemoPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#D7FFF4] to-[#F3F7FF] py-24">
+      {toast ? (
+        <div className="fixed right-6 top-6 z-50">
+          <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
+        </div>
+      ) : null}
       <div className="max-w-2xl mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="text-5xl lg:text-6xl font-bold mb-4" style={{ color: '#324D7A' }}>
@@ -101,12 +133,11 @@ export default function DemoPage() {
 
               <div>
                 <label htmlFor="processo" className="block text-sm font-semibold mb-2" style={{ color: '#324D7A' }}>
-                  Processo che vuoi automatizzare *
+                  Processo che vuoi automatizzare (opzionale)
                 </label>
                 <textarea
                   id="processo"
                   name="processo"
-                  required
                   value={formData.processo}
                   onChange={handleChange}
                   rows={5}
@@ -117,10 +148,11 @@ export default function DemoPage() {
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl text-white font-semibold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-xl text-white font-semibold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
                 style={{ backgroundColor: '#324D7A' }}
               >
-                Richiedi demo gratuita
+                {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}
                 <Send className="w-5 h-5" />
               </button>
 
