@@ -24,6 +24,8 @@ export async function submitContact(payload: ContactPayload) {
     body: JSON.stringify(payload),
   });
 
+  console.log("ciaone")
+
   const data = await response.json().catch(() => ({}));
   if (!response.ok || !data?.success) {
     throw new Error(data?.message ?? 'Invio non riuscito. Riprova più tardi.');
