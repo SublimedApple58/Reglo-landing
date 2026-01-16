@@ -16,11 +16,11 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold" style={{ color: '#324D7A' }}>
-            <img src="/Logo.png" alt="Reglo Logo" style={{height: "40px"}}/>
+            <img src="/Logo.png" alt="Reglo Logo" style={{ height: '34px' }} />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

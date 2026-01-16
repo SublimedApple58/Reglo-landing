@@ -49,10 +49,10 @@ export default function Benefits() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#F3F7FF] to-white">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#324D7A' }}>
+          <h2 className="text-4xl lg:text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
             I vantaggi per le PMI italiane
           </h2>
           <p className="text-xl text-black/70 max-w-3xl mx-auto">
@@ -67,10 +67,10 @@ export default function Benefits() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="bg-[#F3F7FF] rounded-2xl p-8 border border-black/5 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg"
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-sm"
                   style={{ backgroundColor: benefit.color }}
                 >
                   <Icon className="w-8 h-8 text-white" />
@@ -101,10 +101,10 @@ export default function Benefits() {
           })}
         </div>
 
-        <div className="mt-16 bg-white rounded-3xl p-8 lg:p-12 shadow-xl max-w-4xl mx-auto">
+        <div className="mt-16 bg-white rounded-2xl p-8 lg:p-12 border border-black/10 shadow-sm max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="inline-block px-6 py-2 rounded-full mb-6" style={{ backgroundColor: '#AFE2D4' }}>
-              <span className="font-semibold" style={{ color: '#324D7A' }}>Caso reale</span>
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-6 border border-black/10" style={{ backgroundColor: '#F3F7FF' }}>
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#324D7A' }}>Caso reale</span>
             </div>
             <p className="text-xl lg:text-2xl text-black/80 leading-relaxed">
               "<span className="font-bold" style={{ color: '#324D7A' }}>Con Reglo abbiamo automatizzato la gestione degli ordini</span>,

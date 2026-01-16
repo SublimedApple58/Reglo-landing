@@ -110,7 +110,7 @@ export default function WorkflowPage() {
     <div className="min-h-screen bg-gradient-to-br from-[#F3F7FF] to-white py-24">
       <div className="max-w-2xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h1 className="text-5xl lg:text-6xl font-bold mb-4" style={{ color: '#324D7A' }}>
+          <h1 className="text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
             Workflow in azione
           </h1>
           <p className="text-xl text-black/70">

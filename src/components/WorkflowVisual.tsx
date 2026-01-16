@@ -5,7 +5,7 @@ export default function WorkflowVisual() {
     <section id="workflow-section" className="py-24 bg-gradient-to-br from-[#F3F7FF] to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#324D7A' }}>
+          <h2 className="text-4xl lg:text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
             Workflow in azione
           </h2>
           <p className="text-xl text-black/70 max-w-3xl mx-auto">

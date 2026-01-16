@@ -51,24 +51,24 @@ export default function DemoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#D7FFF4] to-[#F3F7FF] py-24">
+    <div className="min-h-screen bg-[#F3F7FF] py-16 sm:py-20 lg:py-24">
       {toast ? (
         <div className="fixed right-6 top-6 z-50">
           <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
         </div>
       ) : null}
-      <div className="max-w-2xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl lg:text-6xl font-bold mb-4" style={{ color: '#324D7A' }}>
+      <div className="max-w-full sm:max-w-2xl mx-auto px-6">
+        <div className="text-center mb-10 sm:mb-12">
+          <h1 className="text-4xl sm:text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
             Richiedi una demo di Reglo
           </h1>
-          <p className="text-xl text-black/70">
+          <p className="text-lg sm:text-xl text-black/70">
             Scopri come automatizzare i tuoi processi aziendali in una demo personalizzata.
             Ti ricontattiamo entro 24 ore.
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-12">
+        <div className="-mx-6 bg-white sm:mx-0 sm:bg-white rounded-none sm:rounded-2xl border-0 sm:border border-black/10 shadow-none sm:shadow-lg px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
           {submitted ? (
             <div className="text-center py-12">
               <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: '#58CFAE' }}>
@@ -77,14 +77,14 @@ export default function DemoPage() {
               <h2 className="text-3xl font-bold mb-2" style={{ color: '#324D7A' }}>
                 Richiesta inviata con successo!
               </h2>
-              <p className="text-lg text-black/70">
+              <p className="text-base sm:text-lg text-black/70">
                 Ti ricontatteremo entro 24 ore per fissare la demo personalizzata sulla tua agenda.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div>
-                <label htmlFor="nome" className="block text-sm font-semibold mb-2" style={{ color: '#324D7A' }}>
+                <label htmlFor="nome" className="block text-sm font-medium mb-2" style={{ color: '#324D7A' }}>
                   Nome e Cognome *
                 </label>
                 <input
@@ -92,15 +92,18 @@ export default function DemoPage() {
                   id="nome"
                   name="nome"
                   required
+                  autoComplete="name"
+                  autoCapitalize="words"
+                  enterKeyHint="next"
                   value={formData.nome}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#324D7A] focus:outline-none transition-colors"
+                  className="w-full px-3.5 py-3 rounded-lg border border-black/15 text-base focus:border-[#324D7A] focus:outline-none focus:ring-2 focus:ring-[#324D7A]/20 transition-colors"
                   placeholder="Mario Rossi"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold mb-2" style={{ color: '#324D7A' }}>
+                <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#324D7A' }}>
                   Email aziendale *
                 </label>
                 <input
@@ -108,15 +111,19 @@ export default function DemoPage() {
                   id="email"
                   name="email"
                   required
+                  autoComplete="email"
+                  inputMode="email"
+                  autoCapitalize="none"
+                  enterKeyHint="next"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#324D7A] focus:outline-none transition-colors"
+                  className="w-full px-3.5 py-3 rounded-lg border border-black/15 text-base focus:border-[#324D7A] focus:outline-none focus:ring-2 focus:ring-[#324D7A]/20 transition-colors"
                   placeholder="mario.rossi@azienda.it"
                 />
               </div>
 
               <div>
-                <label htmlFor="azienda" className="block text-sm font-semibold mb-2" style={{ color: '#324D7A' }}>
+                <label htmlFor="azienda" className="block text-sm font-medium mb-2" style={{ color: '#324D7A' }}>
                   Nome azienda *
                 </label>
                 <input
@@ -124,15 +131,18 @@ export default function DemoPage() {
                   id="azienda"
                   name="azienda"
                   required
+                  autoComplete="organization"
+                  autoCapitalize="words"
+                  enterKeyHint="next"
                   value={formData.azienda}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#324D7A] focus:outline-none transition-colors"
+                  className="w-full px-3.5 py-3 rounded-lg border border-black/15 text-base focus:border-[#324D7A] focus:outline-none focus:ring-2 focus:ring-[#324D7A]/20 transition-colors"
                   placeholder="Acme S.r.l."
                 />
               </div>
 
               <div>
-                <label htmlFor="processo" className="block text-sm font-semibold mb-2" style={{ color: '#324D7A' }}>
+                <label htmlFor="processo" className="block text-sm font-medium mb-2" style={{ color: '#324D7A' }}>
                   Processo che vuoi automatizzare (opzionale)
                 </label>
                 <textarea
@@ -140,8 +150,8 @@ export default function DemoPage() {
                   name="processo"
                   value={formData.processo}
                   onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#324D7A] focus:outline-none transition-colors resize-none"
+                  rows={4}
+                  className="w-full px-3.5 py-3 rounded-lg border border-black/15 text-base focus:border-[#324D7A] focus:outline-none focus:ring-2 focus:ring-[#324D7A]/20 transition-colors resize-none"
                   placeholder="Es. Gestione ordini clienti, emissione fatture, conferme d'ordine..."
                 />
               </div>
@@ -149,14 +159,14 @@ export default function DemoPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 rounded-xl text-white font-semibold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full py-3.5 sm:py-4 rounded-lg text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                 style={{ backgroundColor: '#324D7A' }}
               >
                 {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}
                 <Send className="w-5 h-5" />
               </button>
 
-              <p className="text-sm text-center text-black/60">
+              <p className="text-xs sm:text-sm text-center text-black/60">
                 Nessun impegno richiesto. Demo personalizzata sui tuoi processi aziendali specifici.
               </p>
             </form>

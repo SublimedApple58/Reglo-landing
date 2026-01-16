@@ -41,10 +41,10 @@ export default function Integrations() {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#F3F7FF]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#324D7A' }}>
+          <h2 className="text-4xl lg:text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
             Integrazioni semplici e potenti
           </h2>
           <p className="text-xl text-black/70 max-w-3xl mx-auto">
@@ -59,10 +59,10 @@ export default function Integrations() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-white rounded-xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-md"
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-sm"
                   style={{ backgroundColor: integration.color }}
                 >
                   <Icon className="w-7 h-7 text-white" />
@@ -76,7 +76,7 @@ export default function Integrations() {
           })}
         </div>
 
-        <div className="bg-gradient-to-br from-[#AFE2D4]/20 to-[#324D7A]/20 rounded-3xl p-8 lg:p-12 shadow-xl">
+        <div className="bg-white rounded-2xl p-8 lg:p-10 border border-black/10 shadow-sm">
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl lg:text-3xl font-bold mb-4" style={{ color: '#324D7A' }}>
               Integrazione rapida con il tuo gestionale
@@ -85,14 +85,14 @@ export default function Integrations() {
               Reglo si connette al tuo ERP aziendale esistente in pochi passaggi.
               Il nostro team ti supporta nell'integrazione e nella configurazione iniziale.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <div className="bg-white px-6 py-3 rounded-xl shadow-md">
+            <div className="flex flex-wrap justify-center gap-3 text-sm">
+              <div className="bg-[#F3F7FF] px-5 py-3 rounded-lg border border-black/5">
                 <span className="font-semibold" style={{ color: '#324D7A' }}>✓</span> Nessuna sostituzione del gestionale
               </div>
-              <div className="bg-white px-6 py-3 rounded-xl shadow-md">
+              <div className="bg-[#F3F7FF] px-5 py-3 rounded-lg border border-black/5">
                 <span className="font-semibold" style={{ color: '#324D7A' }}>✓</span> Setup assistito dal nostro team
               </div>
-              <div className="bg-white px-6 py-3 rounded-xl shadow-md">
+              <div className="bg-[#F3F7FF] px-5 py-3 rounded-lg border border-black/5">
                 <span className="font-semibold" style={{ color: '#324D7A' }}>✓</span> Operativo in pochi giorni
               </div>
             </div>

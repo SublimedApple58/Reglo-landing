@@ -23,10 +23,10 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#F3F7FF]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#324D7A' }}>
+          <h2 className="text-4xl lg:text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
             Cosa dicono i nostri clienti
           </h2>
           <p className="text-xl text-black/70 max-w-3xl mx-auto">
@@ -38,10 +38,10 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-white to-[#AFE2D4]/10 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              className="bg-white rounded-2xl p-8 border border-black/5 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <div className="mb-6">
-                <Quote className="w-12 h-12 opacity-20" style={{ color: '#6057A0' }} />
+                <Quote className="w-12 h-12 opacity-20" style={{ color: '#324D7A' }} />
               </div>
 
               <p className="text-lg text-black/80 leading-relaxed mb-6">
@@ -62,7 +62,7 @@ export default function Testimonials() {
         </div>
 
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-8 bg-gradient-to-r from-[#AFE2D4]/20 to-[#324D7A]/20 px-12 py-6 rounded-2xl shadow-lg">
+          <div className="inline-flex items-center gap-8 bg-white px-10 py-6 rounded-2xl border border-black/10 shadow-sm">
             <div className="text-center">
               <div className="text-4xl font-bold" style={{ color: '#324D7A' }}>150+</div>
               <div className="text-sm text-black/60 mt-1">PMI italiane</div>

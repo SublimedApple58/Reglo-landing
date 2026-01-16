@@ -5,7 +5,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
-          <h1 className="text-5xl lg:text-6xl font-bold mb-4" style={{ color: '#324D7A' }}>
+          <h1 className="text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
             Cos'è Reglo
           </h1>
           <p className="text-xl text-black/70 max-w-3xl mx-auto">
