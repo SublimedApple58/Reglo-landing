@@ -30,6 +30,10 @@ export default function FinalCTA() {
         process: formData.processo.trim() || undefined,
         source: 'home',
       });
+      const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { source: 'home' });
+      }
       setSubmitted(true);
       showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
       setFormData({ nome: '', email: '', azienda: '', processo: '' });

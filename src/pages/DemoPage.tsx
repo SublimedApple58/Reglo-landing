@@ -30,6 +30,10 @@ export default function DemoPage() {
         process: formData.processo.trim() || undefined,
         source: 'demo',
       });
+      const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { source: 'demo' });
+      }
       setSubmitted(true);
       showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
       setFormData({ nome: '', email: '', azienda: '', processo: '' });
