@@ -51,40 +51,60 @@ export default function FinalCTA() {
   };
 
   return (
-    <section id="demo-form" className="py-20 sm:py-24 bg-gradient-to-br from-[#324D7A] via-[#2F4771] to-[#5B93FF]">
+    <section
+      id="demo-form"
+      className="relative overflow-hidden py-20 sm:py-24"
+      style={{
+        background: 'linear-gradient(135deg, #324D7A 0%, rgba(50, 77, 122, 0.92) 55%, rgba(50, 77, 122, 0.85) 100%)',
+      }}
+    >
+      <div className="absolute inset-0 bg-grid opacity-15" aria-hidden="true" />
+      <div
+        className="absolute -top-16 right-8 h-64 w-64 rounded-full blur-3xl"
+        style={{ backgroundColor: 'rgba(175, 226, 212, 0.35)' }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 left-0 h-72 w-72 rounded-full blur-3xl"
+        style={{ backgroundColor: 'rgba(175, 226, 212, 0.35)' }}
+        aria-hidden="true"
+      />
       {toast ? (
         <div className="fixed right-6 top-6 z-50">
           <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
         </div>
       ) : null}
-      <div className="max-w-full sm:max-w-4xl mx-auto px-6">
+      <div className="relative max-w-full sm:max-w-4xl mx-auto px-6">
         <div className="text-center mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold mb-4 text-white">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+            Demo personalizzata
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-white">
             Richiedi una demo di Reglo
           </h2>
-          <p className="text-base sm:text-lg text-white/80">
+          <p className="text-base sm:text-lg text-white/75">
             Scopri come automatizzare i tuoi processi aziendali in una demo personalizzata.
             Ti ricontattiamo entro 24 ore.
           </p>
         </div>
 
-        <div className="-mx-6 bg-[#F3F7FF] sm:mx-0 rounded-none sm:rounded-2xl border-0 sm:border border-white/30 shadow-none sm:shadow-lg px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
+        <div className="-mx-6 bg-white/95 sm:mx-0 rounded-none sm:rounded-3xl border-0 sm:border border-white/20 shadow-none sm:shadow-lg px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
           {submitted ? (
             <div className="text-center py-12">
-              <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: '#58CFAE' }}>
+              <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: 'var(--color-ink)' }}>
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-2" style={{ color: '#324D7A' }}>
+              <h3 className="text-2xl font-semibold mb-2 text-[color:var(--color-ink)]">
                 Richiesta inviata con successo!
               </h3>
-              <p className="text-base sm:text-lg text-black/70">
+              <p className="text-base sm:text-lg text-[color:var(--color-ink-muted)]">
                 Ti ricontatteremo entro 24 ore per fissare la demo.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div>
-                <label htmlFor="nome" className="block text-sm font-medium mb-2" style={{ color: '#324D7A' }}>
+                <label htmlFor="nome" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
                   Nome e Cognome *
                 </label>
                 <input
@@ -97,13 +117,13 @@ export default function FinalCTA() {
                   enterKeyHint="next"
                   value={formData.nome}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-lg border border-black/15 text-base focus:border-[#324D7A] focus:outline-none focus:ring-2 focus:ring-[#324D7A]/20 transition-colors"
+                  className="w-full px-3.5 py-3 rounded-xl border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-10 transition-colors"
                   placeholder="Mario Rossi"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#324D7A' }}>
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
                   Email aziendale *
                 </label>
                 <input
@@ -117,13 +137,13 @@ export default function FinalCTA() {
                   enterKeyHint="next"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-lg border border-black/15 text-base focus:border-[#324D7A] focus:outline-none focus:ring-2 focus:ring-[#324D7A]/20 transition-colors"
+                  className="w-full px-3.5 py-3 rounded-xl border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-10 transition-colors"
                   placeholder="mario.rossi@azienda.it"
                 />
               </div>
 
               <div>
-                <label htmlFor="azienda" className="block text-sm font-medium mb-2" style={{ color: '#324D7A' }}>
+                <label htmlFor="azienda" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
                   Nome azienda *
                 </label>
                 <input
@@ -136,13 +156,13 @@ export default function FinalCTA() {
                   enterKeyHint="next"
                   value={formData.azienda}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-lg border border-black/15 text-base focus:border-[#324D7A] focus:outline-none focus:ring-2 focus:ring-[#324D7A]/20 transition-colors"
+                  className="w-full px-3.5 py-3 rounded-xl border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-10 transition-colors"
                   placeholder="Acme S.r.l."
                 />
               </div>
 
               <div>
-                <label htmlFor="processo" className="block text-sm font-medium mb-2" style={{ color: '#324D7A' }}>
+                <label htmlFor="processo" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
                   Processo che vuoi automatizzare (opzionale)
                 </label>
                 <textarea
@@ -151,7 +171,7 @@ export default function FinalCTA() {
                   value={formData.processo}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-3.5 py-3 rounded-lg border border-black/15 text-base focus:border-[#324D7A] focus:outline-none focus:ring-2 focus:ring-[#324D7A]/20 transition-colors resize-none"
+                  className="w-full px-3.5 py-3 rounded-xl border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-10 transition-colors resize-none"
                   placeholder="Es. Gestione ordini clienti, emissione fatture, conferme d'ordine..."
                 />
               </div>
@@ -159,14 +179,13 @@ export default function FinalCTA() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 sm:py-4 rounded-lg text-[#324D7A] font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
-                style={{ backgroundColor: '#AFE2D4' }}
+                className="w-full py-3.5 sm:py-4 rounded-full text-[color:var(--color-ink)] font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed bg-[color:var(--color-accent)] hover:bg-[color:var(--color-accent-soft)]"
               >
                 {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}
                 <Send className="w-5 h-5" />
               </button>
 
-              <p className="text-xs sm:text-sm text-center text-black/60">
+              <p className="text-xs sm:text-sm text-center text-[color:var(--color-ink-muted)]">
                 Nessun impegno richiesto. Demo personalizzata sui tuoi processi aziendali.
               </p>
             </form>
@@ -175,7 +194,7 @@ export default function FinalCTA() {
 
         <footer className="mt-12 sm:mt-16 text-center space-y-4">
           <div className="flex items-center justify-center gap-2">
-            <div className="text-2xl sm:text-3xl font-bold text-white">Reglo</div>
+            <div className="text-2xl sm:text-3xl font-semibold text-white">Reglo</div>
           </div>
           <p className="text-white/70">
             La piattaforma cloud per automatizzare i processi aziendali

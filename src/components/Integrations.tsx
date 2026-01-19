@@ -6,96 +6,124 @@ export default function Integrations() {
       name: 'Gestionale Aziendale',
       description: 'Connessione nativa con il tuo ERP',
       icon: Database,
-      color: '#324D7A',
+      tone: 'ERP',
     },
     {
       name: 'Slack',
       description: 'Notifiche e comunicazioni team',
       icon: MessageSquare,
-      color: '#5B93FF',
+      tone: 'Team',
     },
     {
       name: 'Email',
       description: 'Invio automatico di documenti',
       icon: Mail,
-      color: '#58CFAE',
+      tone: 'Comunicazioni',
     },
     {
       name: 'Servizi Esterni',
       description: 'API e webhook personalizzate',
       icon: Webhook,
-      color: '#FFB857',
+      tone: 'API',
     },
     {
       name: 'Cloud Storage',
       description: 'Archiviazione documenti',
       icon: Cloud,
-      color: '#AFE2D4',
+      tone: 'Storage',
     },
     {
       name: 'Altri Sistemi',
       description: 'Integrazioni su misura',
       icon: Plug,
-      color: '#6057A0',
+      tone: 'Custom',
     },
   ];
 
   return (
-    <section className="py-24 bg-[#F3F7FF]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
-            Integrazioni semplici e potenti
+    <section
+      className="py-20"
+      style={{
+        background: 'linear-gradient(180deg, var(--color-paper) 0%, var(--color-sand) 100%)',
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+            Ecosistema
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
+            Integrazioni pulite e leggere
           </h2>
-          <p className="text-xl text-black/70 max-w-3xl mx-auto">
-            Reglo si connette facilmente con il tuo ecosistema aziendale esistente.
-            Nessuna sostituzione, solo potenziamento dei tuoi strumenti.
+          <p className="text-lg text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
+            Reglo si aggancia al tuo stack senza cambiare strumenti. Connettori essenziali,
+            interfacce discrete, zero frizioni.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {integrations.map((integration, index) => {
             const Icon = integration.icon;
             return (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 border border-black/5 shadow-sm hover:shadow-md transition-all duration-300"
+                className="rounded-2xl border border-[color:var(--color-border)] bg-white/90 px-5 py-4"
               >
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-sm"
-                  style={{ backgroundColor: integration.color }}
-                >
-                  <Icon className="w-7 h-7 text-white" />
+                <div className="flex items-start gap-4">
+                  <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-white">
+                    <Icon className="h-4 w-4 text-[color:var(--color-ink)]" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="text-sm font-semibold text-[color:var(--color-ink)]">
+                        {integration.name}
+                      </div>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
+                        {integration.tone}
+                      </span>
+                    </div>
+                    <div className="text-xs text-[color:var(--color-ink-muted)] mt-1">
+                      {integration.description}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2" style={{ color: '#324D7A' }}>
-                  {integration.name}
-                </h3>
-                <p className="text-black/60">{integration.description}</p>
               </div>
             );
           })}
         </div>
 
-        <div className="bg-white rounded-2xl p-8 lg:p-10 border border-black/10 shadow-sm">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-4" style={{ color: '#324D7A' }}>
+        <div className="mt-12 rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-accent-soft)] px-8 py-6 max-w-4xl mx-auto">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 border border-[color:var(--color-border)] bg-[color:var(--color-paper)]">
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Setup</span>
+            </div>
+            <h3 className="text-xl font-semibold text-[color:var(--color-ink)]">
               Integrazione rapida con il tuo gestionale
             </h3>
-            <p className="text-lg text-black/70 mb-6">
-              Reglo si connette al tuo ERP aziendale esistente in pochi passaggi.
-              Il nostro team ti supporta nell'integrazione e nella configurazione iniziale.
+            <p className="text-sm text-[color:var(--color-ink-muted)] mt-3">
+              Reglo si connette al tuo ERP in pochi passaggi. Il nostro team ti supporta
+              nell'integrazione e nella configurazione iniziale.
             </p>
-            <div className="flex flex-wrap justify-center gap-3 text-sm">
-              <div className="bg-[#F3F7FF] px-5 py-3 rounded-lg border border-black/5">
-                <span className="font-semibold" style={{ color: '#324D7A' }}>✓</span> Nessuna sostituzione del gestionale
-              </div>
-              <div className="bg-[#F3F7FF] px-5 py-3 rounded-lg border border-black/5">
-                <span className="font-semibold" style={{ color: '#324D7A' }}>✓</span> Setup assistito dal nostro team
-              </div>
-              <div className="bg-[#F3F7FF] px-5 py-3 rounded-lg border border-black/5">
-                <span className="font-semibold" style={{ color: '#324D7A' }}>✓</span> Operativo in pochi giorni
-              </div>
+          </div>
+          <div className="mt-6 grid sm:grid-cols-3 gap-4 text-sm text-[color:var(--color-ink-muted)]">
+            <div className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-ink)]" />
+              Nessuna sostituzione del gestionale
             </div>
+            <div className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-ink)]" />
+              Setup assistito dal nostro team
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-ink)]" />
+              Operativo in pochi giorni
+            </div>
+          </div>
+          <div className="mt-5 flex flex-wrap justify-center gap-2 text-xs text-[color:var(--color-ink-muted)]">
+            <span className="rounded-full border border-[color:var(--color-border)] px-3 py-1">SAP</span>
+            <span className="rounded-full border border-[color:var(--color-border)] px-3 py-1">Zucchetti</span>
+            <span className="rounded-full border border-[color:var(--color-border)] px-3 py-1">Teamsystem</span>
+            <span className="rounded-full border border-[color:var(--color-border)] px-3 py-1">NetSuite</span>
           </div>
         </div>
       </div>

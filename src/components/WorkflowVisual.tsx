@@ -1,132 +1,99 @@
 import { Play, GitBranch, FileText, PenTool, Mail, MessageSquare, CheckCircle } from 'lucide-react';
 
 export default function WorkflowVisual() {
+  const steps = [
+    {
+      label: 'Trigger',
+      title: 'Nuovo ordine nel gestionale',
+      description: 'Il workflow parte automaticamente quando viene registrato un nuovo ordine nell\'ERP.',
+      icon: Play,
+    },
+    {
+      label: 'Azione 1',
+      title: 'Aggiorna stato nel gestionale',
+      description: 'Modifica automaticamente lo stato dell\'ordine da "In attesa" a "In lavorazione".',
+      icon: GitBranch,
+    },
+    {
+      label: 'Azione 2',
+      title: 'Genera documento con DocManager',
+      description: 'Compila la conferma d\'ordine con i dati dell\'ERP in tempo reale.',
+      icon: FileText,
+    },
+    {
+      label: 'Azione 3',
+      title: 'Firma digitale',
+      description: 'Applica la firma digitale automatica al documento generato.',
+      icon: PenTool,
+    },
+    {
+      label: 'Azione 4',
+      title: 'Invia email al cliente',
+      description: 'Recapita la conferma d\'ordine firmata direttamente al cliente.',
+      icon: Mail,
+    },
+    {
+      label: 'Azione 5',
+      title: 'Notifica il team vendite',
+      description: 'Invia un messaggio automatico per informare il reparto vendite.',
+      icon: MessageSquare,
+    },
+    {
+      label: 'Output',
+      title: 'Workflow completato',
+      description: 'Tutto è stato automatizzato. Zero intervento manuale.',
+      icon: CheckCircle,
+    },
+  ];
+
   return (
-    <section id="workflow-section" className="py-24 bg-gradient-to-br from-[#F3F7FF] to-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
+    <section id="workflow-section" className="py-20 bg-[color:var(--color-paper)]">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+            Workflow
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
             Workflow in azione
           </h2>
-          <p className="text-xl text-black/70 max-w-3xl mx-auto">
-            Ecco un esempio di come Reglo automatizza un processo completo:
-            dalla ricezione di un ordine alla notifica del team
+          <p className="text-lg text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
+            Un esempio reale di come Reglo automatizza un processo completo,
+            dalla ricezione dell'ordine alla notifica del team.
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="relative">
-            <div className="space-y-6">
-              <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#AFE2D4' }}>
-                  <Play className="w-8 h-8" style={{ color: '#324D7A' }} />
+        <div className="max-w-4xl mx-auto space-y-4">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <div key={step.title} className="relative pl-12">
+                <div className="absolute left-0 top-1.5 flex h-8 w-8 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-white">
+                  <Icon className="h-4 w-4 text-[color:var(--color-ink)]" />
                 </div>
-                <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#58CFAE' }}>TRIGGER</div>
-                  <div className="text-xl font-bold mb-1" style={{ color: '#324D7A' }}>Nuovo ordine nel gestionale</div>
-                  <div className="text-black/60">Il workflow parte automaticamente quando viene registrato un nuovo ordine nell'ERP</div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#AFE2D4] to-[#324D7A] rounded-full"></div>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#324D7A' }}>
-                  <GitBranch className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#324D7A' }}>AZIONE 1</div>
-                  <div className="text-xl font-bold mb-1" style={{ color: '#324D7A' }}>Aggiorna stato nel gestionale</div>
-                  <div className="text-black/60">Modifica automaticamente lo stato dell'ordine da "In attesa" a "In lavorazione"</div>
+                {index < steps.length - 1 && (
+                  <div className="absolute left-4 top-10 h-full w-px bg-[color:var(--color-border)]" />
+                )}
+                <div className="rounded-2xl border border-[color:var(--color-border)] bg-white p-5">
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+                    {step.label}
+                  </div>
+                  <div className="text-base font-semibold text-[color:var(--color-ink)] mt-2">
+                    {step.title}
+                  </div>
+                  <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">
+                    {step.description}
+                  </div>
                 </div>
               </div>
+            );
+          })}
+        </div>
 
-              <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#324D7A] to-[#5B93FF] rounded-full"></div>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#5B93FF' }}>
-                  <FileText className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#5B93FF' }}>AZIONE 2</div>
-                  <div className="text-xl font-bold mb-1" style={{ color: '#324D7A' }}>Genera documento con DocManager</div>
-                  <div className="text-black/60">Crea la conferma d'ordine compilando automaticamente tutti i campi con i dati dell'ERP</div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#5B93FF] to-[#FFB857] rounded-full"></div>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#FFB857' }}>
-                  <PenTool className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#FFB857' }}>AZIONE 3</div>
-                  <div className="text-xl font-bold mb-1" style={{ color: '#324D7A' }}>Firma digitale</div>
-                  <div className="text-black/60">Applica la firma digitale automatica al documento generato</div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#FFB857] to-[#58CFAE] rounded-full"></div>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#58CFAE' }}>
-                  <Mail className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#58CFAE' }}>AZIONE 4</div>
-                  <div className="text-xl font-bold mb-1" style={{ color: '#324D7A' }}>Invia email al cliente</div>
-                  <div className="text-black/60">Recapita la conferma d'ordine firmata direttamente all'indirizzo email del cliente</div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#58CFAE] to-[#324D7A] rounded-full"></div>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#324D7A' }}>
-                  <MessageSquare className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#324D7A' }}>AZIONE 5</div>
-                  <div className="text-xl font-bold mb-1" style={{ color: '#324D7A' }}>Notifica Slack al team vendite</div>
-                  <div className="text-black/60">Invia un messaggio automatico su Slack per informare il reparto vendite del nuovo ordine</div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#324D7A] to-[#58CFAE] rounded-full"></div>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl" style={{ backgroundColor: '#58CFAE' }}>
-                  <CheckCircle className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1 bg-gradient-to-r from-[#58CFAE]/10 to-transparent rounded-2xl p-6 border-2 border-[#58CFAE]">
-                  <div className="text-xl font-bold" style={{ color: '#324D7A' }}>Workflow completato</div>
-                  <div className="text-black/60 mt-1">Tutto è stato automatizzato. Zero intervento manuale.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-12 bg-white rounded-2xl p-8 shadow-xl">
-            <div className="text-center">
-              <p className="text-lg text-black/70">
-                <span className="font-bold" style={{ color: '#324D7A' }}>Risultato:</span> Un processo che richiedeva 30 minuti e 5 passaggi manuali
-                ora viene completato in <span className="font-bold" style={{ color: '#58CFAE' }}>meno di 2 secondi</span>, senza errori e senza intervento umano.
-              </p>
-            </div>
-          </div>
+        <div className="mt-10 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-sand)] px-8 py-6 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)] text-center">
+            <span className="font-semibold text-[color:var(--color-ink)]">Risultato:</span> un processo che richiedeva 30 minuti e 5 passaggi manuali
+            ora viene completato in <span className="font-semibold text-[color:var(--color-ink)]">meno di 2 secondi</span>, senza errori e senza intervento umano.
+          </p>
         </div>
       </div>
     </section>

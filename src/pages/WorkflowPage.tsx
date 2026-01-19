@@ -1,133 +1,112 @@
-import { Play, GitBranch, FileText, PenTool, Mail, MessageSquare, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { Play, GitBranch, FileText, PenTool, Mail, MessageSquare, CheckCircle } from 'lucide-react';
 
 interface WorkflowBlock {
   id: number;
   icon: React.ComponentType<{ className?: string }>;
-  type: string;
+  label: string;
   title: string;
   description: string;
-  color: string;
 }
 
 export default function WorkflowPage() {
-  const [blocks] = useState<WorkflowBlock[]>([
+  const blocks: WorkflowBlock[] = [
     {
       id: 1,
       icon: Play,
-      type: 'TRIGGER',
+      label: 'Trigger',
       title: 'Nuovo ordine nel gestionale',
-      description: 'Il workflow parte automaticamente quando viene registrato un nuovo ordine nell\'ERP',
-      color: '#AFE2D4',
+      description: 'Il workflow parte automaticamente quando viene registrato un nuovo ordine nell\'ERP.',
     },
     {
       id: 2,
       icon: GitBranch,
-      type: 'AZIONE 1',
+      label: 'Azione 1',
       title: 'Aggiorna stato nel gestionale',
-      description: 'Modifica automaticamente lo stato dell\'ordine da "In attesa" a "In lavorazione"',
-      color: '#324D7A',
+      description: 'Modifica automaticamente lo stato dell\'ordine da "In attesa" a "In lavorazione".',
     },
     {
       id: 3,
       icon: FileText,
-      type: 'AZIONE 2',
+      label: 'Azione 2',
       title: 'Genera documento con DocManager',
-      description: 'Crea la conferma d\'ordine compilando automaticamente tutti i campi con i dati dell\'ERP',
-      color: '#5B93FF',
+      description: 'Compila la conferma d\'ordine con i dati dell\'ERP in tempo reale.',
     },
     {
       id: 4,
       icon: PenTool,
-      type: 'AZIONE 3',
+      label: 'Azione 3',
       title: 'Firma digitale',
-      description: 'Applica la firma digitale automatica al documento generato',
-      color: '#FFB857',
+      description: 'Applica la firma digitale automatica al documento generato.',
     },
     {
       id: 5,
       icon: Mail,
-      type: 'AZIONE 4',
+      label: 'Azione 4',
       title: 'Invia email al cliente',
-      description: 'Recapita la conferma d\'ordine firmata direttamente all\'indirizzo email del cliente',
-      color: '#58CFAE',
+      description: 'Recapita la conferma d\'ordine firmata direttamente al cliente.',
     },
     {
       id: 6,
       icon: MessageSquare,
-      type: 'AZIONE 5',
+      label: 'Azione 5',
       title: 'Notifica Slack al team vendite',
-      description: 'Invia un messaggio automatico su Slack per informare il reparto vendite del nuovo ordine',
-      color: '#324D7A',
+      description: 'Invia un messaggio automatico per informare il reparto vendite.',
     },
-  ]);
-
-  const BlockCard = ({ block, index }: { block: WorkflowBlock; index: number }) => {
-    const Icon = block.icon;
-    return (
-      <div className="flex flex-col items-center" style={{ animationDelay: `${index * 0.1}s` }}>
-        <div
-          className="w-full max-w-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group border-2 animate-fadeInUp"
-          style={{
-            borderColor: `${block.color}40`,
-            backgroundColor: `${block.color}12`,
-          }}
-        >
-          <div className="flex items-start gap-6">
-            <div
-              className="flex-shrink-0 w-14 h-14 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all group-hover:scale-110"
-              style={{ backgroundColor: block.color }}
-            >
-              <Icon className="w-7 h-7 text-white" />
-            </div>
-            <div className="flex-1">
-              <div className="text-xs font-bold tracking-wider mb-1" style={{ color: block.color }}>
-                {block.type}
-              </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: '#324D7A' }}>
-                {block.title}
-              </h3>
-              <p className="text-black/60 text-sm leading-relaxed">
-                {block.description}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {index < blocks.length - 1 && (
-          <div className="flex flex-col items-center py-8">
-            <ChevronDown
-              className="w-6 h-6 animate-bounce"
-              style={{ color: '#324D7A', opacity: 0.4 }}
-            />
-          </div>
-        )}
-      </div>
-    );
-  };
+    {
+      id: 7,
+      icon: CheckCircle,
+      label: 'Output',
+      title: 'Workflow completato',
+      description: 'Tutto è stato automatizzato. Zero intervento manuale.',
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F3F7FF] to-white py-24">
-      <div className="max-w-2xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h1 className="text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
+    <div className="min-h-screen bg-[color:var(--color-paper)]">
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+            Workflow
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
             Workflow in azione
           </h1>
-          <p className="text-xl text-black/70">
-            Ecco come Reglo automatizza completamente il tuo processo, passo dopo passo
+          <p className="text-lg text-[color:var(--color-ink-muted)]">
+            Ecco come Reglo automatizza completamente il tuo processo, passo dopo passo.
           </p>
         </div>
 
-        <div className="flex flex-col items-center">
-          {blocks.map((block, index) => (
-            <BlockCard key={block.id} block={block} index={index} />
-          ))}
+        <div className="space-y-4">
+          {blocks.map((block, index) => {
+            const Icon = block.icon;
+            return (
+              <div key={block.id} className="relative pl-12">
+                <div className="absolute left-0 top-1.5 flex h-8 w-8 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-white">
+                  <Icon className="h-4 w-4 text-[color:var(--color-ink)]" />
+                </div>
+                {index < blocks.length - 1 && (
+                  <div className="absolute left-4 top-10 h-full w-px bg-[color:var(--color-border)]" />
+                )}
+                <div className="rounded-2xl border border-[color:var(--color-border)] bg-white p-5">
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+                    {block.label}
+                  </div>
+                  <div className="text-base font-semibold text-[color:var(--color-ink)] mt-2">
+                    {block.title}
+                  </div>
+                  <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">
+                    {block.description}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="mt-20 p-8 bg-white rounded-2xl shadow-lg border-2 border-[#58CFAE]/30 text-center">
-          <p className="text-lg text-black/70">
-            <span className="font-bold" style={{ color: '#324D7A' }}>Risultato:</span> Un processo che richiedeva 30 minuti e 5 passaggi manuali
-            ora viene completato in <span className="font-bold" style={{ color: '#58CFAE' }}>meno di 2 secondi</span>, senza errori e senza intervento umano.
+        <div className="mt-10 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-sand)] px-8 py-6">
+          <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)] text-center">
+            <span className="font-semibold text-[color:var(--color-ink)]">Risultato:</span> un processo che richiedeva 30 minuti e 5 passaggi manuali
+            ora viene completato in <span className="font-semibold text-[color:var(--color-ink)]">meno di 2 secondi</span>, senza errori e senza intervento umano.
           </p>
         </div>
       </div>

@@ -5,7 +5,8 @@ export default function Benefits() {
     {
       icon: Clock,
       title: 'Riduci il lavoro manuale',
-      color: '#58CFAE',
+      color: 'var(--color-ink-soft)',
+      soft: 'rgba(50, 77, 122, 0.16)',
       points: [
         'Elimina operazioni ripetitive quotidiane',
         'Libera tempo per attività strategiche',
@@ -16,7 +17,8 @@ export default function Benefits() {
     {
       icon: Target,
       title: 'Elimina gli errori ripetitivi',
-      color: '#5B93FF',
+      color: 'var(--color-ink)',
+      soft: 'rgba(50, 77, 122, 0.16)',
       points: [
         'Zero errori di trascrizione manuale',
         'Dati sempre aggiornati e coerenti',
@@ -27,7 +29,8 @@ export default function Benefits() {
     {
       icon: Shield,
       title: 'Documenti sempre aggiornati e tracciabili',
-      color: '#324D7A',
+      color: 'var(--color-ink)',
+      soft: 'rgba(50, 77, 122, 0.16)',
       points: [
         'Versioning automatico di tutti i documenti',
         'Storico completo delle modifiche',
@@ -38,7 +41,8 @@ export default function Benefits() {
     {
       icon: TrendingUp,
       title: 'Cresci senza aumentare i costi operativi',
-      color: '#FFB857',
+      color: 'var(--color-ink)',
+      soft: 'rgba(50, 77, 122, 0.16)',
       points: [
         'Scala il business senza assumere nuovo personale',
         'ROI positivo già nei primi mesi',
@@ -49,71 +53,73 @@ export default function Benefits() {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-[44px] font-bold mb-4" style={{ color: '#324D7A' }}>
+    <section className="py-20 bg-[color:var(--color-paper)]">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+            Vantaggi
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
             I vantaggi per le PMI italiane
           </h2>
-          <p className="text-xl text-black/70 max-w-3xl mx-auto">
-            Reglo è progettato per le esigenze concrete delle piccole e medie imprese che vogliono crescere
-            senza complicazioni tecnologiche
+          <p className="text-lg text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
+            Reglo è progettato per le esigenze concrete delle PMI che vogliono crescere senza
+            complicazioni tecnologiche.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-5">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
               <div
                 key={index}
-                className="bg-[#F3F7FF] rounded-2xl p-8 border border-black/5 shadow-sm hover:shadow-md transition-all duration-300"
+                className="rounded-2xl border border-[color:var(--color-border)] bg-white/90 px-5 py-4"
               >
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-sm"
-                  style={{ backgroundColor: benefit.color }}
-                >
-                  <Icon className="w-8 h-8 text-white" />
+                <div className="flex items-start gap-4">
+                  <div
+                    className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl border"
+                    style={{ borderColor: benefit.color, backgroundColor: benefit.soft }}
+                  >
+                    <Icon className="h-4 w-4" style={{ color: benefit.color }} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-sm font-semibold text-[color:var(--color-ink)]">
+                      {benefit.title}
+                    </div>
+                    <ul className="mt-2 grid gap-2 text-xs text-[color:var(--color-ink-muted)] sm:grid-cols-2">
+                      {benefit.points.map((point, pointIndex) => (
+                        <li key={pointIndex} className="flex items-start gap-2">
+                          <span
+                            className="mt-1 h-1.5 w-1.5 rounded-full"
+                            style={{ backgroundColor: benefit.color }}
+                          />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-
-                <h3 className="text-2xl font-bold mb-6" style={{ color: '#324D7A' }}>
-                  {benefit.title}
-                </h3>
-
-                <ul className="space-y-4">
-                  {benefit.points.map((point, pointIndex) => (
-                    <li key={pointIndex} className="flex items-start gap-3">
-                      <div
-                        className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                        style={{ backgroundColor: `${benefit.color}20` }}
-                      >
-                        <div
-                          className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: benefit.color }}
-                        ></div>
-                      </div>
-                      <span className="text-black/70 leading-relaxed">{point}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             );
           })}
         </div>
 
-        <div className="mt-16 bg-white rounded-2xl p-8 lg:p-12 border border-black/10 shadow-sm max-w-4xl mx-auto">
+        <div className="mt-12 rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-accent-soft)] px-8 py-6 max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-6 border border-black/10" style={{ backgroundColor: '#F3F7FF' }}>
-              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#324D7A' }}>Caso reale</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 border border-[color:var(--color-border)] bg-[color:var(--color-paper)]">
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Caso reale</span>
             </div>
-            <p className="text-xl lg:text-2xl text-black/80 leading-relaxed">
-              "<span className="font-bold" style={{ color: '#324D7A' }}>Con Reglo abbiamo automatizzato la gestione degli ordini</span>,
+            <p className="text-base sm:text-lg text-[color:var(--color-ink-muted)] leading-relaxed">
+              "<span className="font-semibold text-[color:var(--color-ink)]">Con Reglo abbiamo automatizzato la gestione degli ordini</span>,
               riducendo i tempi da 45 minuti a 2 minuti per ordine. Il team commerciale ora si concentra sulle vendite
               invece di compilare documenti."
             </p>
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <div className="font-semibold" style={{ color: '#324D7A' }}>Marco Rossi</div>
-              <div className="text-black/60">Responsabile Operations, PMI manifatturiera 50 dipendenti</div>
+            <div className="mt-5 pt-5 border-t border-[color:var(--color-border)]">
+              <div className="text-sm font-semibold text-[color:var(--color-ink)]">Marco Rossi</div>
+              <div className="text-xs text-[color:var(--color-ink-muted)]">
+                Responsabile Operations, PMI manifatturiera 50 dipendenti
+              </div>
             </div>
           </div>
         </div>

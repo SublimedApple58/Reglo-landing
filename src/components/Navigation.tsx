@@ -16,10 +16,10 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[color:var(--color-border)]">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold" style={{ color: '#324D7A' }}>
+          <Link to="/" className="text-2xl font-bold text-[color:var(--color-ink)]">
             <img src="/Logo.png" alt="Reglo Logo" style={{ height: '34px' }} />
           </Link>
 
@@ -30,8 +30,8 @@ export default function Navigation() {
                 to={path}
                 className={`font-medium transition-colors ${
                   isActive(path)
-                    ? 'text-[#324D7A]'
-                    : 'text-black/70 hover:text-[#324D7A]'
+                    ? 'text-[color:var(--color-ink)]'
+                    : 'text-[color:var(--color-ink-muted)] hover:text-[color:var(--color-ink)]'
                 }`}
               >
                 {label}
@@ -39,8 +39,7 @@ export default function Navigation() {
             ))}
             <Link
               to="/demo"
-              className="px-6 py-2 rounded-lg text-white font-semibold transition-all hover:shadow-lg"
-              style={{ backgroundColor: '#324D7A' }}
+              className="px-6 py-2 rounded-full text-white font-semibold transition-all hover:shadow-lg bg-[color:var(--color-ink)]"
             >
               Demo
             </Link>
@@ -55,7 +54,7 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="md:hidden pt-4 space-y-2 border-t mt-4">
+          <div className="md:hidden pt-4 space-y-2 border-t mt-4 border-[color:var(--color-border)]">
             {links.map(({ path, label }) => (
               <Link
                 key={path}
@@ -63,8 +62,8 @@ export default function Navigation() {
                 onClick={() => setIsOpen(false)}
                 className={`block py-2 font-medium transition-colors ${
                   isActive(path)
-                    ? 'text-[#324D7A]'
-                    : 'text-black/70 hover:text-[#324D7A]'
+                    ? 'text-[color:var(--color-ink)]'
+                    : 'text-[color:var(--color-ink-muted)] hover:text-[color:var(--color-ink)]'
                 }`}
               >
                 {label}
@@ -73,8 +72,7 @@ export default function Navigation() {
             <Link
               to="/demo"
               onClick={() => setIsOpen(false)}
-              className="block px-6 py-2 rounded-lg text-white font-semibold text-center"
-              style={{ backgroundColor: '#324D7A' }}
+              className="block px-6 py-2 rounded-full text-white font-semibold text-center bg-[color:var(--color-ink)]"
             >
               Demo
             </Link>
