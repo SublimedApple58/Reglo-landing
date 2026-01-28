@@ -23,13 +23,17 @@ export default function Testimonials() {
   ];
 
   return (
-    <section
-      className="py-20"
-      style={{
-        background: 'linear-gradient(135deg, var(--color-sky) 0%, var(--color-sand) 100%)',
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative overflow-hidden py-20">
+      <div className="absolute inset-0 bg-grid opacity-15" aria-hidden="true" />
+      <div
+        className="absolute -top-20 left-[-12%] h-64 w-64 rounded-full bg-[color:var(--color-accent-soft)] blur-3xl opacity-70 animate-float-slow"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-[-18%] right-[-8%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-70 animate-float-slower"
+        aria-hidden="true"
+      />
+      <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Testimonianze
@@ -46,7 +50,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="rounded-2xl p-7 border border-[color:var(--color-border)] bg-white/90 shadow-sm hover:shadow-lg transition-all duration-300"
+              className="glass-card interactive-lift rounded-2xl p-7"
             >
               <div className="mb-6">
                 <Quote className="w-10 h-10 opacity-20 text-[color:var(--color-ink)]" />
@@ -70,17 +74,17 @@ export default function Testimonials() {
         </div>
 
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-8 bg-[color:var(--color-accent-soft)] px-10 py-6 rounded-2xl border border-[color:var(--color-border)] shadow-soft">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-8 glass-panel px-10 py-6 rounded-2xl">
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">150+</div>
               <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">PMI italiane</div>
             </div>
-            <div className="w-px h-12 bg-[color:var(--color-border)]"></div>
+            <div className="w-px h-12 bg-[color:var(--color-border)] hidden sm:block"></div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">10.000+</div>
               <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">Workflow attivi</div>
             </div>
-            <div className="w-px h-12 bg-[color:var(--color-border)]"></div>
+            <div className="w-px h-12 bg-[color:var(--color-border)] hidden sm:block"></div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">75%</div>
               <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">Riduzione tempi</div>

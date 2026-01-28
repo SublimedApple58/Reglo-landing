@@ -2,13 +2,17 @@ import { FileText, Workflow, Zap, Lock, Pencil, Database } from 'lucide-react';
 
 export default function AboutReglo() {
   return (
-    <section
-      className="py-20"
-      style={{
-        background: 'linear-gradient(180deg, var(--color-paper) 0%, var(--color-sand) 100%)',
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative overflow-hidden py-20">
+      <div className="absolute inset-0 bg-grid opacity-20" aria-hidden="true" />
+      <div
+        className="absolute -top-24 right-[-8%] h-72 w-72 rounded-full bg-[color:var(--color-accent-soft)] blur-3xl opacity-70 animate-float-slow"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-[-18%] left-[-10%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-70 animate-float-slower"
+        aria-hidden="true"
+      />
+      <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Piattaforma
@@ -23,7 +27,7 @@ export default function AboutReglo() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          <div className="rounded-3xl p-8 border border-[color:var(--color-border)] bg-white/90 shadow-soft">
+          <div className="glass-panel rounded-3xl p-8">
             <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm" style={{ backgroundColor: 'var(--color-accent)' }}>
               <FileText className="w-7 h-7 text-[color:var(--color-ink)]" />
             </div>
@@ -79,7 +83,7 @@ export default function AboutReglo() {
             </div>
           </div>
 
-          <div className="rounded-3xl p-8 border border-[color:var(--color-border)] bg-white/90 shadow-soft">
+          <div className="glass-panel rounded-3xl p-8">
             <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm" style={{ backgroundColor: 'var(--color-ink)' }}>
               <Workflow className="w-7 h-7 text-white" />
             </div>
@@ -96,13 +100,13 @@ export default function AboutReglo() {
               <div>
                 <div className="font-semibold text-[color:var(--color-ink)] mb-3">Trigger flessibili</div>
                 <div className="space-y-2">
-                  <div className="bg-[color:var(--color-sand)] px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)] border border-[color:var(--color-border)]">
+                  <div className="glass-card px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)]">
                     Eventi dal tuo gestionale aziendale
                   </div>
-                  <div className="bg-[color:var(--color-sand)] px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)] border border-[color:var(--color-border)]">
+                  <div className="glass-card px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)]">
                     Attivazione manuale da utenti
                   </div>
-                  <div className="bg-[color:var(--color-sand)] px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)] border border-[color:var(--color-border)]">
+                  <div className="glass-card px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)]">
                     Schedulazione temporale automatica
                   </div>
                 </div>
@@ -111,16 +115,16 @@ export default function AboutReglo() {
               <div>
                 <div className="font-semibold text-[color:var(--color-ink)] mb-3">Azioni potenti</div>
                 <div className="space-y-2">
-                  <div className="bg-[color:var(--color-sand)] px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)] border border-[color:var(--color-border)]">
+                  <div className="glass-card px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)]">
                     Crea/aggiorna record nel gestionale
                   </div>
-                  <div className="bg-[color:var(--color-sand)] px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)] border border-[color:var(--color-border)]">
+                  <div className="glass-card px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)]">
                     Genera e compila documenti con DocManager
                   </div>
-                  <div className="bg-[color:var(--color-sand)] px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)] border border-[color:var(--color-border)]">
+                  <div className="glass-card px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)]">
                     Invia email, notifiche Slack, e altro
                   </div>
-                  <div className="bg-[color:var(--color-sand)] px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)] border border-[color:var(--color-border)]">
+                  <div className="glass-card px-4 py-2 rounded-lg text-[color:var(--color-ink-muted)]">
                     Integra servizi esterni via API
                   </div>
                 </div>

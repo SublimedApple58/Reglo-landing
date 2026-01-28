@@ -9,6 +9,8 @@ export default function DemoPage() {
     nome: '',
     email: '',
     azienda: '',
+    telefono: '',
+    gestionale: '',
     processo: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -27,6 +29,8 @@ export default function DemoPage() {
         fullName: formData.nome.trim(),
         email: formData.email.trim(),
         company: formData.azienda.trim(),
+        phone: formData.telefono.trim() || undefined,
+        managementSoftware: formData.gestionale.trim() || undefined,
         process: formData.processo.trim() || undefined,
         source: 'demo',
       });
@@ -36,7 +40,7 @@ export default function DemoPage() {
       }
       setSubmitted(true);
       showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
-      setFormData({ nome: '', email: '', azienda: '', processo: '' });
+      setFormData({ nome: '', email: '', azienda: '', telefono: '', gestionale: '', processo: '' });
       setTimeout(() => setSubmitted(false), 3000);
     } catch (error) {
       showToast(
@@ -55,7 +59,7 @@ export default function DemoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[color:var(--color-sand)] py-16 sm:py-20 lg:py-24">
+    <div className="min-h-screen py-16 sm:py-20 lg:py-24">
       {toast ? (
         <div className="fixed right-6 top-6 z-50">
           <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
@@ -72,7 +76,7 @@ export default function DemoPage() {
           </p>
         </div>
 
-        <div className="-mx-6 bg-white sm:mx-0 sm:bg-white rounded-none sm:rounded-2xl border-0 sm:border border-[color:var(--color-border)] shadow-none sm:shadow-lg px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
+        <div className="-mx-6 glass-panel sm:mx-0 rounded-none sm:rounded-2xl px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
           {submitted ? (
             <div className="text-center py-12">
               <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: 'var(--color-accent)' }}>
@@ -101,7 +105,7 @@ export default function DemoPage() {
                   enterKeyHint="next"
                   value={formData.nome}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-lg border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-20 transition-colors"
+                  className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
                   placeholder="Mario Rossi"
                 />
               </div>
@@ -121,7 +125,7 @@ export default function DemoPage() {
                   enterKeyHint="next"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-lg border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-20 transition-colors"
+                  className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
                   placeholder="mario.rossi@azienda.it"
                 />
               </div>
@@ -140,9 +144,47 @@ export default function DemoPage() {
                   enterKeyHint="next"
                   value={formData.azienda}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-lg border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-20 transition-colors"
+                  className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
                   placeholder="Acme S.r.l."
                 />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="telefono" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
+                    Numero di telefono *
+                  </label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    required
+                    autoComplete="tel"
+                    inputMode="tel"
+                    enterKeyHint="next"
+                    value={formData.telefono}
+                    onChange={handleChange}
+                    className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
+                    placeholder="+39 333 123 4567"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="gestionale" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
+                    Gestionale usato *
+                  </label>
+                  <input
+                    type="text"
+                    id="gestionale"
+                    name="gestionale"
+                    required
+                    autoComplete="organization-title"
+                    enterKeyHint="next"
+                    value={formData.gestionale}
+                    onChange={handleChange}
+                    className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
+                    placeholder="Es. Teamsystem, Zucchetti, SAP"
+                  />
+                </div>
               </div>
 
               <div>
@@ -155,7 +197,7 @@ export default function DemoPage() {
                   value={formData.processo}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-3.5 py-3 rounded-lg border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-20 transition-colors resize-none"
+                  className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none resize-none"
                   placeholder="Es. Gestione ordini clienti, emissione fatture, conferme d'ordine..."
                 />
               </div>
@@ -163,7 +205,7 @@ export default function DemoPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 sm:py-4 rounded-lg text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="interactive-lift w-full py-3.5 sm:py-4 rounded-lg text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
                 style={{ backgroundColor: 'var(--color-ink)' }}
               >
                 {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}

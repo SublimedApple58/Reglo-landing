@@ -16,11 +16,12 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[color:var(--color-border)]">
+    <nav className="sticky top-0 z-50 border-b border-white/50 bg-white/70 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-[color:var(--color-ink)]">
-            <img src="/Logo.png" alt="Reglo Logo" style={{ height: '34px' }} />
+        <div className="flex items-center justify-between gap-6">
+          <Link to="/" className="flex items-center gap-3 text-2xl font-semibold text-[color:var(--color-ink)]">
+            <img src="/Logo.png" alt="Reglo Logo" className="h-8" />
+            <span className="hidden sm:inline">Reglo</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -28,7 +29,7 @@ export default function Navigation() {
               <Link
                 key={path}
                 to={path}
-                className={`font-medium transition-colors ${
+                className={`text-sm font-semibold tracking-wide transition-colors ${
                   isActive(path)
                     ? 'text-[color:var(--color-ink)]'
                     : 'text-[color:var(--color-ink-muted)] hover:text-[color:var(--color-ink)]'
@@ -39,14 +40,14 @@ export default function Navigation() {
             ))}
             <Link
               to="/demo"
-              className="px-6 py-2 rounded-full text-white font-semibold transition-all hover:shadow-lg bg-[color:var(--color-ink)]"
+              className="px-6 py-2 rounded-full text-[color:var(--color-ink)] font-semibold transition-all hover:-translate-y-0.5 hover:shadow-md bg-[color:var(--color-accent)]"
             >
               Demo
             </Link>
           </div>
 
           <button
-            className="md:hidden"
+            className="md:hidden rounded-full border border-white/60 bg-white/80 p-2 shadow-sm"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -54,7 +55,7 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="md:hidden pt-4 space-y-2 border-t mt-4 border-[color:var(--color-border)]">
+          <div className="md:hidden pt-4 space-y-2 border-t mt-4 border-white/60">
             {links.map(({ path, label }) => (
               <Link
                 key={path}
@@ -72,7 +73,7 @@ export default function Navigation() {
             <Link
               to="/demo"
               onClick={() => setIsOpen(false)}
-              className="block px-6 py-2 rounded-full text-white font-semibold text-center bg-[color:var(--color-ink)]"
+              className="block px-6 py-2 rounded-full text-[color:var(--color-ink)] font-semibold text-center bg-[color:var(--color-accent)]"
             >
               Demo
             </Link>

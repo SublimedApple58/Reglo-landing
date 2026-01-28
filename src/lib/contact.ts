@@ -2,6 +2,8 @@ export type ContactPayload = {
   fullName: string;
   email: string;
   company: string;
+  phone?: string;
+  managementSoftware?: string;
   process?: string;
   source: 'home' | 'demo';
 };

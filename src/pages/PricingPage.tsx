@@ -60,15 +60,15 @@ export default function PricingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[color:var(--color-sand)]">
+    <div className="min-h-screen">
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-25" aria-hidden="true" />
+        <div className="absolute inset-0 bg-grid opacity-20" aria-hidden="true" />
         <div
-          className="absolute -top-20 right-[-8%] h-72 w-72 rounded-full bg-[color:var(--color-accent-soft)] blur-3xl opacity-70"
+          className="absolute -top-20 right-[-8%] h-72 w-72 rounded-full bg-[color:var(--color-accent-soft)] blur-3xl opacity-70 animate-float-slow"
           aria-hidden="true"
         />
         <div
-          className="absolute bottom-[-12%] left-[-10%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-80"
+          className="absolute bottom-[-12%] left-[-10%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-80 animate-float-slower"
           aria-hidden="true"
         />
         <div className="relative max-w-7xl mx-auto px-6 py-20">
@@ -90,8 +90,8 @@ export default function PricingPage() {
                 key={plan.name}
                 className={`animate-fadeInUp animation-delay-${plan.delay} rounded-3xl border transition-all duration-300 ${
                   plan.highlighted
-                    ? 'border-[color:var(--color-ink)] bg-white shadow-soft lg:scale-[1.02]'
-                    : 'border-[color:var(--color-border)] bg-white/90 shadow-sm hover:shadow-lg'
+                    ? 'border-[color:var(--color-ink)] bg-white/85 shadow-soft lg:scale-[1.02]'
+                    : 'border-white/60 bg-white/70 shadow-sm hover:shadow-lg'
                 }`}
               >
                 <div className="p-8 lg:p-9">
@@ -120,7 +120,7 @@ export default function PricingPage() {
 
                   <Link
                     to="/demo"
-                    className="w-full py-3 rounded-full font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-lg mb-7"
+                    className="interactive-lift w-full py-3 rounded-full font-semibold flex items-center justify-center gap-2 mb-7"
                     style={{
                       backgroundColor: plan.highlighted ? 'var(--color-ink)' : 'var(--color-accent-soft)',
                       color: plan.highlighted ? 'white' : 'var(--color-ink)',
@@ -149,7 +149,7 @@ export default function PricingPage() {
           </div>
 
           <div className="mb-12">
-            <div className="rounded-3xl p-8 lg:p-10 border border-[color:var(--color-border)] bg-white/90 shadow-soft max-w-4xl mx-auto">
+            <div className="glass-panel rounded-3xl p-8 lg:p-10 max-w-4xl mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-semibold mb-2 text-[color:var(--color-ink)]">
                   Extra
@@ -159,13 +159,13 @@ export default function PricingPage() {
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
-                <div className="bg-[color:var(--color-sand)] rounded-2xl p-6 text-center border border-[color:var(--color-border)]">
+                <div className="glass-card rounded-2xl p-6 text-center">
                   <div className="text-3xl font-semibold mb-2 text-[color:var(--color-ink)]">
                     49€
                   </div>
                   <div className="text-[color:var(--color-ink-muted)] font-semibold">+150 documenti</div>
                 </div>
-                <div className="bg-[color:var(--color-sand)] rounded-2xl p-6 text-center border border-[color:var(--color-border)]">
+                <div className="glass-card rounded-2xl p-6 text-center">
                   <div className="text-3xl font-semibold mb-2 text-[color:var(--color-ink)]">
                     49€
                   </div>
@@ -175,7 +175,7 @@ export default function PricingPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl p-8 lg:p-12 border border-[color:var(--color-border)] bg-white/90 shadow-soft">
+          <div className="glass-panel rounded-3xl p-8 lg:p-12">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-2xl font-semibold mb-6 text-center text-[color:var(--color-ink)]">
                 Domande frequenti sui prezzi
@@ -218,7 +218,7 @@ export default function PricingPage() {
             </p>
             <Link
               to="/demo"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-semibold text-lg shadow-soft hover:shadow-lg transition-all bg-[color:var(--color-ink)]"
+              className="interactive-lift inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-semibold text-lg shadow-soft bg-[color:var(--color-ink)]"
             >
               Parla con il nostro team
               <ArrowRight className="w-5 h-5" />

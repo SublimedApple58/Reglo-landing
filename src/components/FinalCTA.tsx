@@ -9,6 +9,8 @@ export default function FinalCTA() {
     nome: '',
     email: '',
     azienda: '',
+    telefono: '',
+    gestionale: '',
     processo: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -27,6 +29,8 @@ export default function FinalCTA() {
         fullName: formData.nome.trim(),
         email: formData.email.trim(),
         company: formData.azienda.trim(),
+        phone: formData.telefono.trim() || undefined,
+        managementSoftware: formData.gestionale.trim() || undefined,
         process: formData.processo.trim() || undefined,
         source: 'home',
       });
@@ -36,7 +40,7 @@ export default function FinalCTA() {
       }
       setSubmitted(true);
       showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
-      setFormData({ nome: '', email: '', azienda: '', processo: '' });
+      setFormData({ nome: '', email: '', azienda: '', telefono: '', gestionale: '', processo: '' });
       setTimeout(() => setSubmitted(false), 3000);
     } catch (error) {
       showToast(
@@ -59,10 +63,10 @@ export default function FinalCTA() {
       id="demo-form"
       className="relative overflow-hidden py-20 sm:py-24"
       style={{
-        background: 'linear-gradient(135deg, #324D7A 0%, rgba(50, 77, 122, 0.92) 55%, rgba(50, 77, 122, 0.85) 100%)',
+        background: 'linear-gradient(135deg, rgba(50, 78, 122, 0.92), rgba(96, 87, 158, 0.8))',
       }}
     >
-      <div className="absolute inset-0 bg-grid opacity-15" aria-hidden="true" />
+      <div className="absolute inset-0 bg-grid opacity-10" aria-hidden="true" />
       <div
         className="absolute -top-16 right-8 h-64 w-64 rounded-full blur-3xl"
         style={{ backgroundColor: 'rgba(175, 226, 212, 0.35)' }}
@@ -92,7 +96,7 @@ export default function FinalCTA() {
           </p>
         </div>
 
-        <div className="-mx-6 bg-white/95 sm:mx-0 rounded-none sm:rounded-3xl border-0 sm:border border-white/20 shadow-none sm:shadow-lg px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
+        <div className="-mx-6 glass-panel sm:mx-0 rounded-none sm:rounded-3xl px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
           {submitted ? (
             <div className="text-center py-12">
               <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: 'var(--color-ink)' }}>
@@ -121,7 +125,7 @@ export default function FinalCTA() {
                   enterKeyHint="next"
                   value={formData.nome}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-xl border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-10 transition-colors"
+                  className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
                   placeholder="Mario Rossi"
                 />
               </div>
@@ -141,7 +145,7 @@ export default function FinalCTA() {
                   enterKeyHint="next"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-xl border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-10 transition-colors"
+                  className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
                   placeholder="mario.rossi@azienda.it"
                 />
               </div>
@@ -160,9 +164,47 @@ export default function FinalCTA() {
                   enterKeyHint="next"
                   value={formData.azienda}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-3 rounded-xl border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-10 transition-colors"
+                  className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
                   placeholder="Acme S.r.l."
                 />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="telefono" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    Numero di telefono *
+                  </label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    required
+                    autoComplete="tel"
+                    inputMode="tel"
+                    enterKeyHint="next"
+                    value={formData.telefono}
+                    onChange={handleChange}
+                    className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
+                    placeholder="+39 333 123 4567"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="gestionale" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    Gestionale usato *
+                  </label>
+                  <input
+                    type="text"
+                    id="gestionale"
+                    name="gestionale"
+                    required
+                    autoComplete="organization-title"
+                    enterKeyHint="next"
+                    value={formData.gestionale}
+                    onChange={handleChange}
+                    className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
+                    placeholder="Es. Teamsystem, Zucchetti, SAP"
+                  />
+                </div>
               </div>
 
               <div>
@@ -175,7 +217,7 @@ export default function FinalCTA() {
                   value={formData.processo}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-3.5 py-3 rounded-xl border border-[color:var(--color-border)] text-base focus:border-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)] focus:ring-opacity-10 transition-colors resize-none"
+                  className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none resize-none"
                   placeholder="Es. Gestione ordini clienti, emissione fatture, conferme d'ordine..."
                 />
               </div>
@@ -183,7 +225,7 @@ export default function FinalCTA() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 sm:py-4 rounded-full text-[color:var(--color-ink)] font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed bg-[color:var(--color-accent)] hover:bg-[color:var(--color-accent-soft)]"
+                className="interactive-lift w-full py-3.5 sm:py-4 rounded-full text-[color:var(--color-ink)] font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft disabled:opacity-70 disabled:cursor-not-allowed bg-[color:var(--color-accent)]"
               >
                 {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}
                 <Send className="w-5 h-5" />

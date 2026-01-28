@@ -6,20 +6,20 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[color:var(--color-sand)]">
-      <div className="absolute inset-0 bg-grid opacity-40" aria-hidden="true" />
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-20" aria-hidden="true" />
       <div
-        className="absolute -top-24 right-[-8%] h-72 w-72 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-70"
+        className="absolute -top-24 right-[-8%] h-72 w-72 rounded-full bg-[color:var(--color-accent-soft)] blur-3xl opacity-70 animate-float-slow"
         aria-hidden="true"
       />
       <div
-        className="absolute bottom-[-12%] left-[-10%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-80"
+        className="absolute bottom-[-12%] left-[-10%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-80 animate-float-slower"
         aria-hidden="true"
       />
       <div className="relative max-w-6xl mx-auto px-6 pt-16 pb-20 lg:pt-20 lg:pb-24">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-accent)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--color-ink)]">
+            <div className="glass-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--color-ink)]">
               <span className="h-2 w-2 rounded-full bg-[color:var(--color-ink)]" />
               Automazione ERP
             </div>
@@ -33,14 +33,14 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={scrollToDemo}
-                className="px-7 py-3.5 rounded-full bg-[color:var(--color-ink)] text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft hover:bg-[color:var(--color-ink-soft)] transition-all duration-300"
+                className="interactive-lift px-7 py-3.5 rounded-full bg-[color:var(--color-ink)] text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft"
               >
                 Richiedi una demo
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button
                 onClick={() => document.getElementById('workflow-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-7 py-3.5 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 border border-[color:var(--color-ink)] text-[color:var(--color-ink)] bg-white/70 hover:bg-white transition-all duration-300"
+                className="interactive-lift px-7 py-3.5 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 border border-white/70 text-[color:var(--color-ink)] bg-white/70"
               >
                 <Play className="w-5 h-5" />
                 Scopri come funziona
@@ -63,7 +63,7 @@ export default function Hero() {
           </div>
 
           <div className="relative">
-            <div className="rounded-3xl border border-[color:var(--color-border)] bg-white/85 p-6 shadow-soft backdrop-blur">
+            <div className="glass-panel rounded-3xl p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
                   <span className="h-2 w-2 rounded-full bg-[color:var(--color-ink)]" />
@@ -73,7 +73,7 @@ export default function Hero() {
               </div>
 
               <div className="mt-6 space-y-4">
-                <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-sky)] p-4">
+                <div className="glass-card rounded-2xl p-4">
                   <div className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Trigger</div>
                   <div className="text-sm font-semibold text-[color:var(--color-ink)] mt-1">
                     Nuovo ordine nel gestionale
@@ -90,7 +90,7 @@ export default function Hero() {
                   />
                 </div>
 
-                <div className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4">
+                <div className="glass-card rounded-2xl p-4">
                   <div className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Azione</div>
                   <div className="text-sm font-semibold text-[color:var(--color-ink)] mt-1">
                     Genera documento con DocManager
@@ -107,7 +107,7 @@ export default function Hero() {
                   />
                 </div>
 
-                <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-sand)] p-4">
+                <div className="glass-card rounded-2xl p-4">
                   <div className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Output</div>
                   <div className="text-sm font-semibold text-[color:var(--color-ink)] mt-1">
                     Invio automatico al cliente
@@ -119,7 +119,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="absolute -bottom-6 -left-6 hidden sm:block rounded-2xl border border-[color:var(--color-border)] bg-white/90 px-4 py-3 shadow-soft">
+            <div className="glass-card absolute -bottom-6 -left-6 hidden sm:block rounded-2xl px-4 py-3">
               <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
                 Risparmio
               </div>

@@ -47,7 +47,7 @@ export default function WorkflowVisual() {
   ];
 
   return (
-    <section id="workflow-section" className="py-20 bg-[color:var(--color-paper)]">
+    <section id="workflow-section" className="py-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
@@ -67,13 +67,13 @@ export default function WorkflowVisual() {
             const Icon = step.icon;
             return (
               <div key={step.title} className="relative pl-12">
-                <div className="absolute left-0 top-1.5 flex h-8 w-8 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-white">
+                <div className="absolute left-0 top-1.5 flex h-8 w-8 items-center justify-center rounded-xl border border-white/60 bg-white/80">
                   <Icon className="h-4 w-4 text-[color:var(--color-ink)]" />
                 </div>
                 {index < steps.length - 1 && (
                   <div className="absolute left-4 top-10 h-full w-px bg-[color:var(--color-border)]" />
                 )}
-                <div className="rounded-2xl border border-[color:var(--color-border)] bg-white p-5">
+                <div className="glass-card interactive-lift rounded-2xl p-5">
                   <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
                     {step.label}
                   </div>
@@ -89,7 +89,7 @@ export default function WorkflowVisual() {
           })}
         </div>
 
-        <div className="mt-10 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-sand)] px-8 py-6 max-w-3xl mx-auto">
+        <div className="mt-10 glass-panel rounded-2xl px-8 py-6 max-w-3xl mx-auto">
           <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)] text-center">
             <span className="font-semibold text-[color:var(--color-ink)]">Risultato:</span> un processo che richiedeva 30 minuti e 5 passaggi manuali
             ora viene completato in <span className="font-semibold text-[color:var(--color-ink)]">meno di 2 secondi</span>, senza errori e senza intervento umano.
