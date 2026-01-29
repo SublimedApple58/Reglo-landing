@@ -9,8 +9,9 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-6 pt-12 pb-16 lg:pt-16">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-start">
-          <div className="space-y-6">
+        <div className="glass-panel rounded-3xl p-6 sm:p-8 lg:p-10">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-start">
+            <div className="space-y-6">
             <div className="glass-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-[color:var(--color-ink)]">
               <span className="h-2 w-2 rounded-full bg-[color:var(--color-ink)]" />
               Automazione operativa
@@ -51,7 +52,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="glass-panel rounded-3xl p-6">
+            <div className="glass-card rounded-3xl p-6">
             <div className="flex items-center justify-between">
               <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
                 Angolo prodotto
@@ -68,6 +69,7 @@ export default function Hero() {
               <div className="glass-card rounded-2xl px-4 py-3 text-xs text-[color:var(--color-ink-muted)]">
                 Flussi approvativi e documenti in un solo pannello.
               </div>
+            </div>
             </div>
           </div>
         </div>
