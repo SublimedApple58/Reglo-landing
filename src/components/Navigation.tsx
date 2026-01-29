@@ -21,7 +21,6 @@ export default function Navigation() {
         <div className="flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3 text-2xl font-semibold text-[color:var(--color-ink)]">
             <img src="/Logo.png" alt="Reglo Logo" className="h-8" />
-            <span className="hidden sm:inline">Reglo</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
