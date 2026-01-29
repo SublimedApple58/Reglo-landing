@@ -1,257 +1,76 @@
-import { useEffect, useState } from 'react';
-import { Send, CheckCircle } from 'lucide-react';
-import Toast from './Toast';
-import { useToast } from '../hooks/useToast';
-import { submitContact } from '../lib/contact';
+import { ArrowRight, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function FinalCTA() {
-  const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    azienda: '',
-    telefono: '',
-    gestionale: '',
-    processo: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast, showToast, clearToast } = useToast();
-
-  useEffect(() => () => clearToast(), [clearToast]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isSubmitting) return;
-
-    setIsSubmitting(true);
-    try {
-      await submitContact({
-        fullName: formData.nome.trim(),
-        email: formData.email.trim(),
-        company: formData.azienda.trim(),
-        phone: formData.telefono.trim() || undefined,
-        managementSoftware: formData.gestionale.trim() || undefined,
-        process: formData.processo.trim() || undefined,
-        source: 'home',
-      });
-      const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
-      if (typeof fbq === 'function') {
-        fbq('track', 'Lead', { source: 'home' });
-      }
-      setSubmitted(true);
-      showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
-      setFormData({ nome: '', email: '', azienda: '', telefono: '', gestionale: '', processo: '' });
-      setTimeout(() => setSubmitted(false), 3000);
-    } catch (error) {
-      showToast(
-        'error',
-        error instanceof Error
-          ? error.message
-          : 'Impossibile inviare la richiesta. Riprova.'
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+  const scrollToDemo = () => {
+    document.getElementById('demo-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const highlights = [
+    'Onboarding guidato e team dedicato',
+    'Integrazione con il tuo ERP senza sostituzioni',
+    'Processi tracciati end-to-end',
+  ];
 
   return (
-    <section
-      id="demo-form"
-      className="relative overflow-hidden py-20 sm:py-24"
-      style={{
-        background: 'linear-gradient(135deg, rgba(50, 78, 122, 0.92), rgba(96, 87, 158, 0.8))',
-      }}
-    >
-      <div className="absolute inset-0 bg-grid opacity-10" aria-hidden="true" />
-      <div
-        className="absolute -top-16 right-8 h-64 w-64 rounded-full blur-3xl"
-        style={{ backgroundColor: 'rgba(175, 226, 212, 0.35)' }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-0 h-72 w-72 rounded-full blur-3xl"
-        style={{ backgroundColor: 'rgba(175, 226, 212, 0.35)' }}
-        aria-hidden="true"
-      />
-      {toast ? (
-        <div className="fixed right-6 top-6 z-50">
-          <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
-        </div>
-      ) : null}
-      <div className="relative max-w-full sm:max-w-4xl mx-auto px-6">
-        <div className="text-center mb-10 sm:mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
-            Demo personalizzata
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-white">
-            Richiedi una demo di Reglo
-          </h2>
-          <p className="text-base sm:text-lg text-white/75">
-            Scopri come automatizzare i tuoi processi aziendali in una demo personalizzata.
-            Ti ricontattiamo entro 24 ore.
-          </p>
-        </div>
-
-        <div className="-mx-6 glass-panel sm:mx-0 rounded-none sm:rounded-3xl px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
-          {submitted ? (
-            <div className="text-center py-12">
-              <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: 'var(--color-ink)' }}>
-                <CheckCircle className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-semibold mb-2 text-[color:var(--color-ink)]">
-                Richiesta inviata con successo!
-              </h3>
-              <p className="text-base sm:text-lg text-[color:var(--color-ink-muted)]">
-                Ti ricontatteremo entro 24 ore per fissare la demo.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
-              <div>
-                <label htmlFor="nome" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                  Nome e Cognome *
-                </label>
-                <input
-                  type="text"
-                  id="nome"
-                  name="nome"
-                  required
-                  autoComplete="name"
-                  autoCapitalize="words"
-                  enterKeyHint="next"
-                  value={formData.nome}
-                  onChange={handleChange}
-                  className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
-                  placeholder="Mario Rossi"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                  Email aziendale *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  autoComplete="email"
-                  inputMode="email"
-                  autoCapitalize="none"
-                  enterKeyHint="next"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
-                  placeholder="mario.rossi@azienda.it"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="azienda" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                  Nome azienda *
-                </label>
-                <input
-                  type="text"
-                  id="azienda"
-                  name="azienda"
-                  required
-                  autoComplete="organization"
-                  autoCapitalize="words"
-                  enterKeyHint="next"
-                  value={formData.azienda}
-                  onChange={handleChange}
-                  className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
-                  placeholder="Acme S.r.l."
-                />
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="telefono" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                    Numero di telefono *
-                  </label>
-                  <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    required
-                    autoComplete="tel"
-                    inputMode="tel"
-                    enterKeyHint="next"
-                    value={formData.telefono}
-                    onChange={handleChange}
-                    className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
-                    placeholder="+39 333 123 4567"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="gestionale" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                    Gestionale usato *
-                  </label>
-                  <input
-                    type="text"
-                    id="gestionale"
-                    name="gestionale"
-                    required
-                    autoComplete="organization-title"
-                    enterKeyHint="next"
-                    value={formData.gestionale}
-                    onChange={handleChange}
-                    className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
-                    placeholder="Es. Teamsystem, Zucchetti, SAP"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="processo" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                  Processo che vuoi automatizzare (opzionale)
-                </label>
-                <textarea
-                  id="processo"
-                  name="processo"
-                  value={formData.processo}
-                  onChange={handleChange}
-                  rows={4}
-                  className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none resize-none"
-                  placeholder="Es. Gestione ordini clienti, emissione fatture, conferme d'ordine..."
-                />
-              </div>
-
+    <section className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="glass-panel rounded-3xl px-8 py-10 sm:px-12 sm:py-12 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+          <div className="space-y-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+              Iniziamo
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">
+              Pronto a liberare il tuo team dalla burocrazia?
+            </h2>
+            <p className="text-lg text-[color:var(--color-ink-muted)]">
+              Parliamo del tuo flusso attuale e costruiamo insieme la roadmap di automazione.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
               <button
-                type="submit"
-                disabled={isSubmitting}
-                className="interactive-lift w-full py-3.5 sm:py-4 rounded-full text-[color:var(--color-ink)] font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft disabled:opacity-70 disabled:cursor-not-allowed bg-[color:var(--color-accent)]"
+                onClick={scrollToDemo}
+                className="interactive-lift px-7 py-3.5 rounded-full bg-[color:var(--color-ink)] text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft"
               >
-                {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}
-                <Send className="w-5 h-5" />
+                Richiedi una demo
+                <ArrowRight className="w-5 h-5" />
               </button>
+              <Link
+                to="/demo"
+                className="interactive-lift px-7 py-3.5 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 border border-white/70 text-[color:var(--color-ink)] bg-white/70"
+              >
+                Inizia ora
+              </Link>
+            </div>
+          </div>
 
-              <p className="text-xs sm:text-sm text-center text-[color:var(--color-ink-muted)]">
-                Nessun impegno richiesto. Demo personalizzata sui tuoi processi aziendali.
-              </p>
-            </form>
-          )}
+          <div className="space-y-4">
+            {highlights.map((item) => (
+              <div key={item} className="glass-card rounded-2xl px-5 py-4 flex items-start gap-3">
+                <div className="h-8 w-8 rounded-full bg-[color:var(--color-accent)] flex items-center justify-center">
+                  <Check className="h-4 w-4 text-[color:var(--color-ink)]" />
+                </div>
+                <div className="text-sm text-[color:var(--color-ink-muted)]">
+                  {item}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <footer className="mt-12 sm:mt-16 text-center space-y-4">
           <div className="flex items-center justify-center gap-2">
-            <div className="text-2xl sm:text-3xl font-semibold text-white">Reglo</div>
+            <div className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">Reglo</div>
           </div>
-          <p className="text-white/70">
+          <p className="text-[color:var(--color-ink-muted)]">
             La piattaforma cloud per automatizzare i processi aziendali
           </p>
-          <div className="flex justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-white/70">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Termini di Servizio</a>
-            <a href="#" className="hover:text-white transition-colors">Contatti</a>
+          <div className="flex justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
+            <a href="#" className="hover:text-[color:var(--color-ink)] transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[color:var(--color-ink)] transition-colors">Termini di Servizio</a>
+            <a href="#" className="hover:text-[color:var(--color-ink)] transition-colors">Contatti</a>
           </div>
-          <p className="text-xs sm:text-sm text-white/50 pt-4">
-            © 2024 Reglo. Tutti i diritti riservati.
+          <p className="text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
+            © 2026 Reglo. Tutti i diritti riservati.
           </p>
         </footer>
       </div>

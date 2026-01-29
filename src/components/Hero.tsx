@@ -1,34 +1,88 @@
-import { ArrowRight, Play } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, CheckCircle, Send, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Toast from './Toast';
+import { useToast } from '../hooks/useToast';
+import { submitContact } from '../lib/contact';
 
 export default function Hero() {
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    azienda: '',
+    telefono: '',
+    gestionale: '',
+    processo: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast, showToast, clearToast } = useToast();
+
+  useEffect(() => () => clearToast(), [clearToast]);
+
   const scrollToDemo = () => {
     document.getElementById('demo-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await submitContact({
+        fullName: formData.nome.trim(),
+        email: formData.email.trim(),
+        company: formData.azienda.trim(),
+        phone: formData.telefono.trim() || undefined,
+        managementSoftware: formData.gestionale.trim() || undefined,
+        process: formData.processo.trim() || undefined,
+        source: 'home',
+      });
+      const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { source: 'home' });
+      }
+      setSubmitted(true);
+      showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
+      setFormData({ nome: '', email: '', azienda: '', telefono: '', gestionale: '', processo: '' });
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (error) {
+      showToast(
+        'error',
+        error instanceof Error
+          ? error.message
+          : 'Impossibile inviare la richiesta. Riprova.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-20" aria-hidden="true" />
-      <div
-        className="absolute -top-24 right-[-8%] h-72 w-72 rounded-full bg-[color:var(--color-accent-soft)] blur-3xl opacity-70 animate-float-slow"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-[-12%] left-[-10%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-80 animate-float-slower"
-        aria-hidden="true"
-      />
-      <div className="relative max-w-6xl mx-auto px-6 pt-16 pb-20 lg:pt-20 lg:pb-24">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
-          <div className="space-y-8">
+      {toast ? (
+        <div className="fixed right-6 top-6 z-50">
+          <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
+        </div>
+      ) : null}
+      <div className="relative max-w-7xl mx-auto px-6 pt-14 pb-20 lg:pt-20">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
+          <div className="space-y-7">
             <div className="glass-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--color-ink)]">
               <span className="h-2 w-2 rounded-full bg-[color:var(--color-ink)]" />
-              Automazione ERP
+              Automazione operativa
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] text-[color:var(--color-ink)]">
-              Automatizza i processi aziendali senza cambiare gestionale
+              Il nuovo modo di automatizzare processi e documenti aziendali
             </h1>
             <p className="text-lg sm:text-xl text-[color:var(--color-ink-muted)] leading-relaxed">
-              Reglo si integra con il tuo ERP e trasforma operazioni manuali ripetitive in workflow chiari,
-              tracciabili e pronti per la firma digitale. Tutto da un editor visuale, senza cambiare strumenti.
+              Reglo centralizza workflow, documenti e firme digitali collegandosi al tuo ERP.
+              Meno burocrazia, più visibilità, team più veloci.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
@@ -38,95 +92,182 @@ export default function Hero() {
                 Richiedi una demo
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button
-                onClick={() => document.getElementById('workflow-section')?.scrollIntoView({ behavior: 'smooth' })}
+              <Link
+                to="/demo"
                 className="interactive-lift px-7 py-3.5 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 border border-white/70 text-[color:var(--color-ink)] bg-white/70"
               >
-                <Play className="w-5 h-5" />
-                Scopri come funziona
-              </button>
+                Inizia ora
+              </Link>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm text-[color:var(--color-ink-muted)]">
-              <div className="flex items-center gap-2">
-                <span className="text-[color:var(--color-ink)] font-semibold">-80%</span>
-                tempi operativi
+            <div className="flex flex-wrap gap-3">
+              <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)] flex items-center gap-2">
+                <Star className="h-4 w-4 text-[color:var(--color-ink)]" />
+                4,9/5 valutazione media
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[color:var(--color-ink)] font-semibold">ERP ready</span>
-                nessuna sostituzione
+              <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)]">
+                Go-live medio in 7 giorni
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[color:var(--color-ink)] font-semibold">Go-live</span>
-                in pochi giorni
+              <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)]">
+                Setup assistito dal team Reglo
               </div>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="glass-panel rounded-3xl p-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
-                  <span className="h-2 w-2 rounded-full bg-[color:var(--color-ink)]" />
-                  Workflow live
+          <div id="demo-form" className="glass-panel rounded-3xl p-6 sm:p-8">
+            {submitted ? (
+              <div className="text-center py-10">
+                <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: 'var(--color-ink)' }}>
+                  <CheckCircle className="w-10 h-10 text-white" />
                 </div>
-                <span className="text-xs text-[color:var(--color-ink-muted)]">ERP sync</span>
+                <h2 className="text-2xl font-semibold mb-2 text-[color:var(--color-ink)]">
+                  Richiesta inviata con successo!
+                </h2>
+                <p className="text-base text-[color:var(--color-ink-muted)]">
+                  Ti ricontatteremo entro 24 ore per fissare la demo.
+                </p>
               </div>
-
-              <div className="mt-6 space-y-4">
-                <div className="glass-card rounded-2xl p-4">
-                  <div className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Trigger</div>
-                  <div className="text-sm font-semibold text-[color:var(--color-ink)] mt-1">
-                    Nuovo ordine nel gestionale
-                  </div>
-                  <div className="text-xs text-[color:var(--color-ink-muted)] mt-1">
-                    Avvio automatico dal tuo ERP
-                  </div>
+            ) : (
+              <div>
+                <div className="mb-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+                    Demo personalizzata
+                  </p>
+                  <h2 className="text-2xl font-semibold mt-2 text-[color:var(--color-ink)]">
+                    Reglo è adatto alla tua azienda?
+                  </h2>
+                  <p className="text-sm text-[color:var(--color-ink-muted)] mt-2">
+                    Lascia i tuoi dati e prepariamo una demo sui tuoi processi reali.
+                  </p>
                 </div>
 
-                <div className="flex justify-center">
-                  <div
-                    className="h-6 w-px"
-                    style={{ background: 'linear-gradient(180deg, var(--color-ink), transparent)' }}
-                  />
-                </div>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="nome" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                        Nome e Cognome *
+                      </label>
+                      <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        required
+                        autoComplete="name"
+                        autoCapitalize="words"
+                        enterKeyHint="next"
+                        value={formData.nome}
+                        onChange={handleChange}
+                        className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
+                        placeholder="Mario Rossi"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                        Email aziendale *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        autoComplete="email"
+                        inputMode="email"
+                        autoCapitalize="none"
+                        enterKeyHint="next"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
+                        placeholder="mario.rossi@azienda.it"
+                      />
+                    </div>
+                  </div>
 
-                <div className="glass-card rounded-2xl p-4">
-                  <div className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Azione</div>
-                  <div className="text-sm font-semibold text-[color:var(--color-ink)] mt-1">
-                    Genera documento con DocManager
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="azienda" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                        Nome azienda *
+                      </label>
+                      <input
+                        type="text"
+                        id="azienda"
+                        name="azienda"
+                        required
+                        autoComplete="organization"
+                        autoCapitalize="words"
+                        enterKeyHint="next"
+                        value={formData.azienda}
+                        onChange={handleChange}
+                        className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
+                        placeholder="Acme S.r.l."
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="telefono" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                        Numero di telefono *
+                      </label>
+                      <input
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        required
+                        autoComplete="tel"
+                        inputMode="tel"
+                        enterKeyHint="next"
+                        value={formData.telefono}
+                        onChange={handleChange}
+                        className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
+                        placeholder="+39 333 123 4567"
+                      />
+                    </div>
                   </div>
-                  <div className="text-xs text-[color:var(--color-ink-muted)] mt-1">
-                    Dati compilati in tempo reale
-                  </div>
-                </div>
 
-                <div className="flex justify-center">
-                  <div
-                    className="h-6 w-px"
-                    style={{ background: 'linear-gradient(180deg, var(--color-ink), transparent)' }}
-                  />
-                </div>
+                  <div>
+                    <label htmlFor="gestionale" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      Gestionale usato *
+                    </label>
+                    <input
+                      type="text"
+                      id="gestionale"
+                      name="gestionale"
+                      required
+                      autoComplete="organization-title"
+                      enterKeyHint="next"
+                      value={formData.gestionale}
+                      onChange={handleChange}
+                      className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none"
+                      placeholder="Es. Teamsystem, Zucchetti, SAP"
+                    />
+                  </div>
 
-                <div className="glass-card rounded-2xl p-4">
-                  <div className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Output</div>
-                  <div className="text-sm font-semibold text-[color:var(--color-ink)] mt-1">
-                    Invio automatico al cliente
+                  <div>
+                    <label htmlFor="processo" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      Processo da automatizzare (opzionale)
+                    </label>
+                    <textarea
+                      id="processo"
+                      name="processo"
+                      value={formData.processo}
+                      onChange={handleChange}
+                      rows={3}
+                      className="glass-input w-full px-3.5 py-3 rounded-xl text-base focus:outline-none resize-none"
+                      placeholder="Es. conferme d'ordine, emissione documenti, approvazioni"
+                    />
                   </div>
-                  <div className="text-xs text-[color:var(--color-ink-muted)] mt-1">
-                    Firma digitale e tracking inclusi
-                  </div>
-                </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="interactive-lift w-full py-3.5 rounded-full text-[color:var(--color-ink)] font-semibold text-base flex items-center justify-center gap-2 shadow-soft disabled:opacity-70 disabled:cursor-not-allowed bg-[color:var(--color-accent)]"
+                  >
+                    {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}
+                    <Send className="w-5 h-5" />
+                  </button>
+
+                  <p className="text-xs text-center text-[color:var(--color-ink-muted)]">
+                    Nessun impegno richiesto. Demo personalizzata sui tuoi processi.
+                  </p>
+                </form>
               </div>
-            </div>
-
-            <div className="glass-card absolute -bottom-6 -left-6 hidden sm:block rounded-2xl px-4 py-3">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
-                Risparmio
-              </div>
-              <div className="text-lg font-semibold text-[color:var(--color-ink)]">
-                -43 min per ordine
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

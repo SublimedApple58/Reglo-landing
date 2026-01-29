@@ -3,63 +3,52 @@ import { Quote } from 'lucide-react';
 export default function Testimonials() {
   const testimonials = [
     {
-      quote: "Reglo ha trasformato il nostro reparto amministrativo. Prima impiegavamo 3 ore al giorno per generare e inviare documenti. Ora tutto avviene automaticamente.",
-      author: "Laura Bianchi",
-      role: "Responsabile Amministrativa",
-      company: "Azienda commerciale, 35 dipendenti",
+      quote: "Con Reglo abbiamo eliminato 12 passaggi manuali nelle conferme d'ordine. Il team è più veloce e gli errori sono spariti.",
+      author: 'Elena Conti',
+      role: 'Operations Manager',
+      company: 'PMI manifatturiera, 80 dipendenti',
     },
     {
-      quote: "L'integrazione con il nostro gestionale è stata velocissima. In una settimana eravamo operativi e già vedevamo i primi benefici. Il ROI è stato immediato.",
-      author: "Giuseppe Ferrara",
-      role: "Imprenditore",
-      company: "PMI logistica, 60 dipendenti",
+      quote: "In 10 giorni abbiamo automatizzato la generazione dei documenti e la firma digitale. Ora possiamo gestire il doppio degli ordini.",
+      author: 'Luca Marin',
+      role: 'Responsabile Amministrazione',
+      company: 'Azienda commerciale, 45 dipendenti',
     },
     {
-      quote: "Finalmente possiamo gestire il picco di ordini stagionale senza dover assumere personale temporaneo. Reglo scala perfettamente con il nostro business.",
-      author: "Francesca Moretti",
-      role: "Direttore Operations",
-      company: "E-commerce B2B, 45 dipendenti",
+      quote: "La visibilità sui workflow è totale. Ogni reparto sa cosa fare e quando, senza rincorrere email e file Excel.",
+      author: 'Sara Galli',
+      role: 'Direttrice Operations',
+      company: 'Servizi B2B, 60 dipendenti',
     },
   ];
 
   return (
-    <section className="relative overflow-hidden py-20">
-      <div className="absolute inset-0 bg-grid opacity-15" aria-hidden="true" />
-      <div
-        className="absolute -top-20 left-[-12%] h-64 w-64 rounded-full bg-[color:var(--color-accent-soft)] blur-3xl opacity-70 animate-float-slow"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-[-18%] right-[-8%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-70 animate-float-slower"
-        aria-hidden="true"
-      />
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
+    <section className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Testimonianze
           </p>
           <h2 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
-            Cosa dicono i nostri clienti
+            Non crederci sulla parola
           </h2>
           <p className="text-lg text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
-            PMI italiane che hanno scelto Reglo per automatizzare i loro processi
+            Le storie di chi ha già automatizzato processi e documenti con Reglo.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <div
-              key={index}
-              className="glass-card interactive-lift rounded-2xl p-7"
+              key={testimonial.author}
+              className="glass-card interactive-lift rounded-3xl p-7"
             >
               <div className="mb-6">
                 <Quote className="w-10 h-10 opacity-20 text-[color:var(--color-ink)]" />
               </div>
-
               <p className="text-base sm:text-lg text-[color:var(--color-ink-muted)] leading-relaxed mb-6">
                 "{testimonial.quote}"
               </p>
-
               <div className="pt-6 border-t border-[color:var(--color-border)]">
                 <div className="font-semibold text-[color:var(--color-ink)]">
                   {testimonial.author}
@@ -81,13 +70,13 @@ export default function Testimonials() {
             </div>
             <div className="w-px h-12 bg-[color:var(--color-border)] hidden sm:block"></div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">10.000+</div>
-              <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">Workflow attivi</div>
+              <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">12k+</div>
+              <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">Workflow automatizzati</div>
             </div>
             <div className="w-px h-12 bg-[color:var(--color-border)] hidden sm:block"></div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">75%</div>
-              <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">Riduzione tempi</div>
+              <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">-78%</div>
+              <div className="text-sm text-[color:var(--color-ink-muted)] mt-1">Tempo operativo</div>
             </div>
           </div>
         </div>

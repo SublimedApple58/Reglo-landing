@@ -16,7 +16,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/50 bg-white/70 backdrop-blur-lg">
+    <nav className="sticky top-0 z-50 bg-transparent backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3 text-2xl font-semibold text-[color:var(--color-ink)]">
@@ -46,7 +46,7 @@ export default function Navigation() {
           </div>
 
           <button
-            className="md:hidden rounded-full border border-white/60 bg-white/80 p-2 shadow-sm"
+            className="md:hidden rounded-full border border-white/70 bg-white/70 p-2 shadow-sm"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -54,7 +54,7 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="md:hidden pt-4 space-y-2 border-t mt-4 border-white/60">
+          <div className="md:hidden mt-4 glass-panel rounded-2xl p-4 space-y-2">
             {links.map(({ path, label }) => (
               <Link
                 key={path}
