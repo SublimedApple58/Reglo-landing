@@ -4,7 +4,6 @@ import Platform from '../components/Platform';
 import Manifesto from '../components/Manifesto';
 import Support from '../components/Support';
 import Press from '../components/Press';
-import Testimonials from '../components/Testimonials';
 import ThreeWays from '../components/ThreeWays';
 import SwitchTo from '../components/SwitchTo';
 import FinalCTA from '../components/FinalCTA';
@@ -18,7 +17,6 @@ export default function HomePage() {
       <Manifesto />
       <Support />
       <Press />
-      <Testimonials />
       <ThreeWays />
       <SwitchTo />
       <FinalCTA />

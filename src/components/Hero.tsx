@@ -71,48 +71,7 @@ export default function Hero() {
         </div>
       ) : null}
       <div className="relative max-w-7xl mx-auto px-6 pt-14 pb-20 lg:pt-20">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
-          <div className="space-y-7">
-            <div className="glass-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--color-ink)]">
-              <span className="h-2 w-2 rounded-full bg-[color:var(--color-ink)]" />
-              Automazione operativa
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] text-[color:var(--color-ink)]">
-              Il nuovo modo di automatizzare processi e documenti aziendali
-            </h1>
-            <p className="text-lg sm:text-xl text-[color:var(--color-ink-muted)] leading-relaxed">
-              Reglo centralizza workflow, documenti e firme digitali collegandosi al tuo ERP.
-              Meno burocrazia, più visibilità, team più veloci.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={scrollToDemo}
-                className="interactive-lift px-7 py-3.5 rounded-full bg-[color:var(--color-ink)] text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft"
-              >
-                Richiedi una demo
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <Link
-                to="/demo"
-                className="interactive-lift px-7 py-3.5 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 border border-white/70 text-[color:var(--color-ink)] bg-white/70"
-              >
-                Inizia ora
-              </Link>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)] flex items-center gap-2">
-                <Star className="h-4 w-4 text-[color:var(--color-ink)]" />
-                4,9/5 valutazione media
-              </div>
-              <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)]">
-                Go-live medio in 7 giorni
-              </div>
-              <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)]">
-                Setup assistito dal team Reglo
-              </div>
-            </div>
-          </div>
-
+        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-start">
           <div id="demo-form" className="glass-panel rounded-3xl p-6 sm:p-8">
             {submitted ? (
               <div className="text-center py-10">
@@ -268,6 +227,69 @@ export default function Hero() {
                 </form>
               </div>
             )}
+          </div>
+
+          <div className="space-y-10">
+            <div className="space-y-7">
+              <div className="glass-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--color-ink)]">
+                <span className="h-2 w-2 rounded-full bg-[color:var(--color-ink)]" />
+                Automazione operativa
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] text-[color:var(--color-ink)]">
+                Il nuovo modo di automatizzare processi e documenti aziendali
+              </h1>
+              <p className="text-lg sm:text-xl text-[color:var(--color-ink-muted)] leading-relaxed">
+                Reglo centralizza workflow, documenti e firme digitali collegandosi al tuo ERP.
+                Meno burocrazia, più visibilità, team più veloci.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={scrollToDemo}
+                  className="interactive-lift px-7 py-3.5 rounded-full bg-[color:var(--color-ink)] text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-soft"
+                >
+                  Richiedi una demo
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+                <Link
+                  to="/demo"
+                  className="interactive-lift px-7 py-3.5 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 border border-white/70 text-[color:var(--color-ink)] bg-white/70"
+                >
+                  Inizia ora
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)] flex items-center gap-2">
+                  <Star className="h-4 w-4 text-[color:var(--color-ink)]" />
+                  4,9/5 valutazione media
+                </div>
+                <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)]">
+                  Go-live medio in 7 giorni
+                </div>
+                <div className="glass-card rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)]">
+                  Setup assistito dal team Reglo
+                </div>
+              </div>
+            </div>
+
+            <div className="glass-panel rounded-3xl p-6">
+              <div className="flex items-center justify-between">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
+                  Angolo prodotto
+                </div>
+                <span className="text-xs text-[color:var(--color-ink-muted)]">Preview</span>
+              </div>
+              <div className="mt-4 glass-card rounded-2xl aspect-[4/3] flex items-center justify-center text-sm text-[color:var(--color-ink-muted)]">
+                Inserisci qui lo screen del prodotto
+              </div>
+              <div className="mt-4 grid sm:grid-cols-2 gap-3">
+                <div className="glass-card rounded-2xl px-4 py-3 text-xs text-[color:var(--color-ink-muted)]">
+                  Dashboard operativa con KPI, task e colli di bottiglia.
+                </div>
+                <div className="glass-card rounded-2xl px-4 py-3 text-xs text-[color:var(--color-ink-muted)]">
+                  Flussi approvativi e documenti in un solo pannello.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
