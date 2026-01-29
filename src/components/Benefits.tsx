@@ -101,7 +101,7 @@ export default function Benefits() {
           })}
         </div>
 
-        <div className="mt-12 glass-panel rounded-3xl px-8 py-6 max-w-4xl mx-auto">
+        {/* <div className="mt-12 glass-panel rounded-3xl px-8 py-6 max-w-4xl mx-auto">
           <div className="text-center">
             <div className="glass-chip inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5">
               <span className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--color-ink-muted)]">Caso reale</span>
@@ -118,7 +118,7 @@ export default function Benefits() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
