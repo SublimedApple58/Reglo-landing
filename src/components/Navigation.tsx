@@ -12,7 +12,7 @@ export default function Navigation() {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'Cos\'è Reglo' },
     { path: '/workflow', label: 'Workflow' },
-    { path: '/pricing', label: 'Prezzi' },
+    // { path: '/pricing', label: 'Prezzi' },
   ];
 
   return (
