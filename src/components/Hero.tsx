@@ -8,9 +8,9 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="relative max-w-[1536px] mx-auto px-6 pt-6 pb-12 lg:pt-8">
-        <div className="relative overflow-hidden rounded-[24px] bg-[color:var(--color-ink)] text-white shadow-soft px-6 py-16 sm:px-10 sm:py-[150px]">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
-            <div className="space-y-6 max-w-[520px]">
+        <div className="relative overflow-hidden rounded-[24px] bg-[color:var(--color-ink)] text-white shadow-soft px-6 pt-10 pb-16 sm:px-10 sm:pt-20 sm:pb-[150px]">
+          <div className="grid lg:grid-cols-[1.5fr_0.5fr] gap-10">
+            <div className="space-y-6 max-w-[640px]">
               {/* <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/80">
                 <span className="h-2 w-2 rounded-full bg-white" />
                 Automazione operativa
@@ -46,7 +46,7 @@ export default function Hero() {
           <img
             src="/saas_screen.png"
             alt="Anteprima prodotto Reglo"
-            className="pointer-events-none absolute bottom-[-6%] right-[-2%] hidden w-[68%] max-w-[900px] rounded-tl-xl object-cover object-left-top shadow-soft lg:block"
+            className="pointer-events-none absolute bottom-[-4%] right-[-1%] hidden xl:block w-[52%] max-w-[680px] rounded-tl-xl object-cover object-left-top shadow-soft"
           />
         </div>
       </div>

@@ -14,8 +14,8 @@ export default function Manifesto() {
           <div className="glass-panel rounded-3xl p-8">
             <div className="glass-card rounded-2xl p-5 mb-4">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-2xl flex items-center justify-center bg-[color:var(--color-accent)]">
-                  <FileCheck className="h-5 w-5 text-[color:var(--color-ink)]" />
+                <div className="h-10 w-10 rounded-2xl flex items-center justify-center bg-[color:var(--color-ink)]">
+                  <FileCheck className="h-5 w-5 text-white" />
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-[color:var(--color-ink)]">Workflow puliti</div>
@@ -25,8 +25,8 @@ export default function Manifesto() {
             </div>
             <div className="glass-card rounded-2xl p-5 mb-4">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-2xl flex items-center justify-center bg-[color:var(--color-accent)]">
-                  <Shield className="h-5 w-5 text-[color:var(--color-ink)]" />
+                <div className="h-10 w-10 rounded-2xl flex items-center justify-center bg-[color:var(--color-ink)]">
+                  <Shield className="h-5 w-5 text-white" />
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-[color:var(--color-ink)]">Compliance sotto controllo</div>
@@ -36,8 +36,8 @@ export default function Manifesto() {
             </div>
             <div className="glass-card rounded-2xl p-5">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-2xl flex items-center justify-center bg-[color:var(--color-accent)]">
-                  <Timer className="h-5 w-5 text-[color:var(--color-ink)]" />
+                <div className="h-10 w-10 rounded-2xl flex items-center justify-center bg-[color:var(--color-ink)]">
+                  <Timer className="h-5 w-5 text-white" />
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-[color:var(--color-ink)]">Tempi ridotti</div>
@@ -48,9 +48,9 @@ export default function Manifesto() {
           </div>
 
           <div className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+            {/* <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
               Manifesto
-            </p>
+            </p> */}
             <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
               Odiamo la burocrazia operativa
             </h2>
