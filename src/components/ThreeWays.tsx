@@ -20,16 +20,16 @@ export default function ThreeWays() {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Metodo
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
+          <h2 className="text-2xl sm:text-3xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
             Tre modi in cui Reglo semplifica le operazioni ogni giorno
           </h2>
-          <p className="text-lg text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
+          <p className="text-base text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
             Dal back office alle operations: meno passaggi, meno errori, più controllo.
           </p>
         </div>
@@ -42,10 +42,10 @@ export default function ThreeWays() {
                 <div className="h-12 w-12 rounded-2xl flex items-center justify-center bg-[color:var(--color-accent)]">
                   <Icon className="h-6 w-6 text-[color:var(--color-ink)]" />
                 </div>
-                <h3 className="text-lg font-semibold mt-5 text-[color:var(--color-ink)]">
+                <h3 className="text-base font-semibold mt-5 text-[color:var(--color-ink)]">
                   {way.title}
                 </h3>
-                <p className="text-sm text-[color:var(--color-ink-muted)] mt-3">
+                <p className="text-xs text-[color:var(--color-ink-muted)] mt-3">
                   {way.description}
                 </p>
               </div>

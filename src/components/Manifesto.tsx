@@ -8,7 +8,7 @@ export default function Manifesto() {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center">
           <div className="glass-panel rounded-3xl p-8">
@@ -51,10 +51,10 @@ export default function Manifesto() {
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
               Manifesto
             </p>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
               Odiamo la burocrazia operativa
             </h2>
-            <p className="text-lg text-[color:var(--color-ink-muted)]">
+            <p className="text-base text-[color:var(--color-ink-muted)]">
               Reglo nasce per togliere attrito dal lavoro quotidiano. Ogni step superfluo viene trasformato
               in un flusso automatico, misurabile e condiviso da tutto il team.
             </p>

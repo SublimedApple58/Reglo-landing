@@ -50,16 +50,16 @@ export default function Platform() {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Piattaforma
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
+          <h2 className="text-2xl sm:text-3xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
             Digitalizza tutte le attività operative che rallentano il tuo team
           </h2>
-          <p className="text-lg text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
+          <p className="text-base text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
             Reglo sostituisce fogli Excel, email e passaggi manuali con un flusso unico, trasparente e tracciabile.
           </p>
         </div>

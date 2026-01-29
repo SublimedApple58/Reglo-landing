@@ -20,17 +20,17 @@ export default function SwitchTo() {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="glass-panel rounded-3xl p-8 sm:p-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
           <div className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
               Passaggio a Reglo
             </p>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-[color:var(--color-ink)]">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
               Passa a Reglo senza bloccare le operazioni
             </h2>
-            <p className="text-lg text-[color:var(--color-ink-muted)]">
+            <p className="text-base text-[color:var(--color-ink-muted)]">
               Migrazione accompagnata, training dedicato e risultati misurabili in poche settimane.
             </p>
             <button className="interactive-lift inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[color:var(--color-ink)] text-white font-semibold">
