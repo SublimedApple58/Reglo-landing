@@ -17,7 +17,7 @@ export default function Navigation() {
 
   return (
     <nav className="sticky top-0 z-50 bg-transparent backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-[1536px] mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3 text-2xl font-semibold text-[color:var(--color-ink)]">
             <img src="/Logo.png" alt="Reglo Logo" className="h-8" />

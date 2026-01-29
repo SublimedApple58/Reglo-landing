@@ -1,4 +1,4 @@
-import { ArrowRight, FileCheck, Shield, Timer } from 'lucide-react';
+import { FileCheck, Shield, Timer } from 'lucide-react';
 
 export default function Manifesto() {
   const points = [
@@ -9,7 +9,7 @@ export default function Manifesto() {
 
   return (
     <section className="py-16">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center">
           <div className="glass-panel rounded-3xl p-8">
             <div className="glass-card rounded-2xl p-5 mb-4">
@@ -66,10 +66,6 @@ export default function Manifesto() {
                 </div>
               ))}
             </div>
-            <button className="interactive-lift inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[color:var(--color-ink)] text-white font-semibold">
-              Scopri la visione
-              <ArrowRight className="h-5 w-5" />
-            </button>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ export default function AboutPage() {
           className="absolute bottom-[-15%] right-[-8%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-80"
           aria-hidden="true"
         />
-        <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-24">
+        <div className="relative max-w-[1536px] mx-auto px-6 py-20 lg:py-24">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
               Piattaforma

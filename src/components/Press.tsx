@@ -9,7 +9,7 @@ export default function Press() {
 
   return (
     <section className="py-14">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="text-center mb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Parlano di noi

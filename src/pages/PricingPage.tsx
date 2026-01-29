@@ -71,7 +71,7 @@ export default function PricingPage() {
           className="absolute bottom-[-12%] left-[-10%] h-80 w-80 rounded-full bg-[color:var(--color-sky)] blur-3xl opacity-80 animate-float-slower"
           aria-hidden="true"
         />
-        <div className="relative max-w-7xl mx-auto px-6 py-20">
+        <div className="relative max-w-[1536px] mx-auto px-6 py-20">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
               Prezzi

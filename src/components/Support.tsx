@@ -21,7 +21,7 @@ export default function Support() {
 
   return (
     <section className="py-16">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
           <div className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">

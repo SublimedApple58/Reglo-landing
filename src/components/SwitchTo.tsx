@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Compass, Rocket } from 'lucide-react';
+import { CheckCircle2, Compass, Rocket } from 'lucide-react';
 
 export default function SwitchTo() {
   const steps = [
@@ -21,7 +21,7 @@ export default function SwitchTo() {
 
   return (
     <section className="py-16">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="glass-panel rounded-3xl p-8 sm:p-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
           <div className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
@@ -33,10 +33,6 @@ export default function SwitchTo() {
             <p className="text-base text-[color:var(--color-ink-muted)]">
               Migrazione accompagnata, training dedicato e risultati misurabili in poche settimane.
             </p>
-            <button className="interactive-lift inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[color:var(--color-ink)] text-white font-semibold">
-              Pianifica la transizione
-              <ArrowRight className="h-5 w-5" />
-            </button>
           </div>
 
           <div className="space-y-4">

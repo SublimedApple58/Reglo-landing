@@ -48,7 +48,7 @@ export default function WorkflowVisual() {
 
   return (
     <section id="workflow-section" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Workflow

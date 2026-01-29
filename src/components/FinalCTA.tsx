@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Check, CheckCircle, Send } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Check, CheckCircle, Send } from 'lucide-react';
 import Toast from './Toast';
 import { useToast } from '../hooks/useToast';
 import { submitContact } from '../lib/contact';
@@ -72,7 +71,7 @@ export default function FinalCTA() {
           <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
         </div>
       ) : null}
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="glass-panel rounded-3xl px-8 py-10 sm:px-10 sm:py-10 grid lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start">
           <div className="space-y-5">
             <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
@@ -84,21 +83,6 @@ export default function FinalCTA() {
             <p className="text-base text-[color:var(--color-ink-muted)]">
               Parliamo del tuo flusso attuale e costruiamo insieme la roadmap di automazione.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/demo"
-                className="interactive-lift px-6 py-3 rounded-full bg-[color:var(--color-ink)] text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-soft"
-              >
-                Prenota la demo
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <button
-                onClick={() => document.getElementById('demo-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="interactive-lift px-6 py-3 rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 border border-white/70 text-[color:var(--color-ink)] bg-white/70"
-              >
-                Compila il form
-              </button>
-            </div>
             <div className="space-y-3">
               {highlights.map((item) => (
                 <div key={item} className="glass-card rounded-2xl px-4 py-3 flex items-start gap-3">

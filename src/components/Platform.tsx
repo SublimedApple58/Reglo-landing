@@ -1,4 +1,4 @@
-import { ArrowRight, Database, FileText, ShieldCheck, Sparkles, Zap, Bell, BarChart3, Users, CheckCircle2 } from 'lucide-react';
+import { Database, FileText, ShieldCheck, Sparkles, Zap, Bell, BarChart3, Users, CheckCircle2 } from 'lucide-react';
 
 export default function Platform() {
   const features = [
@@ -51,7 +51,7 @@ export default function Platform() {
 
   return (
     <section className="py-16">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Piattaforma
@@ -93,12 +93,6 @@ export default function Platform() {
           })}
         </div>
 
-        <div className="mt-12 text-center">
-          <button className="interactive-lift inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[color:var(--color-ink)] text-white font-semibold">
-            Scopri la piattaforma
-            <ArrowRight className="h-5 w-5" />
-          </button>
-        </div>
       </div>
     </section>
   );

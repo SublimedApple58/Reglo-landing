@@ -12,7 +12,7 @@ export default function TrustedBy() {
 
   return (
     <section className="py-10 sm:py-14">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="text-center mb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
             Scelto da chi cresce
