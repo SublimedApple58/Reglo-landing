@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { CheckCircle, ShieldCheck, UserX } from 'lucide-react';
 import ReactFlow, { Background, MiniMap, useEdgesState, useNodesState } from 'reactflow';
 import 'reactflow/dist/style.css';
 
@@ -20,7 +21,7 @@ export default function WorkflowPage() {
       {
         id: 'trigger',
         data: { label: 'Trigger\nArrivo documento cliente' },
-        position: { x: 0, y: 120 },
+        position: { x: 0, y: 140 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(169, 217, 209, 0.6)',
@@ -30,7 +31,7 @@ export default function WorkflowPage() {
       {
         id: 'step-1',
         data: { label: 'Azione 1\nVerifica e protocolla' },
-        position: { x: 260, y: 120 },
+        position: { x: 240, y: 40 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(50, 78, 122, 0.12)',
@@ -40,7 +41,7 @@ export default function WorkflowPage() {
       {
         id: 'step-2',
         data: { label: 'Azione 2\nRegistrazione contabile' },
-        position: { x: 520, y: 120 },
+        position: { x: 520, y: 210 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(169, 217, 209, 0.45)',
@@ -50,7 +51,7 @@ export default function WorkflowPage() {
       {
         id: 'step-3',
         data: { label: 'Azione 3\nGenera F24/adempimenti' },
-        position: { x: 780, y: 120 },
+        position: { x: 800, y: 70 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(50, 78, 122, 0.18)',
@@ -60,7 +61,7 @@ export default function WorkflowPage() {
       {
         id: 'step-4',
         data: { label: 'Azione 4\nCondivisione e approvazione' },
-        position: { x: 1040, y: 120 },
+        position: { x: 1080, y: 230 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(169, 217, 209, 0.5)',
@@ -70,7 +71,7 @@ export default function WorkflowPage() {
       {
         id: 'step-5',
         data: { label: 'Azione 5\nInvio telematico' },
-        position: { x: 1300, y: 120 },
+        position: { x: 1360, y: 90 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(50, 78, 122, 0.12)',
@@ -80,7 +81,7 @@ export default function WorkflowPage() {
       {
         id: 'output',
         data: { label: 'Output\nArchiviazione e report' },
-        position: { x: 1560, y: 120 },
+        position: { x: 1640, y: 200 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(169, 217, 209, 0.7)',
@@ -163,7 +164,7 @@ export default function WorkflowPage() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.5fr_0.5fr] gap-6">
+        <div className="grid lg:grid-cols-[1.35fr_0.65fr] gap-6">
           <div className="glass-panel rounded-3xl p-3 sm:p-4">
             <div className="h-[420px] rounded-2xl overflow-hidden bg-white">
               <ReactFlow
@@ -185,11 +186,61 @@ export default function WorkflowPage() {
             </div>
           </div>
 
-          <div className="glass-panel rounded-3xl px-6 py-6 sm:px-8 sm:py-7 flex items-center">
-            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)] text-center lg:text-left">
-              <span className="font-semibold text-[color:var(--color-ink)]">Risultato:</span> un processo che richiedeva 30 minuti e 5 passaggi manuali
-              ora viene completato in <span className="font-semibold text-[color:var(--color-ink)]">meno di 2 secondi</span>, senza errori e senza intervento umano.
-            </p>
+          <div className="glass-panel rounded-3xl px-6 py-6 sm:px-8 sm:py-8">
+            <div className="flex flex-col gap-5">
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
+                  Risultato
+                </h3>
+                <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)] mt-2">
+                  Automazione end-to-end completata in tempo reale.
+                </p>
+              </div>
+
+              <div className="h-px w-full bg-[color:var(--color-border)] opacity-40" />
+
+              <div>
+                <div className="flex flex-wrap items-end gap-3">
+                  <span className="text-4xl sm:text-5xl font-semibold text-[color:var(--color-ink)]">30 min</span>
+                  <span className="text-2xl sm:text-3xl text-[color:var(--color-ink-muted)]">&rarr;</span>
+                  <span className="text-4xl sm:text-5xl font-semibold text-[color:var(--color-ink)]">2 s</span>
+                </div>
+                <p className="text-sm text-[color:var(--color-ink-muted)] mt-2">Tempo di completamento</p>
+              </div>
+
+              <div className="h-px w-full bg-[color:var(--color-border)] opacity-40" />
+
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-ink)]">
+                    <CheckCircle className="h-4 w-4" />
+                  </span>
+                  <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
+                    <span className="font-semibold">5</span> &rarr; <span className="font-semibold">0</span> passaggi manuali
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-ink)]">
+                    <ShieldCheck className="h-4 w-4" />
+                  </span>
+                  <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
+                    <span className="font-semibold">0</span> errori operativi
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-ink)]">
+                    <UserX className="h-4 w-4" />
+                  </span>
+                  <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
+                    <span className="font-semibold">0</span> intervento umano richiesto
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
+                Valori medi su un flusso standard di gestione documenti.
+              </p>
+            </div>
           </div>
         </div>
       </div>
