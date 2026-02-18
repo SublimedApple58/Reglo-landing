@@ -5,6 +5,10 @@ export default function Hero() {
     document.getElementById('demo-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToReferral = () => {
+    document.getElementById('referral-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative overflow-hidden">
       <div className="relative max-w-[1536px] mx-auto px-6 pt-6 pb-12 lg:pt-8">
@@ -25,6 +29,20 @@ export default function Hero() {
                 >
                   Prenota una demo
                   <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="rounded-2xl border border-white/20 bg-white/10 p-4 sm:p-5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/70">
+                  Promo allievi
+                </p>
+                <p className="mt-2 text-sm sm:text-base text-white">
+                  Sei un allievo? Porta la tua autoscuola in Reglo e ricevi 2 guide gratuite.
+                </p>
+                <button
+                  onClick={scrollToReferral}
+                  className="interactive-lift mt-4 rounded-full bg-[color:var(--color-accent)] px-4 py-2 text-xs sm:text-sm font-semibold text-[color:var(--color-ink)]"
+                >
+                  Richiedi promo allievi
                 </button>
               </div>
               <div className="flex flex-wrap gap-3 text-white/70 text-xs">

@@ -11,6 +11,9 @@ export default function FinalCTA() {
     email: '',
     azienda: '',
     telefono: '',
+    ruolo: 'titolare',
+    numeroAllievi: '',
+    citta: '',
     gestionale: '',
     processo: '',
   });
@@ -33,6 +36,9 @@ export default function FinalCTA() {
         phone: formData.telefono.trim() || undefined,
         managementSoftware: formData.gestionale.trim() || undefined,
         process: formData.processo.trim() || undefined,
+        role: formData.ruolo as 'titolare' | 'segreteria' | 'istruttore',
+        studentsCount: Number(formData.numeroAllievi),
+        city: formData.citta.trim(),
         source: 'home',
       });
       const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
@@ -41,7 +47,17 @@ export default function FinalCTA() {
       }
       setSubmitted(true);
       showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
-      setFormData({ nome: '', email: '', azienda: '', telefono: '', gestionale: '', processo: '' });
+      setFormData({
+        nome: '',
+        email: '',
+        azienda: '',
+        telefono: '',
+        ruolo: 'titolare',
+        numeroAllievi: '',
+        citta: '',
+        gestionale: '',
+        processo: '',
+      });
       setTimeout(() => setSubmitted(false), 3000);
     } catch (error) {
       showToast(
@@ -53,7 +69,9 @@ export default function FinalCTA() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -180,6 +198,62 @@ export default function FinalCTA() {
                       onChange={handleChange}
                       className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
                       placeholder="+39 333 123 4567"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div>
+                    <label htmlFor="ruolo" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      Ruolo *
+                    </label>
+                    <select
+                      id="ruolo"
+                      name="ruolo"
+                      required
+                      value={formData.ruolo}
+                      onChange={handleChange}
+                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                    >
+                      <option value="titolare">Titolare</option>
+                      <option value="segreteria">Segreteria</option>
+                      <option value="istruttore">Istruttore</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="numeroAllievi" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      Numero allievi *
+                    </label>
+                    <input
+                      type="number"
+                      id="numeroAllievi"
+                      name="numeroAllievi"
+                      required
+                      min={1}
+                      inputMode="numeric"
+                      enterKeyHint="next"
+                      value={formData.numeroAllievi}
+                      onChange={handleChange}
+                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      placeholder="Es. 120"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="citta" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      Citta *
+                    </label>
+                    <input
+                      type="text"
+                      id="citta"
+                      name="citta"
+                      required
+                      autoComplete="address-level2"
+                      autoCapitalize="words"
+                      enterKeyHint="next"
+                      value={formData.citta}
+                      onChange={handleChange}
+                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      placeholder="Es. Milano"
                     />
                   </div>
                 </div>

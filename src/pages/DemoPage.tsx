@@ -10,6 +10,9 @@ export default function DemoPage() {
     email: '',
     azienda: '',
     telefono: '',
+    ruolo: 'titolare',
+    numeroAllievi: '',
+    citta: '',
     gestionale: '',
     processo: '',
   });
@@ -32,6 +35,9 @@ export default function DemoPage() {
         phone: formData.telefono.trim() || undefined,
         managementSoftware: formData.gestionale.trim() || undefined,
         process: formData.processo.trim() || undefined,
+        role: formData.ruolo as 'titolare' | 'segreteria' | 'istruttore',
+        studentsCount: Number(formData.numeroAllievi),
+        city: formData.citta.trim(),
         source: 'demo',
       });
       const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
@@ -40,7 +46,17 @@ export default function DemoPage() {
       }
       setSubmitted(true);
       showToast('success', 'Richiesta inviata. Ti ricontatteremo presto.');
-      setFormData({ nome: '', email: '', azienda: '', telefono: '', gestionale: '', processo: '' });
+      setFormData({
+        nome: '',
+        email: '',
+        azienda: '',
+        telefono: '',
+        ruolo: 'titolare',
+        numeroAllievi: '',
+        citta: '',
+        gestionale: '',
+        processo: '',
+      });
       setTimeout(() => setSubmitted(false), 3000);
     } catch (error) {
       showToast(
@@ -54,7 +70,9 @@ export default function DemoPage() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -169,21 +187,78 @@ export default function DemoPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="gestionale" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
-                    Sistema attuale (opzionale)
+                  <label htmlFor="ruolo" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
+                    Ruolo *
+                  </label>
+                  <select
+                    id="ruolo"
+                    name="ruolo"
+                    required
+                    value={formData.ruolo}
+                    onChange={handleChange}
+                    className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
+                  >
+                    <option value="titolare">Titolare</option>
+                    <option value="segreteria">Segreteria</option>
+                    <option value="istruttore">Istruttore</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="numeroAllievi" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
+                    Numero allievi *
+                  </label>
+                  <input
+                    type="number"
+                    id="numeroAllievi"
+                    name="numeroAllievi"
+                    required
+                    min={1}
+                    inputMode="numeric"
+                    enterKeyHint="next"
+                    value={formData.numeroAllievi}
+                    onChange={handleChange}
+                    className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
+                    placeholder="Es. 120"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="citta" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
+                    Citta *
                   </label>
                   <input
                     type="text"
-                    id="gestionale"
-                    name="gestionale"
-                    autoComplete="organization-title"
+                    id="citta"
+                    name="citta"
+                    required
+                    autoComplete="address-level2"
+                    autoCapitalize="words"
                     enterKeyHint="next"
-                    value={formData.gestionale}
+                    value={formData.citta}
                     onChange={handleChange}
                     className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
-                    placeholder="Es. fogli Excel, gestionale interno"
+                    placeholder="Es. Milano"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label htmlFor="gestionale" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
+                  Sistema attuale (opzionale)
+                </label>
+                <input
+                  type="text"
+                  id="gestionale"
+                  name="gestionale"
+                  autoComplete="organization-title"
+                  enterKeyHint="next"
+                  value={formData.gestionale}
+                  onChange={handleChange}
+                  className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
+                  placeholder="Es. fogli Excel, gestionale interno"
+                />
               </div>
 
               <div>
