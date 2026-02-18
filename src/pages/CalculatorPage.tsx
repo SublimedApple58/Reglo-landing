@@ -5,18 +5,16 @@ import {
   calculateAutoscuolaLoss,
   DEFAULT_CALCULATOR_INPUT,
   formatEuro,
-  INSTRUCTORS_BUCKET_OPTIONS,
-  MANAGEMENT_OPTIONS,
-  SLOT_BUCKET_OPTIONS,
-  STUDENTS_BUCKET_OPTIONS,
+  NO_SHOW_OPTIONS,
   type AutoscuolaCalculatorInput,
-  type InstructorsBucket,
-  type ManagementMode,
-  type SlotsBucket,
-  type StudentsBucket,
+  type NoShowLevel,
 } from '../lib/calculator';
 
-type NumericField = 'costoGuida' | 'costoIstruttoreOra' | 'costoSegreteriaOra';
+type NumericField =
+  | 'costoGuida'
+  | 'costoIstruttoreOra'
+  | 'oreGuideGiornalierePerIstruttore'
+  | 'slotLiberiSettimanali';
 
 function trackCustom(eventName: string, payload: Record<string, unknown>) {
   const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
@@ -25,13 +23,13 @@ function trackCustom(eventName: string, payload: Record<string, unknown>) {
   }
 }
 
-type ManagementSelectProps = {
-  value: ManagementMode;
-  options: Array<{ value: ManagementMode; label: string }>;
-  onChange: (value: ManagementMode) => void;
+type NoShowSelectProps = {
+  value: NoShowLevel;
+  options: Array<{ value: NoShowLevel; label: string }>;
+  onChange: (value: NoShowLevel) => void;
 };
 
-function ManagementSelect({ value, options, onChange }: ManagementSelectProps) {
+function NoShowSelect({ value, options, onChange }: NoShowSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -94,28 +92,17 @@ export default function CalculatorPage() {
     [formData.periodo, result.annuale, result.mensile]
   );
 
-  const handleNumericChange = (field: NumericField) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    const nextValue = Number(event.target.value);
-    setFormData((prev) => ({
-      ...prev,
-      [field]: Number.isFinite(nextValue) ? Math.max(0, nextValue) : 0,
-    }));
-  };
+  const handleNumericChange =
+    (field: NumericField) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const nextValue = Number(event.target.value);
+      setFormData((prev) => ({
+        ...prev,
+        [field]: Number.isFinite(nextValue) ? Math.max(0, nextValue) : 0,
+      }));
+    };
 
-  const handleManagementChange = (value: ManagementMode) => {
-    setFormData((prev) => ({ ...prev, gestione: value }));
-  };
-
-  const handleSlotsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, slotLiberiSettimanali: event.target.value as SlotsBucket }));
-  };
-
-  const handleStudentsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, allieviAttivi: event.target.value as StudentsBucket }));
-  };
-
-  const handleInstructorsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, istruttori: event.target.value as InstructorsBucket }));
+  const handleNoShowChange = (value: NoShowLevel) => {
+    setFormData((prev) => ({ ...prev, percentualeNoShow: value }));
   };
 
   const handleTogglePeriod = () => {
@@ -131,9 +118,9 @@ export default function CalculatorPage() {
 
     trackCustom('Calculator_Compute', {
       period: formData.periodo,
-      slotsBucket: formData.slotLiberiSettimanali,
-      studentsBucket: formData.allieviAttivi,
-      instructorsBucket: formData.istruttori,
+      noShowLevel: formData.percentualeNoShow,
+      slotLiberiSettimanali: formData.slotLiberiSettimanali,
+      oreGuideGiornalierePerIstruttore: formData.oreGuideGiornalierePerIstruttore,
       amount: Number(
         (formData.periodo === 'mensile' ? nextResult.mensile : nextResult.annuale).toFixed(2)
       ),
@@ -176,17 +163,6 @@ export default function CalculatorPage() {
 
                 <div>
                   <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
-                    GESTIONE
-                  </label>
-                  <ManagementSelect
-                    value={formData.gestione}
-                    onChange={handleManagementChange}
-                    options={MANAGEMENT_OPTIONS}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
                     COSTO ISTRUTTORE (1 ORA)
                   </label>
                   <div className="relative">
@@ -206,89 +182,42 @@ export default function CalculatorPage() {
 
                 <div>
                   <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
-                    COSTO SEGRETARIA (1 ORA)
+                    ORE GUIDE GIORNALIERE PER ISTRUTTORE
                   </label>
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl text-[color:var(--color-ink)]">
-                      €
-                    </span>
-                    <input
-                      type="number"
-                      min={0}
-                      step="0.01"
-                      value={formData.costoSegreteriaOra}
-                      onChange={handleNumericChange('costoSegreteriaOra')}
-                      className="w-full rounded-xl border border-[color:var(--color-border)] bg-white/90 py-3 pl-11 pr-3 text-sm text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)]/20"
-                    />
-                  </div>
+                  <input
+                    type="number"
+                    min={0}
+                    step="0.5"
+                    value={formData.oreGuideGiornalierePerIstruttore}
+                    onChange={handleNumericChange('oreGuideGiornalierePerIstruttore')}
+                    className="w-full rounded-xl border border-[color:var(--color-border)] bg-white/90 py-3 px-3 text-sm text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)]/20"
+                  />
                 </div>
-              </div>
 
-              <div className="my-6 border-t border-[color:var(--color-border)]/60" />
-
-              <div className="grid gap-6 sm:grid-cols-3">
-                <fieldset>
-                  <legend className="text-xs font-medium text-[color:var(--color-ink-muted)]">
+                <div>
+                  <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
                     SLOT LIBERI SETTIMANALI
-                  </legend>
-                  <div className="mt-3 space-y-3">
-                    {SLOT_BUCKET_OPTIONS.map((slot) => (
-                      <label key={slot} className="flex items-center gap-3 text-[color:var(--color-ink)]">
-                        <input
-                          type="radio"
-                          name="slotLiberiSettimanali"
-                          value={slot}
-                          checked={formData.slotLiberiSettimanali === slot}
-                          onChange={handleSlotsChange}
-                          className="h-4 w-4 accent-[color:var(--color-ink)]"
-                        />
-                        <span className="text-sm">{slot}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
+                  </label>
+                  <input
+                    type="number"
+                    min={0}
+                    step="0.5"
+                    value={formData.slotLiberiSettimanali}
+                    onChange={handleNumericChange('slotLiberiSettimanali')}
+                    className="w-full rounded-xl border border-[color:var(--color-border)] bg-white/90 py-3 px-3 text-sm text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)]/20"
+                  />
+                </div>
 
-                <fieldset>
-                  <legend className="text-xs font-medium text-[color:var(--color-ink-muted)]">
-                    ALLIEVI ATTIVI
-                  </legend>
-                  <div className="mt-3 space-y-3">
-                    {STUDENTS_BUCKET_OPTIONS.map((bucket) => (
-                      <label key={bucket} className="flex items-center gap-3 text-[color:var(--color-ink)]">
-                        <input
-                          type="radio"
-                          name="allieviAttivi"
-                          value={bucket}
-                          checked={formData.allieviAttivi === bucket}
-                          onChange={handleStudentsChange}
-                          className="h-4 w-4 accent-[color:var(--color-ink)]"
-                        />
-                        <span className="text-sm">{bucket}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-
-                <fieldset>
-                  <legend className="text-xs font-medium text-[color:var(--color-ink-muted)]">
-                    ISTRUTTORI
-                  </legend>
-                  <div className="mt-3 space-y-3">
-                    {INSTRUCTORS_BUCKET_OPTIONS.map((bucket) => (
-                      <label key={bucket} className="flex items-center gap-3 text-[color:var(--color-ink)]">
-                        <input
-                          type="radio"
-                          name="istruttori"
-                          value={bucket}
-                          checked={formData.istruttori === bucket}
-                          onChange={handleInstructorsChange}
-                          className="h-4 w-4 accent-[color:var(--color-ink)]"
-                        />
-                        <span className="text-sm">{bucket}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
+                    PERCENTUALE NO SHOW
+                  </label>
+                  <NoShowSelect
+                    value={formData.percentualeNoShow}
+                    options={NO_SHOW_OPTIONS}
+                    onChange={handleNoShowChange}
+                  />
+                </div>
               </div>
 
               <button
@@ -302,7 +231,13 @@ export default function CalculatorPage() {
 
             <div className="p-6 sm:p-8">
               <div className="flex items-center justify-end gap-3 sm:gap-4">
-                <span className={`text-xl sm:text-2xl font-semibold ${formData.periodo === 'mensile' ? 'text-[color:var(--color-ink)]' : 'text-[color:var(--color-ink-muted)]'}`}>
+                <span
+                  className={`text-xl sm:text-2xl font-semibold ${
+                    formData.periodo === 'mensile'
+                      ? 'text-[color:var(--color-ink)]'
+                      : 'text-[color:var(--color-ink-muted)]'
+                  }`}
+                >
                   Mensile
                 </span>
                 <button
@@ -311,7 +246,13 @@ export default function CalculatorPage() {
                   className={`calculator-switch ${formData.periodo === 'annuale' ? 'is-annual' : ''}`}
                   aria-label="Cambia periodo tra mensile e annuale"
                 />
-                <span className={`text-xl sm:text-2xl font-semibold ${formData.periodo === 'annuale' ? 'text-[color:var(--color-ink)]' : 'text-[color:var(--color-ink-muted)]'}`}>
+                <span
+                  className={`text-xl sm:text-2xl font-semibold ${
+                    formData.periodo === 'annuale'
+                      ? 'text-[color:var(--color-ink)]'
+                      : 'text-[color:var(--color-ink-muted)]'
+                  }`}
+                >
                   Annuale
                 </span>
               </div>
@@ -323,7 +264,8 @@ export default function CalculatorPage() {
                     Soldi Persi: {formatEuro(primaryLoss)}
                   </p>
                   <p className="mt-3 text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-                    Margine Guida {formatEuro(result.margineGuida)} + 35% del tempo giornaliero in azioni ripetitive
+                    Margine guida {formatEuro(result.margineGuida)} - no show stimato{' '}
+                    {(result.noShowPercent * 100).toFixed(0)}%
                   </p>
                   <button
                     type="button"
@@ -331,18 +273,27 @@ export default function CalculatorPage() {
                     className="mt-3 inline-flex items-center gap-2 text-sm font-semibold underline text-[color:var(--color-ink)]"
                   >
                     Scopri come calcoliamo questo dato.
-                    <ChevronDown className={`h-4 w-4 transition-transform ${isFormulaOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${isFormulaOpen ? 'rotate-180' : ''}`}
+                    />
                   </button>
                   {isFormulaOpen ? (
-                    <div className="mt-4 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-paper)] px-4 py-3 text-sm text-[color:var(--color-ink-muted)]">
-                      <p>
-                        Stima orientativa basata su margine guida, slot persi settimanali e tempo operativo
-                        assorbito da gestione manuale.
-                      </p>
+                    <div className="mt-4 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-paper)] px-4 py-3 text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
+                      <p>Stima orientativa basata solo sui 5 parametri selezionati.</p>
                       <ul className="mt-2 space-y-1 list-disc pl-5">
-                        <li>Perdita slot mensile = margine guida x slot persi x 4.33 settimane.</li>
-                        <li>Perdita gestione mensile = costo orario operativo x 8.5 x 22 x 35% x fattori.</li>
-                        <li>Annuale = mensile x 12, proiezione 5 anni = annuale x 5.</li>
+                        <li>
+                          Margine guida = costo guida - costo istruttore orario (minimo 0).
+                        </li>
+                        <li>
+                          Slot persi per no show (settimanali) = ore guida giornaliere x 5 x % no show.
+                        </li>
+                        <li>
+                          Slot persi totali = slot liberi settimanali + slot persi da no show.
+                        </li>
+                        <li>
+                          Perdita mensile = margine guida x slot persi totali x 4.33 settimane.
+                        </li>
+                        <li>Annuale = mensile x 12. Proiezione 5 anni = annuale x 5.</li>
                       </ul>
                     </div>
                   ) : null}

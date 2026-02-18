@@ -1,17 +1,12 @@
 export type PeriodMode = 'mensile' | 'annuale';
-export type ManagementMode = 'manuale' | 'agenda' | 'agenda_telefono' | 'digitale_parziale';
-export type SlotsBucket = '0-5' | '5-10' | '10-15' | '+20';
-export type StudentsBucket = '10-50' | '50-100' | '100-200' | '+250';
-export type InstructorsBucket = '1' | '2-5' | '5-15' | '+20';
+export type NoShowLevel = 'bassa' | 'media' | 'alta';
 
 export type AutoscuolaCalculatorInput = {
   costoGuida: number;
   costoIstruttoreOra: number;
-  costoSegreteriaOra: number;
-  gestione: ManagementMode;
-  slotLiberiSettimanali: SlotsBucket;
-  allieviAttivi: StudentsBucket;
-  istruttori: InstructorsBucket;
+  oreGuideGiornalierePerIstruttore: number;
+  slotLiberiSettimanali: number;
+  percentualeNoShow: NoShowLevel;
   periodo: PeriodMode;
 };
 
@@ -21,56 +16,30 @@ export type AutoscuolaCalculatorResult = {
   cinqueAnni: number;
   conReglo: number;
   margineGuida: number;
+  noShowPercent: number;
+  slotNoShowSettimanali: number;
+  slotTotaliPersiSettimanali: number;
 };
 
-export const MANAGEMENT_OPTIONS: Array<{ value: ManagementMode; label: string }> = [
-  { value: 'manuale', label: '1. Manuale' },
-  { value: 'agenda', label: '2. Agenda cartacea' },
-  { value: 'agenda_telefono', label: '3. Agenda + Telefono' },
-  { value: 'digitale_parziale', label: '4. Digitale parziale' },
+export const NO_SHOW_OPTIONS: Array<{ value: NoShowLevel; label: string }> = [
+  { value: 'bassa', label: 'Bassa (8%)' },
+  { value: 'media', label: 'Media (15%)' },
+  { value: 'alta', label: 'Alta (25%)' },
 ];
-
-export const SLOT_BUCKET_OPTIONS: SlotsBucket[] = ['0-5', '5-10', '10-15', '+20'];
-export const STUDENTS_BUCKET_OPTIONS: StudentsBucket[] = ['10-50', '50-100', '100-200', '+250'];
-export const INSTRUCTORS_BUCKET_OPTIONS: InstructorsBucket[] = ['1', '2-5', '5-15', '+20'];
 
 export const DEFAULT_CALCULATOR_INPUT: AutoscuolaCalculatorInput = {
   costoGuida: 50,
   costoIstruttoreOra: 20,
-  costoSegreteriaOra: 10,
-  gestione: 'agenda_telefono',
-  slotLiberiSettimanali: '10-15',
-  allieviAttivi: '50-100',
-  istruttori: '+20',
+  oreGuideGiornalierePerIstruttore: 6,
+  slotLiberiSettimanali: 12.5,
+  percentualeNoShow: 'media',
   periodo: 'mensile',
 };
 
-const SLOT_BUCKET_VALUES: Record<SlotsBucket, number> = {
-  '0-5': 2.5,
-  '5-10': 7.5,
-  '10-15': 12.5,
-  '+20': 20,
-};
-
-const STUDENTS_FACTORS: Record<StudentsBucket, number> = {
-  '10-50': 0.85,
-  '50-100': 1.0,
-  '100-200': 1.12,
-  '+250': 1.25,
-};
-
-const INSTRUCTORS_FACTORS: Record<InstructorsBucket, number> = {
-  '1': 0.85,
-  '2-5': 0.95,
-  '5-15': 1.07,
-  '+20': 1.18,
-};
-
-const MANAGEMENT_FACTORS: Record<ManagementMode, number> = {
-  manuale: 1.25,
-  agenda: 1.12,
-  agenda_telefono: 1.0,
-  digitale_parziale: 0.86,
+const NO_SHOW_RATES: Record<NoShowLevel, number> = {
+  bassa: 0.08,
+  media: 0.15,
+  alta: 0.25,
 };
 
 function normalizeNumber(value: number) {
@@ -83,18 +52,15 @@ export function calculateAutoscuolaLoss(
 ): AutoscuolaCalculatorResult {
   const costoGuida = normalizeNumber(input.costoGuida);
   const costoIstruttoreOra = normalizeNumber(input.costoIstruttoreOra);
-  const costoSegreteriaOra = normalizeNumber(input.costoSegreteriaOra);
-  const slotPersiSettimanali = SLOT_BUCKET_VALUES[input.slotLiberiSettimanali];
-  const fattoreAllievi = STUDENTS_FACTORS[input.allieviAttivi];
-  const fattoreIstruttori = INSTRUCTORS_FACTORS[input.istruttori];
-  const fattoreGestione = MANAGEMENT_FACTORS[input.gestione];
+  const oreGuideGiornalierePerIstruttore = normalizeNumber(input.oreGuideGiornalierePerIstruttore);
+  const slotLiberiSettimanali = normalizeNumber(input.slotLiberiSettimanali);
+  const noShowPercent = NO_SHOW_RATES[input.percentualeNoShow];
 
-  const margineGuida = Math.max(0, costoGuida - costoIstruttoreOra - costoSegreteriaOra);
-  const perditaSlotMensile = margineGuida * slotPersiSettimanali * 4.33;
-  const costoOperativoOrario = costoSegreteriaOra + (costoIstruttoreOra * 0.65);
-  const perditaGestioneMensile =
-    costoOperativoOrario * 8.5 * 22 * 0.35 * fattoreGestione * fattoreAllievi * fattoreIstruttori;
-  const perditaMensile = perditaSlotMensile + perditaGestioneMensile;
+  const margineGuida = Math.max(0, costoGuida - costoIstruttoreOra);
+  const slotNoShowSettimanali = oreGuideGiornalierePerIstruttore * 5 * noShowPercent;
+  const slotTotaliPersiSettimanali = slotLiberiSettimanali + slotNoShowSettimanali;
+
+  const perditaMensile = margineGuida * slotTotaliPersiSettimanali * 4.33;
   const perditaAnnuale = perditaMensile * 12;
   const perditaCinqueAnni = perditaAnnuale * 5;
 
@@ -104,6 +70,9 @@ export function calculateAutoscuolaLoss(
     cinqueAnni: perditaCinqueAnni,
     conReglo: 0,
     margineGuida,
+    noShowPercent,
+    slotNoShowSettimanali,
+    slotTotaliPersiSettimanali,
   };
 }
 
