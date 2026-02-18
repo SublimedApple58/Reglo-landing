@@ -1,12 +1,13 @@
 export type PeriodMode = 'mensile' | 'annuale';
-export type NoShowLevel = 'bassa' | 'media' | 'alta';
+export type OperationalComplexity = 'bassa' | 'media' | 'alta';
 
 export type AutoscuolaCalculatorInput = {
-  costoGuida: number;
+  prezzoMedioGuida: number;
   costoIstruttoreOra: number;
-  oreGuideGiornalierePerIstruttore: number;
-  slotLiberiSettimanali: number;
-  percentualeNoShow: NoShowLevel;
+  costoSegreteriaOra: number;
+  slotPersiSettimanali: number;
+  oreGestioneManualeGiornaliere: number;
+  complessitaCalendario: OperationalComplexity;
   periodo: PeriodMode;
 };
 
@@ -16,30 +17,31 @@ export type AutoscuolaCalculatorResult = {
   cinqueAnni: number;
   conReglo: number;
   margineGuida: number;
-  noShowPercent: number;
-  slotNoShowSettimanali: number;
-  slotTotaliPersiSettimanali: number;
+  fattoreComplessita: number;
+  perditaSlotMensile: number;
+  perditaGestioneMensile: number;
 };
 
-export const NO_SHOW_OPTIONS: Array<{ value: NoShowLevel; label: string }> = [
-  { value: 'bassa', label: 'Bassa (8%)' },
-  { value: 'media', label: 'Media (15%)' },
-  { value: 'alta', label: 'Alta (25%)' },
+export const COMPLEXITY_OPTIONS: Array<{ value: OperationalComplexity; label: string }> = [
+  { value: 'bassa', label: 'Bassa' },
+  { value: 'media', label: 'Media' },
+  { value: 'alta', label: 'Alta' },
 ];
 
 export const DEFAULT_CALCULATOR_INPUT: AutoscuolaCalculatorInput = {
-  costoGuida: 50,
+  prezzoMedioGuida: 50,
   costoIstruttoreOra: 20,
-  oreGuideGiornalierePerIstruttore: 6,
-  slotLiberiSettimanali: 12.5,
-  percentualeNoShow: 'media',
+  costoSegreteriaOra: 14,
+  slotPersiSettimanali: 10,
+  oreGestioneManualeGiornaliere: 2.5,
+  complessitaCalendario: 'media',
   periodo: 'mensile',
 };
 
-const NO_SHOW_RATES: Record<NoShowLevel, number> = {
-  bassa: 0.08,
-  media: 0.15,
-  alta: 0.25,
+const COMPLEXITY_FACTORS: Record<OperationalComplexity, number> = {
+  bassa: 0.85,
+  media: 1,
+  alta: 1.2,
 };
 
 function normalizeNumber(value: number) {
@@ -50,17 +52,25 @@ function normalizeNumber(value: number) {
 export function calculateAutoscuolaLoss(
   input: AutoscuolaCalculatorInput
 ): AutoscuolaCalculatorResult {
-  const costoGuida = normalizeNumber(input.costoGuida);
+  const prezzoMedioGuida = normalizeNumber(input.prezzoMedioGuida);
   const costoIstruttoreOra = normalizeNumber(input.costoIstruttoreOra);
-  const oreGuideGiornalierePerIstruttore = normalizeNumber(input.oreGuideGiornalierePerIstruttore);
-  const slotLiberiSettimanali = normalizeNumber(input.slotLiberiSettimanali);
-  const noShowPercent = NO_SHOW_RATES[input.percentualeNoShow];
+  const costoSegreteriaOra = normalizeNumber(input.costoSegreteriaOra);
+  const slotPersiSettimanali = normalizeNumber(input.slotPersiSettimanali);
+  const oreGestioneManualeGiornaliere = normalizeNumber(input.oreGestioneManualeGiornaliere);
+  const fattoreComplessita = COMPLEXITY_FACTORS[input.complessitaCalendario];
 
-  const margineGuida = Math.max(0, costoGuida - costoIstruttoreOra);
-  const slotNoShowSettimanali = oreGuideGiornalierePerIstruttore * 5 * noShowPercent;
-  const slotTotaliPersiSettimanali = slotLiberiSettimanali + slotNoShowSettimanali;
+  const margineGuida = Math.max(0, prezzoMedioGuida - costoIstruttoreOra);
 
-  const perditaMensile = margineGuida * slotTotaliPersiSettimanali * 4.33;
+  const perditaSlotMensile = margineGuida * slotPersiSettimanali * 4.33;
+
+  const costoSegreteriaMensile = costoSegreteriaOra * oreGestioneManualeGiornaliere * 22;
+  const costoCoordIstruttoriMensile =
+    costoIstruttoreOra * (oreGestioneManualeGiornaliere * 0.45) * 22;
+
+  const perditaGestioneMensile =
+    (costoSegreteriaMensile + costoCoordIstruttoriMensile) * fattoreComplessita;
+
+  const perditaMensile = perditaSlotMensile + perditaGestioneMensile;
   const perditaAnnuale = perditaMensile * 12;
   const perditaCinqueAnni = perditaAnnuale * 5;
 
@@ -70,9 +80,9 @@ export function calculateAutoscuolaLoss(
     cinqueAnni: perditaCinqueAnni,
     conReglo: 0,
     margineGuida,
-    noShowPercent,
-    slotNoShowSettimanali,
-    slotTotaliPersiSettimanali,
+    fattoreComplessita,
+    perditaSlotMensile,
+    perditaGestioneMensile,
   };
 }
 

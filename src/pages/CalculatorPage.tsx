@@ -3,18 +3,19 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   calculateAutoscuolaLoss,
+  COMPLEXITY_OPTIONS,
   DEFAULT_CALCULATOR_INPUT,
   formatEuro,
-  NO_SHOW_OPTIONS,
   type AutoscuolaCalculatorInput,
-  type NoShowLevel,
+  type OperationalComplexity,
 } from '../lib/calculator';
 
 type NumericField =
-  | 'costoGuida'
+  | 'prezzoMedioGuida'
   | 'costoIstruttoreOra'
-  | 'oreGuideGiornalierePerIstruttore'
-  | 'slotLiberiSettimanali';
+  | 'costoSegreteriaOra'
+  | 'slotPersiSettimanali'
+  | 'oreGestioneManualeGiornaliere';
 
 function trackCustom(eventName: string, payload: Record<string, unknown>) {
   const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
@@ -23,13 +24,13 @@ function trackCustom(eventName: string, payload: Record<string, unknown>) {
   }
 }
 
-type NoShowSelectProps = {
-  value: NoShowLevel;
-  options: Array<{ value: NoShowLevel; label: string }>;
-  onChange: (value: NoShowLevel) => void;
+type ComplexitySelectProps = {
+  value: OperationalComplexity;
+  options: Array<{ value: OperationalComplexity; label: string }>;
+  onChange: (value: OperationalComplexity) => void;
 };
 
-function NoShowSelect({ value, options, onChange }: NoShowSelectProps) {
+function ComplexitySelect({ value, options, onChange }: ComplexitySelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -101,8 +102,8 @@ export default function CalculatorPage() {
       }));
     };
 
-  const handleNoShowChange = (value: NoShowLevel) => {
-    setFormData((prev) => ({ ...prev, percentualeNoShow: value }));
+  const handleComplexityChange = (value: OperationalComplexity) => {
+    setFormData((prev) => ({ ...prev, complessitaCalendario: value }));
   };
 
   const handleTogglePeriod = () => {
@@ -118,9 +119,12 @@ export default function CalculatorPage() {
 
     trackCustom('Calculator_Compute', {
       period: formData.periodo,
-      noShowLevel: formData.percentualeNoShow,
-      slotLiberiSettimanali: formData.slotLiberiSettimanali,
-      oreGuideGiornalierePerIstruttore: formData.oreGuideGiornalierePerIstruttore,
+      prezzoMedioGuida: formData.prezzoMedioGuida,
+      costoIstruttoreOra: formData.costoIstruttoreOra,
+      costoSegreteriaOra: formData.costoSegreteriaOra,
+      slotPersiSettimanali: formData.slotPersiSettimanali,
+      oreGestioneManualeGiornaliere: formData.oreGestioneManualeGiornaliere,
+      complessitaCalendario: formData.complessitaCalendario,
       amount: Number(
         (formData.periodo === 'mensile' ? nextResult.mensile : nextResult.annuale).toFixed(2)
       ),
@@ -144,7 +148,7 @@ export default function CalculatorPage() {
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
-                    COSTO GUIDA
+                    PREZZO MEDIO GUIDA
                   </label>
                   <div className="relative">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl text-[color:var(--color-ink)]">
@@ -154,8 +158,8 @@ export default function CalculatorPage() {
                       type="number"
                       min={0}
                       step="0.01"
-                      value={formData.costoGuida}
-                      onChange={handleNumericChange('costoGuida')}
+                      value={formData.prezzoMedioGuida}
+                      onChange={handleNumericChange('prezzoMedioGuida')}
                       className="w-full rounded-xl border border-[color:var(--color-border)] bg-white/90 py-3 pl-11 pr-3 text-sm text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)]/20"
                     />
                   </div>
@@ -182,40 +186,59 @@ export default function CalculatorPage() {
 
                 <div>
                   <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
-                    ORE GUIDE GIORNALIERE PER ISTRUTTORE
+                    COSTO SEGRETERIA (1 ORA)
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl text-[color:var(--color-ink)]">
+                      €
+                    </span>
+                    <input
+                      type="number"
+                      min={0}
+                      step="0.01"
+                      value={formData.costoSegreteriaOra}
+                      onChange={handleNumericChange('costoSegreteriaOra')}
+                      className="w-full rounded-xl border border-[color:var(--color-border)] bg-white/90 py-3 pl-11 pr-3 text-sm text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)]/20"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
+                    SLOT PERSI SETTIMANALI
                   </label>
                   <input
                     type="number"
                     min={0}
                     step="0.5"
-                    value={formData.oreGuideGiornalierePerIstruttore}
-                    onChange={handleNumericChange('oreGuideGiornalierePerIstruttore')}
+                    value={formData.slotPersiSettimanali}
+                    onChange={handleNumericChange('slotPersiSettimanali')}
                     className="w-full rounded-xl border border-[color:var(--color-border)] bg-white/90 py-3 px-3 text-sm text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)]/20"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
-                    SLOT LIBERI SETTIMANALI
+                    ORE/GIORNO IN GESTIONE MANUALE
                   </label>
                   <input
                     type="number"
                     min={0}
                     step="0.5"
-                    value={formData.slotLiberiSettimanali}
-                    onChange={handleNumericChange('slotLiberiSettimanali')}
+                    value={formData.oreGestioneManualeGiornaliere}
+                    onChange={handleNumericChange('oreGestioneManualeGiornaliere')}
                     className="w-full rounded-xl border border-[color:var(--color-border)] bg-white/90 py-3 px-3 text-sm text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)]/20"
                   />
                 </div>
 
-                <div className="sm:col-span-2">
+                <div>
                   <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
-                    PERCENTUALE NO SHOW
+                    COMPLESSITA CALENDARIO
                   </label>
-                  <NoShowSelect
-                    value={formData.percentualeNoShow}
-                    options={NO_SHOW_OPTIONS}
-                    onChange={handleNoShowChange}
+                  <ComplexitySelect
+                    value={formData.complessitaCalendario}
+                    options={COMPLEXITY_OPTIONS}
+                    onChange={handleComplexityChange}
                   />
                 </div>
               </div>
@@ -264,8 +287,7 @@ export default function CalculatorPage() {
                     Soldi Persi: {formatEuro(primaryLoss)}
                   </p>
                   <p className="mt-3 text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-                    Margine guida {formatEuro(result.margineGuida)} - no show stimato{' '}
-                    {(result.noShowPercent * 100).toFixed(0)}%
+                    Margine guida {formatEuro(result.margineGuida)} + impatto operativo su agenda manuale
                   </p>
                   <button
                     type="button"
@@ -279,19 +301,20 @@ export default function CalculatorPage() {
                   </button>
                   {isFormulaOpen ? (
                     <div className="mt-4 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-paper)] px-4 py-3 text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
-                      <p>Stima orientativa basata solo sui 5 parametri selezionati.</p>
+                      <p>Stima orientativa basata su parametri economici e operativi reali.</p>
                       <ul className="mt-2 space-y-1 list-disc pl-5">
                         <li>
-                          Margine guida = costo guida - costo istruttore orario (minimo 0).
+                          Margine guida = prezzo medio guida - costo orario istruttore (minimo 0).
                         </li>
                         <li>
-                          Slot persi per no show (settimanali) = ore guida giornaliere x 5 x % no show.
+                          Perdita slot mensile = margine guida x slot persi settimanali x 4.33 settimane.
                         </li>
                         <li>
-                          Slot persi totali = slot liberi settimanali + slot persi da no show.
+                          Costo gestione manuale mensile = (costo segreteria + quota coordinamento istruttori)
+                          x 22 giorni x fattore complessita.
                         </li>
                         <li>
-                          Perdita mensile = margine guida x slot persi totali x 4.33 settimane.
+                          Perdita totale mensile = perdita slot + perdita gestione manuale.
                         </li>
                         <li>Annuale = mensile x 12. Proiezione 5 anni = annuale x 5.</li>
                       </ul>
