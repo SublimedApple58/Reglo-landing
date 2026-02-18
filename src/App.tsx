@@ -5,6 +5,8 @@ import AboutPage from './pages/AboutPage';
 import WorkflowPage from './pages/WorkflowPage';
 import PricingPage from './pages/PricingPage';
 import DemoPage from './pages/DemoPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import PolicyPage from './pages/PolicyPage';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/workflow" element={<WorkflowPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/demo" element={<DemoPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/policy" element={<PolicyPage />} />
       </Routes>
     </Router>
   );

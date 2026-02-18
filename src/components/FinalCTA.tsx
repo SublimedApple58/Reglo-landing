@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Check, CheckCircle, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Toast from './Toast';
 import { useToast } from '../hooks/useToast';
 import { submitContact } from '../lib/contact';
@@ -249,9 +250,9 @@ export default function FinalCTA() {
             La piattaforma cloud per automatizzare i processi aziendali
           </p>
           <div className="flex justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
-            <a href="#" className="hover:text-[color:var(--color-ink)] transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-[color:var(--color-ink)] transition-colors">Termini di Servizio</a>
-            <a href="#" className="hover:text-[color:var(--color-ink)] transition-colors">Contatti</a>
+            <Link to="/privacy-policy" className="hover:text-[color:var(--color-ink)] transition-colors">Privacy Policy</Link>
+            <Link to="/policy" className="hover:text-[color:var(--color-ink)] transition-colors">Policy</Link>
+            <a href="mailto:privacy@reglo.it" className="hover:text-[color:var(--color-ink)] transition-colors">Contatti</a>
           </div>
           <p className="text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
             © 2026 Reglo. Tutti i diritti riservati.
