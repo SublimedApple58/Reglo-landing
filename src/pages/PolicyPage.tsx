@@ -20,29 +20,38 @@ export default function PolicyPage() {
           <section className="space-y-2">
             <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">1. Ambito del servizio</h2>
             <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Reglo fornisce strumenti cloud per l&apos;automazione di processi aziendali e gestione documentale.
-              L&apos;uso del servizio implica l&apos;accettazione della presente policy.
+              Reglo Autoscuole fornisce una piattaforma cloud per gestire prenotazioni guide,
+              disponibilita di istruttori e veicoli, notifiche operative e storico pagamenti.
+              L'uso del servizio implica l'accettazione della presente policy.
             </p>
           </section>
 
           <section className="space-y-2">
             <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">2. Uso consentito</h2>
             <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              L&apos;utente si impegna a usare la piattaforma in modo conforme alla legge e alle finalita professionali
-              dichiarate, evitando abusi, accessi non autorizzati o utilizzi illeciti.
+              L'utente si impegna a usare la piattaforma in modo conforme alla legge e alle finalita professionali
+              dichiarate, evitando accessi non autorizzati, abusi o utilizzi illeciti.
             </p>
           </section>
 
           <section className="space-y-2">
             <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">3. Responsabilita</h2>
             <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Reglo adotta misure tecniche e organizzative adeguate, ma l&apos;utente resta responsabile della correttezza
-              dei dati inseriti e della gestione delle proprie credenziali.
+              Reglo adotta misure tecniche e organizzative adeguate. Il cliente resta responsabile della correttezza
+              dei dati inseriti, della configurazione dei ruoli e della custodia delle credenziali.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">4. Proprieta intellettuale</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">4. Disponibilita del servizio</h2>
+            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
+              Il servizio viene aggiornato periodicamente per migliorare stabilita, sicurezza e funzionalita.
+              Eventuali interventi programmati vengono comunicati quando impattano l'operativita.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">5. Proprieta intellettuale</h2>
             <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
               Marchi, contenuti, interfacce e software restano di proprieta di Reglo o dei rispettivi titolari.
               E vietata la riproduzione non autorizzata.
@@ -50,15 +59,15 @@ export default function PolicyPage() {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">5. Modifiche alla policy</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">6. Modifiche alla policy</h2>
             <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Possiamo aggiornare questa policy per esigenze legali o operative. Le modifiche vengono pubblicate
-              su questa pagina con data di aggiornamento.
+              Possiamo aggiornare questa policy per esigenze legali, tecniche o operative.
+              Le modifiche vengono pubblicate su questa pagina con data di aggiornamento.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">6. Contatti</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">7. Contatti</h2>
             <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
               Per informazioni puoi scrivere a info@reglo.it o privacy@reglo.it.
             </p>

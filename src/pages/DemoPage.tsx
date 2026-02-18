@@ -68,10 +68,10 @@ export default function DemoPage() {
       <div className="max-w-full sm:max-w-2xl mx-auto px-6">
         <div className="text-center mb-10 sm:mb-12">
           <h1 className="text-4xl sm:text-[44px] font-bold mb-4" style={{ color: 'var(--color-ink)' }}>
-            Richiedi una demo di Reglo
+            Prenota una demo di Reglo Autoscuole
           </h1>
           <p className="text-lg sm:text-xl text-[color:var(--color-ink-muted)]">
-            Scopri come automatizzare i tuoi processi aziendali in una demo personalizzata.
+            Ti mostriamo in modo pratico come gestire agenda, slot e pagamenti.
             Ti ricontattiamo entro 24 ore.
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function DemoPage() {
                 Richiesta inviata con successo!
               </h2>
               <p className="text-base sm:text-lg text-[color:var(--color-ink-muted)]">
-                Ti ricontatteremo entro 24 ore per fissare la demo personalizzata sulla tua agenda.
+                Ti ricontatteremo entro 24 ore per fissare una demo sulla tua operativita reale.
               </p>
             </div>
           ) : (
@@ -112,7 +112,7 @@ export default function DemoPage() {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
-                  Email aziendale *
+                  Email *
                 </label>
                 <input
                   type="email"
@@ -126,13 +126,13 @@ export default function DemoPage() {
                   value={formData.email}
                   onChange={handleChange}
                   className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
-                  placeholder="mario.rossi@azienda.it"
+                  placeholder="mario.rossi@autoscuola.it"
                 />
               </div>
 
               <div>
                 <label htmlFor="azienda" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
-                  Nome azienda *
+                  Nome autoscuola *
                 </label>
                 <input
                   type="text"
@@ -145,7 +145,7 @@ export default function DemoPage() {
                   value={formData.azienda}
                   onChange={handleChange}
                   className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
-                  placeholder="Acme S.r.l."
+                  placeholder="Autoscuola Alfa"
                 />
               </div>
 
@@ -170,26 +170,25 @@ export default function DemoPage() {
                 </div>
                 <div>
                   <label htmlFor="gestionale" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
-                    Gestionale usato *
+                    Sistema attuale (opzionale)
                   </label>
                   <input
                     type="text"
                     id="gestionale"
                     name="gestionale"
-                    required
                     autoComplete="organization-title"
                     enterKeyHint="next"
                     value={formData.gestionale}
                     onChange={handleChange}
                     className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none"
-                    placeholder="Es. Teamsystem, Zucchetti, SAP"
+                    placeholder="Es. fogli Excel, gestionale interno"
                   />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="processo" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-ink)' }}>
-                  Processo che vuoi automatizzare (opzionale)
+                  Priorita operativa (opzionale)
                 </label>
                 <textarea
                   id="processo"
@@ -198,7 +197,7 @@ export default function DemoPage() {
                   onChange={handleChange}
                   rows={4}
                   className="glass-input w-full px-3.5 py-3 rounded-lg text-base focus:outline-none resize-none"
-                  placeholder="Es. Gestione ordini clienti, emissione fatture, conferme d'ordine..."
+                  placeholder="Es. ridurre slot vuoti, migliorare agenda istruttori, controllo pagamenti"
                 />
               </div>
 
@@ -208,12 +207,12 @@ export default function DemoPage() {
                 className="interactive-lift w-full py-3.5 sm:py-4 rounded-lg text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
                 style={{ backgroundColor: 'var(--color-ink)' }}
               >
-                {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}
+                {isSubmitting ? 'Invio in corso...' : 'Prenota demo gratuita'}
                 <Send className="w-5 h-5" />
               </button>
 
               <p className="text-xs sm:text-sm text-center text-[color:var(--color-ink-muted)]">
-                Nessun impegno richiesto. Demo personalizzata sui tuoi processi aziendali specifici.
+                Nessun impegno richiesto. Demo costruita sui tuoi processi operativi reali.
               </p>
             </form>
           )}

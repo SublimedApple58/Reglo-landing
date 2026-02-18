@@ -1,21 +1,21 @@
-import { ClipboardList, FileSignature, ShieldCheck } from 'lucide-react';
+import { CalendarCheck2, CircleDollarSign, TimerReset } from 'lucide-react';
 
 export default function ThreeWays() {
   const ways = [
     {
-      title: 'Workflow più veloci',
-      description: 'Centralizza richieste, approvazioni e task in un unico flusso condiviso.',
-      icon: ClipboardList,
+      title: 'Agenda senza attriti',
+      description: 'Ogni ruolo vede solo cio che serve e aggiorna lo stato guida in pochi tap.',
+      icon: CalendarCheck2,
     },
     {
-      title: 'Documenti sempre pronti',
-      description: 'Compilazione automatica, firma digitale e invio senza passaggi manuali.',
-      icon: FileSignature,
+      title: 'Slot sempre valorizzati',
+      description: 'Cancellazioni e ripianificazioni diventano opportunita, non ore perse.',
+      icon: TimerReset,
     },
     {
-      title: 'Compliance sotto controllo',
-      description: 'Audit trail completo, versioning e visibilità su ogni step operativo.',
-      icon: ShieldCheck,
+      title: 'Pagamenti sotto controllo',
+      description: 'Storico chiaro, residui immediati e documenti disponibili per ogni transazione.',
+      icon: CircleDollarSign,
     },
   ];
 
@@ -27,10 +27,10 @@ export default function ThreeWays() {
             Metodo
           </p>
           <h2 className="text-2xl sm:text-3xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
-            Tre modi in cui Reglo semplifica le operazioni ogni giorno
+            Tre benefici concreti per la tua autoscuola
           </h2>
           <p className="text-base text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
-            Dal back office alle operations: meno passaggi, meno errori, più controllo.
+            Meno coordinamento manuale, piu controllo operativo su lezioni e incassi.
           </p>
         </div>
 
@@ -42,12 +42,8 @@ export default function ThreeWays() {
                 <div className="h-12 w-12 rounded-2xl flex items-center justify-center bg-[color:var(--color-accent)]">
                   <Icon className="h-6 w-6 text-[color:var(--color-ink)]" />
                 </div>
-                <h3 className="text-base font-semibold mt-5 text-[color:var(--color-ink)]">
-                  {way.title}
-                </h3>
-                <p className="text-xs text-[color:var(--color-ink-muted)] mt-3">
-                  {way.description}
-                </p>
+                <h3 className="text-base font-semibold mt-5 text-[color:var(--color-ink)]">{way.title}</h3>
+                <p className="text-xs text-[color:var(--color-ink-muted)] mt-3">{way.description}</p>
               </div>
             );
           })}

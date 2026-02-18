@@ -3,18 +3,18 @@ import { CheckCircle2, Compass, Rocket } from 'lucide-react';
 export default function SwitchTo() {
   const steps = [
     {
-      title: 'Assessment iniziale',
-      description: 'Mappiamo insieme processi e dati del tuo ERP.',
+      title: 'Analisi operativa iniziale',
+      description: 'Definiamo regole su disponibilita, durata guide e gestione veicoli.',
       icon: Compass,
     },
     {
-      title: 'Migrazione guidata',
-      description: 'Configuriamo workflow, documenti e ruoli con il team.',
+      title: 'Configurazione assistita',
+      description: 'Impostiamo ruoli, agenda e automazioni con i tuoi referenti interni.',
       icon: Rocket,
     },
     {
-      title: 'Go-live monitorato',
-      description: 'Misuriamo risultati e ottimizziamo nei primi 30 giorni.',
+      title: 'Avvio e ottimizzazione',
+      description: 'Monitoriamo i primi giorni e correggiamo il setup dove serve.',
       icon: CheckCircle2,
     },
   ];
@@ -25,13 +25,13 @@ export default function SwitchTo() {
         <div className="glass-panel rounded-3xl p-8 sm:p-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
           <div className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
-              Passaggio a Reglo
+              Attivazione
             </p>
             <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
-              Passa a Reglo senza bloccare le operazioni
+              Passa a Reglo senza fermare la segreteria
             </h2>
             <p className="text-base text-[color:var(--color-ink-muted)]">
-              Migrazione accompagnata, training dedicato e risultati misurabili in poche settimane.
+              Migrazione graduale, training pratico e allineamento costante con il team operativo.
             </p>
           </div>
 
@@ -45,12 +45,8 @@ export default function SwitchTo() {
                       <Icon className="h-5 w-5 text-[color:var(--color-ink)]" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-[color:var(--color-ink)]">
-                        {step.title}
-                      </div>
-                      <div className="text-xs text-[color:var(--color-ink-muted)] mt-1">
-                        {step.description}
-                      </div>
+                      <div className="text-sm font-semibold text-[color:var(--color-ink)]">{step.title}</div>
+                      <div className="text-xs text-[color:var(--color-ink-muted)] mt-1">{step.description}</div>
                     </div>
                   </div>
                 </div>

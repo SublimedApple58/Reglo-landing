@@ -17,41 +17,40 @@ export default function PricingPage() {
   useEffect(() => {
     setPlans([
       {
-        name: 'Core',
-        price: 159,
-        description: 'Per iniziare con l\'automazione e volumi controllati',
+        name: 'Start',
+        price: 149,
+        description: 'Per autoscuole che vogliono una base operativa solida',
         features: [
-          'Doc manager + AI',
-          'Workflow limitato a utilizzo doc manager',
-          <span className="font-semibold">300 documenti compilati / mese</span>,
-          <span className="font-semibold">30 workflow eseguiti / mese</span>,
+          'Ruoli allievo, istruttore e titolare',
+          'Agenda e disponibilita a slot da 30 min',
+          <span className="font-semibold">Fino a 150 allievi attivi</span>,
+          <span className="font-semibold">1 sede inclusa</span>,
         ],
         highlighted: false,
         delay: 100,
       },
       {
-        name: 'Growth',
-        price: 269,
-        description: 'Per PMI in crescita con workflow piu completi',
+        name: 'Pro',
+        price: 249,
+        description: 'Per autoscuole con volume medio e flusso continuo di guide',
         features: [
-          'Doc manager + AI',
-          'Workflow engine senza limitazioni',
-          <span className="font-semibold">500 documenti compilati / mese</span>,
-          <span className="font-semibold">80 workflow eseguiti / mese</span>,
+          'Tutto di Start',
+          'Gestione veicoli avanzata e override slot',
+          <span className="font-semibold">Fino a 400 allievi attivi</span>,
+          <span className="font-semibold">2 sedi incluse</span>,
         ],
         highlighted: true,
         delay: 200,
       },
       {
-        name: 'Scale',
-        price: 429,
-        description: 'Per team con volumi elevati e automazioni avanzate',
+        name: 'Multi-sede',
+        price: 399,
+        description: 'Per reti di autoscuole con esigenze di coordinamento elevato',
         features: [
-          'Doc manager + AI',
-          'Workflow engine senza limitazioni + AI',
-          'Reglo AI',
-          <span className="font-semibold">800 documenti compilati / mese</span>,
-          <span className="font-semibold">100 workflow eseguiti / mese</span>,
+          'Tutto di Pro',
+          'Supporto onboarding multi-sede',
+          <span className="font-semibold">Fino a 800 allievi attivi</span>,
+          <span className="font-semibold">Sedi e team estesi</span>,
         ],
         highlighted: false,
         delay: 300,
@@ -77,10 +76,10 @@ export default function PricingPage() {
               Prezzi
             </p>
             <h1 className="text-3xl sm:text-4xl font-semibold mt-3 mb-4 text-[color:var(--color-ink)]">
-              Piani trasparenti e flessibili
+              Piani chiari per autoscuole
             </h1>
             <p className="text-lg text-[color:var(--color-ink-muted)] max-w-3xl mx-auto">
-              Scegli il piano perfetto per la tua PMI. Tutti i piani includono una prova gratuita di 14 giorni.
+              Scegli il piano in base a volume allievi, numero sedi e livello di supporto richiesto.
             </p>
           </div>
 
@@ -97,7 +96,7 @@ export default function PricingPage() {
                 <div className="p-8 lg:p-9">
                   {plan.highlighted && (
                     <div className="inline-block px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-[0.2em] text-white mb-4 bg-[color:var(--color-ink)]">
-                      Più popolare
+                      Piu scelto
                     </div>
                   )}
 
@@ -126,7 +125,7 @@ export default function PricingPage() {
                       color: plan.highlighted ? 'white' : 'var(--color-ink)',
                     }}
                   >
-                    Inizia prova gratuita
+                    Prenota demo
                     <ArrowRight className="w-5 h-5" />
                   </Link>
 
@@ -155,21 +154,21 @@ export default function PricingPage() {
                   Extra
                 </h2>
                 <p className="text-[color:var(--color-ink-muted)]">
-                  Aggiunte opzionali per aumentare i volumi quando ti serve.
+                  Espandi il piano quando crescono iscrizioni o sedi.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="glass-card rounded-2xl p-6 text-center">
                   <div className="text-3xl font-semibold mb-2 text-[color:var(--color-ink)]">
-                    49€
+                    39€
                   </div>
-                  <div className="text-[color:var(--color-ink-muted)] font-semibold">+150 documenti</div>
+                  <div className="text-[color:var(--color-ink-muted)] font-semibold">+100 allievi attivi</div>
                 </div>
                 <div className="glass-card rounded-2xl p-6 text-center">
                   <div className="text-3xl font-semibold mb-2 text-[color:var(--color-ink)]">
-                    49€
+                    69€
                   </div>
-                  <div className="text-[color:var(--color-ink-muted)] font-semibold">+30 workflow aggiuntivi</div>
+                  <div className="text-[color:var(--color-ink-muted)] font-semibold">+1 sede aggiuntiva</div>
                 </div>
               </div>
             </div>
@@ -178,7 +177,7 @@ export default function PricingPage() {
           <div className="glass-panel rounded-3xl p-8 lg:p-12">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-2xl font-semibold mb-6 text-center text-[color:var(--color-ink)]">
-                Domande frequenti sui prezzi
+                Domande frequenti
               </h2>
 
               <div className="space-y-6">
@@ -187,25 +186,25 @@ export default function PricingPage() {
                     Posso cambiare piano in qualsiasi momento?
                   </h3>
                   <p className="text-[color:var(--color-ink-muted)]">
-                    Sì, puoi effettuare l'upgrade o il downgrade del tuo piano in qualsiasi momento. Gli addebiti vengono regolati proporzionalmente.
+                    Si, puoi fare upgrade o downgrade in qualsiasi momento. L'addebito viene adeguato in modo proporzionale.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-[color:var(--color-ink)]">
-                    Che supporto ricevo con ogni piano?
+                    Quanto dura l'attivazione?
                   </h3>
                   <p className="text-[color:var(--color-ink-muted)]">
-                    Core: email. Growth: chat e email prioritario. Scale: account manager dedicato e supporto telefonico prioritario.
+                    In media 7-14 giorni, in base al numero di sedi e al livello di personalizzazione richiesto.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-[color:var(--color-ink)]">
-                    Avete sconti per aziende grandi o long-term?
+                    Avete piani custom per grandi autoscuole?
                   </h3>
                   <p className="text-[color:var(--color-ink-muted)]">
-                    Certo! Contattaci per discutere soluzioni enterprise personalizzate e sconti volume dedicati.
+                    Si, per gruppi multi-sede definiamo pacchetti dedicati con onboarding e supporto operativo esteso.
                   </p>
                 </div>
               </div>
@@ -214,13 +213,13 @@ export default function PricingPage() {
 
           <div className="mt-12 text-center">
             <p className="text-lg text-[color:var(--color-ink-muted)] mb-6">
-              Non sei sicuro quale piano fa per te?
+              Vuoi capire il piano giusto per la tua struttura?
             </p>
             <Link
               to="/demo"
               className="interactive-lift inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-semibold text-lg shadow-soft bg-[color:var(--color-ink)]"
             >
-              Parla con il nostro team
+              Parla con il team Reglo
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

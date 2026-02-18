@@ -10,9 +10,8 @@ export default function Navigation() {
 
   const links = [
     { path: '/', label: 'Home' },
-    { path: '/about', label: 'Cos\'è Reglo' },
-    { path: '/workflow', label: 'Workflow' },
-    // { path: '/pricing', label: 'Prezzi' },
+    { path: '/about', label: "Reglo Autoscuole" },
+    { path: '/piattaforma', label: 'Piattaforma' },
   ];
 
   return (
@@ -41,7 +40,7 @@ export default function Navigation() {
               to="/demo"
               className="px-6 py-2 rounded-full text-[color:var(--color-ink)] font-semibold transition-all hover:-translate-y-0.5 hover:shadow-md bg-[color:var(--color-accent)]"
             >
-              Demo
+              Prenota demo
             </Link>
           </div>
 
@@ -74,7 +73,7 @@ export default function Navigation() {
               onClick={() => setIsOpen(false)}
               className="block px-6 py-2 rounded-full text-[color:var(--color-ink)] font-semibold text-center bg-[color:var(--color-accent)]"
             >
-              Demo
+              Prenota demo
             </Link>
           </div>
         )}

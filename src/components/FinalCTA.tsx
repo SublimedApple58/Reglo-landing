@@ -46,9 +46,7 @@ export default function FinalCTA() {
     } catch (error) {
       showToast(
         'error',
-        error instanceof Error
-          ? error.message
-          : 'Impossibile inviare la richiesta. Riprova.'
+        error instanceof Error ? error.message : 'Impossibile inviare la richiesta. Riprova.'
       );
     } finally {
       setIsSubmitting(false);
@@ -60,9 +58,9 @@ export default function FinalCTA() {
   };
 
   const highlights = [
-    'Onboarding guidato e team dedicato',
-    'Integrazione con il tuo ERP senza sostituzioni',
-    'Processi tracciati end-to-end',
+    'Analisi agenda e disponibilita della tua autoscuola',
+    'Piano di adozione per segreteria, istruttori e titolare',
+    'Roadmap con obiettivi misurabili nelle prime settimane',
   ];
 
   return (
@@ -79,10 +77,10 @@ export default function FinalCTA() {
               Iniziamo
             </p>
             <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
-              Pronto a liberare il tuo team dalla burocrazia?
+              Vuoi rendere la tua autoscuola piu ordinata e prevedibile?
             </h2>
             <p className="text-base text-[color:var(--color-ink-muted)]">
-              Parliamo del tuo flusso attuale e costruiamo insieme la roadmap di automazione.
+              Facciamo una demo pratica sulle tue priorita: agenda, saturazione slot, pagamenti e storico.
             </p>
             <div className="space-y-3">
               {highlights.map((item) => (
@@ -90,9 +88,7 @@ export default function FinalCTA() {
                   <div className="h-7 w-7 rounded-full bg-[color:var(--color-accent)] flex items-center justify-center">
                     <Check className="h-4 w-4 text-[color:var(--color-ink)]" />
                   </div>
-                  <div className="text-sm text-[color:var(--color-ink-muted)]">
-                    {item}
-                  </div>
+                  <div className="text-sm text-[color:var(--color-ink-muted)]">{item}</div>
                 </div>
               ))}
             </div>
@@ -104,12 +100,8 @@ export default function FinalCTA() {
                 <div className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center" style={{ backgroundColor: 'var(--color-ink)' }}>
                   <CheckCircle className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-[color:var(--color-ink)]">
-                  Richiesta inviata con successo!
-                </h3>
-                <p className="text-sm text-[color:var(--color-ink-muted)]">
-                  Ti ricontatteremo entro 24 ore per fissare la demo.
-                </p>
+                <h3 className="text-xl font-semibold mb-2 text-[color:var(--color-ink)]">Richiesta inviata con successo!</h3>
+                <p className="text-sm text-[color:var(--color-ink-muted)]">Ti ricontatteremo entro 24 ore per fissare la demo.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -134,7 +126,7 @@ export default function FinalCTA() {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                      Email aziendale *
+                      Email *
                     </label>
                     <input
                       type="email"
@@ -148,7 +140,7 @@ export default function FinalCTA() {
                       value={formData.email}
                       onChange={handleChange}
                       className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
-                      placeholder="mario.rossi@azienda.it"
+                      placeholder="mario.rossi@autoscuola.it"
                     />
                   </div>
                 </div>
@@ -156,7 +148,7 @@ export default function FinalCTA() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label htmlFor="azienda" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                      Nome azienda *
+                      Nome autoscuola *
                     </label>
                     <input
                       type="text"
@@ -169,7 +161,7 @@ export default function FinalCTA() {
                       value={formData.azienda}
                       onChange={handleChange}
                       className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
-                      placeholder="Acme S.r.l."
+                      placeholder="Autoscuola Alfa"
                     />
                   </div>
                   <div>
@@ -194,25 +186,24 @@ export default function FinalCTA() {
 
                 <div>
                   <label htmlFor="gestionale" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                    Gestionale usato *
+                    Gestionale attuale (opzionale)
                   </label>
                   <input
                     type="text"
                     id="gestionale"
                     name="gestionale"
-                    required
                     autoComplete="organization-title"
                     enterKeyHint="next"
                     value={formData.gestionale}
                     onChange={handleChange}
                     className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
-                    placeholder="Es. Teamsystem, Zucchetti, SAP"
+                    placeholder="Es. gestionale interno, fogli Excel, altro"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="processo" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
-                    Processo da automatizzare (opzionale)
+                    Priorita operativa (opzionale)
                   </label>
                   <textarea
                     id="processo"
@@ -221,7 +212,7 @@ export default function FinalCTA() {
                     onChange={handleChange}
                     rows={3}
                     className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none resize-none"
-                    placeholder="Es. conferme d'ordine, emissione documenti, approvazioni"
+                    placeholder="Es. ridurre slot vuoti, semplificare agenda istruttori, controllo pagamenti"
                   />
                 </div>
 
@@ -230,12 +221,12 @@ export default function FinalCTA() {
                   disabled={isSubmitting}
                   className="interactive-lift w-full py-3 rounded-full text-[color:var(--color-ink)] font-semibold text-sm flex items-center justify-center gap-2 shadow-soft disabled:opacity-70 disabled:cursor-not-allowed bg-[color:var(--color-accent)]"
                 >
-                  {isSubmitting ? 'Invio in corso...' : 'Richiedi demo gratuita'}
+                  {isSubmitting ? 'Invio in corso...' : 'Prenota demo gratuita'}
                   <Send className="w-4 h-4" />
                 </button>
 
                 <p className="text-xs text-center text-[color:var(--color-ink-muted)]">
-                  Nessun impegno richiesto. Demo personalizzata sui tuoi processi.
+                  Nessun impegno richiesto. Demo personalizzata sul tuo assetto operativo.
                 </p>
               </form>
             )}
@@ -247,16 +238,14 @@ export default function FinalCTA() {
             <div className="text-xl sm:text-2xl font-semibold text-[color:var(--color-ink)]">Reglo</div>
           </div>
           <p className="text-[color:var(--color-ink-muted)] text-sm">
-            La piattaforma cloud per automatizzare i processi aziendali
+            Piattaforma operativa per autoscuole
           </p>
           <div className="flex justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
             <Link to="/privacy-policy" className="hover:text-[color:var(--color-ink)] transition-colors">Privacy Policy</Link>
             <Link to="/policy" className="hover:text-[color:var(--color-ink)] transition-colors">Policy</Link>
             <a href="mailto:privacy@reglo.it" className="hover:text-[color:var(--color-ink)] transition-colors">Contatti</a>
           </div>
-          <p className="text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
-            © 2026 Reglo. Tutti i diritti riservati.
-          </p>
+          <p className="text-xs sm:text-sm text-[color:var(--color-ink-muted)]">© 2026 Reglo. Tutti i diritti riservati.</p>
         </footer>
       </div>
     </section>

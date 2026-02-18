@@ -1,10 +1,10 @@
-import { FileCheck, Shield, Timer } from 'lucide-react';
+import { CalendarDays, Shield, Timer } from 'lucide-react';
 
 export default function Manifesto() {
   const points = [
-    'Semplifica le approvazioni interne in un unico flusso.',
-    'Elimina i passaggi manuali che rallentano le operazioni.',
-    'Traccia ogni documento con audit completo e storico.',
+    'Ridurre al minimo i passaggi manuali tra segreteria e istruttori.',
+    'Mantenere l\'agenda sempre aggiornata e leggibile da tutti i ruoli.',
+    'Avere storico e stato pagamenti chiari, senza fogli paralleli.',
   ];
 
   return (
@@ -15,11 +15,11 @@ export default function Manifesto() {
             <div className="glass-card rounded-2xl p-5 mb-4">
               <div className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-2xl flex items-center justify-center bg-[color:var(--color-ink)]">
-                  <FileCheck className="h-5 w-5 text-white" />
+                  <CalendarDays className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-[color:var(--color-ink)]">Workflow puliti</div>
-                  <div className="text-xs text-[color:var(--color-ink-muted)]">Documenti sempre coerenti</div>
+                  <div className="text-sm font-semibold text-[color:var(--color-ink)]">Agenda pulita</div>
+                  <div className="text-xs text-[color:var(--color-ink-muted)]">Guide, disponibilita e no-show sotto controllo</div>
                 </div>
               </div>
             </div>
@@ -29,8 +29,8 @@ export default function Manifesto() {
                   <Shield className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-[color:var(--color-ink)]">Compliance sotto controllo</div>
-                  <div className="text-xs text-[color:var(--color-ink-muted)]">Audit pronto in un click</div>
+                  <div className="text-sm font-semibold text-[color:var(--color-ink)]">Decisioni piu sicure</div>
+                  <div className="text-xs text-[color:var(--color-ink-muted)]">Storico completo su lezioni e pagamenti</div>
                 </div>
               </div>
             </div>
@@ -40,23 +40,20 @@ export default function Manifesto() {
                   <Timer className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-[color:var(--color-ink)]">Tempi ridotti</div>
-                  <div className="text-xs text-[color:var(--color-ink-muted)]">Automazioni operative quotidiane</div>
+                  <div className="text-sm font-semibold text-[color:var(--color-ink)]">Tempo recuperato</div>
+                  <div className="text-xs text-[color:var(--color-ink-muted)]">Meno telefonate, meno riempimenti manuali</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="space-y-6">
-            {/* <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
-              Manifesto
-            </p> */}
             <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
-              Odiamo la burocrazia operativa
+              Reglo nasce per il lavoro reale delle autoscuole
             </h2>
             <p className="text-base text-[color:var(--color-ink-muted)]">
-              Reglo nasce per togliere attrito dal lavoro quotidiano. Ogni step superfluo viene trasformato
-              in un flusso automatico, misurabile e condiviso da tutto il team.
+              Ogni funzione e pensata per le operazioni quotidiane: richieste guida, disponibilita
+              istruttori, assegnazione veicoli, notifiche e incassi.
             </p>
             <div className="space-y-3 text-sm text-[color:var(--color-ink-muted)]">
               {points.map((point) => (

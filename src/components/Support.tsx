@@ -3,18 +3,18 @@ import { Headset, MapPin, Users2 } from 'lucide-react';
 export default function Support() {
   const items = [
     {
-      title: 'Project manager dedicato',
-      description: 'Un referente unico per onboarding, configurazione e go-live.',
+      title: 'Onboarding dedicato autoscuole',
+      description: 'Setup iniziale su ruoli, veicoli, regole agenda e gestione disponibilita.',
       icon: Headset,
     },
     {
-      title: 'Conoscenza del tuo ERP',
-      description: 'Parliamo il linguaggio del gestionale e dei tuoi flussi interni.',
+      title: 'Supporto operativo continuo',
+      description: 'Affianchiamo segreteria e istruttori durante l\'adozione quotidiana.',
       icon: MapPin,
     },
     {
-      title: 'Training per il team',
-      description: 'Sessioni guidate per operations, amministrazione e IT.',
+      title: 'Formazione per il team',
+      description: 'Sessioni pratiche per titolare, istruttori e personale amministrativo.',
       icon: Users2,
     },
   ];
@@ -28,18 +28,17 @@ export default function Support() {
               Supporto
             </p>
             <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
-              Un team dedicato ti segue passo dopo passo
+              Implementazione guidata, senza lasciare il team da solo
             </h2>
             <p className="text-base text-[color:var(--color-ink-muted)]">
-              Non sei mai solo: dal primo workshop all'automazione completa. Reglo nasce per
-              accompagnare le PMI con un onboarding rapido e concreto.
+              Ti aiutiamo a passare da gestione manuale a operativita strutturata con tempi e obiettivi chiari.
             </p>
             <div className="flex flex-wrap gap-3">
               <span className="glass-chip rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)]">
-                Go-live in poche settimane
+                Checkpoint settimanali
               </span>
               <span className="glass-chip rounded-full px-4 py-2 text-sm text-[color:var(--color-ink-muted)]">
-                Supporto continuo post-lancio
+                Supporto post go-live
               </span>
             </div>
           </div>
@@ -54,12 +53,8 @@ export default function Support() {
                       <Icon className="h-5 w-5 text-[color:var(--color-ink)]" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-[color:var(--color-ink)]">
-                        {item.title}
-                      </div>
-                      <div className="text-xs text-[color:var(--color-ink-muted)] mt-1">
-                        {item.description}
-                      </div>
+                      <div className="text-sm font-semibold text-[color:var(--color-ink)]">{item.title}</div>
+                      <div className="text-xs text-[color:var(--color-ink-muted)] mt-1">{item.description}</div>
                     </div>
                   </div>
                 </div>

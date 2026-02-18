@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { CheckCircle, ShieldCheck, UserX } from 'lucide-react';
+import { CheckCircle, ShieldCheck, UserCheck } from 'lucide-react';
 import ReactFlow, { Background, MiniMap, useEdgesState, useNodesState } from 'reactflow';
 import 'reactflow/dist/style.css';
 
-export default function WorkflowPage() {
+export default function PlatformPage() {
   const baseNodeStyle = {
     borderRadius: 16,
     border: '1px solid var(--color-border)',
@@ -11,7 +11,7 @@ export default function WorkflowPage() {
     fontSize: 12,
     fontWeight: 600,
     padding: 12,
-    width: 210,
+    width: 220,
     textAlign: 'left' as const,
     whiteSpace: 'pre-line' as const,
   };
@@ -20,8 +20,8 @@ export default function WorkflowPage() {
     () => [
       {
         id: 'trigger',
-        data: { label: 'Trigger\nArrivo documento cliente' },
-        position: { x: 0, y: 140 },
+        data: { label: 'Trigger\nRichiesta guida allievo' },
+        position: { x: 0, y: 130 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(169, 217, 209, 0.6)',
@@ -30,8 +30,8 @@ export default function WorkflowPage() {
       },
       {
         id: 'step-1',
-        data: { label: 'Azione 1\nVerifica e protocolla' },
-        position: { x: 240, y: 40 },
+        data: { label: 'Verifica disponibilita\nSlot da 30 minuti' },
+        position: { x: 260, y: 40 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(50, 78, 122, 0.12)',
@@ -40,8 +40,8 @@ export default function WorkflowPage() {
       },
       {
         id: 'step-2',
-        data: { label: 'Azione 2\nRegistrazione contabile' },
-        position: { x: 520, y: 210 },
+        data: { label: 'Matching risorse\nIstruttore + veicolo' },
+        position: { x: 540, y: 200 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(169, 217, 209, 0.45)',
@@ -50,8 +50,8 @@ export default function WorkflowPage() {
       },
       {
         id: 'step-3',
-        data: { label: 'Azione 3\nGenera F24/adempimenti' },
-        position: { x: 800, y: 70 },
+        data: { label: 'Conferma proposta\nNotifica push allievo' },
+        position: { x: 820, y: 60 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(50, 78, 122, 0.18)',
@@ -60,8 +60,8 @@ export default function WorkflowPage() {
       },
       {
         id: 'step-4',
-        data: { label: 'Azione 4\nCondivisione e approvazione' },
-        position: { x: 1080, y: 230 },
+        data: { label: 'Aggiornamento agenda\nStato guida sincronizzato' },
+        position: { x: 1100, y: 220 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(169, 217, 209, 0.5)',
@@ -70,8 +70,8 @@ export default function WorkflowPage() {
       },
       {
         id: 'step-5',
-        data: { label: 'Azione 5\nInvio telematico' },
-        position: { x: 1360, y: 90 },
+        data: { label: 'Gestione eccezioni\nNo-show, annulli, override' },
+        position: { x: 1380, y: 80 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(50, 78, 122, 0.12)',
@@ -80,8 +80,8 @@ export default function WorkflowPage() {
       },
       {
         id: 'output',
-        data: { label: 'Output\nArchiviazione e report' },
-        position: { x: 1640, y: 200 },
+        data: { label: 'Output\nStorico e pagamenti allineati' },
+        position: { x: 1660, y: 190 },
         style: {
           ...baseNodeStyle,
           background: 'rgba(169, 217, 209, 0.7)',
@@ -154,13 +154,13 @@ export default function WorkflowPage() {
       <div className="max-w-[1536px] mx-auto px-6 py-12">
         <div className="text-center mb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
-            Workflow
+            Flusso operativo
           </p>
           <h1 className="text-3xl sm:text-4xl font-semibold mt-3 mb-3 text-[color:var(--color-ink)]">
-            Workflow in azione
+            Come Reglo coordina una guida
           </h1>
           <p className="text-base text-[color:var(--color-ink-muted)]">
-            Visualizza l'automazione end-to-end direttamente su canvas.
+            Dalla richiesta dell'allievo alla guida completata, con stato sempre aggiornato.
           </p>
         </div>
 
@@ -193,7 +193,7 @@ export default function WorkflowPage() {
                   Risultato
                 </h3>
                 <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)] mt-2">
-                  Automazione end-to-end completata in tempo reale.
+                  Prenotazione, agenda e notifiche allineate in un unico passaggio.
                 </p>
               </div>
 
@@ -201,11 +201,11 @@ export default function WorkflowPage() {
 
               <div>
                 <div className="flex flex-wrap items-end gap-3">
-                  <span className="text-4xl sm:text-5xl font-semibold text-[color:var(--color-ink)]">30 min</span>
+                  <span className="text-4xl sm:text-5xl font-semibold text-[color:var(--color-ink)]">6 call</span>
                   <span className="text-2xl sm:text-3xl text-[color:var(--color-ink-muted)]">&rarr;</span>
-                  <span className="text-4xl sm:text-5xl font-semibold text-[color:var(--color-ink)]">2 s</span>
+                  <span className="text-4xl sm:text-5xl font-semibold text-[color:var(--color-ink)]">0</span>
                 </div>
-                <p className="text-sm text-[color:var(--color-ink-muted)] mt-2">Tempo di completamento</p>
+                <p className="text-sm text-[color:var(--color-ink-muted)] mt-2">Contatti manuali per riempire uno slot</p>
               </div>
 
               <div className="h-px w-full bg-[color:var(--color-border)] opacity-40" />
@@ -216,7 +216,7 @@ export default function WorkflowPage() {
                     <CheckCircle className="h-4 w-4" />
                   </span>
                   <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
-                    <span className="font-semibold">5</span> &rarr; <span className="font-semibold">0</span> passaggi manuali
+                    <span className="font-semibold">1</span> agenda condivisa per tutti i ruoli
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -224,21 +224,21 @@ export default function WorkflowPage() {
                     <ShieldCheck className="h-4 w-4" />
                   </span>
                   <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
-                    <span className="font-semibold">0</span> errori operativi
+                    <span className="font-semibold">Storico tracciato</span> su guide e pagamenti
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-ink)]">
-                    <UserX className="h-4 w-4" />
+                    <UserCheck className="h-4 w-4" />
                   </span>
                   <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
-                    <span className="font-semibold">0</span> intervento umano richiesto
+                    <span className="font-semibold">Zero passaggi ciechi</span> tra segreteria e istruttore
                   </p>
                 </div>
               </div>
 
               <p className="text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
-                Valori medi su un flusso standard di gestione documenti.
+                Valori indicativi su una settimana operativa di autoscuola.
               </p>
             </div>
           </div>
