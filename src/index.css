@@ -87,6 +87,39 @@ body {
   opacity: 0.7;
 }
 
+.iphone-shell {
+  position: relative;
+  width: min(100%, 270px);
+  margin-inline: auto;
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(240, 245, 255, 0.88));
+  box-shadow: 0 24px 52px rgba(50, 78, 122, 0.2);
+  padding: 10px 10px 14px;
+}
+
+.iphone-notch {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 18px;
+  border-radius: 0 0 14px 14px;
+  background: rgba(22, 35, 56, 0.82);
+  z-index: 2;
+}
+
+.iphone-screen {
+  border-radius: 24px;
+  border: 1px solid rgba(50, 78, 122, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 250, 0.88)),
+    linear-gradient(120deg, rgba(169, 217, 209, 0.16), rgba(50, 78, 122, 0.04));
+  min-height: 390px;
+  padding: 22px 14px 14px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

@@ -1,249 +1,155 @@
-import { useMemo } from 'react';
-import { CheckCircle, ShieldCheck, UserCheck } from 'lucide-react';
-import ReactFlow, { Background, MiniMap, useEdgesState, useNodesState } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { BellRing, CalendarDays, CheckCircle2, CreditCard, Repeat2, ShieldCheck } from 'lucide-react';
+import IphoneMockup from '../components/IphoneMockup';
+
+const architecture = [
+  {
+    title: 'Input operativo',
+    points: [
+      'Disponibilita di allievi, istruttori e veicoli',
+      'Richieste guida da app mobile',
+      'Annulli e no-show in tempo reale',
+    ],
+  },
+  {
+    title: 'Motore Reglo',
+    points: [
+      'Matching slot con regole autoscuola',
+      'Priorita e riassegnazioni automatiche',
+      'Storico completo di eventi e stati',
+    ],
+  },
+  {
+    title: 'Output immediato',
+    points: [
+      'Agenda aggiornata per tutti i ruoli',
+      'Comunicazioni automatiche',
+      'Situazione pagamenti sempre allineata',
+    ],
+  },
+];
+
+const capabilities = [
+  {
+    title: 'Agenda condivisa',
+    description: 'Vista chiara per segreteria, istruttori e titolare su ogni slot della giornata.',
+    icon: CalendarDays,
+  },
+  {
+    title: 'Recovery slot automatico',
+    description: 'Quando un appuntamento salta, Reglo avvia il recupero senza dipendere da chiamate manuali.',
+    icon: Repeat2,
+  },
+  {
+    title: 'Notifiche operative',
+    description: 'Promemoria, cambi stato e aggiornamenti prioritari inviati al ruolo giusto.',
+    icon: BellRing,
+  },
+  {
+    title: 'Controllo pagamenti',
+    description: 'Residui, incassi e stato documentale in una timeline unica.',
+    icon: CreditCard,
+  },
+  {
+    title: 'Tracciabilita completa',
+    description: 'Ogni modifica resta storicizzata per controllo interno e decisioni rapide.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Azione in pochi tap',
+    description: 'Esperienze mobile pensate per operativita reale, non per demo statiche.',
+    icon: CheckCircle2,
+  },
+];
 
 export default function PlatformPage() {
-  const baseNodeStyle = {
-    borderRadius: 16,
-    border: '1px solid var(--color-border)',
-    color: 'var(--color-ink)',
-    fontSize: 12,
-    fontWeight: 600,
-    padding: 12,
-    width: 220,
-    textAlign: 'left' as const,
-    whiteSpace: 'pre-line' as const,
-  };
-
-  const initialNodes = useMemo(
-    () => [
-      {
-        id: 'trigger',
-        data: { label: 'Trigger\nRichiesta guida allievo' },
-        position: { x: 0, y: 130 },
-        style: {
-          ...baseNodeStyle,
-          background: 'rgba(169, 217, 209, 0.6)',
-          boxShadow: '0 16px 28px rgba(50, 78, 122, 0.16)',
-        },
-      },
-      {
-        id: 'step-1',
-        data: { label: 'Verifica disponibilita\nSlot da 30 minuti' },
-        position: { x: 260, y: 40 },
-        style: {
-          ...baseNodeStyle,
-          background: 'rgba(50, 78, 122, 0.12)',
-          boxShadow: '0 16px 28px rgba(50, 78, 122, 0.16)',
-        },
-      },
-      {
-        id: 'step-2',
-        data: { label: 'Matching risorse\nIstruttore + veicolo' },
-        position: { x: 540, y: 200 },
-        style: {
-          ...baseNodeStyle,
-          background: 'rgba(169, 217, 209, 0.45)',
-          boxShadow: '0 16px 28px rgba(50, 78, 122, 0.16)',
-        },
-      },
-      {
-        id: 'step-3',
-        data: { label: 'Conferma proposta\nNotifica push allievo' },
-        position: { x: 820, y: 60 },
-        style: {
-          ...baseNodeStyle,
-          background: 'rgba(50, 78, 122, 0.18)',
-          boxShadow: '0 16px 28px rgba(50, 78, 122, 0.16)',
-        },
-      },
-      {
-        id: 'step-4',
-        data: { label: 'Aggiornamento agenda\nStato guida sincronizzato' },
-        position: { x: 1100, y: 220 },
-        style: {
-          ...baseNodeStyle,
-          background: 'rgba(169, 217, 209, 0.5)',
-          boxShadow: '0 16px 28px rgba(50, 78, 122, 0.16)',
-        },
-      },
-      {
-        id: 'step-5',
-        data: { label: 'Gestione eccezioni\nNo-show, annulli, override' },
-        position: { x: 1380, y: 80 },
-        style: {
-          ...baseNodeStyle,
-          background: 'rgba(50, 78, 122, 0.12)',
-          boxShadow: '0 16px 28px rgba(50, 78, 122, 0.16)',
-        },
-      },
-      {
-        id: 'output',
-        data: { label: 'Output\nStorico e pagamenti allineati' },
-        position: { x: 1660, y: 190 },
-        style: {
-          ...baseNodeStyle,
-          background: 'rgba(169, 217, 209, 0.7)',
-          boxShadow: '0 16px 28px rgba(50, 78, 122, 0.16)',
-        },
-      },
-    ],
-    [baseNodeStyle]
-  );
-
-  const initialEdges = useMemo(
-    () => [
-      {
-        id: 'e1',
-        source: 'trigger',
-        target: 'step-1',
-        type: 'bezier',
-        animated: true,
-        style: { stroke: 'rgba(50, 78, 122, 0.55)', strokeWidth: 2 },
-      },
-      {
-        id: 'e2',
-        source: 'step-1',
-        target: 'step-2',
-        type: 'bezier',
-        animated: true,
-        style: { stroke: 'rgba(50, 78, 122, 0.45)', strokeWidth: 2 },
-      },
-      {
-        id: 'e3',
-        source: 'step-2',
-        target: 'step-3',
-        type: 'bezier',
-        animated: true,
-        style: { stroke: 'rgba(50, 78, 122, 0.55)', strokeWidth: 2 },
-      },
-      {
-        id: 'e4',
-        source: 'step-3',
-        target: 'step-4',
-        type: 'bezier',
-        animated: true,
-        style: { stroke: 'rgba(50, 78, 122, 0.45)', strokeWidth: 2 },
-      },
-      {
-        id: 'e5',
-        source: 'step-4',
-        target: 'step-5',
-        type: 'bezier',
-        animated: true,
-        style: { stroke: 'rgba(50, 78, 122, 0.55)', strokeWidth: 2 },
-      },
-      {
-        id: 'e6',
-        source: 'step-5',
-        target: 'output',
-        type: 'bezier',
-        animated: true,
-        style: { stroke: 'rgba(50, 78, 122, 0.45)', strokeWidth: 2 },
-      },
-    ],
-    []
-  );
-
-  const [nodes, , onNodesChange] = useNodesState(initialNodes);
-  const [edges, , onEdgesChange] = useEdgesState(initialEdges);
-
   return (
-    <div className="min-h-screen">
-      <div className="max-w-[1536px] mx-auto px-6 py-12">
-        <div className="text-center mb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
-            Flusso operativo
-          </p>
-          <h1 className="text-3xl sm:text-4xl font-semibold mt-3 mb-3 text-[color:var(--color-ink)]">
-            Come Reglo coordina una guida
-          </h1>
-          <p className="text-base text-[color:var(--color-ink-muted)]">
-            Dalla richiesta dell'allievo alla guida completata, con stato sempre aggiornato.
-          </p>
-        </div>
+    <div className="pb-16">
+      <section className="px-6 pb-14 pt-8 sm:pt-10">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+              Piattaforma Reglo
+            </p>
+            <h1 className="mt-3 text-4xl font-semibold text-[color:var(--color-ink)] sm:text-5xl">
+              Architettura pensata per tenere l agenda sempre piena.
+            </h1>
+            <p className="mx-auto mt-4 max-w-3xl text-base text-[color:var(--color-ink-muted)] sm:text-lg">
+              Reglo collega input operativi, engine di pianificazione e output immediato in un unico sistema.
+            </p>
+          </div>
 
-        <div className="grid lg:grid-cols-[1.35fr_0.65fr] gap-6">
-          <div className="glass-panel rounded-3xl p-3 sm:p-4">
-            <div className="h-[420px] rounded-2xl overflow-hidden bg-white">
-              <ReactFlow
-                nodes={nodes}
-                edges={edges}
-                onNodesChange={onNodesChange}
-                onEdgesChange={onEdgesChange}
-                fitView
-                fitViewOptions={{ padding: 0.22 }}
-                nodesDraggable
-                nodesConnectable={false}
-                zoomOnScroll={false}
-                panOnScroll
-                preventScrolling={false}
-              >
-                <Background color="rgba(50, 78, 122, 0.12)" gap={24} />
-                <MiniMap zoomable pannable nodeColor="rgba(50, 78, 122, 0.35)" />
-              </ReactFlow>
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {architecture.map((block) => (
+              <article key={block.title} className="glass-panel rounded-3xl p-6">
+                <h2 className="text-lg font-semibold text-[color:var(--color-ink)]">{block.title}</h2>
+                <ul className="mt-4 space-y-2">
+                  {block.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2 text-sm text-[color:var(--color-ink-muted)]">
+                      <span className="mt-1 h-2 w-2 rounded-full bg-[color:var(--color-accent)]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-14">
+        <div className="mx-auto grid max-w-[1440px] gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="glass-panel rounded-3xl p-6 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+              Esperienza mobile
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold text-[color:var(--color-ink)] sm:text-3xl">
+              Mockup placeholder pronti per inserire i tuoi screenshot reali.
+            </h3>
+            <p className="mt-2 text-sm text-[color:var(--color-ink-muted)]">
+              Abbiamo eliminato i visual legacy e messo frame iPhone neutri per mostrare chiaramente l app protagonista.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="glass-card rounded-2xl p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">Allievo</p>
+                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Richieste guida, conferme, promemoria.</p>
+              </div>
+              <div className="glass-card rounded-2xl p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">Istruttore</p>
+                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Check-in/no-show e agenda giornaliera.</p>
+              </div>
             </div>
           </div>
 
-          <div className="glass-panel rounded-3xl px-6 py-6 sm:px-8 sm:py-8">
-            <div className="flex flex-col gap-5">
-              <div>
-                <h3 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
-                  Risultato
-                </h3>
-                <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)] mt-2">
-                  Prenotazione, agenda e notifiche allineate in un unico passaggio.
-                </p>
-              </div>
-
-              <div className="h-px w-full bg-[color:var(--color-border)] opacity-40" />
-
-              <div>
-                <div className="flex flex-wrap items-end gap-3">
-                  <span className="text-4xl sm:text-5xl font-semibold text-[color:var(--color-ink)]">6 call</span>
-                  <span className="text-2xl sm:text-3xl text-[color:var(--color-ink-muted)]">&rarr;</span>
-                  <span className="text-4xl sm:text-5xl font-semibold text-[color:var(--color-ink)]">0</span>
-                </div>
-                <p className="text-sm text-[color:var(--color-ink-muted)] mt-2">Contatti manuali per riempire uno slot</p>
-              </div>
-
-              <div className="h-px w-full bg-[color:var(--color-border)] opacity-40" />
-
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-ink)]">
-                    <CheckCircle className="h-4 w-4" />
-                  </span>
-                  <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
-                    <span className="font-semibold">1</span> agenda condivisa per tutti i ruoli
-                  </p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-ink)]">
-                    <ShieldCheck className="h-4 w-4" />
-                  </span>
-                  <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
-                    <span className="font-semibold">Storico tracciato</span> su guide e pagamenti
-                  </p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-ink)]">
-                    <UserCheck className="h-4 w-4" />
-                  </span>
-                  <p className="text-sm sm:text-base text-[color:var(--color-ink)]">
-                    <span className="font-semibold">Zero passaggi ciechi</span> tra segreteria e istruttore
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-xs sm:text-sm text-[color:var(--color-ink-muted)]">
-                Valori indicativi su una settimana operativa di autoscuola.
-              </p>
-            </div>
+          <div className="flex items-center justify-center gap-4 sm:gap-6">
+            <IphoneMockup label="Agenda ruolo istruttore" variant="agenda" />
+            <IphoneMockup label="Pagamenti allievo" variant="payments" className="-translate-y-5 hidden sm:block" />
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="px-6 py-14">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+              Funzioni chiave
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {capabilities.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.title} className="glass-card rounded-3xl p-6">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[color:var(--color-accent)]">
+                    <Icon className="h-5 w-5 text-[color:var(--color-ink)]" />
+                  </div>
+                  <h4 className="mt-4 text-base font-semibold text-[color:var(--color-ink)]">{item.title}</h4>
+                  <p className="mt-2 text-sm text-[color:var(--color-ink-muted)]">{item.description}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

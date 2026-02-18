@@ -1,124 +1,85 @@
-import { CalendarClock, CarFront, CreditCard, ShieldCheck, TimerReset, Users } from 'lucide-react';
+import { CheckCircle2, Compass, Layers3, Zap } from 'lucide-react';
+import IphoneMockup from '../components/IphoneMockup';
+
+const principles = [
+  {
+    title: 'Operativo prima di tutto',
+    description: 'Ogni funzione nasce da problemi reali di segreteria, non da feature decorative.',
+    icon: Compass,
+  },
+  {
+    title: 'Un solo flusso condiviso',
+    description: 'Agenda, disponibilita, pagamenti e comunicazioni in un unico sistema coerente.',
+    icon: Layers3,
+  },
+  {
+    title: 'Velocita di esecuzione',
+    description: 'Meno passaggi manuali, piu decisioni immediate con dati sempre aggiornati.',
+    icon: Zap,
+  },
+];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      <div className="max-w-[1536px] mx-auto px-6 py-16 space-y-14">
-        <div className="text-center max-w-3xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
-            Piattaforma
-          </p>
-          <h1 className="text-3xl sm:text-4xl font-semibold mt-3 text-[color:var(--color-ink)]">
-            Reglo Autoscuole
-          </h1>
-          <p className="text-base text-[color:var(--color-ink-muted)] mt-4">
-            Una piattaforma cloud pensata per coordinare agenda, disponibilita e pagamenti
-            tra allievi, istruttori e titolare.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
-          <div className="glass-panel rounded-3xl p-6 relative">
-            <img
-              src="/agenda_screen.png"
-              alt="Anteprima agenda e stato guide"
-              className="w-full rounded-3xl object-cover object-left-top shadow-soft"
-            />
-            <div className="absolute -bottom-4 left-6 hidden sm:inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)] shadow-soft">
-              Agenda operativa
-            </div>
-          </div>
-
+    <div className="pb-16">
+      <section className="px-6 pb-12 pt-8 sm:pt-10">
+        <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
-            <div className="glass-card rounded-2xl p-5">
-              <div className="w-10 h-10 rounded-2xl flex items-center justify-center mb-4 bg-[color:var(--color-ink)]">
-                <CalendarClock className="w-5 h-5 text-white" />
-              </div>
-              <h2 className="text-base font-semibold mb-2 text-[color:var(--color-ink)]">Agenda centralizzata</h2>
-              <p className="text-sm text-[color:var(--color-ink-muted)]">
-                Pianificazione guide, disponibilita istruttori e stato lezioni in tempo reale.
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+              Chi siamo
+            </p>
+            <h1 className="text-4xl font-semibold leading-[1.04] text-[color:var(--color-ink)] sm:text-5xl">
+              Costruiamo Reglo per far lavorare meglio le autoscuole, ogni giorno.
+            </h1>
+            <p className="max-w-2xl text-base text-[color:var(--color-ink-muted)] sm:text-lg">
+              Non vogliamo aggiungere complessita. Vogliamo togliere attrito operativo: slot persi,
+              chiamate manuali, informazioni sparse e decisioni prese al buio.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
               <div className="glass-card rounded-2xl p-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[color:var(--color-ink)]">
-                    <Users className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[color:var(--color-ink)]">Ruoli separati</div>
-                    <div className="text-xs text-[color:var(--color-ink-muted)]">Flussi dedicati per allievi, istruttori e titolare</div>
-                  </div>
-                </div>
+                <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">Missione</p>
+                <p className="mt-2 text-sm text-[color:var(--color-ink-muted)]">Zero slot vuoti, zero caos interno.</p>
               </div>
-
               <div className="glass-card rounded-2xl p-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[color:var(--color-accent)]">
-                    <CarFront className="w-4 h-4 text-[color:var(--color-ink)]" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[color:var(--color-ink)]">Veicoli gestiti</div>
-                    <div className="text-xs text-[color:var(--color-ink-muted)]">Disponibilita e override rapidi in un pannello unico</div>
-                  </div>
-                </div>
+                <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">Approccio</p>
+                <p className="mt-2 text-sm text-[color:var(--color-ink-muted)]">Progettazione con feedback operativo reale.</p>
               </div>
             </div>
+          </div>
+          <div className="flex items-center justify-center gap-4">
+            <IphoneMockup label="Visione prodotto" variant="agenda" />
+            <IphoneMockup label="Esperienza mobile" variant="requests" className="-translate-y-4 hidden sm:block" />
           </div>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center">
-          <div className="glass-panel rounded-3xl p-6 relative lg:order-2">
-            <img
-              src="/saas_screen.png"
-              alt="Anteprima pagamenti e storico"
-              className="w-full rounded-3xl object-cover object-left-top shadow-soft"
-            />
-            <div className="absolute -bottom-4 right-6 hidden sm:inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)] shadow-soft">
-              Pagamenti e storico
-            </div>
+      <section className="px-6 py-12">
+        <div className="mx-auto max-w-[1440px] glass-panel rounded-3xl p-6 sm:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
+            Principi di prodotto
+          </p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {principles.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.title} className="glass-card rounded-2xl p-5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[color:var(--color-accent)]">
+                    <Icon className="h-5 w-5 text-[color:var(--color-ink)]" />
+                  </div>
+                  <h2 className="mt-4 text-base font-semibold text-[color:var(--color-ink)]">{item.title}</h2>
+                  <p className="mt-2 text-sm text-[color:var(--color-ink-muted)]">{item.description}</p>
+                </article>
+              );
+            })}
           </div>
-
-          <div className="space-y-6 lg:order-1">
-            <div className="glass-card rounded-2xl p-5">
-              <div className="w-10 h-10 rounded-2xl flex items-center justify-center mb-4 bg-[color:var(--color-accent)]">
-                <CreditCard className="w-5 h-5 text-[color:var(--color-ink)]" />
-              </div>
-              <h2 className="text-base font-semibold mb-2 text-[color:var(--color-ink)]">Controllo economico</h2>
-              <p className="text-sm text-[color:var(--color-ink-muted)]">
-                Stato pagamenti, residui e transazioni collegati alle guide in un unico punto.
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="glass-card rounded-2xl p-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[color:var(--color-accent)]">
-                    <TimerReset className="w-4 h-4 text-[color:var(--color-ink)]" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[color:var(--color-ink)]">Slot recovery</div>
-                    <div className="text-xs text-[color:var(--color-ink-muted)]">Gestione rapida delle cancellazioni per ridurre i buchi</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="glass-card rounded-2xl p-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[color:var(--color-accent)]">
-                    <ShieldCheck className="w-4 h-4 text-[color:var(--color-ink)]" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[color:var(--color-ink)]">Storico affidabile</div>
-                    <div className="text-xs text-[color:var(--color-ink-muted)]">Eventi tracciati per lezioni, presenze e addebiti</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="mt-6 rounded-2xl border border-[color:var(--color-border)] bg-white/70 p-4">
+            <p className="flex items-start gap-2 text-sm text-[color:var(--color-ink-muted)]">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 text-[color:var(--color-ink)]" />
+              Reglo e progettato per supportare sia la piattaforma web che la mobile app role-based.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

@@ -10,8 +10,8 @@ export default function Navigation() {
 
   const links = [
     { path: '/', label: 'Home' },
-    { path: '/about', label: "Reglo Autoscuole" },
     { path: '/piattaforma', label: 'Piattaforma' },
+    { path: '/allievi', label: 'Promo allievi' },
   ];
 
   return (
