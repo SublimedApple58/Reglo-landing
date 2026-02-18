@@ -1,5 +1,6 @@
-import { ArrowRight, CalendarClock, CheckCircle2, MessageSquare, Smartphone, Sparkles } from 'lucide-react';
+import { ArrowRight, Calculator, CalendarClock, CheckCircle2, MessageSquare, Smartphone, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import CalculatorTeaser from '../components/CalculatorTeaser';
 import IphoneMockup from '../components/IphoneMockup';
 import FinalCTA from '../components/FinalCTA';
 
@@ -32,6 +33,13 @@ const pillars = [
 ];
 
 export default function HomePage() {
+  const trackCalculatorCTA = () => {
+    const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', 'CalculatorCTA_Click', { source: 'home_hero' });
+    }
+  };
+
   return (
     <div className="pb-16">
       <section className="relative overflow-hidden px-6 pb-16 pt-8 sm:pt-10">
@@ -61,6 +69,14 @@ export default function HomePage() {
               >
                 Promo allievi
                 <Smartphone className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/calcolatore"
+                onClick={trackCalculatorCTA}
+                className="interactive-lift inline-flex items-center gap-2 rounded-full bg-[color:var(--color-accent)] px-6 py-3 text-sm font-semibold text-[color:var(--color-ink)] sm:text-base"
+              >
+                Calcola soldi persi
+                <Calculator className="h-4 w-4" />
               </Link>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -109,6 +125,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <CalculatorTeaser />
 
       <section className="px-6 py-16">
         <div className="mx-auto grid max-w-[1440px] gap-6 lg:grid-cols-[1.15fr_0.85fr]">

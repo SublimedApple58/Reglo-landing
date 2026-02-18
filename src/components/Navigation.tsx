@@ -7,10 +7,17 @@ export default function Navigation() {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
+  const trackCalculatorCTA = () => {
+    const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', 'CalculatorCTA_Click', { source: 'navbar' });
+    }
+  };
 
   const links = [
     { path: '/', label: 'Home' },
     { path: '/piattaforma', label: 'Piattaforma' },
+    { path: '/calcolatore', label: 'Calcolatore' },
     { path: '/allievi', label: 'Promo allievi' },
   ];
 
@@ -27,6 +34,7 @@ export default function Navigation() {
               <Link
                 key={path}
                 to={path}
+                onClick={path === '/calcolatore' ? trackCalculatorCTA : undefined}
                 className={`text-sm font-semibold tracking-wide transition-colors ${
                   isActive(path)
                     ? 'text-[color:var(--color-ink)]'
@@ -58,7 +66,12 @@ export default function Navigation() {
               <Link
                 key={path}
                 to={path}
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  if (path === '/calcolatore') {
+                    trackCalculatorCTA();
+                  }
+                  setIsOpen(false);
+                }}
                 className={`block py-2 font-medium transition-colors ${
                   isActive(path)
                     ? 'text-[color:var(--color-ink)]'

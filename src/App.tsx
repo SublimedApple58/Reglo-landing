@@ -8,6 +8,7 @@ import DemoPage from './pages/DemoPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import PolicyPage from './pages/PolicyPage';
 import AllieviPage from './pages/AllieviPage';
+import CalculatorPage from './pages/CalculatorPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/demo" element={<DemoPage />} />
         <Route path="/allievi" element={<AllieviPage />} />
+        <Route path="/calcolatore" element={<CalculatorPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/policy" element={<PolicyPage />} />
       </Routes>
