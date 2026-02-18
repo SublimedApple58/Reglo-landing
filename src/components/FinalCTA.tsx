@@ -82,28 +82,28 @@ export default function FinalCTA() {
   ];
 
   return (
-    <section id="demo-form" className="py-16">
+    <section id="demo-form" className="py-14 sm:py-16">
       {toast ? (
-        <div className="fixed right-6 top-6 z-50">
+        <div className="fixed right-4 top-4 z-50 sm:right-6 sm:top-6">
           <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
         </div>
       ) : null}
-      <div className="max-w-[1440px] mx-auto px-6">
-        <div className="glass-panel rounded-3xl px-8 py-10 sm:px-10 sm:py-10 grid lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start">
-          <div className="space-y-5">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
+        <div className="glass-panel grid items-start gap-6 rounded-3xl p-4 sm:gap-7 sm:p-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8 lg:p-8">
+          <div className="order-2 space-y-4 lg:order-1 lg:space-y-5">
             <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
               Iniziamo
             </p>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
+            <h2 className="text-xl font-semibold text-[color:var(--color-ink)] sm:text-3xl">
               Vuoi rendere la tua autoscuola piu ordinata e prevedibile?
             </h2>
-            <p className="text-base text-[color:var(--color-ink-muted)]">
+            <p className="text-[15px] text-[color:var(--color-ink-muted)] sm:text-base">
               Facciamo una demo pratica sulle tue priorita: agenda, saturazione slot, pagamenti e storico.
             </p>
-            <div className="space-y-3">
+            <div className="space-y-2.5 sm:space-y-3">
               {highlights.map((item) => (
-                <div key={item} className="glass-card rounded-2xl px-4 py-3 flex items-start gap-3">
-                  <div className="h-7 w-7 rounded-full bg-[color:var(--color-accent)] flex items-center justify-center">
+                <div key={item} className="glass-card flex items-start gap-3 rounded-2xl px-3.5 py-2.5 sm:px-4 sm:py-3">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[color:var(--color-accent)] sm:h-7 sm:w-7">
                     <Check className="h-4 w-4 text-[color:var(--color-ink)]" />
                   </div>
                   <div className="text-sm text-[color:var(--color-ink-muted)]">{item}</div>
@@ -112,7 +112,7 @@ export default function FinalCTA() {
             </div>
           </div>
 
-          <div className="glass-card rounded-3xl p-6">
+          <div className="order-1 glass-card rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:order-2">
             {submitted ? (
               <div className="text-center py-10">
                 <div className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center" style={{ backgroundColor: 'var(--color-ink)' }}>
@@ -122,10 +122,10 @@ export default function FinalCTA() {
                 <p className="text-sm text-[color:var(--color-ink-muted)]">Ti ricontatteremo entro 24 ore per fissare la demo.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="nome" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="nome" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Nome e Cognome *
                     </label>
                     <input
@@ -138,12 +138,12 @@ export default function FinalCTA() {
                       enterKeyHint="next"
                       value={formData.nome}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                       placeholder="Mario Rossi"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Email *
                     </label>
                     <input
@@ -157,7 +157,7 @@ export default function FinalCTA() {
                       enterKeyHint="next"
                       value={formData.email}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                       placeholder="mario.rossi@autoscuola.it"
                     />
                   </div>
@@ -165,7 +165,7 @@ export default function FinalCTA() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="azienda" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="azienda" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Nome autoscuola *
                     </label>
                     <input
@@ -178,12 +178,12 @@ export default function FinalCTA() {
                       enterKeyHint="next"
                       value={formData.azienda}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                       placeholder="Autoscuola Alfa"
                     />
                   </div>
                   <div>
-                    <label htmlFor="telefono" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="telefono" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Numero di telefono *
                     </label>
                     <input
@@ -196,7 +196,7 @@ export default function FinalCTA() {
                       enterKeyHint="next"
                       value={formData.telefono}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                       placeholder="+39 333 123 4567"
                     />
                   </div>
@@ -204,7 +204,7 @@ export default function FinalCTA() {
 
                 <div className="grid gap-4 sm:grid-cols-3">
                   <div>
-                    <label htmlFor="ruolo" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="ruolo" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Ruolo *
                     </label>
                     <select
@@ -213,7 +213,7 @@ export default function FinalCTA() {
                       required
                       value={formData.ruolo}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                     >
                       <option value="titolare">Titolare</option>
                       <option value="segreteria">Segreteria</option>
@@ -221,7 +221,7 @@ export default function FinalCTA() {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="numeroAllievi" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="numeroAllievi" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Numero allievi *
                     </label>
                     <input
@@ -234,12 +234,12 @@ export default function FinalCTA() {
                       enterKeyHint="next"
                       value={formData.numeroAllievi}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                       placeholder="Es. 120"
                     />
                   </div>
                   <div>
-                    <label htmlFor="citta" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="citta" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Citta *
                     </label>
                     <input
@@ -252,14 +252,14 @@ export default function FinalCTA() {
                       enterKeyHint="next"
                       value={formData.citta}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                       placeholder="Es. Milano"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="gestionale" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                  <label htmlFor="gestionale" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                     Gestionale attuale (opzionale)
                   </label>
                   <input
@@ -270,13 +270,13 @@ export default function FinalCTA() {
                     enterKeyHint="next"
                     value={formData.gestionale}
                     onChange={handleChange}
-                    className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                    className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                     placeholder="Es. gestionale interno, fogli Excel, altro"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="processo" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                  <label htmlFor="processo" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                     Priorita operativa (opzionale)
                   </label>
                   <textarea
@@ -285,7 +285,7 @@ export default function FinalCTA() {
                     value={formData.processo}
                     onChange={handleChange}
                     rows={3}
-                    className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none resize-none"
+                    className="glass-input w-full resize-none rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                     placeholder="Es. ridurre slot vuoti, semplificare agenda istruttori, controllo pagamenti"
                   />
                 </div>
@@ -293,7 +293,7 @@ export default function FinalCTA() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="interactive-lift w-full py-3 rounded-full text-[color:var(--color-ink)] font-semibold text-sm flex items-center justify-center gap-2 shadow-soft disabled:opacity-70 disabled:cursor-not-allowed bg-[color:var(--color-accent)]"
+                  className="interactive-lift flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--color-accent)] py-2.5 text-sm font-semibold text-[color:var(--color-ink)] shadow-soft disabled:cursor-not-allowed disabled:opacity-70 sm:py-3"
                 >
                   {isSubmitting ? 'Invio in corso...' : 'Prenota demo gratuita'}
                   <Send className="w-4 h-4" />
@@ -307,7 +307,7 @@ export default function FinalCTA() {
           </div>
         </div>
 
-        <footer className="mt-10 sm:mt-12 text-center space-y-3">
+        <footer className="mt-10 space-y-3 text-center sm:mt-12">
           <div className="flex items-center justify-center gap-2">
             <div className="text-xl sm:text-2xl font-semibold text-[color:var(--color-ink)]">Reglo</div>
           </div>

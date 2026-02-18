@@ -21,6 +21,7 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--color-ink);
   background: linear-gradient(180deg, rgba(169, 217, 209, 0.18), rgba(248, 250, 252, 0.96));
+  overflow-x: hidden;
 }
 
 .bg-grid {
@@ -118,6 +119,19 @@ body {
     linear-gradient(120deg, rgba(169, 217, 209, 0.16), rgba(50, 78, 122, 0.04));
   min-height: 390px;
   padding: 22px 14px 14px;
+}
+
+@media (max-width: 640px) {
+  .iphone-shell {
+    width: min(100%, 235px);
+    border-radius: 30px;
+    padding: 8px 8px 12px;
+  }
+
+  .iphone-screen {
+    min-height: 340px;
+    padding: 20px 12px 12px;
+  }
 }
 
 .calculator-shell {
