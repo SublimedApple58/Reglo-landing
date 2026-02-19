@@ -70,8 +70,8 @@ export default function CalculatorPage() {
           <div className="calculator-grid">
             <div className="calculator-left p-6 sm:p-8">
               <div className="flex h-full flex-col">
-                <div className="grid gap-4">
-                  <div className="rounded-2xl border border-[color:var(--color-border)] bg-white/85 p-4 sm:p-5">
+                <div className="grid gap-5">
+                  <div>
                     <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
                       COSTO GUIDA
                     </label>
@@ -90,7 +90,7 @@ export default function CalculatorPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-[color:var(--color-border)] bg-white/85 p-4 sm:p-5">
+                  <div>
                     <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
                       SLOT LIBERI SETTIMANALI
                     </label>
@@ -119,7 +119,7 @@ export default function CalculatorPage() {
                 <button
                   type="button"
                   onClick={handleCalculate}
-                  className="interactive-lift mt-auto w-full rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
+                  className="interactive-lift mt-6 w-full rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
                 >
                   Calcola
                 </button>
