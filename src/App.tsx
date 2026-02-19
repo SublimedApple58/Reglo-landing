@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
+import ScrollToTop from './components/ScrollToTop';
+import RouteRecovery from './components/RouteRecovery';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import PlatformPage from './pages/PlatformPage';
@@ -13,6 +15,8 @@ import CalculatorPage from './pages/CalculatorPage';
 function App() {
   return (
     <Router>
+      <RouteRecovery />
+      <ScrollToTop />
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
