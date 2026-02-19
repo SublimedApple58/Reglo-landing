@@ -103,19 +103,19 @@ export default function PlatformPage() {
               Esperienza mobile
             </p>
             <h3 className="mt-3 text-2xl font-semibold text-[color:var(--color-ink)] sm:text-3xl">
-              Mockup placeholder pronti per inserire i tuoi screenshot reali.
+              Schermate reali dell'app Reglo nel lavoro quotidiano.
             </h3>
             <p className="mt-2 text-sm text-[color:var(--color-ink-muted)]">
-              Abbiamo eliminato i visual legacy e messo frame iPhone neutri per mostrare chiaramente l app protagonista.
+              Dalla home istruttore alla gestione veicoli: operazioni, stati guida e disponibilita restano sempre aggiornati.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <div className="glass-card rounded-2xl p-4">
                 <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">Allievo</p>
-                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Richieste guida, conferme, promemoria.</p>
+                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Prenota guide, conferma slot e riceve promemoria automatici prima della guida.</p>
               </div>
               <div className="glass-card rounded-2xl p-4">
                 <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">Istruttore</p>
-                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Check-in/no-show e agenda giornaliera.</p>
+                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Gestisce disponibilita, veicoli e stato guida senza passaggi manuali.</p>
               </div>
             </div>
           </div>
@@ -128,10 +128,10 @@ export default function PlatformPage() {
               screenImageAlt="Home istruttore"
             />
             <IphoneMockup
-              label="Pagamenti allievo"
-              variant="payments"
+              label="Gestione veicoli istruttore"
+              variant="requests"
               screenImageSrc="/gestisci-veicoli.jpeg"
-              screenImageAlt="Gestione veicoli"
+              screenImageAlt="Gestione veicoli istruttore"
               className="-translate-y-5 hidden sm:block"
             />
           </div>
