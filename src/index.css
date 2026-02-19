@@ -251,11 +251,26 @@ body {
 @keyframes menuDropIn {
   from {
     opacity: 0;
-    transform: translateY(-14px) scale(0.98);
+    transform: translateY(-22px) scale(0.98);
+    filter: blur(2px);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes menuRiseOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.98);
+    filter: blur(2px);
   }
 }
 
@@ -320,7 +335,16 @@ body {
 
 .mobile-menu-dropdown {
   transform-origin: top center;
-  animation: menuDropIn 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, filter;
+}
+
+.mobile-menu-dropdown.is-opening {
+  animation: menuDropIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mobile-menu-dropdown.is-closing {
+  animation: menuRiseOut 0.24s cubic-bezier(0.4, 0, 1, 1) forwards;
+  pointer-events: none;
 }
 
 .animation-delay-100 { animation-delay: 0.1s; }
