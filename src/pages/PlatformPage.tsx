@@ -3,27 +3,27 @@ import IphoneMockup from '../components/IphoneMockup';
 
 const architecture = [
   {
-    title: 'Input operativo',
+    title: 'Segnali dal campo',
     points: [
       'Disponibilita di allievi, istruttori e veicoli',
-      'Richieste guida da app mobile',
-      'Annulli e no-show in tempo reale',
+      "Richieste guida e modifiche dall'app mobile",
+      'Disdette e no-show rilevati in tempo reale',
     ],
   },
   {
-    title: 'Motore Reglo',
+    title: 'Decisione automatica',
     points: [
-      'Matching slot con regole autoscuola',
-      'Priorita e riassegnazioni automatiche',
-      'Storico completo di eventi e stati',
+      "Assegna gli slot in base alle regole dell'autoscuola",
+      'Attiva recuperi rapidi quando si libera un posto',
+      'Traccia ogni stato per avere controllo completo',
     ],
   },
   {
-    title: 'Output immediato',
+    title: 'Risultato operativo',
     points: [
-      'Agenda aggiornata per tutti i ruoli',
-      'Comunicazioni automatiche',
-      'Situazione pagamenti sempre allineata',
+      'Agenda unica e aggiornata per tutti i ruoli',
+      'Conferme e promemoria inviati in automatico',
+      'Pagamenti e stato guide sempre allineati',
     ],
   },
 ];
@@ -31,32 +31,32 @@ const architecture = [
 const capabilities = [
   {
     title: 'Agenda condivisa',
-    description: 'Vista chiara per segreteria, istruttori e titolare su ogni slot della giornata.',
+    description: "Segreteria, istruttori e titolare vedono la stessa agenda senza versioni diverse.",
     icon: CalendarDays,
   },
   {
     title: 'Recovery slot automatico',
-    description: 'Quando un appuntamento salta, Reglo avvia il recupero senza dipendere da chiamate manuali.',
+    description: 'Quando una guida salta, Reglo propone subito il miglior recupero disponibile.',
     icon: Repeat2,
   },
   {
     title: 'Notifiche operative',
-    description: 'Promemoria, cambi stato e aggiornamenti prioritari inviati al ruolo giusto.',
+    description: 'Promemoria, cambi stato e avvisi urgenti arrivano alla persona giusta al momento giusto.',
     icon: BellRing,
   },
   {
     title: 'Controllo pagamenti',
-    description: 'Residui, incassi e stato documentale in una timeline unica.',
+    description: 'Incassi, residui e storico movimenti in un unico flusso facile da leggere.',
     icon: CreditCard,
   },
   {
     title: 'Tracciabilita completa',
-    description: 'Ogni modifica resta storicizzata per controllo interno e decisioni rapide.',
+    description: 'Ogni modifica resta storicizzata per verifiche rapide e decisioni basate su dati reali.',
     icon: ShieldCheck,
   },
   {
     title: 'Azione in pochi tap',
-    description: 'Esperienze mobile pensate per operativita reale, non per demo statiche.',
+    description: "Operativita mobile pensata per la giornata vera dell'autoscuola, non per una demo.",
     icon: CheckCircle2,
   },
 ];
@@ -71,10 +71,10 @@ export default function PlatformPage() {
               Piattaforma Reglo
             </p>
             <h1 className="mt-3 text-4xl font-semibold text-[color:var(--color-ink)] sm:text-5xl">
-              Architettura pensata per tenere l agenda sempre piena.
+              La piattaforma che riempie gli slot e coordina tutta l autoscuola.
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-[color:var(--color-ink-muted)] sm:text-lg">
-              Reglo collega input operativi, engine di pianificazione e output immediato in un unico sistema.
+              Reglo collega agenda, disponibilita, comunicazioni e pagamenti in un unico flusso operativo.
             </p>
           </div>
 
@@ -103,19 +103,19 @@ export default function PlatformPage() {
               Esperienza mobile
             </p>
             <h3 className="mt-3 text-2xl font-semibold text-[color:var(--color-ink)] sm:text-3xl">
-              Schermate reali dell'app Reglo nel lavoro quotidiano.
+              L app che usano davvero segreteria, istruttori e allievi.
             </h3>
             <p className="mt-2 text-sm text-[color:var(--color-ink-muted)]">
-              Dalla home istruttore alla gestione veicoli: operazioni, stati guida e disponibilita restano sempre aggiornati.
+              Prenotazioni, disponibilita, check-in, no-show e gestione veicoli restano allineati in tempo reale.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <div className="glass-card rounded-2xl p-4">
                 <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">Allievo</p>
-                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Prenota guide, conferma slot e riceve promemoria automatici prima della guida.</p>
+                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Vede gli slot liberi, prenota in autonomia e riceve promemoria prima della guida.</p>
               </div>
               <div className="glass-card rounded-2xl p-4">
                 <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">Istruttore</p>
-                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Gestisce disponibilita, veicoli e stato guida senza passaggi manuali.</p>
+                <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">Aggiorna disponibilita, gestisce il veicolo e chiude la guida senza passaggi manuali.</p>
               </div>
             </div>
           </div>
