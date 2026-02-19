@@ -76,7 +76,7 @@ export default function IphoneMockup({
 }: IphoneMockupProps) {
   return (
     <div className={className}>
-      <div className="iphone-shell">
+      <div className={`iphone-shell ${screenImageSrc ? 'iphone-shell-image' : ''}`}>
         <div className="iphone-notch" />
         <div className={`iphone-screen ${screenImageSrc ? 'iphone-screen-image' : ''}`}>
           {screenImageSrc ? (

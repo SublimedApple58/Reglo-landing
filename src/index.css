@@ -99,6 +99,12 @@ body {
   padding: 10px 10px 14px;
 }
 
+.iphone-shell-image {
+  width: min(100%, 220px);
+  border-radius: 30px;
+  padding: 8px 8px 10px;
+}
+
 .iphone-notch {
   position: absolute;
   left: 50%;
@@ -109,6 +115,12 @@ body {
   border-radius: 0 0 14px 14px;
   background: rgba(22, 35, 56, 0.82);
   z-index: 2;
+}
+
+.iphone-shell-image .iphone-notch {
+  top: 6px;
+  width: 84px;
+  height: 16px;
 }
 
 .iphone-screen {
@@ -124,6 +136,8 @@ body {
 .iphone-screen-image {
   padding: 0;
   overflow: hidden;
+  min-height: 0;
+  aspect-ratio: 739 / 1600;
 }
 
 .iphone-screen-shot {
@@ -144,6 +158,17 @@ body {
   .iphone-screen {
     min-height: 340px;
     padding: 20px 12px 12px;
+  }
+
+  .iphone-shell-image {
+    width: min(100%, 205px);
+    padding: 7px 7px 9px;
+  }
+
+  .iphone-shell-image .iphone-notch {
+    top: 5px;
+    width: 78px;
+    height: 14px;
   }
 }
 
