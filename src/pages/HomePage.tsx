@@ -51,8 +51,7 @@ export default function HomePage() {
               Meno buchi in agenda. Piu guide prenotate.
             </h1>
             <p className="max-w-xl text-[15px] text-[color:var(--color-ink-muted)] sm:text-lg">
-              Reglo aiuta la tua autoscuola a riempire gli slot liberi e ridurre il caos operativo,
-              con un flusso semplice per segreteria, istruttori e allievi.
+              Riempie slot liberi, riduce chiamate e allinea segreteria, istruttori e allievi.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -125,7 +124,7 @@ export default function HomePage() {
               Perche funziona
             </p>
             <h2 className="mt-3 text-2xl font-semibold text-[color:var(--color-ink)] sm:text-4xl">
-              Ogni giornata diventa piu lineare e piu prevedibile.
+              Una giornata piu ordinata, da subito.
             </h2>
           </div>
           <div className="space-y-0 md:hidden">
