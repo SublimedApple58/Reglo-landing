@@ -121,6 +121,19 @@ body {
   padding: 22px 14px 14px;
 }
 
+.iphone-screen-image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.iphone-screen-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
 @media (max-width: 640px) {
   .iphone-shell {
     width: min(100%, 235px);

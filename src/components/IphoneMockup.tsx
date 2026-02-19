@@ -2,6 +2,8 @@ type IphoneMockupProps = {
   label: string;
   variant?: 'agenda' | 'payments' | 'requests';
   className?: string;
+  screenImageSrc?: string;
+  screenImageAlt?: string;
 };
 
 function PlaceholderContent({ variant }: { variant: IphoneMockupProps['variant'] }) {
@@ -65,19 +67,37 @@ function PlaceholderContent({ variant }: { variant: IphoneMockupProps['variant']
   );
 }
 
-export default function IphoneMockup({ label, variant = 'agenda', className }: IphoneMockupProps) {
+export default function IphoneMockup({
+  label,
+  variant = 'agenda',
+  className,
+  screenImageSrc,
+  screenImageAlt,
+}: IphoneMockupProps) {
   return (
     <div className={className}>
       <div className="iphone-shell">
         <div className="iphone-notch" />
-        <div className="iphone-screen">
-          <div className="mb-3 flex items-center justify-between">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-ink-muted)]">
-              {label}
-            </span>
-            <span className="h-2 w-2 rounded-full bg-[color:var(--color-accent)]" />
-          </div>
-          <PlaceholderContent variant={variant} />
+        <div className={`iphone-screen ${screenImageSrc ? 'iphone-screen-image' : ''}`}>
+          {screenImageSrc ? (
+            <img
+              src={screenImageSrc}
+              alt={screenImageAlt ?? label}
+              loading="lazy"
+              decoding="async"
+              className="iphone-screen-shot"
+            />
+          ) : (
+            <>
+              <div className="mb-3 flex items-center justify-between">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-ink-muted)]">
+                  {label}
+                </span>
+                <span className="h-2 w-2 rounded-full bg-[color:var(--color-accent)]" />
+              </div>
+              <PlaceholderContent variant={variant} />
+            </>
+          )}
         </div>
       </div>
     </div>
