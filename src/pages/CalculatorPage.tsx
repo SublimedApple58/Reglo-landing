@@ -7,7 +7,7 @@ import {
   type AutoscuolaCalculatorInput,
 } from '../lib/calculator';
 
-type NumericField = 'costoGuida' | 'costoIstruttore' | 'slotLiberiSettimanali';
+type NumericField = 'costoGuida' | 'slotLiberiSettimanali';
 
 function trackCustom(eventName: string, payload: Record<string, unknown>) {
   const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
@@ -48,7 +48,6 @@ export default function CalculatorPage() {
     trackCustom('Calculator_Compute', {
       period: formData.periodo,
       costoGuida: formData.costoGuida,
-      costoIstruttore: formData.costoIstruttore,
       slotLiberiSettimanali: formData.slotLiberiSettimanali,
       amount: Number(
         (formData.periodo === 'mensile' ? nextResult.mensile : nextResult.annuale).toFixed(2)
@@ -67,7 +66,7 @@ export default function CalculatorPage() {
           Calcolatore perdite autoscuola
         </h1>
         <p className="mt-2 text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-          Formula base: (costo guida - costo istruttore) x slot liberi settimanali x 4 settimane.
+          Formula base: costo guida x slot liberi settimanali x 4 settimane.
         </p>
 
         <div className="calculator-shell mt-8 overflow-hidden">
@@ -94,25 +93,6 @@ export default function CalculatorPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
-                    COSTO ISTRUTTORE
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl text-[color:var(--color-ink)]">
-                      €
-                    </span>
-                    <input
-                      type="number"
-                      min={0}
-                      step="0.01"
-                      value={formData.costoIstruttore}
-                      onChange={handleNumericChange('costoIstruttore')}
-                      className="w-full rounded-xl border border-[color:var(--color-border)] bg-white/90 py-3 pl-11 pr-3 text-sm text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ink)]/20"
-                    />
-                  </div>
-                </div>
-
-                <div className="sm:col-span-2">
                   <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
                     SLOT LIBERI SETTIMANALI
                   </label>
@@ -169,9 +149,6 @@ export default function CalculatorPage() {
                 <div className="mt-3 rounded-2xl border border-[color:var(--color-border)] bg-white/85 p-5">
                   <p className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
                     Soldi Persi: {formatEuro(primaryLoss)}
-                  </p>
-                  <p className="mt-3 text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-                    Margine per slot: {formatEuro(result.marginePerSlot)}
                   </p>
                 </div>
               </div>

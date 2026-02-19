@@ -2,7 +2,6 @@ export type PeriodMode = 'mensile' | 'annuale';
 
 export type AutoscuolaCalculatorInput = {
   costoGuida: number;
-  costoIstruttore: number;
   slotLiberiSettimanali: number;
   periodo: PeriodMode;
 };
@@ -12,12 +11,10 @@ export type AutoscuolaCalculatorResult = {
   annuale: number;
   cinqueAnni: number;
   conReglo: number;
-  marginePerSlot: number;
 };
 
 export const DEFAULT_CALCULATOR_INPUT: AutoscuolaCalculatorInput = {
   costoGuida: 50,
-  costoIstruttore: 20,
   slotLiberiSettimanali: 10,
   periodo: 'mensile',
 };
@@ -31,12 +28,10 @@ export function calculateAutoscuolaLoss(
   input: AutoscuolaCalculatorInput
 ): AutoscuolaCalculatorResult {
   const costoGuida = normalizeNumber(input.costoGuida);
-  const costoIstruttore = normalizeNumber(input.costoIstruttore);
   const slotLiberiSettimanali = normalizeNumber(input.slotLiberiSettimanali);
 
-  // Formula concordata: (costo guida - costo istruttore) x slot liberi x 4 settimane x 12 mesi.
-  const marginePerSlot = Math.max(0, costoGuida - costoIstruttore);
-  const perditaMensile = marginePerSlot * slotLiberiSettimanali * 4;
+  // Formula concordata: costo guida x slot liberi x 4 settimane.
+  const perditaMensile = costoGuida * slotLiberiSettimanali * 4;
   const perditaAnnuale = perditaMensile * 12;
 
   return {
@@ -44,7 +39,6 @@ export function calculateAutoscuolaLoss(
     annuale: perditaAnnuale,
     cinqueAnni: perditaAnnuale * 5,
     conReglo: 0,
-    marginePerSlot,
   };
 }
 
