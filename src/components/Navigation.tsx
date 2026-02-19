@@ -61,7 +61,7 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="md:hidden mt-4 glass-panel rounded-2xl p-4 space-y-2">
+          <div className="mobile-menu-dropdown md:hidden mt-4 glass-panel rounded-2xl p-4 space-y-2">
             {links.map(({ path, label }) => (
               <Link
                 key={path}
