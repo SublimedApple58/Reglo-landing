@@ -116,13 +116,15 @@ export default function CalculatorPage() {
                   </p>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={handleCalculate}
-                  className="interactive-lift mt-6 w-full rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
-                >
-                  Calcola
-                </button>
+                <div className="mt-auto pt-8">
+                  <button
+                    type="button"
+                    onClick={handleCalculate}
+                    className="interactive-lift w-full rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
+                  >
+                    Calcola
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -175,13 +177,15 @@ export default function CalculatorPage() {
                   </div>
                 </div>
 
-                <Link
-                  to="/demo"
-                  onClick={handleDemoCta}
-                  className="interactive-lift mt-8 inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
-                >
-                  Prenota una DEMO
-                </Link>
+                <div className="mt-auto pt-8">
+                  <Link
+                    to="/demo"
+                    onClick={handleDemoCta}
+                    className="interactive-lift inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
+                  >
+                    Prenota una DEMO
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
