@@ -50,14 +50,14 @@ export default function AboutPage() {
             <IphoneMockup
               label="Visione prodotto"
               variant="agenda"
-              screenImageSrc="/saas_screen.png"
-              screenImageAlt="Dashboard Reglo"
+              screenImageSrc="/gestisci-veicoli.jpeg"
+              screenImageAlt="Gestisci veicoli"
             />
             <IphoneMockup
               label="Esperienza mobile"
               variant="requests"
-              screenImageSrc="/workflow_screen.png"
-              screenImageAlt="Workflow Reglo"
+              screenImageSrc="/gestisci-guida-istruttore.jpeg"
+              screenImageAlt="Gestisci guida istruttore"
               className="-translate-y-4 hidden sm:block"
             />
           </div>

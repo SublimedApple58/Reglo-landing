@@ -53,22 +53,22 @@ export default function AllieviPage() {
               <IphoneMockup
                 label="Promo referral"
                 variant="requests"
-                screenImageSrc="/workflow_screen.png"
-                screenImageAlt="Workflow Reglo"
+                screenImageSrc="/home-allievo.jpeg"
+                screenImageAlt="Home allievo"
               />
             </div>
             <div className="hidden items-center gap-4 sm:flex">
               <IphoneMockup
                 label="Promo referral"
                 variant="requests"
-                screenImageSrc="/workflow_screen.png"
-                screenImageAlt="Workflow Reglo"
+                screenImageSrc="/prenota-guida.jpeg"
+                screenImageAlt="Prenota guida"
               />
               <IphoneMockup
                 label="Voucher digitale"
                 variant="payments"
-                screenImageSrc="/docmanager_screen.png"
-                screenImageAlt="Documento digitale Reglo"
+                screenImageSrc="/pagamenti-allievo.jpeg"
+                screenImageAlt="Pagamenti allievo"
                 className="-translate-y-5 hidden md:block"
               />
             </div>

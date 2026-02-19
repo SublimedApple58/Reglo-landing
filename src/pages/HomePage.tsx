@@ -97,30 +97,30 @@ export default function HomePage() {
               <IphoneMockup
                 label="Agenda live"
                 variant="agenda"
-                screenImageSrc="/agenda_screen.png"
-                screenImageAlt="Schermata agenda Reglo"
+                screenImageSrc="/home-allievo.jpeg"
+                screenImageAlt="Home allievo"
               />
             </div>
             <div className="hidden items-center justify-center gap-4 sm:flex lg:gap-6">
               <IphoneMockup
                 label="Agenda live"
                 variant="agenda"
-                screenImageSrc="/agenda_screen.png"
-                screenImageAlt="Schermata agenda Reglo"
+                screenImageSrc="/home-allievo.jpeg"
+                screenImageAlt="Home allievo"
                 className="w-full max-w-[236px] sm:max-w-[244px] lg:translate-y-6"
               />
               <IphoneMockup
                 label="Pagamenti"
                 variant="payments"
-                screenImageSrc="/saas_screen.png"
-                screenImageAlt="Dashboard Reglo"
+                screenImageSrc="/pagamenti-allievo.jpeg"
+                screenImageAlt="Pagamenti allievo"
                 className="w-full max-w-[236px] sm:max-w-[244px]"
               />
               <IphoneMockup
                 label="Richieste guida"
                 variant="requests"
-                screenImageSrc="/workflow_screen.png"
-                screenImageAlt="Workflow Reglo"
+                screenImageSrc="/prenota-guida.jpeg"
+                screenImageAlt="Prenota guida"
                 className="hidden w-full max-w-[244px] lg:block lg:-translate-y-4"
               />
             </div>
@@ -210,8 +210,8 @@ export default function HomePage() {
               <IphoneMockup
                 label="Preview app iOS/Android"
                 variant="agenda"
-                screenImageSrc="/docmanager_screen.png"
-                screenImageAlt="Documento in Reglo"
+                screenImageSrc="/home-istruttore.jpeg"
+                screenImageAlt="Home istruttore"
               />
             </div>
           </div>

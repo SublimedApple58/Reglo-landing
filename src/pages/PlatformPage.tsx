@@ -124,14 +124,14 @@ export default function PlatformPage() {
             <IphoneMockup
               label="Agenda ruolo istruttore"
               variant="agenda"
-              screenImageSrc="/agenda_screen.png"
-              screenImageAlt="Agenda Reglo"
+              screenImageSrc="/home-istruttore.jpeg"
+              screenImageAlt="Home istruttore"
             />
             <IphoneMockup
               label="Pagamenti allievo"
               variant="payments"
-              screenImageSrc="/saas_screen.png"
-              screenImageAlt="Dashboard Reglo"
+              screenImageSrc="/gestisci-veicoli.jpeg"
+              screenImageAlt="Gestione veicoli"
               className="-translate-y-5 hidden sm:block"
             />
           </div>
