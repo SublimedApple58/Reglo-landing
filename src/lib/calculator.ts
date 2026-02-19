@@ -1,13 +1,9 @@
 export type PeriodMode = 'mensile' | 'annuale';
-export type OperationalComplexity = 'bassa' | 'media' | 'alta';
 
 export type AutoscuolaCalculatorInput = {
-  prezzoMedioGuida: number;
-  costoIstruttoreOra: number;
-  costoSegreteriaOra: number;
-  slotPersiSettimanali: number;
-  oreGestioneManualeGiornaliere: number;
-  complessitaCalendario: OperationalComplexity;
+  costoGuida: number;
+  costoIstruttore: number;
+  slotLiberiSettimanali: number;
   periodo: PeriodMode;
 };
 
@@ -16,32 +12,14 @@ export type AutoscuolaCalculatorResult = {
   annuale: number;
   cinqueAnni: number;
   conReglo: number;
-  margineGuida: number;
-  fattoreComplessita: number;
-  perditaSlotMensile: number;
-  perditaGestioneMensile: number;
+  marginePerSlot: number;
 };
-
-export const COMPLEXITY_OPTIONS: Array<{ value: OperationalComplexity; label: string }> = [
-  { value: 'bassa', label: 'Bassa' },
-  { value: 'media', label: 'Media' },
-  { value: 'alta', label: 'Alta' },
-];
 
 export const DEFAULT_CALCULATOR_INPUT: AutoscuolaCalculatorInput = {
-  prezzoMedioGuida: 50,
-  costoIstruttoreOra: 20,
-  costoSegreteriaOra: 14,
-  slotPersiSettimanali: 10,
-  oreGestioneManualeGiornaliere: 2.5,
-  complessitaCalendario: 'media',
+  costoGuida: 50,
+  costoIstruttore: 20,
+  slotLiberiSettimanali: 10,
   periodo: 'mensile',
-};
-
-const COMPLEXITY_FACTORS: Record<OperationalComplexity, number> = {
-  bassa: 0.85,
-  media: 1,
-  alta: 1.2,
 };
 
 function normalizeNumber(value: number) {
@@ -52,37 +30,21 @@ function normalizeNumber(value: number) {
 export function calculateAutoscuolaLoss(
   input: AutoscuolaCalculatorInput
 ): AutoscuolaCalculatorResult {
-  const prezzoMedioGuida = normalizeNumber(input.prezzoMedioGuida);
-  const costoIstruttoreOra = normalizeNumber(input.costoIstruttoreOra);
-  const costoSegreteriaOra = normalizeNumber(input.costoSegreteriaOra);
-  const slotPersiSettimanali = normalizeNumber(input.slotPersiSettimanali);
-  const oreGestioneManualeGiornaliere = normalizeNumber(input.oreGestioneManualeGiornaliere);
-  const fattoreComplessita = COMPLEXITY_FACTORS[input.complessitaCalendario];
+  const costoGuida = normalizeNumber(input.costoGuida);
+  const costoIstruttore = normalizeNumber(input.costoIstruttore);
+  const slotLiberiSettimanali = normalizeNumber(input.slotLiberiSettimanali);
 
-  const margineGuida = Math.max(0, prezzoMedioGuida - costoIstruttoreOra);
-
-  const perditaSlotMensile = margineGuida * slotPersiSettimanali * 4.33;
-
-  const costoSegreteriaMensile = costoSegreteriaOra * oreGestioneManualeGiornaliere * 22;
-  const costoCoordIstruttoriMensile =
-    costoIstruttoreOra * (oreGestioneManualeGiornaliere * 0.45) * 22;
-
-  const perditaGestioneMensile =
-    (costoSegreteriaMensile + costoCoordIstruttoriMensile) * fattoreComplessita;
-
-  const perditaMensile = perditaSlotMensile + perditaGestioneMensile;
+  // Formula concordata: (costo guida - costo istruttore) x slot liberi x 4 settimane x 12 mesi.
+  const marginePerSlot = Math.max(0, costoGuida - costoIstruttore);
+  const perditaMensile = marginePerSlot * slotLiberiSettimanali * 4;
   const perditaAnnuale = perditaMensile * 12;
-  const perditaCinqueAnni = perditaAnnuale * 5;
 
   return {
     mensile: perditaMensile,
     annuale: perditaAnnuale,
-    cinqueAnni: perditaCinqueAnni,
+    cinqueAnni: perditaAnnuale * 5,
     conReglo: 0,
-    margineGuida,
-    fattoreComplessita,
-    perditaSlotMensile,
-    perditaGestioneMensile,
+    marginePerSlot,
   };
 }
 
