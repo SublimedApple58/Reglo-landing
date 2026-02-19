@@ -89,7 +89,7 @@ export default function ReferralPromo() {
         </div>
       ) : null}
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
-        <div className="rounded-3xl border border-white/70 bg-white/72 p-4 shadow-[0_14px_36px_rgba(50,78,122,0.16)] backdrop-blur-[16px] sm:p-8 lg:p-10">
+        <div className="sm:rounded-3xl sm:border sm:border-white/70 sm:bg-white/72 sm:p-8 sm:shadow-[0_14px_36px_rgba(50,78,122,0.16)] sm:backdrop-blur-[16px] lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
             <div className="space-y-4">
               <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
@@ -116,7 +116,7 @@ export default function ReferralPromo() {
               </p>
             </div>
 
-            <div className="mobile-flat-surface rounded-2xl border border-white/70 bg-white/84 p-4 shadow-[0_18px_35px_rgba(50,78,122,0.14)] backdrop-blur-[14px] sm:p-6">
+            <div>
               {submitted ? (
                 <div className="py-10 text-center">
                   <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[color:var(--color-accent)]">
