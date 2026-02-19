@@ -178,7 +178,7 @@ export default function CalculatorPage() {
                 <Link
                   to="/demo"
                   onClick={handleDemoCta}
-                  className="interactive-lift mt-auto inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
+                  className="interactive-lift mt-8 inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
                 >
                   Prenota una DEMO
                 </Link>
