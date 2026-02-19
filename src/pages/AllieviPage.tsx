@@ -50,11 +50,27 @@ export default function AllieviPage() {
 
           <div className="flex items-center justify-center gap-4">
             <div className="sm:hidden">
-              <IphoneMockup label="Promo referral" variant="requests" />
+              <IphoneMockup
+                label="Promo referral"
+                variant="requests"
+                screenImageSrc="/workflow_screen.png"
+                screenImageAlt="Workflow Reglo"
+              />
             </div>
             <div className="hidden items-center gap-4 sm:flex">
-              <IphoneMockup label="Promo referral" variant="requests" />
-              <IphoneMockup label="Voucher digitale" variant="payments" className="-translate-y-5 hidden md:block" />
+              <IphoneMockup
+                label="Promo referral"
+                variant="requests"
+                screenImageSrc="/workflow_screen.png"
+                screenImageAlt="Workflow Reglo"
+              />
+              <IphoneMockup
+                label="Voucher digitale"
+                variant="payments"
+                screenImageSrc="/docmanager_screen.png"
+                screenImageAlt="Documento digitale Reglo"
+                className="-translate-y-5 hidden md:block"
+              />
             </div>
           </div>
         </div>

@@ -47,8 +47,19 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="flex items-center justify-center gap-4">
-            <IphoneMockup label="Visione prodotto" variant="agenda" />
-            <IphoneMockup label="Esperienza mobile" variant="requests" className="-translate-y-4 hidden sm:block" />
+            <IphoneMockup
+              label="Visione prodotto"
+              variant="agenda"
+              screenImageSrc="/saas_screen.png"
+              screenImageAlt="Dashboard Reglo"
+            />
+            <IphoneMockup
+              label="Esperienza mobile"
+              variant="requests"
+              screenImageSrc="/workflow_screen.png"
+              screenImageAlt="Workflow Reglo"
+              className="-translate-y-4 hidden sm:block"
+            />
           </div>
         </div>
       </section>

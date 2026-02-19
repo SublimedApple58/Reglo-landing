@@ -94,22 +94,33 @@ export default function HomePage() {
 
           <div className="relative">
             <div className="mx-auto w-full max-w-[250px] sm:hidden">
-              <IphoneMockup label="Agenda live" variant="agenda" />
+              <IphoneMockup
+                label="Agenda live"
+                variant="agenda"
+                screenImageSrc="/agenda_screen.png"
+                screenImageAlt="Schermata agenda Reglo"
+              />
             </div>
             <div className="hidden items-center justify-center gap-4 sm:flex lg:gap-6">
               <IphoneMockup
                 label="Agenda live"
                 variant="agenda"
+                screenImageSrc="/agenda_screen.png"
+                screenImageAlt="Schermata agenda Reglo"
                 className="w-full max-w-[236px] sm:max-w-[244px] lg:translate-y-6"
               />
               <IphoneMockup
                 label="Pagamenti"
                 variant="payments"
+                screenImageSrc="/saas_screen.png"
+                screenImageAlt="Dashboard Reglo"
                 className="w-full max-w-[236px] sm:max-w-[244px]"
               />
               <IphoneMockup
                 label="Richieste guida"
                 variant="requests"
+                screenImageSrc="/workflow_screen.png"
+                screenImageAlt="Workflow Reglo"
                 className="hidden w-full max-w-[244px] lg:block lg:-translate-y-4"
               />
             </div>
@@ -196,7 +207,12 @@ export default function HomePage() {
           </div>
           <div className="rounded-3xl border border-white/70 bg-white/72 p-4 shadow-[0_14px_36px_rgba(50,78,122,0.16)] backdrop-blur-[16px] sm:p-5">
             <div className="mx-auto w-full max-w-[250px] sm:max-w-none">
-              <IphoneMockup label="Preview app iOS/Android" variant="agenda" />
+              <IphoneMockup
+                label="Preview app iOS/Android"
+                variant="agenda"
+                screenImageSrc="/docmanager_screen.png"
+                screenImageAlt="Documento in Reglo"
+              />
             </div>
           </div>
         </div>

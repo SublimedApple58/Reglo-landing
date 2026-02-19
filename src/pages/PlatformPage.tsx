@@ -121,8 +121,19 @@ export default function PlatformPage() {
           </div>
 
           <div className="flex items-center justify-center gap-4 sm:gap-6">
-            <IphoneMockup label="Agenda ruolo istruttore" variant="agenda" />
-            <IphoneMockup label="Pagamenti allievo" variant="payments" className="-translate-y-5 hidden sm:block" />
+            <IphoneMockup
+              label="Agenda ruolo istruttore"
+              variant="agenda"
+              screenImageSrc="/agenda_screen.png"
+              screenImageAlt="Agenda Reglo"
+            />
+            <IphoneMockup
+              label="Pagamenti allievo"
+              variant="payments"
+              screenImageSrc="/saas_screen.png"
+              screenImageAlt="Dashboard Reglo"
+              className="-translate-y-5 hidden sm:block"
+            />
           </div>
         </div>
       </section>
