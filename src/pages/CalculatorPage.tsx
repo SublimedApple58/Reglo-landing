@@ -72,7 +72,8 @@ export default function CalculatorPage() {
         <div className="calculator-shell mt-8 overflow-hidden">
           <div className="calculator-grid">
             <div className="calculator-left p-6 sm:p-8">
-              <div className="grid gap-5 sm:grid-cols-2">
+              <p className="text-xs font-medium text-[color:var(--color-ink-muted)]">INPUT ESSENZIALI</p>
+              <div className="mt-4 space-y-5">
                 <div>
                   <label className="block text-xs font-medium text-[color:var(--color-ink-muted)] mb-2">
                     COSTO GUIDA
@@ -110,10 +111,20 @@ export default function CalculatorPage() {
               <button
                 type="button"
                 onClick={handleCalculate}
-                className="interactive-lift mt-8 w-full sm:w-[260px] rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
+                className="interactive-lift mt-7 w-full rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
               >
                 Calcola
               </button>
+
+              <div className="mt-6 rounded-2xl border border-[color:var(--color-border)] bg-white/85 p-4 sm:p-5">
+                <p className="text-xs font-medium text-[color:var(--color-ink-muted)]">FORMULA USATA</p>
+                <p className="mt-2 text-sm text-[color:var(--color-ink)]">
+                  Costo guida x slot liberi settimanali x 4 settimane
+                </p>
+                <p className="mt-1 text-xs text-[color:var(--color-ink-muted)]">
+                  Annuale = mensile x 12
+                </p>
+              </div>
             </div>
 
             <div className="p-6 sm:p-8">
@@ -157,24 +168,17 @@ export default function CalculatorPage() {
 
               <div>
                 <p className="text-xs font-medium text-[color:var(--color-ink-muted)]">PROIEZIONE A 5 ANNI</p>
-                <div className="mt-3 space-y-4">
-                  <div className="rounded-2xl border border-[color:var(--color-border)] bg-white/85 p-5">
-                    <p className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
-                      Soldi Persi: {formatEuro(result.cinqueAnni)}
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-[color:var(--color-border)] bg-white/85 p-5">
-                    <p className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
-                      Soldi Persi *con Reglo: {formatEuro(result.conReglo)}
-                    </p>
-                  </div>
+                <div className="mt-3 rounded-2xl border border-[color:var(--color-border)] bg-white/85 p-5">
+                  <p className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
+                    Soldi Persi: {formatEuro(result.cinqueAnni)}
+                  </p>
                 </div>
               </div>
 
               <Link
                 to="/demo"
                 onClick={handleDemoCta}
-                className="interactive-lift mt-8 inline-flex w-full sm:w-[260px] items-center justify-center rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
+                className="interactive-lift mt-8 inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
               >
                 Prenota una DEMO
               </Link>
