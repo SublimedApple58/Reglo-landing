@@ -134,6 +134,16 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .mobile-flat-surface {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+  }
+}
+
 .calculator-shell {
   background: rgba(255, 255, 255, 0.86);
   border: 1px solid rgba(50, 78, 122, 0.14);

@@ -76,35 +76,35 @@ export default function ReferralPromo() {
   };
 
   const rules = [
-    'L autoscuola segnalata deve essere nuova per Reglo.',
-    'La promo matura quando l autoscuola completa l attivazione.',
-    'Il voucher 2 guide e nominativo e non cedibile.',
+    'La scuola segnalata deve essere nuova per Reglo.',
+    'La promo si attiva quando la scuola completa l onboarding.',
+    'Il voucher da 2 guide e nominativo.',
   ];
 
   return (
-    <section id="referral-form" className="py-16">
+    <section id="referral-form" className="py-14 sm:py-16">
       {toast ? (
-        <div className="fixed right-6 top-6 z-50">
+        <div className="fixed right-4 top-4 z-50 sm:right-6 sm:top-6">
           <Toast variant={toast.variant} message={toast.message} onClose={clearToast} />
         </div>
       ) : null}
-      <div className="max-w-[1440px] mx-auto px-6">
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 lg:p-10">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
+        <div className="rounded-3xl border border-white/70 bg-white/72 p-4 shadow-[0_14px_36px_rgba(50,78,122,0.16)] backdrop-blur-[16px] sm:p-8 lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-            <div className="space-y-5">
+            <div className="space-y-4">
               <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
                 Promo allievi
               </p>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-[color:var(--color-ink)]">
-                Porta la tua autoscuola in Reglo e ricevi 2 guide gratuite
+              <h2 className="text-xl font-semibold text-[color:var(--color-ink)] sm:text-3xl">
+                Compila il modulo e blocca la tua promo da 2 guide
               </h2>
-              <p className="text-base text-[color:var(--color-ink-muted)]">
-                Segnalaci la tua autoscuola: se attiva Reglo, ti premiamo con un voucher digitale da 2 guide.
+              <p className="text-[15px] text-[color:var(--color-ink-muted)] sm:text-base">
+                Ti bastano pochi dati. Poi gestiamo noi il contatto con la scuola e la verifica.
               </p>
-              <div className="space-y-3">
+              <div className="space-y-0 border-t border-[color:var(--color-border)]/55 pt-2 sm:space-y-3 sm:border-0 sm:pt-0">
                 {rules.map((item) => (
-                  <div key={item} className="glass-card rounded-2xl px-4 py-3 flex items-start gap-3">
-                    <div className="h-7 w-7 rounded-full bg-[color:var(--color-accent)] flex items-center justify-center">
+                  <div key={item} className="flex items-start gap-3 border-b border-[color:var(--color-border)]/55 py-3 last:border-b-0 sm:rounded-2xl sm:border sm:border-white/70 sm:bg-white/82 sm:px-4 sm:py-3 sm:shadow-[0_18px_35px_rgba(50,78,122,0.14)] sm:backdrop-blur-[14px]">
+                    <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-[color:var(--color-accent)]">
                       <Gift className="h-4 w-4 text-[color:var(--color-ink)]" />
                     </div>
                     <p className="text-sm text-[color:var(--color-ink-muted)]">{item}</p>
@@ -112,17 +112,17 @@ export default function ReferralPromo() {
                 ))}
               </div>
               <p className="text-sm text-[color:var(--color-ink-muted)]">
-                Dopo l invio ti aggiorniamo entro <span className="font-semibold text-[color:var(--color-ink)]">5 giorni lavorativi</span>.
+                Aggiornamento entro <span className="font-semibold text-[color:var(--color-ink)]">5 giorni lavorativi</span>.
               </p>
             </div>
 
-            <div className="glass-card rounded-3xl p-6">
+            <div className="mobile-flat-surface rounded-2xl border border-white/70 bg-white/84 p-4 shadow-[0_18px_35px_rgba(50,78,122,0.14)] backdrop-blur-[14px] sm:p-6">
               {submitted ? (
-                <div className="text-center py-10">
-                  <div className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center bg-[color:var(--color-accent)]">
-                    <CheckCircle2 className="w-8 h-8 text-[color:var(--color-ink)]" />
+                <div className="py-10 text-center">
+                  <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[color:var(--color-accent)]">
+                    <CheckCircle2 className="h-8 w-8 text-[color:var(--color-ink)]" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-[color:var(--color-ink)]">
+                  <h3 className="mb-2 text-xl font-semibold text-[color:var(--color-ink)]">
                     Referral ricevuto
                   </h3>
                   <p className="text-sm text-[color:var(--color-ink-muted)]">
@@ -130,10 +130,10 @@ export default function ReferralPromo() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="studentName" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      <label htmlFor="studentName" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                         Nome allievo *
                       </label>
                       <input
@@ -143,12 +143,12 @@ export default function ReferralPromo() {
                         autoComplete="name"
                         value={formData.studentName}
                         onChange={handleChange}
-                        className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                        className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                         placeholder="Mario Rossi"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      <label htmlFor="phone" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                         Telefono *
                       </label>
                       <input
@@ -159,7 +159,7 @@ export default function ReferralPromo() {
                         autoComplete="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                        className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                         placeholder="+39 333 123 4567"
                       />
                     </div>
@@ -167,7 +167,7 @@ export default function ReferralPromo() {
 
                   <div className="grid gap-4 sm:grid-cols-3">
                     <div>
-                      <label htmlFor="city" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      <label htmlFor="city" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                         Citta *
                       </label>
                       <input
@@ -177,12 +177,12 @@ export default function ReferralPromo() {
                         autoComplete="address-level2"
                         value={formData.city}
                         onChange={handleChange}
-                        className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                        className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                         placeholder="Es. Milano"
                       />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="referredSchool" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      <label htmlFor="referredSchool" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                         Nome autoscuola segnalata *
                       </label>
                       <input
@@ -191,14 +191,14 @@ export default function ReferralPromo() {
                         required
                         value={formData.referredSchool}
                         onChange={handleChange}
-                        className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                        className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                         placeholder="Autoscuola Alfa"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="role" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="role" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Ruolo *
                     </label>
                     <select
@@ -207,7 +207,7 @@ export default function ReferralPromo() {
                       required
                       value={formData.role}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                      className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                     >
                       <option value="allievo">Allievo</option>
                       <option value="ex_allievo">Ex allievo</option>
@@ -216,7 +216,7 @@ export default function ReferralPromo() {
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="studentEmail" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      <label htmlFor="studentEmail" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                         Email allievo (opzionale)
                       </label>
                       <input
@@ -226,12 +226,12 @@ export default function ReferralPromo() {
                         autoComplete="email"
                         value={formData.studentEmail}
                         onChange={handleChange}
-                        className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                        className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                         placeholder="mario@email.it"
                       />
                     </div>
                     <div>
-                      <label htmlFor="schoolContact" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                      <label htmlFor="schoolContact" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                         Contatto autoscuola (opzionale)
                       </label>
                       <input
@@ -239,14 +239,14 @@ export default function ReferralPromo() {
                         name="schoolContact"
                         value={formData.schoolContact}
                         onChange={handleChange}
-                        className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none"
+                        className="glass-input w-full rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                         placeholder="Telefono o email"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="notes" className="block text-sm font-medium mb-2 text-[color:var(--color-ink)]">
+                    <label htmlFor="notes" className="mb-1.5 block text-xs font-medium text-[color:var(--color-ink)] sm:mb-2 sm:text-sm">
                       Note (opzionale)
                     </label>
                     <textarea
@@ -255,7 +255,7 @@ export default function ReferralPromo() {
                       rows={3}
                       value={formData.notes}
                       onChange={handleChange}
-                      className="glass-input w-full px-3.5 py-3 rounded-xl text-sm focus:outline-none resize-none"
+                      className="glass-input w-full resize-none rounded-xl px-3 py-2.5 text-sm focus:outline-none sm:px-3.5 sm:py-3"
                       placeholder="Dettagli utili sulla segnalazione"
                     />
                   </div>
@@ -284,10 +284,10 @@ export default function ReferralPromo() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="interactive-lift w-full py-3 rounded-full text-[color:var(--color-ink)] font-semibold text-sm flex items-center justify-center gap-2 shadow-soft disabled:opacity-70 disabled:cursor-not-allowed bg-[color:var(--color-accent)]"
+                    className="interactive-lift flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--color-accent)] py-2.5 text-sm font-semibold text-[color:var(--color-ink)] shadow-soft disabled:cursor-not-allowed disabled:opacity-70 sm:py-3"
                   >
                     {isSubmitting ? 'Invio in corso...' : 'Richiedi promo allievi'}
-                    <Send className="w-4 h-4" />
+                    <Send className="h-4 w-4" />
                   </button>
                 </form>
               )}

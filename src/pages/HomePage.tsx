@@ -5,29 +5,28 @@ import IphoneMockup from '../components/IphoneMockup';
 import FinalCTA from '../components/FinalCTA';
 
 const pains = [
-  'Slot vuoti dopo disdette last-minute',
-  'Segreteria bloccata su chiamate e follow-up manuali',
-  'Istruttori senza vista unica su agenda e cambi stato',
-  'Pagamenti e storico frammentati tra strumenti diversi',
+  'Meno slot vuoti dopo disdette e assenze',
+  'Segreteria meno bloccata su chiamate ripetitive',
+  'Istruttori sempre allineati sulla stessa agenda',
 ];
 
 const pillars = [
   {
-    title: 'Agenda unica per tutti i ruoli',
+    title: 'Agenda condivisa',
     description:
-      'Allievo, istruttore e titolare lavorano sullo stesso stato operativo, senza passaggi ciechi.',
+      'Allievo, istruttore e segreteria vedono lo stesso stato in tempo reale.',
     icon: CalendarClock,
   },
   {
-    title: 'Engine anti-slot-vuoti',
+    title: 'Recupero slot automatico',
     description:
-      'Quando uno slot salta, Reglo innesca il recupero e propone subito nuove assegnazioni.',
+      'Quando una guida salta, Reglo propone subito chi puo occupare quello spazio.',
     icon: Sparkles,
   },
   {
-    title: 'Comunicazioni e pagamenti allineati',
+    title: 'Comunicazioni chiare',
     description:
-      'Notifiche automatiche e situazione economica chiara dentro lo stesso flusso.',
+      'Promemoria e pagamenti restano collegati, senza rincorrere messaggi sparsi.',
     icon: MessageSquare,
   },
 ];
@@ -42,18 +41,18 @@ export default function HomePage() {
 
   return (
     <div className="overflow-x-hidden pb-16">
-      <section className="relative overflow-hidden px-4 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-10">
+      <section className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-6 sm:pb-14 sm:pt-10">
         <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
-          <div className="space-y-5 sm:space-y-6">
+          <div className="space-y-5">
             <span className="glass-chip inline-flex rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
-              Reglo Autoscuole
+              Per autoscuole
             </span>
             <h1 className="max-w-2xl text-3xl font-semibold leading-[1.08] text-[color:var(--color-ink)] sm:text-5xl lg:text-6xl">
-              Cloud + app mobile per eliminare i buchi in agenda.
+              Meno buchi in agenda. Piu guide prenotate.
             </h1>
             <p className="max-w-xl text-[15px] text-[color:var(--color-ink-muted)] sm:text-lg">
-              Reglo coordina disponibilita, prenotazioni, presenze e pagamenti in un unico sistema.
-              L obiettivo e semplice: meno caos operativo, zero slot sprecati.
+              Reglo aiuta la tua autoscuola a riempire gli slot liberi e ridurre il caos operativo,
+              con un flusso semplice per segreteria, istruttori e allievi.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -64,13 +63,6 @@ export default function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                to="/allievi"
-                className="interactive-lift inline-flex w-full items-center justify-center gap-2 rounded-full border border-[color:var(--color-border)] bg-white/80 px-6 py-3 text-sm font-semibold text-[color:var(--color-ink)] sm:w-auto sm:text-base"
-              >
-                Promo allievi
-                <Smartphone className="h-4 w-4" />
-              </Link>
-              <Link
                 to="/calcolatore"
                 onClick={trackCalculatorCTA}
                 className="interactive-lift inline-flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--color-accent)] px-6 py-3 text-sm font-semibold text-[color:var(--color-ink)] sm:w-auto sm:text-base"
@@ -78,10 +70,20 @@ export default function HomePage() {
                 Calcola soldi persi
                 <Calculator className="h-4 w-4" />
               </Link>
+              <Link
+                to="/allievi"
+                className="inline-flex items-center gap-2 px-1 py-1 text-sm font-semibold text-[color:var(--color-ink)] underline-offset-4 hover:underline"
+              >
+                Sei un allievo? Attiva la promo
+                <Smartphone className="h-4 w-4" />
+              </Link>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-0 sm:grid-cols-2 sm:gap-3">
               {pains.map((item) => (
-                <div key={item} className="glass-card rounded-2xl px-4 py-3">
+                <div
+                  key={item}
+                  className="flex items-start gap-3 border-b border-[color:var(--color-border)]/65 py-3 last:border-b-0 sm:rounded-2xl sm:border sm:border-b-0 sm:border-white/70 sm:bg-white/82 sm:px-4 sm:py-3 sm:shadow-[0_18px_35px_rgba(50,78,122,0.14)] sm:backdrop-blur-[14px]"
+                >
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 text-[color:var(--color-ink)]" />
                     <p className="text-sm text-[color:var(--color-ink-muted)]">{item}</p>
@@ -91,22 +93,27 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative mx-auto grid w-full max-w-md grid-cols-1 justify-items-center gap-4 sm:max-w-[640px] sm:grid-cols-2 sm:items-end lg:flex lg:max-w-none lg:items-center lg:justify-center lg:gap-6">
-            <IphoneMockup
-              label="Agenda live"
-              variant="agenda"
-              className="w-full max-w-[236px] sm:max-w-[244px] lg:translate-y-6"
-            />
-            <IphoneMockup
-              label="Pagamenti"
-              variant="payments"
-              className="w-full max-w-[236px] sm:max-w-[244px]"
-            />
-            <IphoneMockup
-              label="Richieste guida"
-              variant="requests"
-              className="hidden w-full max-w-[244px] lg:block lg:-translate-y-4"
-            />
+          <div className="relative">
+            <div className="mx-auto w-full max-w-[250px] sm:hidden">
+              <IphoneMockup label="Agenda live" variant="agenda" />
+            </div>
+            <div className="hidden items-center justify-center gap-4 sm:flex lg:gap-6">
+              <IphoneMockup
+                label="Agenda live"
+                variant="agenda"
+                className="w-full max-w-[236px] sm:max-w-[244px] lg:translate-y-6"
+              />
+              <IphoneMockup
+                label="Pagamenti"
+                variant="payments"
+                className="w-full max-w-[236px] sm:max-w-[244px]"
+              />
+              <IphoneMockup
+                label="Richieste guida"
+                variant="requests"
+                className="hidden w-full max-w-[244px] lg:block lg:-translate-y-4"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -118,14 +125,32 @@ export default function HomePage() {
               Perche funziona
             </p>
             <h2 className="mt-3 text-2xl font-semibold text-[color:var(--color-ink)] sm:text-4xl">
-              Non e un gestionale in piu: e il motore operativo della tua autoscuola.
+              Ogni giornata diventa piu lineare e piu prevedibile.
             </h2>
           </div>
-          <div className="grid gap-4 md:grid-cols-3 md:gap-5">
+          <div className="space-y-0 md:hidden">
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
               return (
-                <article key={pillar.title} className="glass-panel rounded-3xl p-5 sm:p-6">
+                <article key={pillar.title} className="border-b border-[color:var(--color-border)]/65 py-4 last:border-b-0">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-[color:var(--color-accent)]">
+                      <Icon className="h-4 w-4 text-[color:var(--color-ink)]" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-[color:var(--color-ink)]">{pillar.title}</h3>
+                      <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">{pillar.description}</p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+          <div className="hidden gap-4 md:grid md:grid-cols-3 md:gap-5">
+            {pillars.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
+                <article key={pillar.title} className="glass-panel rounded-3xl p-6">
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--color-accent)]">
                     <Icon className="h-5 w-5 text-[color:var(--color-ink)]" />
                   </div>
@@ -142,35 +167,35 @@ export default function HomePage() {
 
       <section className="px-4 py-14 sm:px-6 sm:py-16">
         <div className="mx-auto grid max-w-[1440px] gap-5 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
-          <div className="glass-panel rounded-3xl p-5 sm:p-8">
+          <div className="rounded-3xl border border-white/70 bg-white/72 p-5 shadow-[0_14px_36px_rgba(50,78,122,0.16)] backdrop-blur-[16px] sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[color:var(--color-ink-muted)]">
               App mobile protagonista
             </p>
             <h3 className="mt-3 text-xl font-semibold text-[color:var(--color-ink)] sm:text-3xl">
-              Ogni ruolo vede solo cio che serve e agisce in pochi tap.
+              Ogni ruolo vede subito cosa fare, senza confusione.
             </h3>
-            <div className="mt-6 space-y-4">
-              <div className="glass-card rounded-2xl p-4">
+            <div className="mt-5 space-y-0 sm:space-y-3">
+              <div className="border-b border-[color:var(--color-border)]/65 py-3 sm:rounded-2xl sm:border sm:border-b sm:border-white/70 sm:bg-white/82 sm:px-4 sm:py-4 sm:shadow-[0_18px_35px_rgba(50,78,122,0.14)] sm:backdrop-blur-[14px]">
                 <p className="text-sm font-semibold text-[color:var(--color-ink)]">Allievo</p>
                 <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">
-                  Richiede guide, conferma slot proposti e riceve promemoria senza chiamate.
+                  Prenota e conferma guide in pochi tap, senza telefonate continue.
                 </p>
               </div>
-              <div className="glass-card rounded-2xl p-4">
+              <div className="border-b border-[color:var(--color-border)]/65 py-3 sm:rounded-2xl sm:border sm:border-b sm:border-white/70 sm:bg-white/82 sm:px-4 sm:py-4 sm:shadow-[0_18px_35px_rgba(50,78,122,0.14)] sm:backdrop-blur-[14px]">
                 <p className="text-sm font-semibold text-[color:var(--color-ink)]">Istruttore</p>
                 <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">
-                  Agenda giornaliera pulita, check-in/no-show in tempo reale, meno frizioni con la segreteria.
+                  Ha la giornata ordinata e segnala subito check-in o no-show.
                 </p>
               </div>
-              <div className="glass-card rounded-2xl p-4">
+              <div className="py-3 sm:rounded-2xl sm:border sm:border-white/70 sm:bg-white/82 sm:px-4 sm:py-4 sm:shadow-[0_18px_35px_rgba(50,78,122,0.14)] sm:backdrop-blur-[14px]">
                 <p className="text-sm font-semibold text-[color:var(--color-ink)]">Titolare</p>
                 <p className="mt-1 text-sm text-[color:var(--color-ink-muted)]">
-                  Controlla saturazione slot, eccezioni operative e stato finanziario da un solo pannello.
+                  Controlla saturazione, performance e priorita operative da un solo punto.
                 </p>
               </div>
             </div>
           </div>
-          <div className="glass-panel rounded-3xl p-4 sm:p-5">
+          <div className="rounded-3xl border border-white/70 bg-white/72 p-4 shadow-[0_14px_36px_rgba(50,78,122,0.16)] backdrop-blur-[16px] sm:p-5">
             <div className="mx-auto w-full max-w-[250px] sm:max-w-none">
               <IphoneMockup label="Preview app iOS/Android" variant="agenda" />
             </div>
