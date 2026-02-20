@@ -132,7 +132,7 @@ export default function PlatformPage() {
               variant="requests"
               screenImageSrc="/gestisci-veicoli.jpeg"
               screenImageAlt="Gestione veicoli istruttore"
-              className="-translate-y-5 hidden sm:block"
+              className="hidden sm:block"
             />
           </div>
         </div>

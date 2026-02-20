@@ -101,27 +101,27 @@ export default function HomePage() {
                 screenImageAlt="Home allievo"
               />
             </div>
-            <div className="hidden items-center justify-center gap-4 sm:flex lg:gap-6">
+            <div className="hidden items-center justify-center gap-4 sm:flex lg:items-start lg:gap-6 lg:pt-12">
               <IphoneMockup
                 label="Agenda live"
                 variant="agenda"
                 screenImageSrc="/home-allievo.jpeg"
                 screenImageAlt="Home allievo"
-                className="w-full max-w-[236px] sm:max-w-[244px] lg:translate-y-6"
+                className="w-full max-w-[236px] sm:max-w-[244px] lg:mt-8"
               />
               <IphoneMockup
                 label="Pagamenti"
                 variant="payments"
                 screenImageSrc="/pagamenti-allievo.jpeg"
                 screenImageAlt="Pagamenti allievo"
-                className="w-full max-w-[236px] sm:max-w-[244px]"
+                className="w-full max-w-[236px] sm:max-w-[244px] lg:mt-4"
               />
               <IphoneMockup
                 label="Richieste guida"
                 variant="requests"
                 screenImageSrc="/prenota-guida.jpeg"
                 screenImageAlt="Prenota guida"
-                className="hidden w-full max-w-[244px] lg:block lg:-translate-y-4"
+                className="hidden w-full max-w-[244px] lg:block"
               />
             </div>
           </div>
