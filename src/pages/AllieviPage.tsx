@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle2, Gift, ShieldCheck } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import IphoneMockup from '../components/IphoneMockup';
 import ReferralPromo from '../components/ReferralPromo';
+import { CAL_BOOKING_URL, trackBookingCTA } from '../lib/booking';
 
 const steps = [
   'Compili il modulo con i dati base.',
@@ -116,10 +116,14 @@ export default function AllieviPage() {
           <p className="text-sm text-[color:var(--color-ink-muted)]">
             Sei un autoscuola e vuoi vedere subito la piattaforma?
           </p>
-          <Link to="/demo" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-ink)] hover:underline">
+          <a
+            href={CAL_BOOKING_URL}
+            onClick={() => trackBookingCTA('allievi_autoscuola')}
+            className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-ink)] hover:underline"
+          >
             Prenota una demo
             <CheckCircle2 className="h-4 w-4" />
-          </Link>
+          </a>
         </div>
       </section>
     </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CalculatorTeaser from '../components/CalculatorTeaser';
 import IphoneMockup from '../components/IphoneMockup';
 import FinalCTA from '../components/FinalCTA';
+import { CAL_BOOKING_URL, trackBookingCTA } from '../lib/booking';
 
 const pains = [
   'Meno slot vuoti dopo disdette e assenze',
@@ -54,13 +55,14 @@ export default function HomePage() {
               Riempie slot liberi, riduce chiamate e allinea segreteria, istruttori e allievi.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link
-                to="/demo"
+              <a
+                href={CAL_BOOKING_URL}
+                onClick={() => trackBookingCTA('home_hero')}
                 className="interactive-lift inline-flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--color-ink)] px-6 py-3 text-sm font-semibold text-white sm:w-auto sm:text-base"
               >
                 Prenota una demo
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
               <Link
                 to="/calcolatore"
                 onClick={trackCalculatorCTA}

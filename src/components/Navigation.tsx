@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { CAL_BOOKING_URL, trackBookingCTA } from '../lib/booking';
 
 const MENU_ANIMATION_MS = 260;
 
@@ -85,12 +86,13 @@ export default function Navigation() {
                   {label}
                 </Link>
               ))}
-              <Link
-                to="/demo"
+              <a
+                href={CAL_BOOKING_URL}
+                onClick={() => trackBookingCTA('navbar_desktop')}
                 className="px-6 py-2 rounded-full text-[color:var(--color-ink)] font-semibold transition-all hover:-translate-y-0.5 hover:shadow-md bg-[color:var(--color-accent)]"
               >
                 Prenota demo
-              </Link>
+              </a>
             </div>
 
             <button
@@ -126,13 +128,16 @@ export default function Navigation() {
                   {label}
                 </Link>
               ))}
-              <Link
-                to="/demo"
-                onClick={closeMenu}
+              <a
+                href={CAL_BOOKING_URL}
+                onClick={() => {
+                  trackBookingCTA('navbar_mobile');
+                  closeMenu();
+                }}
                 className="block px-6 py-2 rounded-full text-[color:var(--color-ink)] font-semibold text-center bg-[color:var(--color-accent)]"
               >
                 Prenota demo
-              </Link>
+              </a>
             </div>
           )}
         </div>

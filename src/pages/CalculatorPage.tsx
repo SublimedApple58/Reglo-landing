@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   calculateAutoscuolaLoss,
   DEFAULT_CALCULATOR_INPUT,
   formatEuro,
   type AutoscuolaCalculatorInput,
 } from '../lib/calculator';
+import { CAL_BOOKING_URL } from '../lib/booking';
 
 type NumericField = 'costoGuida' | 'slotLiberiSettimanali';
 
@@ -178,13 +178,13 @@ export default function CalculatorPage() {
                 </div>
 
                 <div className="mt-auto pt-8">
-                  <Link
-                    to="/demo"
+                  <a
+                    href={CAL_BOOKING_URL}
                     onClick={handleDemoCta}
                     className="interactive-lift inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--color-ink)] py-3.5 text-base font-semibold text-white"
                   >
                     Prenota una DEMO
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

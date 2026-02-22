@@ -1,6 +1,6 @@
 import { Check, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { useEffect, useState, type ReactNode } from 'react';
+import { CAL_BOOKING_URL, trackBookingCTA } from '../lib/booking';
 
 interface PricingPlan {
   name: string;
@@ -117,8 +117,9 @@ export default function PricingPage() {
                     </div>
                   </div>
 
-                  <Link
-                    to="/demo"
+                  <a
+                    href={CAL_BOOKING_URL}
+                    onClick={() => trackBookingCTA(`pricing_plan_${plan.name.toLowerCase()}`)}
                     className="interactive-lift w-full py-3 rounded-full font-semibold flex items-center justify-center gap-2 mb-7"
                     style={{
                       backgroundColor: plan.highlighted ? 'var(--color-ink)' : 'var(--color-accent-soft)',
@@ -127,7 +128,7 @@ export default function PricingPage() {
                   >
                     Prenota demo
                     <ArrowRight className="w-5 h-5" />
-                  </Link>
+                  </a>
 
                   <div className="space-y-4">
                     {plan.features.map((feature, index) => (
@@ -215,13 +216,14 @@ export default function PricingPage() {
             <p className="text-lg text-[color:var(--color-ink-muted)] mb-6">
               Vuoi capire il piano giusto per la tua struttura?
             </p>
-            <Link
-              to="/demo"
+            <a
+              href={CAL_BOOKING_URL}
+              onClick={() => trackBookingCTA('pricing_bottom')}
               className="interactive-lift inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-semibold text-lg shadow-soft bg-[color:var(--color-ink)]"
             >
               Parla con il team Reglo
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>
