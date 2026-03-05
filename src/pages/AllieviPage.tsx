@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowRight, Gift, ShieldCheck, Zap, CheckCircle2 } from 'lucide-react';
 import ReferralPromo from '../components/ReferralPromo';
 import { CAL_BOOKING_URL, trackBookingCTA } from '../lib/booking';
@@ -31,10 +32,7 @@ function VoucherCard3D() {
         >
           {/* Top band */}
           <div className="relative h-28 bg-gradient-to-br from-[#324D7A] to-[#1f3a5f] overflow-hidden">
-            <div
-              className="absolute inset-0 bg-grid-dark opacity-60"
-            />
-            {/* Orb */}
+            <div className="absolute inset-0 bg-grid-dark opacity-60" />
             <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[#AFE2D4]/15 blur-2xl" />
             <div className="relative flex items-center justify-between h-full px-6">
               <div>
@@ -82,7 +80,7 @@ function VoucherCard3D() {
           </div>
         </div>
 
-        {/* ── Floating badge: "Segnala & guadagna" ─ z = 52 ── */}
+        {/* ── Floating badge ─ z = 52 ── */}
         <div style={{ transform: 'translateZ(52px)', position: 'absolute', top: '-18px', right: '-18px' }}>
           <div style={{ animation: 'floatY-b 16s ease-in-out infinite' }}>
             <div className="bg-white rounded-2xl border border-[#324D7A]/10 shadow-[0_12px_32px_rgba(50,77,122,0.14)] px-4 py-3 flex items-center gap-2.5">
@@ -142,7 +140,15 @@ const steps = [
   },
 ];
 
-function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
+function StepCard({
+  step,
+  index,
+  isVisible,
+}: {
+  step: typeof steps[0];
+  index: number;
+  isVisible: boolean;
+}) {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
 
@@ -157,7 +163,7 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
 
   return (
     <div
-      className={`reveal-fade stagger-${index + 1}`}
+      className={`reveal-fade stagger-${index + 1} ${isVisible ? 'is-visible' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => { setHovered(false); setMouse({ x: 0, y: 0 }); }}
@@ -197,8 +203,6 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
    PAGE
 ══════════════════════════════════════════════════════════════════════ */
 
-import { useState } from 'react';
-
 export default function AllieviPage() {
   const { ref: heroRef, isVisible: heroVisible } = useScrollReveal(0.1);
   const { ref: stepsRef, isVisible: stepsVisible } = useScrollReveal(0.08);
@@ -208,7 +212,6 @@ export default function AllieviPage() {
 
       {/* ── Hero ── */}
       <section className="relative pt-20 pb-24 px-4 sm:px-6 bg-grid-light">
-        {/* Radial glow */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -235,7 +238,6 @@ export default function AllieviPage() {
                 Tu segnali la scuola, noi facciamo la verifica. Se parte con Reglo, ti inviamo un voucher nominativo da 2 guide.
               </p>
 
-              {/* Badges */}
               <div className="hero-el hero-el-4 flex flex-wrap gap-3 mb-8">
                 <div className="flex items-center gap-2 rounded-2xl bg-white border border-[#324D7A]/10 shadow-[0_4px_14px_rgba(50,77,122,0.07)] px-4 py-2.5">
                   <Gift className="h-4 w-4 text-[#324D7A]" />
@@ -284,9 +286,9 @@ export default function AllieviPage() {
             </h2>
           </div>
 
-          <div className={`grid sm:grid-cols-3 gap-5 ${stepsVisible ? 'is-visible' : ''}`}>
+          <div className="grid sm:grid-cols-3 gap-5">
             {steps.map((step, i) => (
-              <StepCard key={step.n} step={step} index={i} />
+              <StepCard key={step.n} step={step} index={i} isVisible={stepsVisible} />
             ))}
           </div>
 
