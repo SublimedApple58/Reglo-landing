@@ -23,7 +23,6 @@ export default function Navigation() {
 
   const links = [
     { path: '/', label: 'Home' },
-    { path: '/piattaforma', label: 'Piattaforma' },
     { path: '/calcolatore', label: 'Calcolatore' },
     { path: '/allievi', label: 'Promo allievi' },
   ];
