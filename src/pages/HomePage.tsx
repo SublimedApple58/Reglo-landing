@@ -31,16 +31,17 @@ function Hero() {
               <a
                 href={CAL_BOOKING_URL}
                 onClick={() => trackBookingCTA('home_hero')}
-                className="btn-shimmer inline-flex items-center gap-2 rounded-lg bg-[#ec4899] text-white px-7 py-3.5 text-base font-bold transition-all duration-200 hover:bg-[#db2777] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(236,72,153,0.3)]"
+                className="btn-shimmer inline-flex items-center gap-2 rounded-full bg-[#ec4899] text-white px-7 py-3.5 text-base font-bold transition-all duration-200 hover:bg-[#db2777] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(236,72,153,0.3)]"
               >
                 Richiedi una demo &rarr;
               </a>
-              <Link
-                to="/piattaforma"
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-[#111]/15 bg-white text-[#111] px-7 py-3.5 text-base font-bold transition-all duration-200 hover:-translate-y-0.5 hover:border-[#111]/30 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+              <a
+                href="#come-funziona"
+                onClick={(e) => { e.preventDefault(); document.getElementById('come-funziona')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-[#111]/15 bg-white text-[#111] px-7 py-3.5 text-base font-bold transition-all duration-200 hover:-translate-y-0.5 hover:border-[#111]/30 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
               >
                 Scopri di più
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -107,19 +108,19 @@ function TrustedBy() {
 
 const FEATURES = [
   {
-    emoji: '⏱',
+    emoji: '⏱️',
     title: 'Recupero slot automatico',
-    desc: 'Quando una guida salta, Reglo propone subito chi può occupare lo spazio.',
+    desc: 'Quando una guida salta, Reglo si attiva per riempire lo slot in automatico.',
   },
   {
     emoji: '💬',
     title: 'Comunicazioni chiare',
-    desc: 'Promemoria e pagamenti collegati, senza rincorrere messaggi sparsi.',
+    desc: 'Promemoria per Allievi e Istruttori prima delle guide, per nuovi slot o promemoria generici.',
   },
   {
     emoji: '💳',
     title: 'Pagamenti sotto controllo',
-    desc: 'Elenco chiaro, residui immediati e documenti per ogni transazione.',
+    desc: 'Pagamenti tramite app, con fatturazione automatica e transazioni organizzate.',
   },
   {
     emoji: '📅',
@@ -153,7 +154,7 @@ function Features() {
               className={`reveal-fade stagger-${i + 1} ${isVisible ? 'is-visible' : ''} bg-white rounded-2xl p-8 border border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300`}
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#facc15]/15 mb-5">
-                <span className="text-[#facc15] text-2xl">{f.emoji}</span>
+                <span className="text-2xl">{f.emoji}</span>
               </div>
               <h3 className="text-xl font-bold text-[#111] mb-2">{f.title}</h3>
               <p className="text-base text-[#6b7280] leading-relaxed">{f.desc}</p>
@@ -323,7 +324,7 @@ function ComeFunziona() {
   const { ref: ref2, isVisible: vis2 } = useScrollReveal<HTMLDivElement>(0.1);
 
   return (
-    <section className="bg-[#f9fafb] py-20 sm:py-28">
+    <section id="come-funziona" className="bg-[#f9fafb] py-20 sm:py-28">
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8">
         <h2 className="text-4xl sm:text-[52px] font-bold text-[#111] text-center mb-16">
           Come funziona

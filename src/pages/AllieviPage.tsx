@@ -27,7 +27,8 @@ const IconVerifica = () => (
 const IconVoucher = () => (
   <div className="w-10 h-10 rounded-xl bg-[#ec4899]/10 flex items-center justify-center">
     <svg className="w-5 h-5 text-[#ec4899]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      <rect x="3" y="6" width="18" height="12" rx="2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="12" r="2" fill="#ec4899" stroke="none" />
     </svg>
   </div>
 );

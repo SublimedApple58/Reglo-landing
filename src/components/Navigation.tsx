@@ -103,7 +103,7 @@ export default function Navigation() {
               <a
                 href={CAL_BOOKING_URL}
                 onClick={() => trackBookingCTA('navbar_desktop')}
-                className="px-5 py-2.5 rounded-lg font-bold text-sm text-white bg-[#ec4899] hover:bg-[#db2777] transition-all duration-200"
+                className="px-5 py-2.5 rounded-full font-bold text-sm text-white bg-[#ec4899] hover:bg-[#db2777] transition-all duration-200"
               >
                 Prenota una demo
               </a>
