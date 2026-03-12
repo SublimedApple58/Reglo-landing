@@ -4,18 +4,24 @@
 
 /* ─── DESIGN TOKENS ───────────────────────────────────────────────────── */
 :root {
-  --color-ink: #324e7a;
-  --color-ink-soft: rgba(50, 78, 122, 0.9);
-  --color-ink-muted: rgba(50, 78, 122, 0.6);
-  --color-accent: #a9d9d1;
-  --color-accent-soft: rgba(169, 217, 209, 0.45);
-  --color-sand: rgba(50, 78, 122, 0.04);
-  --color-sky: rgba(50, 78, 122, 0.08);
-  --color-paper: #f8fafc;
-  --color-border: rgba(50, 78, 122, 0.18);
+  --color-ink: #111;
+  --color-ink-soft: rgba(17, 17, 17, 0.9);
+  --color-ink-muted: #6b7280;
+  --color-pink: #ec4899;
+  --color-yellow: #facc15;
+  --color-dark: #111;
+  --color-gray: #6b7280;
+  --color-light-bg: #f9fafb;
+  --color-paper: #ffffff;
+  --color-border: rgba(17, 17, 17, 0.1);
+  /* Legacy compat */
+  --color-accent: #ec4899;
+  --color-accent-soft: rgba(236, 72, 153, 0.15);
+  --color-sand: rgba(17, 17, 17, 0.04);
+  --color-sky: rgba(17, 17, 17, 0.08);
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-shadow: 0 20px 45px rgba(50, 78, 122, 0.18);
+  --glass-shadow: 0 20px 45px rgba(17, 17, 17, 0.1);
 }
 
 /* ─── BASE ────────────────────────────────────────────────────────────── */
