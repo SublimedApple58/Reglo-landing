@@ -31,7 +31,7 @@ export default function CalculatorPage() {
     <div className="min-h-screen flex flex-col">
 
       {/* ── Calculator ── */}
-      <section className="bg-[#111] py-32 sm:py-48 lg:py-56 overflow-hidden flex-1">
+      <section className="bg-[#111] pt-24 pb-32 sm:pt-32 sm:pb-48 lg:pt-40 lg:pb-56 overflow-hidden flex-1">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8">
           {/* Heading */}
           <div className="text-center mb-12">
