@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CAL_BOOKING_URL, trackBookingCTA } from '../lib/booking';
+import Footer from '../components/Footer';
 
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -143,6 +144,7 @@ export default function CalculatorPage() {
         </div>
       </section>
 
+      <Footer />
     </div>
   );
 }
