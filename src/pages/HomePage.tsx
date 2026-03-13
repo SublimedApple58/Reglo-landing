@@ -193,7 +193,7 @@ function CalculatorSection() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>(0.1);
 
   return (
-    <section className="bg-[#111] py-28 sm:py-40 overflow-hidden">
+    <section className="bg-[#111] py-32 sm:py-48 lg:py-56 overflow-hidden">
       <div ref={ref} className="max-w-[1440px] mx-auto px-5 sm:px-8">
         {/* Heading */}
         <div className={`text-center mb-12 reveal-fade ${isVisible ? 'is-visible' : ''}`}>
