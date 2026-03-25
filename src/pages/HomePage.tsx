@@ -84,17 +84,20 @@ function TrustedBy() {
         </p>
         <div className="flex items-center justify-center gap-6 sm:gap-8 flex-wrap">
           {[
-            { src: '/partner-1.png', h: 'h-[56px]' },
-            { src: '/partner-3.png', h: 'h-[22px]' },
-            { src: '/partner-2.png', h: 'h-[38px]' },
-            { src: '/partner-4.png', h: 'h-[52px]' },
+            { src: '/partner-1.png', h: 'h-[56px]', href: 'https://www.scuolaguidamontreal.it/' },
+            { src: '/partner-3.png', h: 'h-[22px]', href: 'https://www.autoscuolevicenza.it/' },
+            { src: '/partner-2.png', h: 'h-[38px]', href: 'https://www.autoscuolecita.it/' },
+            { src: '/partner-4.png', h: 'h-[52px]', href: 'https://www.autoscuolazzurra.com/' },
           ].map((logo, i) => (
-            <div
+            <a
               key={i}
-              className="flex items-center justify-center bg-white rounded-lg w-[140px] h-[48px] border border-[#E5E7EB] overflow-hidden"
+              href={logo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center bg-white rounded-lg w-[140px] h-[48px] border border-[#E5E7EB] overflow-hidden hover:border-[#ec4899]/30 transition-colors"
             >
               <img src={logo.src} alt="Partner" className={`${logo.h} object-contain`} />
-            </div>
+            </a>
           ))}
         </div>
       </div>
