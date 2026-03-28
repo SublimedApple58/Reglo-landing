@@ -336,7 +336,7 @@ function ComeFunziona() {
         {/* Block 1 */}
         <div ref={ref1} className="grid gap-10 lg:grid-cols-2 items-center mb-20">
           <div className={`reveal-left ${vis1 ? 'is-visible' : ''}`}>
-            <video className="w-full max-w-[560px] aspect-video rounded-[25px] shadow-[0_16px_48px_rgba(0,0,0,0.08)] object-cover" autoPlay muted loop playsInline>
+            <video className="w-full max-w-[560px] aspect-video rounded-[25px] shadow-[0_16px_48px_rgba(0,0,0,0.08)] object-cover" controls playsInline>
               <source src="/InstructorTutorial.mp4" type="video/mp4" />
             </video>
           </div>
@@ -370,7 +370,7 @@ function ComeFunziona() {
         {/* Block 2 */}
         <div ref={ref2} className="grid gap-10 lg:grid-cols-2 items-center">
           <div className={`reveal-left ${vis2 ? 'is-visible' : ''} lg:order-2`}>
-            <video className="w-full max-w-[560px] aspect-video rounded-[25px] shadow-[0_16px_48px_rgba(0,0,0,0.08)] object-cover" autoPlay muted loop playsInline>
+            <video className="w-full max-w-[560px] aspect-video rounded-[25px] shadow-[0_16px_48px_rgba(0,0,0,0.08)] object-cover" controls playsInline>
               <source src="/StudentTutorial.mp4" type="video/mp4" />
             </video>
           </div>
