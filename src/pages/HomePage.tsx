@@ -336,12 +336,9 @@ function ComeFunziona() {
         {/* Block 1 */}
         <div ref={ref1} className="grid gap-10 lg:grid-cols-2 items-center mb-20">
           <div className={`reveal-left ${vis1 ? 'is-visible' : ''}`}>
-            <div className="w-full max-w-[560px] aspect-video rounded-[25px] bg-[#111] flex flex-col items-center justify-center shadow-[0_16px_48px_rgba(0,0,0,0.08)]">
-              <svg className="w-16 h-16 text-white/30 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
-              </svg>
-              <span className="text-sm font-bold uppercase tracking-[0.2em] text-white/40">Video coming soon</span>
-            </div>
+            <video className="w-full max-w-[560px] aspect-video rounded-[25px] shadow-[0_16px_48px_rgba(0,0,0,0.08)] object-cover" autoPlay muted loop playsInline>
+              <source src="/InstructorTutorial.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className={`reveal-right ${vis1 ? 'is-visible' : ''}`}>
             <h3 className="text-3xl sm:text-[40px] font-bold text-[#111] mb-4 leading-tight">
@@ -373,12 +370,9 @@ function ComeFunziona() {
         {/* Block 2 */}
         <div ref={ref2} className="grid gap-10 lg:grid-cols-2 items-center">
           <div className={`reveal-left ${vis2 ? 'is-visible' : ''} lg:order-2`}>
-            <div className="w-full max-w-[560px] aspect-video rounded-[25px] bg-[#111] flex flex-col items-center justify-center shadow-[0_16px_48px_rgba(0,0,0,0.08)]">
-              <svg className="w-16 h-16 text-white/30 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
-              </svg>
-              <span className="text-sm font-bold uppercase tracking-[0.2em] text-white/40">Video coming soon</span>
-            </div>
+            <video className="w-full max-w-[560px] aspect-video rounded-[25px] shadow-[0_16px_48px_rgba(0,0,0,0.08)] object-cover" autoPlay muted loop playsInline>
+              <source src="/StudentTutorial.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className={`reveal-right ${vis2 ? 'is-visible' : ''} lg:order-1`}>
             <h3 className="text-3xl sm:text-[40px] font-bold text-[#111] mb-4 leading-tight">
