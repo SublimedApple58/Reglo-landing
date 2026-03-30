@@ -88,7 +88,7 @@ function TrustedBy() {
             { src: '/partner-3.png', h: 'h-[22px]', href: 'https://www.autoscuolecita.it/' },
             { src: '/partner-2.png', h: 'h-[38px]', href: 'https://www.autoscuolazzurra.com/' },
             { src: '/partner-4.png', h: 'h-[52px]', href: 'https://www.autoscuolevicenza.it/' },
-            { src: '/partner-5.png', h: 'h-[38px]', href: 'https://www.autoscuoleandrea.com/' },
+            { src: '/partner-5.png', h: 'h-full', href: 'https://www.autoscuoleandrea.com/', fill: true },
           ].map((logo, i) => (
             <a
               key={i}
@@ -97,7 +97,7 @@ function TrustedBy() {
               rel="noopener noreferrer"
               className="flex items-center justify-center bg-white rounded-lg w-[140px] h-[48px] border border-[#E5E7EB] overflow-hidden hover:border-[#ec4899]/30 transition-colors"
             >
-              <img src={logo.src} alt="Partner" className={`${logo.h} object-contain`} />
+              <img src={logo.src} alt="Partner" className={`${logo.fill ? 'w-full h-full object-cover' : `${logo.h} object-contain`}`} />
             </a>
           ))}
         </div>
