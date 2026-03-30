@@ -88,6 +88,7 @@ function TrustedBy() {
             { src: '/partner-3.png', h: 'h-[22px]', href: 'https://www.autoscuolecita.it/' },
             { src: '/partner-2.png', h: 'h-[38px]', href: 'https://www.autoscuolazzurra.com/' },
             { src: '/partner-4.png', h: 'h-[52px]', href: 'https://www.autoscuolevicenza.it/' },
+            { src: '/partner-5.png', h: 'h-[38px]', href: 'https://www.autoscuoleandrea.com/' },
           ].map((logo, i) => (
             <a
               key={i}
