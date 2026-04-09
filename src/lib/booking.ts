@@ -1,4 +1,4 @@
-export const CAL_BOOKING_URL = 'https://cal.com/reglo/analisi-strategica';
+export const CAL_BOOKING_URL = 'https://cal.com/reglo/analisi-strategica-autoscuola';
 
 export function trackBookingCTA(source: string) {
   const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
