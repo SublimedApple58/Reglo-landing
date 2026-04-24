@@ -85,7 +85,7 @@ function TrustedBy() {
         <div className="flex items-center justify-center gap-6 sm:gap-8 flex-wrap">
           {[
             { src: '/partner-1.png', h: 'h-[56px]', href: 'https://www.scuolaguidamontreal.it/' },
-            { src: '/partner-3.png', h: 'h-[38px]', href: 'https://autoscuolanewdrive.ai/' },
+            { src: '/partner-3.png', h: 'h-[28px]', href: 'https://autoscuolanewdrive.ai/' },
             { src: '/partner-2.png', h: 'h-[38px]', href: 'https://www.autoscuolazzurra.com/' },
             { src: '/partner-4.png', h: 'h-[52px]', href: 'https://www.autoscuolevicenza.it/' },
             { src: '/partner-5.png', h: 'h-full', href: 'https://www.autoscuoleandrea.com/', fill: true },
