@@ -85,7 +85,7 @@ function TrustedBy() {
         <div className="flex items-center justify-center gap-6 sm:gap-8 flex-wrap">
           {[
             { src: '/partner-1.png', h: 'h-[56px]', href: 'https://www.scuolaguidamontreal.it/' },
-            { src: '/partner-3.png', h: 'h-[28px]', href: 'https://autoscuolanewdrive.ai/' },
+            { src: '/partner-3.png', h: 'h-[28px]', href: 'https://autoscuolanewdrive.ai/', bg: '#F7F7F7' },
             { src: '/partner-2.png', h: 'h-[38px]', href: 'https://www.autoscuolazzurra.com/' },
             { src: '/partner-4.png', h: 'h-[52px]', href: 'https://www.autoscuolevicenza.it/' },
             { src: '/partner-5.png', h: 'h-full', href: 'https://www.autoscuoleandrea.com/', fill: true },
@@ -95,7 +95,8 @@ function TrustedBy() {
               href={logo.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center bg-white rounded-lg w-[140px] h-[48px] border border-[#E5E7EB] overflow-hidden hover:border-[#ec4899]/30 transition-colors"
+              style={logo.bg ? { backgroundColor: logo.bg } : undefined}
+              className={`flex items-center justify-center ${logo.bg ? '' : 'bg-white'} rounded-lg w-[140px] h-[48px] border border-[#E5E7EB] overflow-hidden hover:border-[#ec4899]/30 transition-colors`}
             >
               <img src={logo.src} alt="Partner" className={`${logo.fill ? 'w-full h-full object-cover' : `${logo.h} object-contain`}`} />
             </a>
