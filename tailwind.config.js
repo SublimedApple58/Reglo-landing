@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        paper:  '#FFFFFF',
+        canvas: '#FAFAFA',
         ink: {
           DEFAULT: '#0F0F12',
           50: '#FAFAFA',
