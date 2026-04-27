@@ -1,79 +1,41 @@
-const updatedAt = '18 febbraio 2026';
+import LegalLayout from '../components/LegalLayout';
 
 export default function PolicyPage() {
   return (
-    <div className="min-h-screen py-16 sm:py-20">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--color-ink-muted)]">
-            Informativa
-          </p>
-          <h1 className="text-3xl sm:text-4xl font-semibold mt-3 text-[color:var(--color-ink)]">
-            Policy
-          </h1>
-          <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)] mt-3">
-            Ultimo aggiornamento: {updatedAt}
-          </p>
-        </div>
-
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 space-y-7">
-          <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">1. Ambito del servizio</h2>
-            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Reglo Autoscuole fornisce una piattaforma cloud per gestire prenotazioni guide,
-              disponibilita di istruttori e veicoli, notifiche operative e storico pagamenti.
-              L'uso del servizio implica l'accettazione della presente policy.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">2. Uso consentito</h2>
-            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              L'utente si impegna a usare la piattaforma in modo conforme alla legge e alle finalita professionali
-              dichiarate, evitando accessi non autorizzati, abusi o utilizzi illeciti.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">3. Responsabilita</h2>
-            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Reglo adotta misure tecniche e organizzative adeguate. Il cliente resta responsabile della correttezza
-              dei dati inseriti, della configurazione dei ruoli e della custodia delle credenziali.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">4. Disponibilita del servizio</h2>
-            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Il servizio viene aggiornato periodicamente per migliorare stabilita, sicurezza e funzionalita.
-              Eventuali interventi programmati vengono comunicati quando impattano l'operativita.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">5. Proprieta intellettuale</h2>
-            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Marchi, contenuti, interfacce e software restano di proprieta di Reglo o dei rispettivi titolari.
-              E vietata la riproduzione non autorizzata.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">6. Modifiche alla policy</h2>
-            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Possiamo aggiornare questa policy per esigenze legali, tecniche o operative.
-              Le modifiche vengono pubblicate su questa pagina con data di aggiornamento.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-ink)]">7. Contatti</h2>
-            <p className="text-sm sm:text-base text-[color:var(--color-ink-muted)]">
-              Per informazioni puoi scrivere a info@reglo.it o privacy@reglo.it.
-            </p>
-          </section>
-        </div>
-      </div>
-    </div>
+    <LegalLayout
+      kicker="Informativa"
+      title="Policy"
+      updatedAt="18 febbraio 2026"
+      sections={[
+        {
+          title: 'Ambito del servizio',
+          body: <p>Reglo Autoscuole fornisce una piattaforma cloud per gestire prenotazioni guide, disponibilità di istruttori e veicoli, notifiche operative e storico pagamenti. L'uso del servizio implica l'accettazione della presente policy.</p>,
+        },
+        {
+          title: 'Uso consentito',
+          body: <p>L'utente si impegna a usare la piattaforma in modo conforme alla legge e alle finalità professionali dichiarate, evitando accessi non autorizzati, abusi o utilizzi illeciti.</p>,
+        },
+        {
+          title: 'Responsabilità',
+          body: <p>Reglo adotta misure tecniche e organizzative adeguate. Il cliente resta responsabile della correttezza dei dati inseriti, della configurazione dei ruoli e della custodia delle credenziali.</p>,
+        },
+        {
+          title: 'Disponibilità del servizio',
+          body: <p>Il servizio viene aggiornato periodicamente per migliorare stabilità, sicurezza e funzionalità. Eventuali interventi programmati vengono comunicati quando impattano l'operatività.</p>,
+        },
+        {
+          title: 'Proprietà intellettuale',
+          body: <p>Marchi, contenuti, interfacce e software restano di proprietà di Reglo o dei rispettivi titolari. È vietata la riproduzione non autorizzata.</p>,
+        },
+        {
+          title: 'Modifiche alla policy',
+          body: <p>Possiamo aggiornare questa policy per esigenze legali, tecniche o operative. Le modifiche vengono pubblicate su questa pagina con data di aggiornamento.</p>,
+        },
+        {
+          title: 'Contatti',
+          body: <p>Per informazioni puoi scrivere a <a href="mailto:info@reglo.it" className="text-rose-500 hover:underline">info@reglo.it</a> o <a href="mailto:privacy@reglo.it" className="text-rose-500 hover:underline">privacy@reglo.it</a>.</p>,
+        },
+      ]}
+    />
   );
 }
