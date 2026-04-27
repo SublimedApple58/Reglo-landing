@@ -2,7 +2,7 @@
 import { useState, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ArrowUpRight, WarningCircle, ClockCountdown, GiftTop,
+  ArrowUpRight, WarningCircle, ClockCountdown, Gift,
   CheckCircle, ArrowRight,
 } from '@phosphor-icons/react';
 import Footer from '../components/Footer';
@@ -14,7 +14,7 @@ import { SPRING } from '../motion';
 const STEPS = [
   { num: '01', icon: WarningCircle,  title: 'Segnali',     desc: 'Ci dici quale autoscuola gestisce male le guide.', tone: 'rose' },
   { num: '02', icon: ClockCountdown, title: 'Verifichiamo', desc: 'Contattiamo l\'autoscuola entro 3 giorni.',       tone: 'amber' },
-  { num: '03', icon: GiftTop,        title: 'Voucher',     desc: 'Se firma con noi, ricevi 2 guide gratuite.',     tone: 'rose' },
+  { num: '03', icon: Gift,        title: 'Voucher',     desc: 'Se firma con noi, ricevi 2 guide gratuite.',     tone: 'rose' },
 ];
 
 export default function AllieviPage() {
@@ -62,7 +62,7 @@ export default function AllieviPage() {
               transition={SPRING.default}
               className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-700 mb-7"
             >
-              <GiftTop size={12} weight="fill" />
+              <Gift size={12} weight="fill" />
               2 guide gratis per te
             </motion.div>
             <h1 className="h-display text-[44px] sm:text-[68px] lg:text-[88px] text-ink-950">
