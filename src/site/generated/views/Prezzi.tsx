@@ -462,14 +462,17 @@ export default function Prezzi(v: any) {
     </div>
     <div data-screen-label={"Loghi clienti"} style={{position: "relative", background: "#000000", padding: "110px 0 110px", overflow: "hidden"}}>
       {"\n  "}
-      <img src={"images/site/mano.png"} alt={""} style={{position: "absolute", top: "30px", right: "-6%", width: "min(520px, 34vw)", opacity: "0.18", transform: "rotate(-12deg)", filter: "grayscale(1) contrast(1.05)", pointerEvents: "none", zIndex: "0"}} />
       {"\n  "}
       <div style={{position: "relative", zIndex: "1", textAlign: "center", maxWidth: "1120px", margin: "0 auto 56px", padding: "0 20px"}}>
         {"\n    "}
         <h2 style={{margin: "0", fontSize: "clamp(30px, 3.6vw, 56px)", fontWeight: "800", letterSpacing: "-2.4px", lineHeight: "1.06", color: "#ffffff", textWrap: "balance"}}>
           {"Scelto dalle autoscuole"}
           <br />
-          {"che hanno smesso di lavorare a mano"}
+          {"che hanno smesso di lavorare a "}
+          <span style={{position: "relative", display: "inline-block"}}>
+            {"mano"}
+            <img src={"images/site/mano.png"} alt={""} style={{position: "absolute", left: "50%", top: "50%", width: "min(520px, 34vw)", maxWidth: "none", opacity: "0.18", transformOrigin: "22% 18%", transform: "translate(-22%, -18%) rotate(-12deg)", filter: "grayscale(1) contrast(1.05)", pointerEvents: "none", zIndex: "-1"}} />
+          </span>
         </h2>
         {"\n  "}
       </div>
