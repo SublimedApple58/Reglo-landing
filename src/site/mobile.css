@@ -248,6 +248,36 @@
     gap: 40px !important;
   }
 
+  /* ------------------------------------------- mockup telefono a proporzione */
+
+  /* Tre pagine (rinnovi, segretaria, istruttori) montano il mockup dentro un
+   * contenitore alto `clamp(420px, 46vw, 640px)`, con la scocca a proporzione
+   * 400/654. Su un telefono il clamp si ferma al minimo di 420px, quindi la
+   * scocca resta larga ~257px: dentro, il contenuto della schermata e' in px
+   * fissi e si sfascia (indirizzo e ora una sopra l'altra).
+   *
+   * Su mobile l'altezza la detta la larghezza disponibile: la scocca prende
+   * tutta la colonna e `aspect-ratio` calcola l'altezza, cosi' la schermata
+   * torna nelle proporzioni per cui e' disegnata. */
+  /* :has() e' obbligatorio: lo stesso contenitore, su segretaria e
+   * istruttori, contiene una foto con `height: 100%`, che con l'altezza
+   * auto del padre collasserebbe a zero. Va toccato solo quando dentro
+   * c'e' la scocca. */
+  div[style*="clamp(420px, 46vw, 640px)"]:has(> div[style*="aspect-ratio: 400 / 654"]) {
+    height: auto !important;
+    /* la scocca esce dai 20px di padding della colonna: a 390px di viewport
+     * arriva alla stessa larghezza che ha su desktop (391px), cioe' quella
+     * per cui la schermata dentro e' disegnata */
+    width: calc(100% + 40px) !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+  }
+
+  div[style*="aspect-ratio: 400 / 654"] {
+    height: auto !important;
+    width: 100% !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
