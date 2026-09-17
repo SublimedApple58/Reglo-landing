@@ -1,6 +1,6 @@
 import React from 'react';
 import RegloSite from './RegloSite';
-import { pageFromPath, pathFromPage, LEGACY_PATHS } from './routes';
+import { pageFromPath, pathFromPage } from './routes';
 
 /**
  * Sincronizza la navigazione interna del design (state.page) con l'URL.
@@ -9,6 +9,11 @@ import { pageFromPath, pathFromPage, LEGACY_PATHS } from './routes';
  * riferimento e viene rigenerato da tools/port-logic.mjs, quindi non deve
  * contenere modifiche scritte a mano.
  */
+/** Un indirizzo non mappato non esiste: si mostra la 404 del design. */
+function pageForCurrentUrl(): string {
+  return pageFromPath(window.location.pathname) ?? '404';
+}
+
 const Base = RegloSite as unknown as new (props: Record<string, never>) => React.Component<
   Record<string, never>,
   { page: string }
@@ -19,13 +24,12 @@ class RoutedSite extends Base {
 
   constructor(props: Record<string, never>) {
     super(props);
-    const page = pageFromPath(window.location.pathname);
-    if (page) this.state = { ...this.state, page };
+    this.state = { ...this.state, page: pageForCurrentUrl() };
   }
 
   private _onPop = () => {
-    const page = pageFromPath(window.location.pathname);
-    if (page && page !== this.state.page) this.setState({ page });
+    const page = pageForCurrentUrl();
+    if (page !== this.state.page) this.setState({ page });
   };
 
   componentDidMount() {
@@ -36,9 +40,9 @@ class RoutedSite extends Base {
 
   componentDidUpdate(prev: unknown) {
     super.componentDidUpdate(prev);
+    // la 404 non ha un URL proprio: resta su quello digitato
+    if (this.state.page === '404') return;
     const want = pathFromPage(this.state.page);
-    // le rotte legacy restano dove sono finché non si decide che farne
-    if (LEGACY_PATHS.includes(window.location.pathname)) return;
     if (want !== window.location.pathname && want !== this._lastPath) {
       this._lastPath = want;
       window.history.pushState({}, '', want);

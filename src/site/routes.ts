@@ -30,9 +30,14 @@ export const PATH_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_TO_PATH).map(([page, path]) => [path, page]),
 );
 
-/** Rotte del sito precedente non ancora coperte dal nuovo design. */
-export const LEGACY_PATHS = ['/allievi', '/calcolatore', '/policy'];
-
+/**
+ * Vista per un URL. `null` significa "questo indirizzo non esiste": chi
+ * chiama mostra la vista 404 del design.
+ *
+ * Le rotte del vecchio sito (/allievi, /calcolatore, /policy) non sono piu'
+ * mappate: le pagine sono state rimosse e non hanno un equivalente nel nuovo
+ * design. /allievi e /calcolatore verranno rifatte da zero.
+ */
 export function pageFromPath(pathname: string): string | null {
   const clean = pathname.replace(/\/+$/, '') || '/';
   return PATH_TO_PAGE[clean] ?? null;
