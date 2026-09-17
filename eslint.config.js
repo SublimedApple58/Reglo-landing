@@ -5,7 +5,9 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  // Codice generato da tools/dc-to-react.mjs e porting fedele della logica
+  // del design: non si lintano, si rigenerano.
+  { ignores: ['dist', 'design-reference', 'src/site/generated', 'src/site/RegloSite.tsx'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],

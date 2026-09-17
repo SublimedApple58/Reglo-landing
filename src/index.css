@@ -1,146 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Innesto del nuovo design.
+ *
+ * Blocco globale ripreso VERBATIM dallhelmet di
+ * design-reference/sito-finale-v1.html: e parte della specifica, non va
+ * riscritto. Sotto, le regole che dc-runtime iniettava da solo.
+ */
+@import "./site/generated/pseudo.css";
 
-/* ─── DESIGN TOKENS ───────────────────────────────────────────────────── */
-:root {
-  /* Brand */
-  --rose:        #D63384;
-  --rose-soft:   rgba(214, 51, 132, 0.10);
-  --amber:       #E6B800;
-  --amber-soft:  rgba(230, 184, 0, 0.10);
-
-  /* Neutrals */
-  --ink:         #0F0F12;   /* near-black, not pure */
-  --ink-2:       #18181B;   /* zinc-900 */
-  --ink-3:       #27272A;   /* zinc-800 */
-  --muted:       #71717A;   /* zinc-500 */
-  --muted-soft:  #A1A1AA;   /* zinc-400 */
-  --line:        #E4E4E7;   /* zinc-200 */
-  --line-soft:   #F4F4F5;   /* zinc-100 */
-  --paper:       #FFFFFF;
-  --canvas:      #FAFAFA;
-
-  /* Glass */
-  --glass-bg:    rgba(255, 255, 255, 0.62);
-  --glass-edge:  rgba(255, 255, 255, 0.55);
-  --glass-inner-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-
-/* ─── BASE ────────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  color: var(--ink);
-  background: var(--paper);
-  font-feature-settings: 'cv11', 'ss01', 'ss03';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* ─── SELECTION ──────────────────────────────────────────────────────── */
-::selection {
-  background: var(--rose);
-  color: var(--paper);
-}
-
-/* ─── GLASS ───────────────────────────────────────────────────────────── */
-.glass {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-edge);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  box-shadow:
-    var(--glass-inner-shadow),
-    0 12px 32px -16px rgba(15, 15, 18, 0.12);
-}
-
-.glass-dark {
-  background: rgba(15, 15, 18, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-}
-
-/* ─── GRAIN OVERLAY (fixed, pointer-events-none) ──────────────────────── */
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-
-/* ─── DOT GRID (subtle background) ────────────────────────────────────── */
-.dot-grid {
-  background-image: radial-gradient(circle, rgba(15, 15, 18, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* ─── SHIMMER (skeleton) ──────────────────────────────────────────────── */
-.skeleton {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(90deg, #F4F4F5, #E4E4E7, #F4F4F5);
-  background-size: 200% 100%;
-  animation: skel-shimmer 1.6s ease-in-out infinite;
-}
-@keyframes skel-shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* ─── MASK FADE (kinetic marquee edges) ───────────────────────────────── */
-.mask-fade-x {
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
-}
-
-/* ─── KINETIC MARQUEE TRACK ───────────────────────────────────────────── */
-.marquee-track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-}
-
-/* ─── SCROLLBAR (zinc, thin) ──────────────────────────────────────────── */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--canvas); }
-::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; border: 2px solid var(--canvas); }
-::-webkit-scrollbar-thumb:hover { background: var(--muted-soft); }
-
-/* ─── FOCUS RING (visible only on keyboard) ──────────────────────────── */
-:focus { outline: none; }
-:focus-visible {
-  outline: 2px solid var(--rose);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* ─── HEADING UTILITIES ───────────────────────────────────────────────── */
-.h-display {
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-}
-.h-section {
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
-}
-
-/* ─── RESPECT REDUCED MOTION ─────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  body { font-family: Figtree, -apple-system, system-ui, sans-serif; color: #000000; -webkit-font-smoothing: antialiased; }
+  a { color: #000000; text-decoration: none; }
+  a:hover { color: #55555f; }
+  ::selection { background: #e6e6ec; color: #000000; }
+  ::-moz-selection { background: #e6e6ec; color: #000000; }
+  * { -webkit-tap-highlight-color: transparent; }
+  *:focus, *:focus-visible { outline: none; }
+  image-slot { display: block; width: 100%; height: 100%; }
+  input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #000000;
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+    box-shadow: 0 0 0 1000px #ffffff inset;
+    caret-color: #000000;
+    transition: background-color 9999s ease-in-out 0s;
   }
-}
+  @keyframes marquee-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes marquee-x-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  [data-reglo-img] { opacity: 0; transition: opacity 0.5s ease; }
+  [data-reglo-white] { transition: opacity 0.5s ease; }
+  @keyframes ag-hl { 0%, 18.5% { transform: translateY(0); } 20%, 38.5% { transform: translateY(56px); } 40%, 58.5% { transform: translateY(112px); } 60%, 78.5% { transform: translateY(168px); } 80%, 98.5% { transform: translateY(224px); } 100% { transform: translateY(0); } }
+  @keyframes ag-b1 { 0%, 18.5% { opacity: 1; transform: scale(1); } 20% { opacity: 0; transform: scale(0.98); } 98.5% { opacity: 0; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes ag-b2 { 0%, 18.5% { opacity: 0; transform: scale(0.98); } 20%, 38.5% { opacity: 1; transform: scale(1); } 40%, 100% { opacity: 0; transform: scale(0.98); } }
+  @keyframes ag-b3 { 0%, 38.5% { opacity: 0; transform: scale(0.98); } 40%, 58.5% { opacity: 1; transform: scale(1); } 60%, 100% { opacity: 0; transform: scale(0.98); } }
+  @keyframes ag-b4 { 0%, 58.5% { opacity: 0; transform: scale(0.98); } 60%, 78.5% { opacity: 1; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(0.98); } }
+  @keyframes ag-b5 { 0%, 78.5% { opacity: 0; transform: scale(0.98); } 80%, 98.5% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.98); } }
+  @keyframes cham-shift { 0% { background: #ffffff; color: #000000; } 25% { background: #b9e0c2; color: #14361f; } 50% { background: #f0d69a; color: #4a3410; } 75% { background: #c9d3f5; color: #1c2550; } 100% { background: #ffffff; color: #000000; } }
+  @keyframes core-reveal { 0% { opacity: 0; filter: blur(22px); transform: translateY(16px) scale(1.015); } 55% { opacity: 1; } 100% { opacity: 1; filter: blur(0px); transform: translateY(0) scale(1); } }
+  @keyframes orb-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes orb-spin-rev { from { transform: translate(-50%,-50%) rotate(360deg); } to { transform: translate(-50%,-50%) rotate(0deg); } }
+  @keyframes orb-face { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+  @keyframes orb-face-rev { from { transform: rotate(-360deg); } to { transform: rotate(0deg); } }
+  @keyframes core-wall-reveal { 0% { opacity: 0; filter: blur(26px); transform: translateY(24px); } 100% { opacity: 1; filter: blur(0px); transform: translateY(0); } }
+  @keyframes core-veil { 0% { opacity: 1; } 70% { opacity: 0.35; } 100% { opacity: 0; } }
+  @keyframes core-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes om-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+  html { overflow-x: clip; }
+  body { overflow-x: clip; }
+  @keyframes tessa-float { 0% { transform: translate3d(0, 0, 0); } 30% { transform: translate3d(3px, -7px, 0); } 60% { transform: translate3d(-2px, -10px, 0); } 100% { transform: translate3d(0, 0, 0); } }
+  @keyframes tessa-swap-a { 0% { transform: translate3d(0, 0, 0) scale(1); } 18% { transform: translate3d(4px, 0, 20px) scale(1.02); } 50% { transform: translate3d(55px, 0, 60px) scale(1.06); } 82% { transform: translate3d(106px, 0, 20px) scale(1.02); } 100% { transform: translate3d(110px, 0, 0) scale(1); } }
+  @keyframes tessa-swap-b { 0% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(-55px, 0, -22px) scale(0.96); } 100% { transform: translate3d(-110px, 0, 0) scale(1); } }
+  @keyframes tessa-glow { 0%, 100% { opacity: 0.45; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.15); } }  @keyframes regloCaret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+/* FULL_PAGE_CSS di dc-runtime (src/boot.ts): il runtime lo aggiungeva
+ * al mount, quindi fa parte del rendering di riferimento. */
+html, body { height: 100%; margin: 0; }
+#root { height: 100%; }

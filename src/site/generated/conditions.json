@@ -1,0 +1,82 @@
+[
+  {
+    "name": "HdrVisible",
+    "cond": "hdrVisible"
+  },
+  {
+    "name": "Home",
+    "cond": "isHome"
+  },
+  {
+    "name": "Core",
+    "cond": "isCore"
+  },
+  {
+    "name": "Assistenza",
+    "cond": "isAssistenza"
+  },
+  {
+    "name": "Vendite",
+    "cond": "isVendite"
+  },
+  {
+    "name": "Contatti",
+    "cond": "isContatti"
+  },
+  {
+    "name": "Prezzi",
+    "cond": "isPrezzi"
+  },
+  {
+    "name": "Novita",
+    "cond": "isNovita"
+  },
+  {
+    "name": "Istruttori",
+    "cond": "isIstruttori"
+  },
+  {
+    "name": "Segretaria",
+    "cond": "isSegretaria"
+  },
+  {
+    "name": "Rinnovi",
+    "cond": "isRinnovi"
+  },
+  {
+    "name": "Med",
+    "cond": "isMed"
+  },
+  {
+    "name": "IscrivitiOpen",
+    "cond": "iscrivitiOpen"
+  },
+  {
+    "name": "AppOpen",
+    "cond": "appOpen"
+  },
+  {
+    "name": "Team",
+    "cond": "isTeam"
+  },
+  {
+    "name": "Privacy",
+    "cond": "isPrivacy"
+  },
+  {
+    "name": "Termini",
+    "cond": "isTermini"
+  },
+  {
+    "name": "Soon",
+    "cond": "isSoon"
+  },
+  {
+    "name": "HdrVisible2",
+    "cond": "hdrVisible"
+  },
+  {
+    "name": "Login",
+    "cond": "isLogin"
+  }
+]
