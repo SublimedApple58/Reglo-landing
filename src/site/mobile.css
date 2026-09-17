@@ -225,6 +225,20 @@
     zoom: 0.62 !important;
   }
 
+  /* ------------------------------------------------------ prezzi (/prezzi) */
+
+  /* "Migrazione inclusa · Nessun costo nascosto · Supporto compreso": a capo
+   * i separatori finiscono a inizio riga. In colonna, senza puntini (sono i
+   * figli pari, le voci sono i dispari). */
+  [data-screen-label="Prezzo"] div[style*="gap: 10px 26px"] {
+    flex-direction: column !important;
+    gap: 7px !important;
+  }
+
+  [data-screen-label="Prezzo"] div[style*="gap: 10px 26px"] > span:nth-child(even) {
+    display: none !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
