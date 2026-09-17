@@ -21,7 +21,6 @@ export const PAGE_TO_PATH: Record<string, string> = {
   contatti: '/contatti',
   vendite: '/contatta-le-vendite',
   assistenza: '/assistenza',
-  login: '/accedi',
   privacy: '/privacy-policy',
   termini: '/termini-e-condizioni',
 };
@@ -29,6 +28,21 @@ export const PAGE_TO_PATH: Record<string, string> = {
 export const PATH_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_TO_PATH).map(([page, path]) => [path, page]),
 );
+
+/**
+ * Login vero della web app Reglo.
+ *
+ * Il design contiene una pagina di login propria, ma e' un mockup: non
+ * autentica nessuno. Il pulsante "Accedi" (header e footer) porta qui, e
+ * `/accedi` — l'URL che serviva quel mockup — ci reindirizza, cosi' la
+ * pagina finta non e' raggiungibile.
+ *
+ * Nessun prefisso di lingua: ci pensa il middleware della web app.
+ */
+export const LOGIN_URL = 'https://app.reglo.it/sign-in';
+
+/** URL del vecchio mockup di login, da reindirizzare al login vero. */
+export const FAKE_LOGIN_PATH = '/accedi';
 
 /**
  * Vista per un URL. `null` significa "questo indirizzo non esiste": chi

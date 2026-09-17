@@ -1,6 +1,6 @@
 import React from 'react';
 import RegloSite from './RegloSite';
-import { pageFromPath, pathFromPage } from './routes';
+import { pageFromPath, pathFromPage, LOGIN_URL, FAKE_LOGIN_PATH } from './routes';
 
 /**
  * Sincronizza la navigazione interna del design (state.page) con l'URL.
@@ -17,7 +17,12 @@ function pageForCurrentUrl(): string {
 const Base = RegloSite as unknown as new (props: Record<string, never>) => React.Component<
   Record<string, never>,
   { page: string }
-> & { componentDidMount(): void; componentDidUpdate(p: unknown): void; componentWillUnmount(): void };
+> & {
+  componentDidMount(): void;
+  componentDidUpdate(p: unknown): void;
+  componentWillUnmount(): void;
+  renderVals(): Record<string, unknown>;
+};
 
 class RoutedSite extends Base {
   private _lastPath = '';
@@ -32,7 +37,24 @@ class RoutedSite extends Base {
     if (page !== this.state.page) this.setState({ page });
   };
 
+  /**
+   * Il design mostrerebbe il proprio mockup di login. "Accedi" deve invece
+   * portare alla web app vera, quindi sostituiamo `goLogin` qui: RegloSite e'
+   * generato da tools/port-logic.mjs e non va modificato a mano.
+   */
+  renderVals() {
+    return {
+      ...super.renderVals(),
+      goLogin: () => { window.location.href = LOGIN_URL; },
+    };
+  }
+
   componentDidMount() {
+    // chi arriva sul vecchio URL del mockup finisce al login vero
+    if (window.location.pathname.replace(/\/+$/, '') === FAKE_LOGIN_PATH) {
+      window.location.replace(LOGIN_URL);
+      return;
+    }
     super.componentDidMount();
     this._lastPath = window.location.pathname;
     window.addEventListener('popstate', this._onPop);
