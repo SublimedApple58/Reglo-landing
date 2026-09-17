@@ -350,6 +350,33 @@
     text-align: left !important;
   }
 
+  /* ------------------------------------------------------ novita' (/novita) */
+
+  /* Le voci del changelog sono `280px | contenuto`: a 390px la data si prende
+   * 280 dei 326 disponibili e il testo, schiacciato a 46px, straborda fuori
+   * schermo. In colonna, con la data sopra.
+   * (`grid-template-columns: 280px` in tutto il sito esiste solo qui.) */
+  div[style*="grid-template-columns: 280px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding-top: 44px !important;
+  }
+
+  div[style*="grid-template-columns: 280px"] > div:last-child {
+    padding-left: 28px !important;
+  }
+
+  [data-cl-entry] {
+    margin-bottom: 20px !important;
+  }
+
+  /* da sticky a relative: in colonna singola la data non deve seguire lo
+   * scroll, e il `relative` tiene il pallino ancorato dov'e' adesso (left
+   * -28px calcolato dal padding della voce) */
+  [data-cl-entry] > div {
+    position: relative !important;
+    top: auto !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
