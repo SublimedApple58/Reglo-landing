@@ -275,7 +275,11 @@
     margin-right: -20px !important;
   }
 
-  div[style*="aspect-ratio: 400 / 654"] {
+  /* Solo la scocca dentro QUEL contenitore. Senza il figlio diretto la regola
+   * prendeva anche gli altri due telefoni con la stessa proporzione: quello
+   * piccolo accanto al laptop in "Dispositivi" sulla home (width: 13.5%,
+   * posizionato in absolute) diventava gigante e copriva il testo. */
+  div[style*="clamp(420px, 46vw, 640px)"] > div[style*="aspect-ratio: 400 / 654"] {
     height: auto !important;
     width: 100% !important;
   }
@@ -395,6 +399,23 @@
     border-top: 1px solid #ececf0 !important;
     padding-left: 0 !important;
     padding-top: 36px !important;
+  }
+
+  /* ------------------------------------------- home: "Dispositivi" (3 device) */
+
+  /* La composizione laptop + tablet + telefono e' disegnata su 1000px: le
+   * posizioni sono in percentuale e scalano, ma i dettagli dentro la
+   * schermata del telefino (i pin da 34px, la label "Prenota la visita")
+   * sono in px fissi. A 350px il telefono si riduce a 47px mentre quei
+   * dettagli restano grandi uguali: dentro il mockup si vede una UI
+   * sproporzionata.
+   *
+   * `zoom` sull'intera composizione rimpicciolisce i px mantenendo intatto
+   * il layout in percentuale: la composizione resta larga quanto la colonna
+   * (la percentuale si risolve nello spazio del padre) e i pin tornano alla
+   * proporzione che hanno su desktop (~1.15% della composizione). */
+  [data-screen-label="Dispositivi"] div[style*="aspect-ratio: 1400 / 760"] {
+    zoom: 0.35 !important;
   }
 
   /* ---------------------------------------------------------------- footer */
