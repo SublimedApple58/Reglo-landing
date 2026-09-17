@@ -5,6 +5,10 @@
  * riscritto. Sotto, le regole che dc-runtime iniettava da solo.
  */
 @import "./site/generated/pseudo.css";
+/* Ordine: tweaks (correzioni di design, tutte le larghezze) PRIMA di mobile
+ * (responsive). A parita' di specificita' vince l'ultima regola, quindi il
+ * layer responsive deve poter sovrascrivere le correzioni di design. */
+@import "./site/tweaks.css";
 @import "./site/mobile.css";
 
   *, *::before, *::after { box-sizing: border-box; }

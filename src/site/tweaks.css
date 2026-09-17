@@ -1,0 +1,43 @@
+/* Correzioni di design chieste dopo l'innesto del design.
+ *
+ * Diverse da src/site/mobile.css: queste NON sono aggiustamenti responsive,
+ * valgono a ogni larghezza. Stanno qui e non nei file generati perche' quelli
+ * sono prodotti da tools/dc-to-react.mjs e non si modificano a mano.
+ *
+ * Ogni regola cita chi l'ha chiesta, cosi' si sa cosa e' scelta e cosa e'
+ * porting fedele del riferimento.
+ */
+
+/* Gabriele: il simbolo % era appiccicato al numero nelle card dei numeri
+ * ("+23,3%", "34%", "19%"). Il margine deve anche recuperare il
+ * letter-spacing negativo del numero (-2.8px), che e' quello che li
+ * incollava; in em segue la scala del numero, che e' in clamp(). */
+[data-screen-label="Numeri"] span[style*="font-size: 0.5em"] {
+  margin-left: 0.3em;
+}
+
+/* Gabriele: la card "Malattie del team" copriva quasi tutta la foto della
+ * valigia. Piu' piccola, cosi' l'immagine dietro si vede. */
+/* !important perche' width e padding sono nello style inline del design;
+ * il margine del % sopra invece non lo e', e non ne ha bisogno. */
+[data-screen-label="Ferie e malattie"] div[style*="left: 248px"] {
+  width: min(360px, calc(100% - 96px)) !important;
+  padding: 22px 20px 18px !important;
+}
+
+/* Gabriele: l'icona dello stetoscopio era un quadrato con gli angoli
+ * smussati e non sembrava una notifica. Tonda. */
+[data-screen-label="Ferie e malattie"] span[style*="width: 38px"] {
+  border-radius: 99px !important;
+}
+
+/* Conseguenza della card piu' piccola: il cursore a mano era posizionato con
+ * `left: 331px` dentro la riga di Martina Giorgi, misura tarata sulla card da
+ * 420px. Con la card ristretta quel punto cade fuori dalla riga e il cursore
+ * si stacca dal pulsante "Sposta". Ancorato al bordo destro, resta sul
+ * pulsante a qualunque larghezza (su mobile serviva comunque, perche' a 390px
+ * quei 331px finivano fuori schermo). */
+[data-screen-label="Ferie e malattie"] img[src*="cursore-mano"] {
+  left: auto !important;
+  right: 8px !important;
+}

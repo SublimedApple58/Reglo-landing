@@ -66,6 +66,25 @@
   /* il menu "Funzioni" e' ancorato alla voce, che su mobile sta a ~90px dal
    * bordo: a 300px uscirebbe dallo schermo. Stretto e con il testo piu'
    * piccolo ci sta, e resta agganciato all'header invece di fluttuare. */
+  /* Il menu era ancorato alla voce "Funzioni", che sta all'inizio della pill:
+   * a 390px sforava di 51px oltre la pill e finiva sotto il pulsante
+   * "Prenota". Qui l'ancora diventa la pill: la voce perde il position
+   * relative, la pill lo prende, e il menu si allinea al suo bordo destro.
+   * Su desktop il menu sta gia' dentro la pill (573-873 contro 572-868),
+   * quindi non serve toccarlo. */
+  [data-nav-pill] {
+    position: relative !important;
+  }
+
+  [data-nav-pill] > span:first-child {
+    position: static !important;
+  }
+
+  [data-fx-menu] {
+    left: auto !important;
+    right: 0 !important;
+  }
+
   [data-fx-menu] > div {
     width: 244px !important;
     padding: 10px 8px !important;
@@ -290,16 +309,33 @@
    * pulsanti "Sposta". Su mobile si centra sul contenitore. */
   [data-screen-label="Ferie e malattie"] div[style*="left: 248px"] {
     left: 50% !important;
-    width: calc(100% - 32px) !important;
+    width: calc(100% - 56px) !important;
   }
 
-  /* Il cursore a mano e' posizionato con `left: 331px` dentro la riga di
-   * Martina Giorgi: su desktop lo lascia a 8px dal bordo destro, sopra il
-   * pulsante "Sposta". Con la card piu' stretta quei 331px cadono fuori
-   * schermo, quindi lo si ancora al bordo destro mantenendo gli 8px. */
-  [data-screen-label="Ferie e malattie"] img[src*="cursore-mano"] {
-    left: auto !important;
-    right: 8px !important;
+  /* La card ristretta (tweaks.css, richiesta di Gabriele: si deve vedere piu'
+   * valigia) lascia 254px di contenuto: con avatar da 44px e pulsante da
+   * 14.5px i nomi andrebbero a capo. Le righe si stringono di conseguenza. */
+  [data-screen-label="Ferie e malattie"] div[style*="left: 248px"] span[style*="width: 44px"] {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  [data-screen-label="Ferie e malattie"] div[style*="left: 248px"] div[style*="gap: 14px"] {
+    gap: 10px !important;
+    padding: 8px 10px !important;
+  }
+
+  [data-screen-label="Ferie e malattie"] div[style*="left: 248px"] div[style*="gap: 14px"] span[style*="font-weight: 700"] {
+    font-size: 14px !important;
+  }
+
+  [data-screen-label="Ferie e malattie"] div[style*="left: 248px"] div[style*="gap: 14px"] span[style*="font-size: 14px"] {
+    font-size: 12.5px !important;
+  }
+
+  [data-screen-label="Ferie e malattie"] div[style*="left: 248px"] span[style*="padding: 9px 16px"] {
+    padding: 7px 12px !important;
+    font-size: 13px !important;
   }
 
   /* Il video della modalita' autonoma e' dimensionato a mano (1186x704,
