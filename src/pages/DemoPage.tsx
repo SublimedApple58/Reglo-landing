@@ -1,13 +1,22 @@
 import { useEffect } from 'react';
 import { CAL_BOOKING_URL } from '../lib/booking';
 
+/** Redirect verso il calendario Cal.com. Nessuna UI di prodotto: solo funzione. */
 export default function DemoPage() {
   useEffect(() => {
     window.location.replace(CAL_BOOKING_URL);
   }, []);
+
   return (
-    <main className="min-h-[100dvh] grid place-items-center bg-paper">
-      <p className="text-sm text-ink-500 font-mono">Reindirizzamento al calendario…</p>
+    <main
+      style={{
+        minHeight: '100dvh',
+        display: 'grid',
+        placeItems: 'center',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+      }}
+    >
+      <p style={{ fontSize: 14, color: '#71717A' }}>Reindirizzamento al calendario…</p>
     </main>
   );
 }

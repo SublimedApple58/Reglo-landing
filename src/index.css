@@ -2,145 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── DESIGN TOKENS ───────────────────────────────────────────────────── */
-:root {
-  /* Brand */
-  --rose:        #D63384;
-  --rose-soft:   rgba(214, 51, 132, 0.10);
-  --amber:       #E6B800;
-  --amber-soft:  rgba(230, 184, 0, 0.10);
-
-  /* Neutrals */
-  --ink:         #0F0F12;   /* near-black, not pure */
-  --ink-2:       #18181B;   /* zinc-900 */
-  --ink-3:       #27272A;   /* zinc-800 */
-  --muted:       #71717A;   /* zinc-500 */
-  --muted-soft:  #A1A1AA;   /* zinc-400 */
-  --line:        #E4E4E7;   /* zinc-200 */
-  --line-soft:   #F4F4F5;   /* zinc-100 */
-  --paper:       #FFFFFF;
-  --canvas:      #FAFAFA;
-
-  /* Glass */
-  --glass-bg:    rgba(255, 255, 255, 0.62);
-  --glass-edge:  rgba(255, 255, 255, 0.55);
-  --glass-inner-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+/*
+ * Foglio di stile azzerato in attesa del nuovo design.
+ * I token del vecchio design (palette rose/amber, glass, grain, dot-grid,
+ * diffusion shadows) sono stati rimossi: vedi commit 23ef4f0 per lo storico.
+ * Qui sotto solo il minimo indispensabile.
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-
-/* ─── BASE ────────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  color: var(--ink);
-  background: var(--paper);
-  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* ─── SELECTION ──────────────────────────────────────────────────────── */
-::selection {
-  background: var(--rose);
-  color: var(--paper);
-}
-
-/* ─── GLASS ───────────────────────────────────────────────────────────── */
-.glass {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-edge);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  box-shadow:
-    var(--glass-inner-shadow),
-    0 12px 32px -16px rgba(15, 15, 18, 0.12);
-}
-
-.glass-dark {
-  background: rgba(15, 15, 18, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-}
-
-/* ─── GRAIN OVERLAY (fixed, pointer-events-none) ──────────────────────── */
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-
-/* ─── DOT GRID (subtle background) ────────────────────────────────────── */
-.dot-grid {
-  background-image: radial-gradient(circle, rgba(15, 15, 18, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* ─── SHIMMER (skeleton) ──────────────────────────────────────────────── */
-.skeleton {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(90deg, #F4F4F5, #E4E4E7, #F4F4F5);
-  background-size: 200% 100%;
-  animation: skel-shimmer 1.6s ease-in-out infinite;
-}
-@keyframes skel-shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* ─── MASK FADE (kinetic marquee edges) ───────────────────────────────── */
-.mask-fade-x {
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
-}
-
-/* ─── KINETIC MARQUEE TRACK ───────────────────────────────────────────── */
-.marquee-track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-}
-
-/* ─── SCROLLBAR (zinc, thin) ──────────────────────────────────────────── */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--canvas); }
-::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; border: 2px solid var(--canvas); }
-::-webkit-scrollbar-thumb:hover { background: var(--muted-soft); }
-
-/* ─── FOCUS RING (visible only on keyboard) ──────────────────────────── */
-:focus { outline: none; }
-:focus-visible {
-  outline: 2px solid var(--rose);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* ─── HEADING UTILITIES ───────────────────────────────────────────────── */
-.h-display {
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-}
-.h-section {
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
-}
-
-/* ─── RESPECT REDUCED MOTION ─────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
