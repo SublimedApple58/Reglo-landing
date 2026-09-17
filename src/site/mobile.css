@@ -379,6 +379,24 @@
     top: auto !important;
   }
 
+  /* ------------------------ form contatto (/contatta-le-vendite, /assistenza) */
+
+  /* Griglia `testo | form` a due colonne con 80px di gap: a 390px restano 85
+   * e 95px per colonna, e l'indirizzo email va a capo una lettera per riga.
+   * In colonna, e il filetto verticale che separava le due meta' diventa un
+   * filetto orizzontale sopra il form. */
+  div[style*="minmax(0px, 1fr) minmax(0px, 1.12fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+  }
+
+  div[style*="minmax(0px, 1fr) minmax(0px, 1.12fr)"] > div[style*="border-left"] {
+    border-left: 0 !important;
+    border-top: 1px solid #ececf0 !important;
+    padding-left: 0 !important;
+    padding-top: 36px !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
