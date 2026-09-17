@@ -120,6 +120,26 @@ const objLit = (o) => '{' + Object.entries(o)
   .map(([k, val]) => (isIdent(k) ? k : q(k)) + ': ' + (val && val.__raw ? val.__raw : q(val)))
   .join(', ') + '}';
 
+/**
+ * TAMPONE — copy delle conferme dei form.
+ *
+ * I form del design non inviano niente: validano e mostrano "Richiesta
+ * inviata". Finche' non c'e' un endpoint vero, l'invio passa da un mailto
+ * precompilato (vedi RoutedSite), quindi la mail la deve ancora spedire
+ * l'utente: la conferma originale mentirebbe. Qui la rendiamo veritiera.
+ *
+ * Da rimuovere quando i form invieranno davvero.
+ */
+const TAMPONE_COPY = new Map([
+  ['Richiesta inviata', 'Manca un ultimo passo'],
+  ['Messaggio ricevuto', 'Manca un ultimo passo'],
+  ['Ti scriviamo entro un giorno lavorativo a ',
+   'Ti abbiamo aperto una mail gi\u00e0 pronta per support@reglo.it: premi invia e ti scriviamo a '],
+  [' per fissare la demo.', ' entro un giorno lavorativo, per fissare la demo.'],
+  ['Ti rispondiamo a ',
+   'Ti abbiamo aperto una mail gi\u00e0 pronta per support@reglo.it: premi invia e ti rispondiamo a '],
+]);
+
 const PX_RE = /^-?\d+(\.\d+)?px$/;
 const isNeg = (v) => typeof v === 'string' && v.trim().startsWith('-');
 
@@ -190,7 +210,7 @@ function emitNode(node, scope, ind) {
     if (!txt.includes('{{')) {
       // regola del runtime: whitespace puro senza spazi -> nodo scartato
       if (!txt.trim() && !txt.includes(' ')) return null;
-      return '{' + q(txt) + '}';
+      return '{' + q(TAMPONE_COPY.get(txt) ?? txt) + '}';
     }
     const parts = txt.split(/\{\{([\s\S]+?)\}\}/g);
     const pieces = parts.map((p, i) => (i & 1)

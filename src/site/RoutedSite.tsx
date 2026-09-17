@@ -1,6 +1,7 @@
 import React from 'react';
 import RegloSite from './RegloSite';
 import { pageFromPath, pathFromPage, LOGIN_URL, FAKE_LOGIN_PATH } from './routes';
+import { openMailto, venditeMail, assistenzaMail } from './mailto';
 
 /**
  * Sincronizza la navigazione interna del design (state.page) con l'URL.
@@ -43,9 +44,38 @@ class RoutedSite extends Base {
    * generato da tools/port-logic.mjs e non va modificato a mano.
    */
   renderVals() {
+    const v = super.renderVals();
+    const st = this.state as Record<string, string | undefined>;
+    const txt = (k: string) => (st[k] || '').trim();
+    // stessa condizione di validita' dei gestori originali: se passa, loro
+    // mostrano la conferma e noi apriamo la mail
+    const valido = (msg: string, mail: string) =>
+      !!msg && /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(mail);
+
+    const sendVendite = v.sendVendite as () => void;
+    const sendAssist = v.sendAssist as () => void;
+
     return {
-      ...super.renderVals(),
+      ...v,
       goLogin: () => { window.location.href = LOGIN_URL; },
+
+      // TAMPONE: i form del design non inviano niente, vedi ./mailto.ts
+      sendVendite: () => {
+        const nome = txt('vendNome');
+        const mail = txt('vendEmail');
+        sendVendite();
+        if (!valido(nome, mail)) return;
+        const m = venditeMail(nome, mail, txt('vendIstruttori'), txt('vendMsg'));
+        openMailto(m.subject, m.body);
+      },
+      sendAssist: () => {
+        const msg = txt('assistMsg');
+        const mail = txt('assistEmail');
+        sendAssist();
+        if (!valido(msg, mail)) return;
+        const m = assistenzaMail(mail, msg);
+        openMailto(m.subject, m.body);
+      },
     };
   }
 

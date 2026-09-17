@@ -126,15 +126,15 @@ export default function Vendite(v: any) {
               <img src={"uploads/busta-nobg.png"} alt={""} style={{width: "96px", height: "96px", objectFit: "contain", display: "block", margin: "0 0 16px -8px"}} />
               {"\n          "}
               <div style={{fontSize: "26px", fontWeight: "700", letterSpacing: "-1px", color: "#000000", marginBottom: "10px"}}>
-                {"Richiesta inviata"}
+                {"Manca un ultimo passo"}
               </div>
               {"\n          "}
               <p style={{margin: "0", maxWidth: "380px", fontSize: "16px", fontWeight: "500", lineHeight: "1.6", color: "#6f6f7c"}}>
-                {"Ti scriviamo entro un giorno lavorativo a "}
+                {"Ti abbiamo aperto una mail già pronta per support@reglo.it: premi invia e ti scriviamo a "}
                 <b style={{color: "#000000", fontWeight: "700"}}>
                   <>{interp(v.vendEmailSent)}</>
                 </b>
-                {" per fissare la demo."}
+                {" entro un giorno lavorativo, per fissare la demo."}
               </p>
               {"\n        "}
             </div>
