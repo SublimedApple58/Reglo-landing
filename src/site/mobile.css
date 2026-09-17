@@ -319,6 +319,37 @@
     gap: 14px !important;
   }
 
+  /* ------------------------------------- rinnovo patente (/rinnovo-patente) */
+
+  /* "Il problema": quattro colonne fisse, a 390px sono 60px l'una. In colonna.
+   * `repeat(4, 1fr)` in tutto il sito esiste solo qui. */
+  div[style*="repeat(4, 1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 40px !important;
+  }
+
+  /* Il flusso e' una timeline con la linea al centro e i passi alternati a
+   * destra e a sinistra: su mobile ogni passo avrebbe 117px di larghezza.
+   * Diventa una timeline con il binario a sinistra e i passi in colonna. */
+  [data-flow-progress],
+  div[style*="bottom: 74px"][style*="left: 50%"] {
+    left: 6px !important;
+  }
+
+  [data-flow-step] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+    padding-left: 30px !important;
+  }
+
+  [data-flow-step] > span {
+    left: 6px !important;
+  }
+
+  [data-flow-step] > div {
+    text-align: left !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
