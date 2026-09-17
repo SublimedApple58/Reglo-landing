@@ -2569,7 +2569,7 @@ export default function Home(v: any) {
           {"\n  "}
         </div>
         {"\n  "}
-        <div style={{display: "flex", justifyContent: "center", position: "relative", zIndex: "5", marginTop: "-18px"}}>
+        <div style={{display: "flex", justifyContent: "center", position: "relative", zIndex: "5", marginTop: v.reviewsOpen ? '20px' : '-18px'}}>
           {"\n    "}
           <span className={"scp2"} onClick={v.toggleReviews} style={{display: "inline-flex", alignItems: "center", height: "46px", padding: "0 28px", background: "#000000", borderRadius: "12px", fontSize: "16px", fontWeight: "700", color: "#ffffff", cursor: "pointer", userSelect: "none"}}>
             <>{interp(v.reviewsBtnLabel)}</>
@@ -2708,9 +2708,9 @@ export default function Home(v: any) {
         {"\n\n    "}
         <div style={{position: "relative", flex: "0 0 calc((100% - 40px) / 3)", height: "620px", scrollSnapAlign: "start", borderRadius: "22px", overflow: "hidden", background: "#23233c"}}>
           {"\n      "}
-          <img src={"images/site/storia-robatto.png"} alt={"Autoscuola Robatto"} style={{position: "absolute", inset: "0", width: "388px", height: "660px", objectFit: "cover", objectPosition: "center 30%", left: "0px", top: "-12px"}} />
+          <img src={"images/site/storia-robatto.png"} alt={"Autoscuola Robatto"} style={{position: "absolute", inset: "0", width: "100%", height: "660px", objectFit: "cover", objectPosition: "center 30%", left: "0px", top: "-12px"}} />
           {"\n      "}
-          <div style={{position: "absolute", inset: "0", background: "linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.62) 100%)", pointerEvents: "none", width: "371px", height: "623px"}} />
+          <div style={{position: "absolute", inset: "0", background: "linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.62) 100%)", pointerEvents: "none", width: "100%", height: "100%"}} />
           {"\n      "}
           <img src={"uploads/logo-robatto-bianco-v2.png"} alt={"Autoscuola Robatto"} style={{position: "absolute", top: "22px", left: "24px", height: "58px", width: "auto", objectFit: "contain", pointerEvents: "none", filter: "drop-shadow(0 1px 6px rgba(0,0,0,0.25))"}} />
           {"\n      "}

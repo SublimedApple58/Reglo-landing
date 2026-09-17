@@ -114,8 +114,48 @@ function importantify(css) {
 /* ── emissione ───────────────────────────────────────────────────────── */
 const q = (s) => JSON.stringify(s);
 const isIdent = (k) => /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(k);
+// i valori marcati RAW finiscono nel literal come espressione, non come stringa
+const rawExpr = (js) => ({ __raw: js });
 const objLit = (o) => '{' + Object.entries(o)
-  .map(([k, val]) => (isIdent(k) ? k : q(k)) + ': ' + q(val)).join(', ') + '}';
+  .map(([k, val]) => (isIdent(k) ? k : q(k)) + ': ' + (val && val.__raw ? val.__raw : q(val)))
+  .join(', ') + '}';
+
+const PX_RE = /^-?\d+(\.\d+)?px$/;
+const isNeg = (v) => typeof v === 'string' && v.trim().startsWith('-');
+
+/**
+ * CORREZIONE 1 — misure assolute su elementi che dichiarano `inset: 0`.
+ *
+ * Il tool di design, quando si ridimensiona un elemento con le maniglie,
+ * scrive width/height in px anche su overlay che con `inset: 0` dovrebbero
+ * riempire il contenitore. Il contenitore pero' e' fluido, quindi appena e'
+ * piu' largo di quei px spunta lo sfondo sotto: e' la barra scura sul bordo
+ * destro della card "Autoscuola Robatto".
+ *
+ * Un offset negativo sullo stesso asse (es. `left: -61px`) e' invece un
+ * ritaglio voluto — le foto del team — e non va toccato.
+ */
+function fixToolSizing(o) {
+  if (o.inset !== '0' && o.inset !== '0px') return o;
+  const out = { ...o };
+  if (PX_RE.test(out.width || '') && !isNeg(out.left)) out.width = '100%';
+  if (PX_RE.test(out.height || '') && !isNeg(out.top)) out.height = '100%';
+  return out;
+}
+
+/**
+ * CORREZIONE 2 — il pulsante del muro recensioni.
+ *
+ * Il contenitore del pulsante ha `margin-top: -18px` per infilarlo nella
+ * sfumatura che chiude il muro. Ma la sfumatura c'e' solo quando il muro e'
+ * chiuso: da aperto il pulsante risale lo stesso e sbatte sull'ultima
+ * recensione. Da aperto lo stacchiamo, usando la stessa gronda delle card
+ * del muro (20px).
+ */
+function fixReviewsButton(o) {
+  if (o.marginTop !== '-18px' || o.display !== 'flex' || o.zIndex !== '5') return o;
+  return { ...o, marginTop: rawExpr("v.reviewsOpen ? '20px' : '-18px'") };
+}
 
 function attrValueJs(raw, scope) {
   const whole = raw.match(/^\s*\{\{([\s\S]+?)\}\}\s*$/);
@@ -226,7 +266,7 @@ function emitElement(el, scope, ind) {
       const whole = value.match(/^\s*\{\{([\s\S]+?)\}\}\s*$/);
       if (whole) props.push('style={sty(' + exprToJs(whole[1], scope) + ')}');
       else if (value.includes('{{')) props.push('style={sty(' + attrValueJs(value, scope).js + ')}');
-      else props.push('style={' + objLit(cssToObj(value)) + '}');
+      else props.push('style={' + objLit(fixReviewsButton(fixToolSizing(cssToObj(value)))) + '}');
       continue;
     }
     // Unica deviazione deliberata dal riferimento: il link del logo punta a

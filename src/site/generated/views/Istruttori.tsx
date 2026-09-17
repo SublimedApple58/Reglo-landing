@@ -447,7 +447,7 @@ export default function Istruttori(v: any) {
             {"\n  "}
           </div>
           {"\n  "}
-          <div style={{display: "flex", justifyContent: "center", position: "relative", zIndex: "5", marginTop: "-18px"}}>
+          <div style={{display: "flex", justifyContent: "center", position: "relative", zIndex: "5", marginTop: v.reviewsOpen ? '20px' : '-18px'}}>
             {"\n    "}
             <span className={"scp2"} onClick={v.toggleReviews} style={{display: "inline-flex", alignItems: "center", height: "46px", padding: "0 28px", background: "#000000", borderRadius: "12px", fontSize: "16px", fontWeight: "700", color: "#ffffff", cursor: "pointer", userSelect: "none"}}>
               <>{interp(v.reviewsBtnLabel)}</>
