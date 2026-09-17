@@ -418,6 +418,16 @@
     zoom: 0.35 !important;
   }
 
+  /* ------------------------------------------------------------------- 404 */
+
+  /* Il pacchetto di patatine sporge di 92px oltre il riquadro: su desktop
+   * il riquadro e' largo 620px e l'effetto e' voluto, a 326px ne resta
+   * fuori piu' di meta'. Rientra un po'. */
+  [data-screen-label="404"] img {
+    right: -28px !important;
+    bottom: -104px !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
