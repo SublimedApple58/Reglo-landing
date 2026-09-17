@@ -218,14 +218,12 @@
   }
 
   /* I mockup sono composizioni a misura fissa (card in overlay, padding che
-   * riserva lo spazio all'elemento sovrapposto). `zoom` li rimpicciolisce
-   * mantenendo le proporzioni interne: ridimensionare i singoli pezzi
-   * significherebbe ridisegnarli. */
-  div[style*="padding: 0px 130px 0px 0px"],
-  div[style*="padding: 0px 216px 30px 0px"],
-  div[style*="grid-template-columns: 0.85fr 1.15fr"] > div:last-child {
-    zoom: 0.62 !important;
-  }
+   * riserva lo spazio all'elemento sovrapposto) e vanno ridotti. La riduzione
+   * NON si puo' fare qui: `zoom` su WebKit lascia il testo alla misura
+   * originale, e `transform` non riserva lo spazio nel flusso. Ci pensa
+   * src/site/mobileScale.ts, che mette l'elemento in layout alla larghezza di
+   * progetto e poi lo scala. I selettori sono gli stessi: se cambiano qui,
+   * vanno cambiati anche la'. */
 
   /* ------------------------------------------------------ prezzi (/prezzi) */
 
@@ -410,12 +408,21 @@
    * dettagli restano grandi uguali: dentro il mockup si vede una UI
    * sproporzionata.
    *
-   * `zoom` sull'intera composizione rimpicciolisce i px mantenendo intatto
-   * il layout in percentuale: la composizione resta larga quanto la colonna
-   * (la percentuale si risolve nello spazio del padre) e i pin tornano alla
-   * proporzione che hanno su desktop (~1.15% della composizione). */
-  [data-screen-label="Dispositivi"] div[style*="aspect-ratio: 1400 / 760"] {
-    zoom: 0.35 !important;
+   * Il design pre-scala gia' quella schermata: il layer interno e' largo
+   * 294.1% e ridotto con `transform: scale(0.34)`, cosi' copre esatto il 100%
+   * (294.1 x 0.34 = 100). Qui si stringe la stessa vite: scala 0.34 x 0.35 =
+   * 0.119 per i px, e larghezza 100/0.119 = 840% per tenere la copertura. Sui
+   * pin da 34px il risultato e' ~1.15% della composizione, la proporzione che
+   * hanno su desktop.
+   *
+   * Si passa per `transform` e non per `zoom` di proposito: su WebKit `zoom`
+   * rimpicciolisce il box ma lascia il testo alla misura originale, quindi
+   * dentro il telefonino l'indirizzo andava a capo tre volte. Su Chrome no,
+   * ed e' per questo che in devtools sembrava a posto. */
+  [data-screen-label="Dispositivi"] div[style*="scale(0.34)"] {
+    width: 840% !important;
+    height: 840% !important;
+    transform: scale(0.119) !important;
   }
 
   /* ------------------------------------------------------------------- 404 */

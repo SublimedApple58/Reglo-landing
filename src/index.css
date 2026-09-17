@@ -55,3 +55,20 @@
  * al mount, quindi fa parte del rendering di riferimento. */
 html, body { height: 100%; margin: 0; }
 #root { height: 100%; }
+
+/* Aggiunta nostra, non fa parte del riferimento.
+ *
+ * iOS gonfia da solo le dimensioni del testo dentro i blocchi che considera
+ * "stretti" rispetto al viewport (text autosizing). Il sito e' un porting
+ * fedele di un design con misure in px, quindi l'inflation lo distorce: nei
+ * mockup, che stanno dentro una scocca ridotta con `zoom`, il fattore diventa
+ * enorme e ogni riga va a capo ("Questa / settimana", "Fuori / orario"). Il
+ * contenuto cresce in altezza e finisce sotto il telefono.
+ *
+ * Si vede SOLO su WebKit mobile: la modalita' responsive di Chrome desktop
+ * non simula l'inflation, ed e' il motivo per cui il bug sembrava assente in
+ * devtools. Su desktop questa proprieta' non fa nulla. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}

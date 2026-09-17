@@ -3,6 +3,7 @@ import RegloSite from './RegloSite';
 import { pageFromPath, pathFromPage, LOGIN_URL, FAKE_LOGIN_PATH } from './routes';
 import { openMailto, venditeMail, assistenzaMail } from './mailto';
 import { correctMobileHeroPhone, isMobileViewport } from './mobileHero';
+import { applyMobileMockupScale } from './mobileScale';
 
 /**
  * Sincronizza la navigazione interna del design (state.page) con l'URL.
@@ -88,12 +89,18 @@ class RoutedSite extends Base {
     }
     super.componentDidMount();
     this._patchStageForMobile();
+    applyMobileMockupScale();
+    window.addEventListener('resize', this._rescaleMockups);
     this._lastPath = window.location.pathname;
     window.addEventListener('popstate', this._onPop);
   }
 
+  /** I mockup si rimisurano al cambio pagina e al ruotare del telefono. */
+  private _rescaleMockups = () => applyMobileMockupScale();
+
   componentDidUpdate(prev: unknown) {
     super.componentDidUpdate(prev);
+    applyMobileMockupScale();
     // la 404 non ha un URL proprio: resta su quello digitato
     if (this.state.page === '404') return;
     const want = pathFromPage(this.state.page);
@@ -129,6 +136,7 @@ class RoutedSite extends Base {
   componentWillUnmount() {
     super.componentWillUnmount?.();
     window.removeEventListener('popstate', this._onPop);
+    window.removeEventListener('resize', this._rescaleMockups);
   }
 }
 
