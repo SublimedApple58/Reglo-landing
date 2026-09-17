@@ -239,6 +239,15 @@
     display: none !important;
   }
 
+  /* --------------------------------------- segretaria (/segretaria-virtuale) */
+
+  /* "Tre cose da fare invece di rispondere al telefono": tre colonne fisse,
+   * a 390px sono 95px l'una — una parola per riga. In colonna. */
+  [data-screen-label="Meme"] div[style*="repeat(3"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 40px !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
