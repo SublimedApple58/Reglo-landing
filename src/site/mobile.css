@@ -197,6 +197,34 @@
     height: 540px !important;
   }
 
+  /* -------------------------------------------------- funzioni (/funzioni) */
+
+  /* Tre blocchi "testo | mockup" a colonne fisse: a 390px ogni colonna resta
+   * sotto i 140px e il mockup finisce addosso al testo. In colonna, con il
+   * testo sempre per primo (nel design due dei tre hanno il mockup a
+   * sinistra, che su mobile vorrebbe dire aprire il blocco con un disegno). */
+  div[style*="minmax(0px, 1.15fr) minmax(300px, 0.85fr)"],
+  div[style*="grid-template-columns: 0.85fr 1.15fr"],
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 40px !important;
+  }
+
+  div[style*="minmax(0px, 1.15fr) minmax(300px, 0.85fr)"] > div:first-child,
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] > div:first-child {
+    order: 2 !important;
+  }
+
+  /* I mockup sono composizioni a misura fissa (card in overlay, padding che
+   * riserva lo spazio all'elemento sovrapposto). `zoom` li rimpicciolisce
+   * mantenendo le proporzioni interne: ridimensionare i singoli pezzi
+   * significherebbe ridisegnarli. */
+  div[style*="padding: 0px 130px 0px 0px"],
+  div[style*="padding: 0px 216px 30px 0px"],
+  div[style*="grid-template-columns: 0.85fr 1.15fr"] > div:last-child {
+    zoom: 0.62 !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
