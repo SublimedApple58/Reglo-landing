@@ -177,14 +177,16 @@
     gap: 34px !important;
   }
 
-  /* il muro delle recensioni e' un multi-colonna: una sola colonna */
-  [data-screen-label="Recensioni"] div[style*="column-count"] {
+  /* il muro delle recensioni e' un multi-colonna: una sola colonna.
+   * Prefisso e non uguaglianza: su /team la sezione si chiama
+   * "Recensioni team". */
+  [data-screen-label^="Recensioni"] div[style*="column-count"] {
     column-count: 1 !important;
   }
 
   /* la riga "4,9 * * * * * · recensioni su App Store": affiancata il testo
    * va a capo addosso alla pill, quindi va mandato sotto */
-  [data-screen-label="Recensioni"] [data-align-block] > div:first-child > div {
+  [data-screen-label^="Recensioni"] [data-align-block] > div:first-child > div {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
