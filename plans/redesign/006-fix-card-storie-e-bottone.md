@@ -58,3 +58,34 @@ istruttori, team). Da chiuso nulla cambia.
   coprono il contenitore esattamente (buco 0px) su tutte e tre le card.
 - **Pulsante**: da aperto 20px di margine e 40px di stacco dalla card più
   vicina, a 1440 e 1920.
+
+---
+
+# Favicon e og-image
+
+## Favicon: non era quella della web app
+
+Gabriele chiedeva solo di verificare il collegamento, dando per scontato che
+fosse già quella del backoffice. Non lo era.
+
+| Dove | Cosa c'era |
+|---|---|
+| Servita dal sito (`public/favicon.svg`) | quadrato rosa `#EC4899` con una "A" — brand vecchio |
+| In root, non servita (`favicon.png`) | "R" verde menta — brand ancora precedente |
+| Web app (`reglo/public/images/favicon.png` + `app/[locale]/favicon.ico`) | il mark a raggi nero |
+
+Il mark della web app è **lo stesso logo del nuovo design**
+(`images/logo-reglo-dark.png`, in navy invece che nero): erano coerenti fra
+loro, era la landing a essere rimasta indietro.
+
+Copiati i file esatti della web app in `public/` e collegati come `.ico`
+(32x32), `.png` (256x256) e `apple-touch-icon`. Rimossi i due file obsoleti.
+
+## og-image rigenerata dalla hero
+
+`public/og-image.png` era ancora quella del vecchio design. Rigenerata a
+1200x630 catturando la hero del nuovo sito dal build di produzione: logo, nav,
+titolo, le due CTA e la cima del mockup telefono.
+
+Aggiunti `og:image:width`, `og:image:height` e `og:image:alt`, che mancavano:
+senza le dimensioni alcuni client rimandano l'anteprima al primo fetch.
