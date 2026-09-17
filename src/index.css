@@ -5,6 +5,7 @@
  * riscritto. Sotto, le regole che dc-runtime iniettava da solo.
  */
 @import "./site/generated/pseudo.css";
+@import "./site/mobile.css";
 
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: #ffffff; }
