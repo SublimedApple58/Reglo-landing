@@ -2,6 +2,7 @@ import React from 'react';
 import RegloSite from './RegloSite';
 import { pageFromPath, pathFromPage, LOGIN_URL, FAKE_LOGIN_PATH } from './routes';
 import { openMailto, venditeMail, assistenzaMail } from './mailto';
+import { correctMobileHeroPhone, isMobileViewport } from './mobileHero';
 
 /**
  * Sincronizza la navigazione interna del design (state.page) con l'URL.
@@ -86,6 +87,7 @@ class RoutedSite extends Base {
       return;
     }
     super.componentDidMount();
+    this._patchStageForMobile();
     this._lastPath = window.location.pathname;
     window.addEventListener('popstate', this._onPop);
   }
@@ -101,6 +103,27 @@ class RoutedSite extends Base {
     } else {
       this._lastPath = window.location.pathname;
     }
+  }
+
+  /**
+   * La scena sticky della home dimensiona il mockup solo sull'altezza del
+   * viewport: su un telefono viene piu' largo dello schermo. `_stage` e'
+   * definito in RegloSite, che e' un porting fedele e non va modificato a
+   * mano, quindi lo avvolgiamo qui: l'originale gira per primo, poi la
+   * correzione riscrive la geometria del telefono nello stesso frame.
+   */
+  private _patchStageForMobile() {
+    const self = this as unknown as {
+      _stage?: (t?: number) => void;
+      _scrollport?: () => Element | null;
+      _stageTarget?: () => number;
+    };
+    const original = self._stage;
+    if (!original) return;
+    self._stage = (t?: number) => {
+      original.call(self, t);
+      if (isMobileViewport()) correctMobileHeroPhone(self);
+    };
   }
 
   componentWillUnmount() {

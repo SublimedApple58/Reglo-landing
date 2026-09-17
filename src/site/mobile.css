@@ -77,6 +77,126 @@
     font-size: 15px !important;
   }
 
+  /* ------------------------------------------------------------ home: hero */
+
+  /* il titolo era `white-space: nowrap`: su un telefono usciva da entrambi i
+   * lati. Qui va a capo da solo; il <br /> del design resta e spezza dopo
+   * "per la". */
+  [data-hero-copy] {
+    padding: 84px 20px 32vh !important;
+  }
+
+  [data-hero-copy] h1 {
+    white-space: normal !important;
+    font-size: clamp(30px, 8.6vw, 44px) !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.06 !important;
+    text-wrap: balance !important;
+  }
+
+  /* le due CTA non ci stanno affiancate: vanno in colonna, larghe uguali */
+  [data-hero-copy] h1 + div {
+    margin-top: 34px !important;
+    flex-direction: column !important;
+    align-self: stretch !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  [data-hero-copy] h1 + div > a {
+    justify-content: center !important;
+    height: 52px !important;
+    padding: 0 22px !important;
+  }
+
+  /* ------------------------------------------------------- home: gli step */
+
+  /* Ogni step e' una griglia `testo | telefono | testo`: su mobile le due
+   * colonne laterali si azzerano e il copy sparisce. Diventano due fasce,
+   * sopra e sotto il telefono, che la geometria di mobileHero.ts tiene
+   * centrato e piccolo abbastanza da lasciarle libere. */
+  [data-step] {
+    display: block !important;
+  }
+
+  /* lo spaziatore centrale (width: var(--phone-gap)) non serve piu' */
+  [data-step] > div:nth-child(2) {
+    display: none !important;
+  }
+
+  /* NB: larghezza esplicita, non `auto`. Le due colonne restano allineate
+   * nella loro grid area (justify-self: end / start) anche da assolute, e con
+   * `width: auto` si stringerebbero al contenuto invece di riempire la fascia.
+   * Il padding orizzontale sta qui e non su [data-steps]: un figlio assoluto
+   * con inset 0 si posiziona sul padding box, quindi lo ignorerebbe. */
+  [data-step-left] {
+    position: absolute !important;
+    left: 0 !important;
+    top: 60px !important;
+    width: 100% !important;
+    padding: 0 20px !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+
+  [data-step-left] > div:last-child {
+    font-size: 30px !important;
+    letter-spacing: -1.2px !important;
+  }
+
+  [data-step-right] {
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 60px !important;
+    width: 100% !important;
+    padding: 0 20px !important;
+    text-align: center !important;
+  }
+
+  [data-step-right] > div:first-child {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  [data-step-right] a {
+    margin-top: 18px !important;
+    padding: 13px 22px !important;
+  }
+
+  [data-dots] {
+    bottom: 18px !important;
+  }
+
+  /* ------------------------------------------------- home: sezioni a colonne */
+
+  /* "Cosa cambia con Reglo": tre colonne fisse che a 390px diventano tre
+   * strisce da una parola per riga. In colonna. */
+  [data-screen-label="Numeri"] [data-align-block] > div[style*="repeat(3"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 34px !important;
+  }
+
+  /* il muro delle recensioni e' un multi-colonna: una sola colonna */
+  [data-screen-label="Recensioni"] div[style*="column-count"] {
+    column-count: 1 !important;
+  }
+
+  /* la riga "4,9 * * * * * · recensioni su App Store": affiancata il testo
+   * va a capo addosso alla pill, quindi va mandato sotto */
+  [data-screen-label="Recensioni"] [data-align-block] > div:first-child > div {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px 12px !important;
+  }
+
+  /* carosello Storie: una card per schermata invece di un terzo di card */
+  [data-screen-label="Storie"] div[style*="scroll-snap-type"] > div {
+    flex: 0 0 100% !important;
+    height: 540px !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
