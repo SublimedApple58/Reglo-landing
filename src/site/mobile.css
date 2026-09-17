@@ -222,10 +222,18 @@
     gap: 8px 12px !important;
   }
 
-  /* carosello Storie: una card per schermata invece di un terzo di card */
+  /* Carosello Storie ("Come sono passate a Reglo"): una card per schermata
+   * invece di un terzo di card. Lo snap c'era gia' nel design
+   * (scroll-snap-type: x mandatory + scroll-snap-align: start): quello che
+   * mancava era la larghezza, che su mobile restava a 1/3.
+   *
+   * `scroll-snap-stop: always` e' l'aggiunta che rende lo scorrimento
+   * davvero "una alla volta": senza, una sbrisciata veloce scavalca piu'
+   * card e si ferma solo alla fine della spinta. */
   [data-screen-label="Storie"] div[style*="scroll-snap-type"] > div {
     flex: 0 0 100% !important;
     height: 540px !important;
+    scroll-snap-stop: always !important;
   }
 
   /* -------------------------------------------------- funzioni (/funzioni) */
