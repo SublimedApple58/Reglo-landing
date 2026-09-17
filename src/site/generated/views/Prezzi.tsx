@@ -8,7 +8,7 @@ export default function Prezzi(v: any) {
     <div data-screen-label={"Prezzo"} style={{maxWidth: "1180px", margin: "0 auto", padding: "130px 24px 0", textAlign: "center"}}>
       {"\n  "}
       <h1 style={{margin: "0 auto", maxWidth: "820px", fontSize: "clamp(38px, 5vw, 68px)", fontWeight: "800", letterSpacing: "-2.8px", lineHeight: "1.03", color: "#000000", textWrap: "balance"}}>
-        {"A partire da 22 € al mese per istruttore"}
+        {"A partire da 26 € al mese per istruttore"}
       </h1>
       {"\n  "}
       <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px 26px", marginTop: "26px", fontSize: "14.5px", fontWeight: "600", color: "#8a8a98"}}>

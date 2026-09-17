@@ -33,7 +33,7 @@ const META: Record<string, Meta> = {
   prezzi: {
     title: 'Prezzi',
     description:
-      'A partire da 22 € al mese per istruttore, migrazione inclusa e nessun costo nascosto. Moduli aggiuntivi attivabili su richiesta.',
+      'A partire da 26 € al mese per istruttore, migrazione inclusa e nessun costo nascosto. Moduli aggiuntivi attivabili su richiesta.',
   },
   novita: {
     title: 'Novita e changelog',
