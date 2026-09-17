@@ -516,4 +516,25 @@
   [data-screen-label="Footer"] [data-reglo-wm] {
     margin-top: 48px !important;
   }
+
+  /* ------------------------------ durata prenotazione: default 45 min (mobile)
+   *
+   * Le cinque pill sono markup statico, non uno stato: "60 min" e' scritto
+   * selezionato nel design. Su schermo piccolo le pill vanno a capo 3 + 2 e
+   * la scelta evidenziata finisce in fondo alla prima riga; con "45 min" sta
+   * in mezzo e si legge meglio. Richiesta di Gabriele: cambia solo il default
+   * mobile, su desktop resta 60 min. */
+  div[style*="max-width: 720px"][style*="user-select: none"] > div:last-child > span:nth-child(2) {
+    font-weight: 700 !important;
+    color: #000000 !important;
+    background: #ececef !important;
+    border-color: #a3a3ad !important;
+  }
+
+  div[style*="max-width: 720px"][style*="user-select: none"] > div:last-child > span:nth-child(3) {
+    font-weight: 500 !important;
+    color: #4a4a55 !important;
+    background: #ffffff !important;
+    border-color: #e6e6ec !important;
+  }
 }
