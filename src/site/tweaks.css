@@ -65,3 +65,65 @@ input:focus-visible,
 textarea:focus-visible {
   outline-offset: 1px !important;
 }
+
+/* ------------------------------------------- carosello loghi: niente mask
+ *
+ * Il fade laterale era un `-webkit-mask-image` sul contenitore che ha dentro
+ * il marquee animato. Su WebKit un layer mascherato che contiene una
+ * animazione di transform viene ri-rasterizzato mentre la pagina scrolla, e
+ * il lato destro delle card si taglia di netto (da ferma non si vede).
+ *
+ * Lo stesso sfumato si ottiene con due gradienti neri sopra le card: il
+ * fondo della sezione e' #000000 pieno, quindi "card che sfuma nel nero" e
+ * "nero che copre la card" danno esattamente lo stesso pixel, senza mask.
+ * Vale a ogni larghezza: il bug e' di WebKit, non del viewport. */
+[data-screen-label="Loghi clienti"] div[style*="mask-image"] {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  position: relative !important;
+}
+
+[data-screen-label="Loghi clienti"] div[style*="mask-image"]::before,
+[data-screen-label="Loghi clienti"] div[style*="mask-image"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+[data-screen-label="Loghi clienti"] div[style*="mask-image"]::before {
+  left: 0;
+  background: linear-gradient(to right, #000000, rgba(0, 0, 0, 0));
+}
+
+[data-screen-label="Loghi clienti"] div[style*="mask-image"]::after {
+  right: 0;
+  background: linear-gradient(to left, #000000, rgba(0, 0, 0, 0));
+}
+
+/* il marquee sta su un layer suo: cosi' lo scroll della pagina non lo
+ * costringe a ridisegnarsi insieme al resto */
+[data-screen-label="Loghi clienti"] div[style*="mask-image"] > div {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ------------------------------- telefono in "Dispositivi": angoli a misura
+ *
+ * Lo schermo dentro la scocca ha `border-radius: 14px` fisso, misurato sul
+ * telefono grande (schermo 93px: 14px = 15% della larghezza). Il telefono e'
+ * largo il 13.5% della composizione, quindi sotto i 768px lo schermo scende
+ * a ~32px e quei 14px diventano il 43%: gli angoli si mangiano la mappa e
+ * dentro la scocca si vedono spicchi bianchi.
+ *
+ * Qui il raggio diventa una frazione della scocca, cosi' resta uguale a ogni
+ * misura. Lo schermo ha proporzione fissa (68.9% x 400) / (88.6% x 654) =
+ * 0.4755, quindi 15% in orizzontale e 15% x 0.4755 = 7.13% in verticale
+ * danno angoli circolari. Sul desktop fa 13.95px contro i 14px di prima:
+ * identico a meno di mezzo centesimo di pixel. */
+[data-screen-label="Dispositivi"] div[style*="height: 88.6%"] {
+  border-radius: 15% / 7.13% !important;
+}
