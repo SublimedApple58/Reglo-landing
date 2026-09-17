@@ -56,3 +56,25 @@ export function MissingExternal(
     />
   );
 }
+
+/**
+ * Componente esterno registrato su window dai moduli .jsx del design
+ * (es. RegloClipRinnovi da reglo-video.jsx).
+ *
+ * Riproduce il wrapper che dc-runtime metteva attorno a un <x-import>:
+ * un div.sc-host-x con `display: contents`, così non introduce un box.
+ */
+export function External(
+  { name, hintSize }: { name: string; hintSize?: string },
+) {
+  const C = (window as unknown as Record<string, React.ComponentType>)[name];
+  if (!C) {
+    const [w, h] = (hintSize || '100%,60px').split(',');
+    return <div className="sc-placeholder" style={{ width: w.trim(), height: h?.trim() }} title={name} />;
+  }
+  return (
+    <div className="sc-host-x" style={{ display: 'contents' }}>
+      <C />
+    </div>
+  );
+}

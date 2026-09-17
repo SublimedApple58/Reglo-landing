@@ -1,7 +1,7 @@
 # Innesto del nuovo design — fatto
 
-> **Stato:** conversione completata e verificata su 16 viste.
-> **NON deployato:** mancano 86 asset e 1 modulo video dall'export (sotto).
+> **Stato:** completato, verificato e deployato in produzione.
+> Asset e moduli .jsx ricevuti e innestati: nulla manca piu'.
 
 ## Cosa è stato fatto
 
@@ -70,43 +70,36 @@ allineati (deep link, pushState, tasto indietro — testati).
 `/privacy-policy` conserva lo slug già online. `/allievi`, `/calcolatore` e
 `/policy` restano fuori dalla mappa: il nuovo design non li copre.
 
-## Bloccante: asset mancanti dall'export
+## Asset e moduli esterni
 
-86 file referenziati dal design non sono nell'export. **Non sono decorativi**:
-sono il contenuto di sezioni visibili, con spazio già riservato nel layout.
+Gli 86 file referenziati dal design (46 in `images/`, 40 in `uploads/`) sono in
+`public/`, serviti agli stessi percorsi che il design si aspetta. Verificato in
+browser su tutte le rotte: **0 immagini rotte, 0 richieste fallite**.
 
-| Cosa manca | Dove | Perché serve |
-|---|---|---|
-| `images/logo-reglo-dark.png` | header, **tutte le 15 viste** | il logo Reglo |
-| 14 loghi clienti 40x40 (`logo-robatto-scuro`, `logo-alberti-trasparente`, `logo-desensi-trasparente2`, `pasted-*`) | "Loghi clienti", 5 viste | la riga di autoscuole clienti |
-| 4 immagini + 4 wordmark (`storia-robatto`, `storia-newdrive`, `logo-macchiavello-bianco`, `logo-montreal-bianco`, …) | "Storie", home + funzioni | i case study clienti |
-| `founder-1`, `founder-2`, `team-suardi`, `team-dorta`, `team-altri` | "Founder e team" | le foto delle persone |
-| `phone-frame` (606x992), `laptop-frame2` (760x507), `laptop-screen`, `tablet-frame`, `road-ipad` | "Dispositivi", home + funzioni | i mockup di prodotto dell'hero |
-| 3 card 718x448 | "Novità" | il contenuto della pagina novità |
-| `seg-banco` (561x640), 3 meme 371x371, `seg-reception`, `seg-sera` | segretaria | le immagini della pagina |
-| `ferie-valigia` (1178x620), `istr-carlo/martina/valerio`, `icon-palma-teal`, `cursore-mano` | istruttori | l'illustrazione principale + gli avatar |
-| `rin-medico`, `rin-visita`, `rin-attesa`, `rin-mappa`, `rin-dott-serra` | rinnovi | le immagini delle card |
-| `contatti-demo`, `contatti-cliente` (438x460) | contatti | le due opzioni di contatto |
-| `Gemini_Generated_Image_…jpeg` (689x872) | login | lo sfondo della pagina |
-| `cartaceo-agenda.jpg`, avatar recensioni | "Recensioni", 5 viste | le recensioni clienti |
-| `qr-app-store.png`, `qr-google-play.png` | modale app | i QR per gli store |
-| `targa-lavori.png` | reglo road | l'illustrazione "lavori in corso" |
+I tre moduli `.jsx` stanno in `src/site/vendor/`. Sono IIFE che si registrano
+su `window` e si aspettano `React`/`ReactDOM` globali, quindi `vendor/globals.ts`
+li prepara e va importato per primo (`vendor/index.ts` rispetta l'ordine
+dichiarato dall'x-import). Nel runtime dc venivano compilati a runtime con Babel
+da CDN; qui li trasforma Vite in fase di build, senza dipendenze esterne.
+`RegloClipRinnovi` monta correttamente su `/rinnovo-patente`.
 
-Quasi tutte hanno dimensioni fissate dal CSS, quindi il layout regge anche
-senza; `laptop-screen.png` no (altezza calcolata dall'immagine, oggi 0px).
+Il video `uploads/Gestione autonoma degli istruttori.mp4` (18 MB) carica su
+`/istruttori`: readyState 4, 1920x1096.
 
-Manca anche **`reglo-video.jsx`** (con `animations-v2.jsx` e `tweaks-panel.jsx`):
-è un `x-import` che monta `RegloClipRinnovi` in uno slot 576x324 (16:9) nella
-vista `/rinnovo-patente` — un player video. Al suo posto oggi c'è un segnaposto
-esplicito (`MissingExternal`), così il buco resta visibile.
+## Unica deviazione dal riferimento
 
-**Da chiedere a Gabriele:** i urls sono già i percorsi definitivi
-(`images/site/…`, `uploads/…`), quindi basta l'archivio delle due cartelle da
-droppare in `public/` e i 3 `.jsx`.
+Due `<a href="Home 2.dc.html">` (logo header e footer) sono artefatti del tool
+di design: in produzione darebbero 404. Il codegen li riscrive a `/`. Il
+risultato visivo e' identico; cambia solo la destinazione del link.
+
+## Verifica finale
+
+Confronto DOM contro il riferimento renderizzato offline, ad animazioni spente,
+su **4 viewport** (390, 768, 1440, 1920) x **16 viste** = 64 combinazioni:
+stesso numero di elementi, stessa altezza di pagina, **0 differenze** di tag,
+bounding box e stili calcolati.
 
 ## Prossimi passi
 
-1. Ricevere asset + moduli, metterli in `public/`, ri-verificare.
-2. Deploy.
-3. Componentizzazione: sostituire il codice generato con componenti veri e
+1. Componentizzazione: sostituire il codice generato con componenti veri e
    Tailwind, vista per vista, col diff DOM come rete di sicurezza.

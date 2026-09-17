@@ -1,3 +1,11 @@
-# runtime proprietario dc, non parte del repo
+# Runtime proprietario dc: non fa parte del repo.
 support.js
+
+# Harness di rendering del riferimento, usato solo per la verifica di fedelta'.
 .render/
+
+# Gli asset del design vivono in public/ (da li' vengono serviti). Qui
+# sarebbero una seconda copia da 64 MB: la cartella resta come area di
+# staging locale per quello che arriva dal tool di design.
+images/
+uploads/

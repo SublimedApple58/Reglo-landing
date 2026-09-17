@@ -190,13 +190,10 @@ function emitFor(el, scope, ind) {
 }
 
 function emitXImport(el, scope, ind) {
-  // Componente esterno (.jsx) non incluso nell'export: segnaposto esplicito,
-  // così il buco è visibile invece di sparire silenziosamente.
+  // Componente esterno registrato su window dai moduli .jsx del design.
   const name = el.getAttribute('component-from-global-scope') || el.getAttribute('component') || el.getAttribute('name') || '';
-  const from = el.getAttribute('from') || '';
-  const styleAttr = el.getAttribute('style');
-  const styleJs = styleAttr ? ' style={' + objLit(cssToObj(styleAttr)) + '}' : '';
-  return '<MissingExternal name=' + q(name) + ' from=' + q(from) + styleJs + ' />';
+  const hint = el.getAttribute('hint-size') || '';
+  return '<External name=' + q(name) + (hint ? ' hintSize=' + q(hint) : '') + ' />';
 }
 
 function emitElement(el, scope, ind) {
@@ -230,6 +227,13 @@ function emitElement(el, scope, ind) {
       if (whole) props.push('style={sty(' + exprToJs(whole[1], scope) + ')}');
       else if (value.includes('{{')) props.push('style={sty(' + attrValueJs(value, scope).js + ')}');
       else props.push('style={' + objLit(cssToObj(value)) + '}');
+      continue;
+    }
+    // Unica deviazione deliberata dal riferimento: il link del logo punta a
+    // "Home 2.dc.html", un artefatto del tool di design che in produzione
+    // darebbe 404. Il risultato visivo e' identico, il link funziona.
+    if (key === 'href' && value.trim() === 'Home 2.dc.html') {
+      props.push('href={"/"}');
       continue;
     }
     const v = attrValueJs(value, scope);
@@ -294,7 +298,7 @@ for (const view of views) {
   const kids = emitChildren(view.node, scope, '    ');
   const body = kids.length ? kids.map((k) => '    ' + k).join('\n') : '    null';
   // solo gli import effettivamente usati: tsconfig ha noUnusedLocals
-  const helpers = ['interp', 'sty', 'MissingExternal'].filter((h) =>
+  const helpers = ['interp', 'sty', 'External'].filter((h) =>
     new RegExp('\\b' + h + '\\(').test(body) || new RegExp('<' + h + '\\b').test(body));
   const needsReact = /React\.Fragment/.test(body);
   const imports = [

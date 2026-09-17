@@ -1,5 +1,5 @@
 // GENERATO da tools/dc-to-react.mjs — non modificare a mano.
-import { MissingExternal } from '../../dcx';
+import { External } from '../../dcx';
 
 export default function Med(v: any) {
   return (
@@ -10,7 +10,7 @@ export default function Med(v: any) {
         {"\n    "}
         <div ref={v.medScaleRef} style={{position: "absolute", left: "50%", top: "50%", width: "576px", height: "324px", transformOrigin: "center center", opacity: "0.62"}}>
           {"\n      "}
-          <MissingExternal name="RegloClipRinnovi" from="./animations-v2.jsx ./tweaks-panel.jsx ./reglo-video.jsx" />
+          <External name="RegloClipRinnovi" hintSize="576px,324px" />
           {"\n    "}
         </div>
         {"\n  "}

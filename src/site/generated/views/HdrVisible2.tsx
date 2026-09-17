@@ -10,7 +10,7 @@ export default function HdrVisible2(v: any) {
         {"\n    "}
         <div style={{display: "grid", gridTemplateColumns: "1fr repeat(5, minmax(0, 165px))", gap: "32px", alignItems: "start"}}>
           {"\n      "}
-          <a href={"Home 2.dc.html"} style={{display: "inline-flex", alignItems: "center"}}>
+          <a href={"/"} style={{display: "inline-flex", alignItems: "center"}}>
             <img src={"images/logo-reglo-dark.png"} alt={"Reglo"} style={{width: "34px", height: "34px", objectFit: "contain", display: "block", filter: "invert(1) brightness(2)"}} />
           </a>
           {"\n      "}
@@ -208,7 +208,7 @@ export default function HdrVisible2(v: any) {
           {"\n    "}
           <div style={{position: "relative", zIndex: "2", marginTop: "40px", display: "flex", justifyContent: "center", gap: "14px", flexWrap: "wrap"}}>
             {"\n      "}
-            <a className={"scpi"} href={"Home 2.dc.html"} style={{display: "inline-flex", alignItems: "center", padding: "15px 30px", background: "#000000", color: "#ffffff", fontSize: "16px", fontWeight: "600", borderRadius: "12px", transition: "background 0.2s ease"}}>
+            <a className={"scpi"} href={"/"} style={{display: "inline-flex", alignItems: "center", padding: "15px 30px", background: "#000000", color: "#ffffff", fontSize: "16px", fontWeight: "600", borderRadius: "12px", transition: "background 0.2s ease"}}>
               {"Torna alla home"}
             </a>
             {"\n    "}
