@@ -41,3 +41,27 @@
   left: auto !important;
   right: 8px !important;
 }
+
+/* Il blocco globale del design contiene `*:focus, *:focus-visible { outline:
+ * none }`: cancella QUALSIASI indicazione di focus, quindi chi naviga da
+ * tastiera non vede mai dove si trova. Qui l'anello torna, ma solo su
+ * :focus-visible, cioe' quando il browser giudica che serva (tastiera): col
+ * mouse non compare niente e l'aspetto resta quello di adesso. */
+:focus-visible {
+  outline: 2px solid #1a1a2e !important;
+  outline-offset: 3px !important;
+  border-radius: 4px;
+}
+
+/* sul fondo nero l'anello scuro non si vedrebbe */
+[data-screen-label="Footer"] :focus-visible,
+[data-screen-label="Loghi clienti"] :focus-visible {
+  outline-color: #ffffff !important;
+}
+
+/* i campi dei form hanno gia' il loro stato di focus (border-color), l'anello
+ * si somma senza sostituirlo */
+input:focus-visible,
+textarea:focus-visible {
+  outline-offset: 1px !important;
+}

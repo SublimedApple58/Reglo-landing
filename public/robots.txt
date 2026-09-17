@@ -1,0 +1,5 @@
+# https://www.reglo.it
+User-agent: *
+Allow: /
+
+Sitemap: https://www.reglo.it/sitemap.xml

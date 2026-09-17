@@ -4,6 +4,8 @@ import { pageFromPath, pathFromPage, LOGIN_URL, FAKE_LOGIN_PATH } from './routes
 import { openMailto, venditeMail, assistenzaMail } from './mailto';
 import { correctMobileHeroPhone, isMobileViewport } from './mobileHero';
 import { applyMobileMockupScale } from './mobileScale';
+import { applySeo } from './seo';
+import { enhanceNavKeyboard } from './a11y';
 
 /**
  * Sincronizza la navigazione interna del design (state.page) con l'URL.
@@ -90,6 +92,8 @@ class RoutedSite extends Base {
     super.componentDidMount();
     this._patchStageForMobile();
     applyMobileMockupScale();
+    applySeo(this.state.page);
+    enhanceNavKeyboard();
     window.addEventListener('resize', this._rescaleMockups);
     this._lastPath = window.location.pathname;
     window.addEventListener('popstate', this._onPop);
@@ -101,6 +105,8 @@ class RoutedSite extends Base {
   componentDidUpdate(prev: unknown) {
     super.componentDidUpdate(prev);
     applyMobileMockupScale();
+    applySeo(this.state.page);
+    enhanceNavKeyboard();
     // la 404 non ha un URL proprio: resta su quello digitato
     if (this.state.page === '404') return;
     const want = pathFromPage(this.state.page);
