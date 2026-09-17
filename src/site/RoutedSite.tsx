@@ -1,7 +1,7 @@
 import React from 'react';
 import RegloSite from './RegloSite';
 import { pageFromPath, pathFromPage, LOGIN_URL, FAKE_LOGIN_PATH } from './routes';
-import { openMailto, venditeMail, assistenzaMail } from './mailto';
+import { openMailto, venditeMail, assistenzaMail, SALES_EMAIL } from './mailto';
 import { correctMobileHeroPhone, isMobileViewport } from './mobileHero';
 import { applyMobileMockupScale } from './mobileScale';
 import { applySeo } from './seo';
@@ -70,7 +70,9 @@ class RoutedSite extends Base {
         sendVendite();
         if (!valido(nome, mail)) return;
         const m = venditeMail(nome, mail, txt('vendIstruttori'), txt('vendMsg'));
-        openMailto(m.subject, m.body);
+        // ai commerciali, non all'assistenza: e' l'indirizzo che la pagina
+        // stessa pubblica come contatto vendite
+        openMailto(m.subject, m.body, SALES_EMAIL);
       },
       sendAssist: () => {
         const msg = txt('assistMsg');

@@ -17,6 +17,7 @@
 | focus da tastiera | `*:focus { outline: none }` cancellava **ogni** indicazione | anello su `:focus-visible` (col mouse non cambia niente) |
 | nav da tastiera | header, menu e footer irraggiungibili con Tab | 22 punti di navigazione raggiungibili e attivabili con Invio/Spazio |
 | cache | `max-age=0, must-revalidate` **anche sul bundle con hash** | 1 anno immutable su `/assets`, 1 settimana su immagini e upload |
+| destinatario dei lead | `/contatta-le-vendite` citava **due indirizzi diversi**: il testo pubblicava `gabriele.torta@reglo.it`, ma sia il form sia la conferma mandavano a `support@reglo.it` | i lead commerciali vanno a `gabriele.torta@reglo.it`, l'assistenza resta su `support@reglo.it`; ogni pagina ora cita un solo indirizzo |
 
 ## Verificato e giA' a posto
 
@@ -32,6 +33,10 @@
   l'utente dal suo client di posta.
 
 ## Da decidere con voi
+
+> **Nessuno di questi punti e' stato implementato, per scelta.** Gabriele ha
+> confermato che si riprendono con calma insieme a Tiziano. Sono elencati con
+> i numeri misurati per poterli valutare senza rifare l'analisi.
 
 ### 1. Analytics — serve una scelta di account
 Oggi **non c'e' nessun analytics**. L'unica cosa installata e' il **Meta
@@ -89,14 +94,7 @@ tanti**. I due interventi che contano:
 Il bundle JS invece e' sano: 957 KB non compressi, **146 KB gzip**, in un
 chunk unico.
 
-### 6. Incoerenza sull'indirizzo dei lead
-La pagina `/contatta-le-vendite` scrive "Oppure scrivi a
-**gabriele.torta@reglo.it**", ma la mail generata dal form va a
-**support@reglo.it** (`SUPPORT_EMAIL` in `src/site/mailto.ts`). Cosi' i lead
-commerciali finiscono nella casella dell'assistenza. Non l'ho cambiato
-perche' e' una scelta vostra su chi deve riceverli.
-
-### 7. Accessibilita': quello che resta
+### 6. Accessibilita': quello che resta
 Fuori dal perimetro sistemato restano **24-69 span cliccabili per pagina**
 non raggiungibili da tastiera (accordion FAQ, frecce dei caroselli, tab di
 /novita). Aggiungere `tabindex` a runtime su tutti sarebbe un cerotto con la

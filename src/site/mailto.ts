@@ -15,10 +15,20 @@
  */
 export const SUPPORT_EMAIL = 'support@reglo.it';
 
+/**
+ * Destinatario dei lead commerciali.
+ *
+ * Non e' SUPPORT_EMAIL: la pagina /contatta-le-vendite pubblica questo
+ * indirizzo come contatto commerciale ("Oppure scrivi a ..."), mentre il form
+ * mandava tutto a support@reglo.it. I lead finivano nella casella
+ * dell'assistenza, che non e' chi li deve lavorare.
+ */
+export const SALES_EMAIL = 'gabriele.torta@reglo.it';
+
 /** Apre il client di posta con una mail gia' pronta. */
-export function openMailto(subject: string, body: string) {
+export function openMailto(subject: string, body: string, to: string = SUPPORT_EMAIL) {
   const url =
-    'mailto:' + SUPPORT_EMAIL +
+    'mailto:' + to +
     '?subject=' + encodeURIComponent(subject) +
     '&body=' + encodeURIComponent(body);
 

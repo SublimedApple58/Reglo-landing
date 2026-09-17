@@ -133,8 +133,9 @@ const objLit = (o) => '{' + Object.entries(o)
 const TAMPONE_COPY = new Map([
   ['Richiesta inviata', 'Manca un ultimo passo'],
   ['Messaggio ricevuto', 'Manca un ultimo passo'],
+  // vendite: la mail va al contatto commerciale, non all'assistenza
   ['Ti scriviamo entro un giorno lavorativo a ',
-   'Ti abbiamo aperto una mail gi\u00e0 pronta per support@reglo.it: premi invia e ti scriviamo a '],
+   'Ti abbiamo aperto una mail gi\u00e0 pronta per gabriele.torta@reglo.it: premi invia e ti scriviamo a '],
   [' per fissare la demo.', ' entro un giorno lavorativo, per fissare la demo.'],
   ['Ti rispondiamo a ',
    'Ti abbiamo aperto una mail gi\u00e0 pronta per support@reglo.it: premi invia e ti rispondiamo a '],
