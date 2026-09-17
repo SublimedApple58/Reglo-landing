@@ -278,6 +278,47 @@
     width: 100% !important;
   }
 
+  /* ---------------------------------------------- istruttori (/istruttori) */
+
+  /* La card "Malattie del team" e' ancorata con `left: 248px` piu'
+   * translateX(-50%): un offset in pixel pensato per un contenitore largo.
+   * A 350px il centro cade a 248 e la card sfora a destra, tagliando i
+   * pulsanti "Sposta". Su mobile si centra sul contenitore. */
+  [data-screen-label="Ferie e malattie"] div[style*="left: 248px"] {
+    left: 50% !important;
+    width: calc(100% - 32px) !important;
+  }
+
+  /* Il cursore a mano e' posizionato con `left: 331px` dentro la riga di
+   * Martina Giorgi: su desktop lo lascia a 8px dal bordo destro, sopra il
+   * pulsante "Sposta". Con la card piu' stretta quei 331px cadono fuori
+   * schermo, quindi lo si ancora al bordo destro mantenendo gli 8px. */
+  [data-screen-label="Ferie e malattie"] img[src*="cursore-mano"] {
+    left: auto !important;
+    right: 8px !important;
+  }
+
+  /* Il video della modalita' autonoma e' dimensionato a mano (1186x704,
+   * top -50) sulla larghezza che il contenitore ha su desktop. A 350px si
+   * vedeva solo la fetta sinistra del fotogramma: qui riempie il
+   * contenitore, che ha gia' il suo aspect-ratio 16/9. */
+  [data-screen-label="Video autonoma"] video {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* la fascia "Ferie aziendali" sta piu' vicina al bordo: a 44px di margine
+   * finisce sotto la card */
+  [data-screen-label="Ferie e malattie"] div[style*="right: 44px"] {
+    right: 16px !important;
+    bottom: 16px !important;
+    width: calc(100% - 32px) !important;
+    padding: 14px 16px !important;
+    gap: 14px !important;
+  }
+
   /* ---------------------------------------------------------------- footer */
 
   /* da `1fr repeat(5, minmax(0,165px))` a due colonne: il logo prende la riga
