@@ -2,6 +2,7 @@ import React from 'react';
 import RegloSite from './RegloSite';
 import { pageFromPath, pathFromPage, LOGIN_URL, FAKE_LOGIN_PATH } from './routes';
 import { openMailto, venditeMail, assistenzaMail, SALES_EMAIL } from './mailto';
+import { loginTarget } from './store';
 import { correctMobileHeroPhone, isMobileViewport } from './mobileHero';
 import { applyMobileMockupScale } from './mobileScale';
 import { applySeo } from './seo';
@@ -44,7 +45,8 @@ class RoutedSite extends Base {
 
   /**
    * Il design mostrerebbe il proprio mockup di login. "Accedi" deve invece
-   * portare alla web app vera, quindi sostituiamo `goLogin` qui: RegloSite e'
+   * portare alla web app vera su desktop e allo store dell'app sul telefono
+   * (vedi ./store.ts), quindi sostituiamo `goLogin` qui: RegloSite e'
    * generato da tools/port-logic.mjs e non va modificato a mano.
    */
   renderVals() {
@@ -61,7 +63,7 @@ class RoutedSite extends Base {
 
     return {
       ...v,
-      goLogin: () => { window.location.href = LOGIN_URL; },
+      goLogin: () => { window.location.href = loginTarget(); },
 
       // TAMPONE: i form del design non inviano niente, vedi ./mailto.ts
       sendVendite: () => {
