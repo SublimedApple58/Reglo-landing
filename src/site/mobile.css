@@ -236,6 +236,30 @@
     scroll-snap-stop: always !important;
   }
 
+  /* ...e il carosello sfora il padding laterale della pagina.
+   *
+   * La sezione "Storie" ha `padding: 110px 20px 120px`, e lo scroller ci sta
+   * dentro: su un telefono da 390 e' largo 350 e comincia a x=20. Il ritaglio
+   * dell'overflow cade li', quindi la card che sta passando durante lo scroll
+   * viene tagliata di netto dalle due bande bianche da 20px — a sinistra e a
+   * destra. Da fermi non si nota, perche' la card e' esattamente in posizione;
+   * si vede solo mentre si scorre, ed e' quello che segnalava Gabriele.
+   *
+   * I margini negativi riportano lo scroller a tutta larghezza (0 -> 390),
+   * cosi' la card resta visibile fino al bordo dello schermo. Il padding
+   * rimette dentro i 20px tolti: la card continua a essere larga 350 come
+   * prima (`flex: 0 0 100%` misura il content box), e `scroll-padding-left`
+   * tiene lo snap allineato al testo della sezione invece che al bordo.
+   *
+   * Solo mobile: su desktop le card sono a 1/3 e il problema non esiste. */
+  [data-screen-label="Storie"] div[style*="scroll-snap-type"] {
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    scroll-padding-left: 20px !important;
+  }
+
   /* -------------------------------------------------- funzioni (/funzioni) */
 
   /* Tre blocchi "testo | mockup" a colonne fisse: a 390px ogni colonna resta

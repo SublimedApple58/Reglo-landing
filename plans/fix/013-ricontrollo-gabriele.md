@@ -9,9 +9,11 @@ Questo giro la verifica e' stata fatta **anche su Safari iOS vero**
 (simulatore iPhone 12 / iOS 26.2), non solo su Chrome: due dei tre problemi
 si vedevano solo li'.
 
-## 1 + 2 — La mano, e le card che sembravano tagliate
+## 1 — La mano (e, di rimbalzo, le card dei loghi)
 
-Erano lo **stesso difetto**, non due.
+Attenzione: **"la card tagliata" di Gabriele NON era questa** — vedi il
+punto 2 qui sotto, chiarito da Tiziano a lavoro gia' iniziato. Quello che
+segue resta comunque un difetto vero, trovato e sistemato per strada.
 
 `mano.png` ha l'avambraccio **tagliato di netto sul bordo destro del file**:
 il contenuto arriva a filo, x=1253 su 1254 px (misurato leggendo l'alpha del
@@ -29,8 +31,8 @@ pagina**. Misurato sul sito in prod, larghezze da 320 a 1920:
 | unica larghezza salva | 600px, per caso |
 | quanto la mano **copriva le card** | da 20px (320) a 276px (da 1280 in su) |
 
-E qui sta anche la "card tagliata": la mano non passa dietro alle card, passa
-**sopra**. Sta dentro il blocco del titolo (`position: relative; z-index: 1`),
+C'e' poi un secondo effetto: la mano non passa dietro alle card dei loghi,
+passa **sopra**. Sta dentro il blocco del titolo (`position: relative; z-index: 1`),
 quindi tutto quel sottoalbero — anche con `z-index: -1` sull'immagine — si
 disegna sopra le righe del carosello, che non sono posizionate. Sulle card
 diventava una macchia che le faceva sembrare sporche o tagliate di netto.
@@ -44,10 +46,46 @@ diventava una macchia che le faceva sembrare sporche o tagliate di netto.
 2. il contenitore del carosello sale sopra il titolo (`z-index: 3`): le card
    tornano pulite e la mano resta dietro, che e' il suo posto.
 
-Il fade laterale del carosello **non c'entrava e funzionava gia'**: misurata
-la luminanza delle colonne, al bordo e' 0 su tutti e due i lati, a 1440 e a
-390. La mask tolta dal carosello nel giro precedente aggancia anche su
+Il fade laterale del carosello dei loghi **non c'entrava e funzionava
+gia'**: misurata la luminanza delle colonne, al bordo e' 0 su tutti e due i
+lati, a 1440 e a 390. La mask tolta nel giro precedente aggancia anche su
 WebKit (verificato sul simulatore), quindi quel pezzo era corretto.
+
+## 2 — La card tagliata: e' il carosello "Storie" su mobile
+
+Chiarimento di Tiziano: non e' un problema della card, e' il **carosello
+orizzontale delle storie** ("Come sono passate a Reglo"). La pagina ha un
+padding laterale e, **mentre si scorre**, quel bianco copre la card che sta
+passando. La card deve poter **sforare** il padding, non restare tagliata.
+
+Riprodotto e misurato su mobile 390:
+
+| | prima | dopo |
+|---|---|---|
+| Sezione `Storie` | `padding: 110px 20px 120px` | invariata |
+| Scroller | `20 → 370` (largo 350) | **`0 → 390`** |
+| Card | 350 | 350 (invariata) |
+| Atterraggio snap | tutte a x=20 | tutte a x=20 (invariato) |
+| `scrollWidth` / max scroll | 1460 / 1110 | 1500 / **1110** (invariato) |
+
+Il ritaglio dell'overflow cadeva sui bordi dello scroller, cioe' a 20px dai
+bordi dello schermo: da fermi non si nota, perche' la card e' esattamente in
+posizione, **si vede solo durante lo scorrimento** — ed e' esattamente quello
+che segnalava Gabriele.
+
+Il fix (`mobile.css`): margini negativi da -20px riportano lo scroller a tutta
+larghezza, il padding da 20px rimette dentro lo spazio tolto (cosi' la card
+resta larga 350, perche' `flex: 0 0 100%` misura il content box) e
+`scroll-padding-left: 20px` tiene lo snap allineato al testo della sezione
+invece che al bordo dello schermo.
+
+Verificato che il max scroll non cambia (1110): anche l'**ultima** card
+arriva in posizione allineata. Era il rischio vero di questo fix — su WebKit
+il padding di coda di uno scroller flex storicamente viene ignorato — e sul
+simulatore iOS 26.2 il banner conferma `snap c1@20 c2@20 c3@20 c4@20`.
+
+Su desktop non cambia niente: a 768 e 1440 scroller, card, `scrollWidth` e
+atterraggi sono identici a prima (card a 1/3, il problema non esiste).
 
 ## 3 — Il default 45 min: un selettore che su iPhone non agganciava
 
