@@ -137,14 +137,30 @@ pre-esistenti di `dcx.tsx`).
 Screenshot prima/dopo ritagliati sui tre elementi: vedi allegati al messaggio
 di consegna (mano e card su desktop 1440, durata su Safari iOS).
 
-## Rimasto aperto, serve una decisione
+## 4 — Anche il selettore del mockup passa a 45 min
 
-Su `/funzioni` ci sono **due** selettori di durata, non uno:
+Su `/funzioni` i selettori di durata sono **due**. Il secondo, dentro il
+mockup "Nuovo appuntamento", mostrava 30 min e non era mai stato toccato.
+Tiziano ha confermato: 45 anche li'.
 
-| Blocco | Default oggi |
-|---|---|
-| "Durata prenotazione allievo" (quello sistemato) | 45 min su mobile, 60 su desktop |
-| "Durata" dentro il mockup "Nuovo appuntamento" | **30 min**, su mobile e su desktop |
+| Blocco | Prima | Ora |
+|---|---|---|
+| "Durata prenotazione allievo" | 45 mobile / 60 desktop | invariato |
+| "Durata" nel mockup | 30 ovunque | **45 ovunque** |
 
-Il secondo non e' mai stato toccato e nessuno ha detto cosa deve mostrare.
-Non l'ho cambiato di mia iniziativa: e' una scelta di prodotto, non un bug.
+**Nota sulla scelta**: qui il cambio vale a **tutte le larghezze**, non solo
+su mobile. Il mockup e' un'illustrazione del prodotto e mostrava 30 sia su
+telefono sia su desktop, quindi non c'era una ragione di layout per
+differenziarlo — al contrario del primo selettore, dove il 45 su mobile
+nasceva dal fatto che le pill vanno a capo 3 + 2. Se lo si vuole 45 solo
+sotto i 768px, e' una regola in `mobile.css`.
+
+Questo non e' un aggancio CSS ma **markup statico**: la pill selezionata e'
+scritta nello stile inline. Cambiato lo stile "selezionata" (nero pieno) da
+"30 min" a "45 min" sia in `views/Core.tsx` sia in
+`design-reference/sito-finale-v1.html`, cosi' una rigenerazione con
+`tools/dc-to-react.mjs` non lo riporta indietro. Non passando da un
+selettore, non ha il rischio di serializzazione che aveva il punto 3.
+
+Verificato su 9 larghezze (320 → 1920): il primo selettore resta 45/60 come
+prima, il secondo e' 45 ovunque, impaginazione delle pill invariata.

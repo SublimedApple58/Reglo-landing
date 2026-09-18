@@ -749,10 +749,10 @@ export default function Core(v: any) {
             {"\n        "}
             <div style={{display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "18px"}}>
               {"\n          "}
-              <span style={{display: "inline-flex", alignItems: "center", padding: "8px 15px", borderRadius: "12px", fontSize: "13px", fontWeight: "600", background: "#000000", color: "#ffffff", border: "1.5px solid #000000", whiteSpace: "nowrap"}}>
+              <span style={{display: "inline-flex", alignItems: "center", padding: "8px 15px", borderRadius: "12px", fontSize: "13px", fontWeight: "500", background: "#ffffff", color: "#4a4a55", border: "1.5px solid #ececf0", whiteSpace: "nowrap"}}>
                 {"30 min"}
               </span>
-              <span style={{display: "inline-flex", alignItems: "center", padding: "8px 15px", borderRadius: "12px", fontSize: "13px", fontWeight: "500", background: "#ffffff", color: "#4a4a55", border: "1.5px solid #ececf0", whiteSpace: "nowrap"}}>
+              <span style={{display: "inline-flex", alignItems: "center", padding: "8px 15px", borderRadius: "12px", fontSize: "13px", fontWeight: "600", background: "#000000", color: "#ffffff", border: "1.5px solid #000000", whiteSpace: "nowrap"}}>
                 {"45 min"}
               </span>
               <span style={{display: "inline-flex", alignItems: "center", padding: "8px 15px", borderRadius: "12px", fontSize: "13px", fontWeight: "500", background: "#ffffff", color: "#4a4a55", border: "1.5px solid #ececf0", whiteSpace: "nowrap"}}>
