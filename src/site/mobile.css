@@ -523,15 +523,26 @@
    * selezionato nel design. Su schermo piccolo le pill vanno a capo 3 + 2 e
    * la scelta evidenziata finisce in fondo alla prima riga; con "45 min" sta
    * in mezzo e si legge meglio. Richiesta di Gabriele: cambia solo il default
-   * mobile, su desktop resta 60 min. */
-  div[style*="max-width: 720px"][style*="user-select: none"] > div:last-child > span:nth-child(2) {
+   * mobile, su desktop resta 60 min.
+   *
+   * ATTENZIONE, l'aggancio NON puo' passare da `user-select`. React scrive lo
+   * stile con `node.style.userSelect = 'none'`: Chrome lo serializza
+   * nell'attributo (`user-select: none`), WebKit no. Sull'iPhone l'attributo
+   * e' solo "width: 100%; max-width: 720px; text-align: center;" — misurato
+   * su iOS 26.2 — quindi il selettore vecchio non agganciava niente e sul
+   * telefono restava 60 min, che e' esattamente quello che si vedeva.
+   *
+   * Le tre proprieta' usate qui ci sono in tutti e due i motori, e la terna
+   * width+max-width+text-align e' unica in tutto il sito (le altre
+   * `max-width: 720px` sono intestazioni di sezione, senza `width: 100%`). */
+  div[style*="width: 100%"][style*="max-width: 720px"][style*="text-align: center"] > div:last-child > span:nth-child(2) {
     font-weight: 700 !important;
     color: #000000 !important;
     background: #ececef !important;
     border-color: #a3a3ad !important;
   }
 
-  div[style*="max-width: 720px"][style*="user-select: none"] > div:last-child > span:nth-child(3) {
+  div[style*="width: 100%"][style*="max-width: 720px"][style*="text-align: center"] > div:last-child > span:nth-child(3) {
     font-weight: 500 !important;
     color: #4a4a55 !important;
     background: #ffffff !important;

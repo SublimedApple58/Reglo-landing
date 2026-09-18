@@ -127,3 +127,47 @@ textarea:focus-visible {
 [data-screen-label="Dispositivi"] div[style*="height: 88.6%"] {
   border-radius: 15% / 7.13% !important;
 }
+
+/* ------------------------------------ la mano: il taglio non si deve vedere
+ *
+ * `mano.png` ha l'avambraccio tagliato di netto sul bordo destro DEL FILE: il
+ * contenuto arriva a filo (x=1253 su 1254 px). Nel design originale non si
+ * vedeva perche' l'immagine stava a `right: -6%`, cioe' sporgeva dalla
+ * sezione e quel bordo finiva oltre il ritaglio di `overflow: hidden`.
+ *
+ * Da quando la mano e' ancorata alla parola "mano" — cosi' la segue a ogni
+ * capo riga — quel bordo e' rientrato nella pagina. Misurato sul sito: cade
+ * DENTRO la sezione in 12 larghezze su 13 fra 320 e 1920px, e si legge come
+ * un taglio verticale netto sull'avambraccio.
+ *
+ * Nessuna geometria puo' sistemarlo davvero: la parola "mano" finisce in un
+ * punto diverso a ogni larghezza, quindi non esiste una misura che tenga quel
+ * bordo sempre fuori. La maschera invece toglie il problema alla radice:
+ * l'immagine sfuma a zero prima di arrivare ai propri bordi, quindi un bordo
+ * da tagliare non c'e' piu'.
+ *
+ * Non c'entra con la mask che si e' tolta dal carosello qui sopra: li' il
+ * problema era una mask su un contenitore con dentro un transform animato,
+ * qui l'immagine e' ferma e non ha animazioni dentro. */
+[data-screen-label="Loghi clienti"] img[src*="mano"] {
+  -webkit-mask-image: radial-gradient(ellipse 72% 62% at 40% 36%, #000 55%, rgba(0, 0, 0, 0.5) 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 62% at 40% 36%, #000 55%, rgba(0, 0, 0, 0.5) 78%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* --------------------------- le card del carosello passano sopra alla mano
+ *
+ * La mano e' decorativa, ma sta dentro il blocco del titolo
+ * (`position: relative; z-index: 1`): tutto quel sottoalbero — anche con
+ * `z-index: -1` sull'immagine — si disegna SOPRA le righe del carosello, che
+ * non sono posizionate. Misurato: la mano copre le card per un'altezza da
+ * 20px (a 320) a 276px (da 1280 in su), e sulle card diventa una macchia che
+ * le fa sembrare sporche o tagliate.
+ *
+ * Alzando il contenitore del carosello sopra il titolo le card tornano
+ * pulite e la mano resta dietro, che e' il suo posto. */
+[data-screen-label="Loghi clienti"] > div[style*="flex-direction: column"] {
+  position: relative;
+  z-index: 3;
+}
