@@ -1222,7 +1222,6 @@ export default function Core(v: any) {
     </div>
     <div data-screen-label={"Loghi clienti"} style={{position: "relative", background: "#000000", padding: "110px 0 110px", overflow: "hidden"}}>
       {"\n  "}
-      {"\n  "}
       <div style={{position: "relative", zIndex: "1", textAlign: "center", maxWidth: "1120px", margin: "0 auto 56px", padding: "0 20px"}}>
         {"\n    "}
         <h2 style={{margin: "0", fontSize: "clamp(30px, 3.6vw, 56px)", fontWeight: "800", letterSpacing: "-2.4px", lineHeight: "1.06", color: "#ffffff", textWrap: "balance"}}>

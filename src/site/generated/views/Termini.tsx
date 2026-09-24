@@ -99,7 +99,7 @@ export default function Termini(_v: any) {
               </div>
               {"\n          "}
               <div style={{marginTop: "10px", fontSize: "16px", fontWeight: "500", lineHeight: "1.7", color: "#55555f", textWrap: "pretty"}}>
-                {"Si attivano su semplice richiesta, anche via email o dalla piattaforma, ai corrispettivi comunicati al momento: Segretaria AI (canone annuale per numero attivato più 0,06 USD per minuto di utilizzo, convertiti in euro e fatturati mensilmente), Reglo Aula (corrispettivo per studente attivato), e gli altri moduli quando disponibili."}
+                {"Si attivano su semplice richiesta, anche via email o dalla piattaforma, ai corrispettivi comunicati al momento: Segretaria AI (canone annuale per numero attivato più 0,06 € per minuto di utilizzo, fatturato mensilmente), Reglo Aula (corrispettivo per studente attivato), e gli altri moduli quando disponibili."}
               </div>
               {"\n        "}
             </div>
