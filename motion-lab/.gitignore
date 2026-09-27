@@ -1,0 +1,10 @@
+node_modules
+out
+
+# output pesanti e rigenerabili: i video restano fuori da git
+*.mp4
+*.gif
+# fotogrammi di lavoro estratti per le verifiche
+higgsfield/frames/
+higgsfield/giro2/frames/
+higgsfield/giro2/verifica/

@@ -1,0 +1,3 @@
+# Laboratorio di prove Remotion: non fa parte del sito e non va caricato
+# al deploy (ha node_modules e render video suoi).
+motion-lab

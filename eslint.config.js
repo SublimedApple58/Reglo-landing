@@ -7,7 +7,8 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
   // Codice generato da tools/dc-to-react.mjs e porting fedele della logica
   // del design: non si lintano, si rigenerano.
-  { ignores: ['dist', 'design-reference', 'src/site/generated', 'src/site/RegloSite.tsx'] },
+  // motion-lab e' un pacchetto a parte (Remotion) con le sue dipendenze: non e' il sito.
+  { ignores: ['dist', 'design-reference', 'src/site/generated', 'src/site/RegloSite.tsx', 'motion-lab'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
