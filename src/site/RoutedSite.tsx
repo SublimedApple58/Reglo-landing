@@ -7,6 +7,7 @@ import { correctMobileHeroPhone, isMobileViewport } from './mobileHero';
 import { applyMobileMockupScale } from './mobileScale';
 import { applySeo } from './seo';
 import { enhanceNavKeyboard } from './a11y';
+import { scrollToHashTarget, watchHashChanges } from './deepLink';
 
 /**
  * Sincronizza la navigazione interna del design (state.page) con l'URL.
@@ -32,6 +33,7 @@ const Base = RegloSite as unknown as new (props: Record<string, never>) => React
 
 class RoutedSite extends Base {
   private _lastPath = '';
+  private _unwatchHash: (() => void) | null = null;
 
   constructor(props: Record<string, never>) {
     super(props);
@@ -101,6 +103,9 @@ class RoutedSite extends Base {
     window.addEventListener('resize', this._rescaleMockups);
     this._lastPath = window.location.pathname;
     window.addEventListener('popstate', this._onPop);
+    // `/istruttori#video-autonoma` & co.: vedi ./deepLink.ts
+    this._unwatchHash = watchHashChanges();
+    scrollToHashTarget();
   }
 
   /** I mockup si rimisurano al cambio pagina e al ruotare del telefono. */
@@ -147,6 +152,8 @@ class RoutedSite extends Base {
     super.componentWillUnmount?.();
     window.removeEventListener('popstate', this._onPop);
     window.removeEventListener('resize', this._rescaleMockups);
+    this._unwatchHash?.();
+    this._unwatchHash = null;
   }
 }
 
