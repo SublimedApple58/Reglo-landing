@@ -386,7 +386,7 @@ export default function Prezzi(v: any) {
         {"\n\n    "}
         <div style={{padding: "8px 34px 34px"}}>
           {"\n      "}
-          <span className={"scpa"} onClick={v.goContatti} style={{cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", height: "50px", borderRadius: "12px", background: "#f2f2f5", color: "#000000", fontSize: "16px", fontWeight: "700", userSelect: "none"}}>
+          <span className={"scpb"} onClick={v.goContatti} style={{cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", height: "50px", borderRadius: "12px", background: "#f2f2f5", color: "#000000", fontSize: "16px", fontWeight: "700", userSelect: "none"}}>
             {"Parla con un consulente"}
           </span>
           {"\n    "}
@@ -1633,9 +1633,17 @@ export default function Prezzi(v: any) {
                     {"\n        "}
                   </div>
                   {"\n        "}
-                  <p style={{margin: "0", fontSize: "14.5px", fontWeight: "500", lineHeight: "1.6", color: "#5a5a66", whiteSpace: "pre-line"}}>
+                  <p style={sty(rv?.textStyle)}>
                     <>{interp(rv?.text)}</>
                   </p>
+                  {"\n        "}
+                  {rv?.long ? <>
+                      {"\n          "}
+                      <span className={"scp4"} onClick={rv?.openFull} style={{alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "-4px", fontSize: "14px", fontWeight: "700", color: "#000000", cursor: "pointer", userSelect: "none", textDecoration: "underline", textUnderlineOffset: "3px", textDecorationThickness: "1.5px"}}>
+                      {"Leggi tutta la recensione"}
+                    </span>
+                      {"\n        "}
+                    </> : null}
                   {"\n        "}
                   {rv?.img ? <>
                       {"\n          "}
@@ -1699,7 +1707,7 @@ export default function Prezzi(v: any) {
         {"\n    "}
         <p style={{margin: "0", fontSize: "18px", fontWeight: "500", lineHeight: "1.6", color: "#6a6a74", maxWidth: "380px", textWrap: "pretty"}}>
           {"Abbiamo cercato di rispondere alle domande che riceviamo più spesso. Se la tua non c'è, saremo felici di darti la risposta: "}
-          <a className={"scp5"} href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "none"}}>
+          <a className={"scp6"} href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "none"}}>
             {"support@reglo.it"}
           </a>
         </p>
@@ -1713,7 +1721,7 @@ export default function Prezzi(v: any) {
               {"\n      "}
               <div style={{borderBottom: "1px solid #ececf0"}}>
               {"\n        "}
-              <div className={"scp6"} onClick={sf?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
+              <div className={"scp7"} onClick={sf?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
                 {"\n          "}
                 <span style={{flex: "1", fontSize: "18px", fontWeight: "700", letterSpacing: "-0.3px", color: "#000000", lineHeight: "1.4"}}>
                   <>{interp(sf?.q)}</>

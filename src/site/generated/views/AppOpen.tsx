@@ -8,7 +8,7 @@ export default function AppOpen(v: any) {
       {"\n  "}
       <div onClick={v.stop} style={{position: "relative", width: "100%", maxWidth: "560px", background: "#ffffff", borderRadius: "22px", padding: "44px 44px 40px", boxShadow: "0 30px 80px rgba(20,20,30,0.3)"}}>
         {"\n    "}
-        <span className={"scpd"} onClick={v.closeApp} style={{position: "absolute", top: "20px", right: "20px", display: "inline-flex", alignItems: "center", justifyContent: "center", width: "34px", height: "34px", borderRadius: "50%", cursor: "pointer", userSelect: "none", color: "#6f6f7c"}}>
+        <span className={"scpe"} onClick={v.closeApp} style={{position: "absolute", top: "20px", right: "20px", display: "inline-flex", alignItems: "center", justifyContent: "center", width: "34px", height: "34px", borderRadius: "50%", cursor: "pointer", userSelect: "none", color: "#6f6f7c"}}>
           {"\n      "}
           <svg width={"15"} height={"15"} viewBox={"0 0 14 14"} fill={"none"}>
             <path d={"M2 2l10 10M12 2L2 12"} stroke={"currentColor"} stroke-width={"1.7"} stroke-linecap={"round"} />

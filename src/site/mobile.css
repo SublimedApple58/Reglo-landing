@@ -572,4 +572,21 @@
     background: #ffffff !important;
     border-color: #e6e6ec !important;
   }
+
+  /* Recensione completa: su telefono e' un foglio che sale dal basso, a
+   * tutta larghezza, con il margine di sicurezza dell'home indicator. */
+  [data-rev-full] {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+  [data-rev-full] > div {
+    max-width: none !important;
+    max-height: 88vh !important;
+    border-radius: 22px 22px 0 0 !important;
+    padding: 32px 22px calc(28px + env(safe-area-inset-bottom)) !important;
+    animation-name: rev-up !important;
+  }
+  @keyframes rev-up {
+    from { transform: translateY(40%); opacity: 0.6; }
+  }
 }

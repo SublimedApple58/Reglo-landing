@@ -13,6 +13,7 @@ export { default as Rinnovi } from './views/Rinnovi';
 export { default as Med } from './views/Med';
 export { default as IscrivitiOpen } from './views/IscrivitiOpen';
 export { default as AppOpen } from './views/AppOpen';
+export { default as RevOpen } from './views/RevOpen';
 export { default as Team } from './views/Team';
 export { default as Privacy } from './views/Privacy';
 export { default as Termini } from './views/Termini';
@@ -35,6 +36,7 @@ export const VIEW_CONDITIONS = [
   "isMed",
   "iscrivitiOpen",
   "appOpen",
+  "revOpen",
   "isTeam",
   "isPrivacy",
   "isTermini",

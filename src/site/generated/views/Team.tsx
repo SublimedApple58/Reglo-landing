@@ -50,7 +50,7 @@ export default function Team(v: any) {
               {" Reglo portandosi dietro l'idea che un gestionale si costruisce intorno a ciò che serve non a ciò che è bello solo come idea."}
             </div>
             {"\n        "}
-            <a className={"scpe"} href={"https://www.linkedin.com/in/tiziano-di-felice-b2280b286/"} target={"_blank"} rel={"noopener"} style={{display: "inline-flex", alignSelf: "flex-start", width: "fit-content", alignItems: "center", gap: "8px", marginTop: "16px", fontSize: "15px", fontWeight: "700", color: "#000000", textDecoration: "none"}}>
+            <a className={"scp4"} href={"https://www.linkedin.com/in/tiziano-di-felice-b2280b286/"} target={"_blank"} rel={"noopener"} style={{display: "inline-flex", alignSelf: "flex-start", width: "fit-content", alignItems: "center", gap: "8px", marginTop: "16px", fontSize: "15px", fontWeight: "700", color: "#000000", textDecoration: "none"}}>
               {"\n          "}
               <svg width={"18"} height={"18"} viewBox={"0 0 24 24"} fill={"currentColor"} style={{flexShrink: "0"}}>
                 <path d={"M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.38 2.5 4.38 5.75V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"} />
@@ -1337,9 +1337,17 @@ export default function Team(v: any) {
                     {"\n        "}
                   </div>
                   {"\n        "}
-                  <p style={{margin: "0", fontSize: "14.5px", fontWeight: "500", lineHeight: "1.6", color: "#5a5a66", whiteSpace: "pre-line"}}>
+                  <p style={sty(rv?.textStyle)}>
                     <>{interp(rv?.text)}</>
                   </p>
+                  {"\n        "}
+                  {rv?.long ? <>
+                      {"\n          "}
+                      <span className={"scp4"} onClick={rv?.openFull} style={{alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "-4px", fontSize: "14px", fontWeight: "700", color: "#000000", cursor: "pointer", userSelect: "none", textDecoration: "underline", textUnderlineOffset: "3px", textDecorationThickness: "1.5px"}}>
+                      {"Leggi tutta la recensione"}
+                    </span>
+                      {"\n        "}
+                    </> : null}
                   {"\n        "}
                   {rv?.img ? <>
                       {"\n          "}
@@ -1403,7 +1411,7 @@ export default function Team(v: any) {
         {"\n    "}
         <p style={{margin: "0", fontSize: "18px", fontWeight: "500", lineHeight: "1.6", color: "#6a6a74", maxWidth: "380px", textWrap: "pretty"}}>
           {"Abbiamo cercato di rispondere alle domande che riceviamo più spesso. Se la tua non c'è, saremo felici di darti la risposta: "}
-          <a className={"scp5"} href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "none"}}>
+          <a className={"scp6"} href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "none"}}>
             {"support@reglo.it"}
           </a>
         </p>
@@ -1417,7 +1425,7 @@ export default function Team(v: any) {
               {"\n      "}
               <div style={{borderBottom: "1px solid #ececf0"}}>
               {"\n        "}
-              <div className={"scp6"} onClick={fq?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
+              <div className={"scp7"} onClick={fq?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
                 {"\n          "}
                 <span style={{flex: "1", fontSize: "18px", fontWeight: "700", letterSpacing: "-0.3px", color: "#000000", lineHeight: "1.4"}}>
                   <>{interp(fq?.q)}</>

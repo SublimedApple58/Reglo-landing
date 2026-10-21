@@ -224,3 +224,27 @@ textarea:focus-visible {
   transform: scale(0.96);
   border-color: #000000 !important;
 }
+
+/* ----------------------------- recensione completa (REG-496, pannello)
+ *
+ * Le recensioni lunghe nel muro si fermano a 7 righe e "Leggi tutta la
+ * recensione" apre questo pannello. Entra con una dissolvenza e una
+ * risalita breve; su mobile diventa un foglio dal basso (mobile.css). */
+[data-rev-full] {
+  animation: rev-fade 0.22s ease both;
+}
+[data-rev-full] > div {
+  animation: rev-in 0.34s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes rev-fade {
+  from { opacity: 0; }
+}
+@keyframes rev-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-rev-full],
+  [data-rev-full] > div {
+    animation: none;
+  }
+}

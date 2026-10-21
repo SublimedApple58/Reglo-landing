@@ -70,7 +70,7 @@ export default function Login(v: any) {
               {"\n          "}
               <div style={{marginBottom: "26px"}}>
                 {"\n            "}
-                <span className={"scp7"} style={{fontSize: "14px", fontWeight: "600", color: "#222222", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "2px", textDecorationThickness: "1px"}}>
+                <span className={"scp8"} style={{fontSize: "14px", fontWeight: "600", color: "#222222", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "2px", textDecorationThickness: "1px"}}>
                   {"Recupera la password"}
                 </span>
                 {"\n          "}
@@ -84,7 +84,7 @@ export default function Login(v: any) {
             {"\n\n        "}
             <div style={{alignSelf: "center", marginTop: "22px", fontSize: "14px", fontWeight: "500", color: "#555555"}}>
               {"Non hai ancora un account? "}
-              <span className={"scp7"} style={{fontSize: "14px", fontWeight: "600", color: "#222222", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "2px", textDecorationThickness: "1px"}}>
+              <span className={"scp8"} style={{fontSize: "14px", fontWeight: "600", color: "#222222", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "2px", textDecorationThickness: "1px"}}>
                 {"Registrati"}
               </span>
             </div>
@@ -93,7 +93,7 @@ export default function Login(v: any) {
               {"\n          "}
               <div style={{fontSize: "13px", fontWeight: "500", color: "#9a9a9a"}}>
                 {"Non sei ancora cliente? "}
-                <span className={"scp7"} onClick={v.goHome} style={{fontSize: "14px", fontWeight: "600", color: "#222222", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "2px", textDecorationThickness: "1px"}}>
+                <span className={"scp8"} onClick={v.goHome} style={{fontSize: "14px", fontWeight: "600", color: "#222222", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "2px", textDecorationThickness: "1px"}}>
                   {"Scopri Reglo"}
                 </span>
               </div>

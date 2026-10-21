@@ -51,7 +51,7 @@ export default function Vendite(v: any) {
           {"\n      "}
           <p style={{margin: "0", fontSize: "15.5px", fontWeight: "500", color: "#6f6f7c"}}>
             {"Problemi tecnici o domande sul prodotto? "}
-            <span className={"scp7"} onClick={v.goAssistenza} style={{color: "#222222", fontWeight: "600", cursor: "pointer", whiteSpace: "nowrap", textDecoration: "underline", textDecorationThickness: "1px", textUnderlineOffset: "2px"}}>
+            <span className={"scp8"} onClick={v.goAssistenza} style={{color: "#222222", fontWeight: "600", cursor: "pointer", whiteSpace: "nowrap", textDecoration: "underline", textDecorationThickness: "1px", textUnderlineOffset: "2px"}}>
               {"Contatta l'assistenza"}
             </span>
           </p>
@@ -104,12 +104,12 @@ export default function Vendite(v: any) {
                 {"\n            "}
                 <span style={{flex: "1 1 auto", minWidth: "0", overflowWrap: "anywhere", fontSize: "15px", fontWeight: "500", color: "#6f6f7c"}}>
                   {"Oppure scrivi a "}
-                  <span className={"scp7"} onClick={v.mailCommerciale} style={{color: "#222222", fontWeight: "600", cursor: "pointer", textDecoration: "underline", textDecorationThickness: "1px", textUnderlineOffset: "2px"}}>
+                  <span className={"scp8"} onClick={v.mailCommerciale} style={{color: "#222222", fontWeight: "600", cursor: "pointer", textDecoration: "underline", textDecorationThickness: "1px", textUnderlineOffset: "2px"}}>
                     {"gabriele.torta@reglo.it"}
                   </span>
                 </span>
                 {"\n            "}
-                <span className={"scp9"} onClick={v.sendVendite} style={{display: "inline-flex", alignItems: "center", flexShrink: "0", padding: "15px 28px", background: "#000000", color: "#ffffff", fontSize: "15.5px", fontWeight: "600", borderRadius: "8px", cursor: "pointer", userSelect: "none"}}>
+                <span className={"scpa"} onClick={v.sendVendite} style={{display: "inline-flex", alignItems: "center", flexShrink: "0", padding: "15px 28px", background: "#000000", color: "#ffffff", fontSize: "15.5px", fontWeight: "600", borderRadius: "8px", cursor: "pointer", userSelect: "none"}}>
                   {"Invia messaggio"}
                 </span>
                 {"\n          "}

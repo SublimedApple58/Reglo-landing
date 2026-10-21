@@ -51,7 +51,7 @@ export default function Assistenza(v: any) {
           {"\n      "}
           <p style={{margin: "0", fontSize: "15.5px", fontWeight: "500", color: "#6f6f7c"}}>
             {"Domande su piani, prezzi o demo? "}
-            <span className={"scp7"} onClick={v.goVendite} style={{color: "#222222", fontWeight: "600", cursor: "pointer", whiteSpace: "nowrap", textDecoration: "underline", textDecorationThickness: "1px", textUnderlineOffset: "2px"}}>
+            <span className={"scp8"} onClick={v.goVendite} style={{color: "#222222", fontWeight: "600", cursor: "pointer", whiteSpace: "nowrap", textDecoration: "underline", textDecorationThickness: "1px", textUnderlineOffset: "2px"}}>
               {"Contatta le vendite"}
             </span>
           </p>
@@ -88,7 +88,7 @@ export default function Assistenza(v: any) {
               {"\n          "}
               <input type={"email"} value={v.assistEmail} onChange={v.onAssistEmail} placeholder={"nome@autoscuola.it"} style={{width: "100%", boxSizing: "border-box", background: "#f7f7f9", border: "1px solid #ececf0", borderRadius: "8px", padding: "14px 16px", fontFamily: "inherit", fontSize: "16px", fontWeight: "500", color: "#000000", outline: "none"}} />
               {"\n\n          "}
-              <div className={"scp8"} style={{display: "flex", alignItems: "center", gap: "9px", marginTop: "20px", cursor: "pointer", userSelect: "none"}}>
+              <div className={"scp9"} style={{display: "flex", alignItems: "center", gap: "9px", marginTop: "20px", cursor: "pointer", userSelect: "none"}}>
                 {"\n            "}
                 <svg width={"17"} height={"17"} viewBox={"0 0 20 20"} fill={"none"} stroke={"#6f6f7c"} stroke-width={"1.5"} stroke-linecap={"round"} stroke-linejoin={"round"}>
                   <path d={"M17 9.5l-6.8 6.8a4 4 0 01-5.7-5.7l7-7a2.7 2.7 0 013.8 3.8l-7 7a1.3 1.3 0 01-1.9-1.9l6.4-6.4"} />
@@ -104,12 +104,12 @@ export default function Assistenza(v: any) {
                 {"\n            "}
                 <span style={{flex: "1 1 auto", minWidth: "0", overflowWrap: "anywhere", fontSize: "15px", fontWeight: "500", color: "#6f6f7c"}}>
                   {"Oppure scrivi a "}
-                  <span className={"scp7"} onClick={v.mailSupport} style={{color: "#222222", fontWeight: "600", cursor: "pointer", textDecoration: "underline", textDecorationThickness: "1px", textUnderlineOffset: "2px"}}>
+                  <span className={"scp8"} onClick={v.mailSupport} style={{color: "#222222", fontWeight: "600", cursor: "pointer", textDecoration: "underline", textDecorationThickness: "1px", textUnderlineOffset: "2px"}}>
                     {"support@reglo.it"}
                   </span>
                 </span>
                 {"\n            "}
-                <span className={"scp9"} onClick={v.sendAssist} style={{display: "inline-flex", alignItems: "center", flexShrink: "0", padding: "15px 28px", background: "#000000", color: "#ffffff", fontSize: "15.5px", fontWeight: "600", borderRadius: "8px", cursor: "pointer", userSelect: "none"}}>
+                <span className={"scpa"} onClick={v.sendAssist} style={{display: "inline-flex", alignItems: "center", flexShrink: "0", padding: "15px 28px", background: "#000000", color: "#ffffff", fontSize: "15.5px", fontWeight: "600", borderRadius: "8px", cursor: "pointer", userSelect: "none"}}>
                   {"Invia messaggio"}
                 </span>
                 {"\n          "}

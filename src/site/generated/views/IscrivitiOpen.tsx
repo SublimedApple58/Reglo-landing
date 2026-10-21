@@ -8,7 +8,7 @@ export default function IscrivitiOpen(v: any) {
       {"\n  "}
       <div onClick={v.stop} style={{position: "relative", width: "100%", maxWidth: "460px", background: "#ffffff", borderRadius: "16px", boxShadow: "0 30px 80px rgba(20,20,30,0.3)", overflow: "hidden"}}>
         {"\n    "}
-        <div className={"scpb"} onClick={v.closeIscriviti} style={{position: "absolute", top: "16px", right: "16px", zIndex: "2", width: "32px", height: "32px", borderRadius: "50%", background: "#f7f7f7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", userSelect: "none"}}>
+        <div className={"scpc"} onClick={v.closeIscriviti} style={{position: "absolute", top: "16px", right: "16px", zIndex: "2", width: "32px", height: "32px", borderRadius: "50%", background: "#f7f7f7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", userSelect: "none"}}>
           {"\n      "}
           <svg width={"12"} height={"12"} viewBox={"0 0 12 12"} fill={"none"}>
             <path d={"M2 2l8 8M10 2l-8 8"} stroke={"#222"} stroke-width={"1.5"} stroke-linecap={"round"} />
@@ -68,7 +68,7 @@ export default function IscrivitiOpen(v: any) {
             {"\n        "}
             <p style={{margin: "14px auto 0", maxWidth: "360px", fontSize: "12px", fontWeight: "500", lineHeight: "1.5", color: "#b0b0bb"}}>
               {"Inserendo la tua e-mail acconsenti a ricevere la newsletter secondo la "}
-              <a className={"scpc"} href={"#"} style={{fontWeight: "600", color: "#000000", textDecoration: "underline", textUnderlineOffset: "2px", textDecorationThickness: "1px"}}>
+              <a className={"scpd"} href={"#"} style={{fontWeight: "600", color: "#000000", textDecoration: "underline", textUnderlineOffset: "2px", textDecorationThickness: "1px"}}>
                 {"privacy policy"}
               </a>
             </p>

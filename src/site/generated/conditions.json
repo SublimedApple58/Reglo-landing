@@ -56,6 +56,10 @@
     "cond": "appOpen"
   },
   {
+    "name": "RevOpen",
+    "cond": "revOpen"
+  },
+  {
     "name": "Team",
     "cond": "isTeam"
   },

@@ -481,7 +481,7 @@ export default function Segretaria(v: any) {
           {"\n      "}
           <p style={{margin: "0", fontSize: "18px", fontWeight: "500", lineHeight: "1.6", color: "#6a6a74", maxWidth: "380px", textWrap: "pretty"}}>
             {"Abbiamo cercato di rispondere alle domande che riceviamo più spesso. Se la tua non c'è, saremo felici di darti la risposta: "}
-            <a className={"scp5"} href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "none"}}>
+            <a className={"scp6"} href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "none"}}>
               {"support@reglo.it"}
             </a>
           </p>
@@ -495,7 +495,7 @@ export default function Segretaria(v: any) {
                 {"\n        "}
                 <div style={{borderBottom: "1px solid #ececf0"}}>
                 {"\n          "}
-                <div className={"scp6"} onClick={sf?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
+                <div className={"scp7"} onClick={sf?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
                   {"\n            "}
                   <span style={{flex: "1", fontSize: "18px", fontWeight: "700", letterSpacing: "-0.3px", color: "#000000", lineHeight: "1.4"}}>
                     <>{interp(sf?.q)}</>

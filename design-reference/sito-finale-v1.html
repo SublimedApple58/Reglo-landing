@@ -1004,7 +1004,10 @@
           </span>
           <span style="font-size: 12.5px; font-weight: 500; color: #6f6f7c;">{{ rv.date }}</span>
         </div>
-        <p style="margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.6; color: #5a5a66; white-space: pre-line;">{{ rv.text }}</p>
+        <p style="{{ rv.textStyle }}">{{ rv.text }}</p>
+        <sc-if value="{{ rv.long }}" hint-placeholder-val="{{ false }}">
+          <span onClick="{{ rv.openFull }}" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: -4px; font-size: 14px; font-weight: 700; color: #000000; cursor: pointer; user-select: none; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px;" style-hover="color: #4a4a55;">Leggi tutta la recensione</span>
+        </sc-if>
         <sc-if value="{{ rv.img }}" hint-placeholder-val="{{ false }}">
           <div style="border-radius: 14px; overflow: hidden; background: #e9e9ee;">
             <img src="images/site/cartaceo-agenda.jpg" alt="L'agenda cartacea prima di Reglo" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
@@ -1053,7 +1056,7 @@
       <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.62) 100%); pointer-events: none;"></div>
       <img src="uploads/logo-macchiavello-bianco.png" alt="Autoscuola Macchiavello Carasco" style="position: absolute; top: 22px; left: 24px; height: 68px; width: auto; object-fit: contain; pointer-events: none; filter: drop-shadow(0 1px 6px rgba(0,0,0,0.25));">
       <div style="position: absolute; left: 24px; right: 24px; bottom: 24px; pointer-events: none;">
-        <div style="font-size: 23px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.25; color: #ffffff; margin-bottom: 20px;">“Sono tornata ad avere fiducia negli allievi”</div>
+        <div style="font-size: 23px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.25; color: #ffffff; margin-bottom: 20px;">“Ero convinta che la carta fosse insostituibile”</div>
         <div style="display: flex; gap: 28px;">
           <div><div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-bottom: 8px;">Allievi</div><span style="display: inline-flex; padding: 6px 15px; background: #ffffff; border-radius: 12px; font-size: 13.5px; font-weight: 700; color: #000000;">500+</span></div>
           <div><div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-bottom: 8px;">Provincia</div><span style="display: inline-flex; padding: 6px 15px; background: rgba(20,20,20,0.55); border: 1px solid rgba(255,255,255,0.35); border-radius: 12px; font-size: 13.5px; font-weight: 700; color: #ffffff;">Genova</span></div>
@@ -2602,7 +2605,10 @@ Salva posizione
           </span>
           <span style="font-size: 12.5px; font-weight: 500; color: #6f6f7c;">{{ rv.date }}</span>
         </div>
-        <p style="margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.6; color: #5a5a66; white-space: pre-line;">{{ rv.text }}</p>
+        <p style="{{ rv.textStyle }}">{{ rv.text }}</p>
+        <sc-if value="{{ rv.long }}" hint-placeholder-val="{{ false }}">
+          <span onClick="{{ rv.openFull }}" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: -4px; font-size: 14px; font-weight: 700; color: #000000; cursor: pointer; user-select: none; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px;" style-hover="color: #4a4a55;">Leggi tutta la recensione</span>
+        </sc-if>
         <sc-if value="{{ rv.img }}" hint-placeholder-val="{{ false }}">
           <div style="border-radius: 14px; overflow: hidden; background: #e9e9ee;">
             <img src="images/site/cartaceo-agenda.jpg" alt="L'agenda cartacea prima di Reglo" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
@@ -2886,7 +2892,10 @@ Salva posizione
           </span>
           <span style="font-size: 12.5px; font-weight: 500; color: #6f6f7c;">{{ rv.date }}</span>
         </div>
-        <p style="margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.6; color: #5a5a66; white-space: pre-line;">{{ rv.text }}</p>
+        <p style="{{ rv.textStyle }}">{{ rv.text }}</p>
+        <sc-if value="{{ rv.long }}" hint-placeholder-val="{{ false }}">
+          <span onClick="{{ rv.openFull }}" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: -4px; font-size: 14px; font-weight: 700; color: #000000; cursor: pointer; user-select: none; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px;" style-hover="color: #4a4a55;">Leggi tutta la recensione</span>
+        </sc-if>
         <sc-if value="{{ rv.img }}" hint-placeholder-val="{{ false }}">
           <div style="border-radius: 14px; overflow: hidden; background: #e9e9ee;">
             <img src="images/site/cartaceo-agenda.jpg" alt="L'agenda cartacea prima di Reglo" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
@@ -3975,6 +3984,32 @@ Salva posizione
 </div>
 </sc-if>
 
+<sc-if value="{{ revOpen }}" hint-placeholder-val="{{ false }}">
+<div data-rev-full="1" onClick="{{ closeRev }}" style="position: fixed; inset: 0; z-index: 200; background: rgba(20,20,30,0.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; padding: 24px;">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="{{ revFull.title }}" style="position: relative; width: 100%; max-width: 600px; max-height: calc(100vh - 48px); overflow-y: auto; overscroll-behavior: contain; background: #ffffff; border-radius: 22px; padding: 40px 40px 34px; box-shadow: 0 30px 80px rgba(20,20,30,0.3);">
+    <span onClick="{{ closeRev }}" role="button" aria-label="Chiudi" style="position: absolute; top: 18px; right: 18px; display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; user-select: none; color: #6f6f7c;" style-hover="background: #f2f2f4; color: #000000;">
+      <svg width="15" height="15" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+    </span>
+    <div style="font-size: 22px; font-weight: 700; letter-spacing: -0.6px; line-height: 1.25; color: #000000; padding-right: 36px;">{{ revFull.title }}</div>
+    <div style="display: flex; align-items: center; gap: 10px; margin-top: 12px;">
+      <span style="display: inline-flex; gap: 2px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#e8c76a"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#e8c76a"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#e8c76a"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#e8c76a"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#e8c76a"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"></path></svg>
+      </span>
+      <span style="font-size: 12.5px; font-weight: 500; color: #6f6f7c;">{{ revFull.date }}</span>
+    </div>
+    <p style="margin: 18px 0 0; font-size: 16px; font-weight: 500; line-height: 1.7; color: #4a4a55; white-space: pre-line;">{{ revFull.text }}</p>
+    <div style="display: flex; align-items: center; gap: 12px; margin-top: 26px; padding-top: 22px; border-top: 1px solid #ececf0;">
+      <span style="{{ revFull.avatarStyle }}"></span>
+      <span style="min-width: 0;"><span style="display: block; font-size: 15px; font-weight: 700; color: #000000;">{{ revFull.name }}</span><span style="display: block; font-size: 13px; font-weight: 500; color: #6f6f7c;">{{ revFull.role }}</span></span>
+    </div>
+  </div>
+</div>
+</sc-if>
+
 <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Founder e team" style="background: #ffffff; padding: 150px 0 120px;">
   <div data-align-block="1" style="max-width: 1269px; margin: 0 auto; padding: 0 20px;">
@@ -4439,7 +4474,10 @@ Salva posizione
           </span>
           <span style="font-size: 12.5px; font-weight: 500; color: #6f6f7c;">{{ rv.date }}</span>
         </div>
-        <p style="margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.6; color: #5a5a66; white-space: pre-line;">{{ rv.text }}</p>
+        <p style="{{ rv.textStyle }}">{{ rv.text }}</p>
+        <sc-if value="{{ rv.long }}" hint-placeholder-val="{{ false }}">
+          <span onClick="{{ rv.openFull }}" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: -4px; font-size: 14px; font-weight: 700; color: #000000; cursor: pointer; user-select: none; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px;" style-hover="color: #4a4a55;">Leggi tutta la recensione</span>
+        </sc-if>
         <sc-if value="{{ rv.img }}" hint-placeholder-val="{{ false }}">
           <div style="border-radius: 14px; overflow: hidden; background: #e9e9ee;">
             <img src="images/site/cartaceo-agenda.jpg" alt="L'agenda cartacea prima di Reglo" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
@@ -5501,6 +5539,7 @@ class Component extends DCLogic {
       { name: 'Marco', role: 'Istruttore · Scuola Guida Montreal', date: '29 gen 2026', title: 'La mia giornata sempre in tasca', text: "A me interessava una cosa sola: sapere chi ho in macchina e quando, senza dover chiamare in sede tra una guida e l'altra. Apro l'app e c'è la mia giornata. Se un allievo disdice, mi arriva la notifica e vedo lo slot riempirsi da solo." },
       { name: 'Vinicio', role: 'Titolare · Autoscuola New Drive', date: '14 mar 2026', title: 'Crediti chiari, zero discussioni', text: "I crediti guida sul quaderno erano discussioni continue: «io avevo pagato», «a me ne mancavano due»… Adesso allievo e segreteria vedono lo stesso numero, aggiornato a ogni guida. Non se ne parla più, letteralmente." },
       { name: 'Alessandro R.', role: 'Autoscuola Robatto', date: '22 mag 2026', photo: 'images/site/recensioni/av-alessandro.webp', title: 'Dalla carta al digitale, senza rimpianti', text: "Dopo diversi anni, abbiamo deciso di abbandonare l'agenda cartacea in favore del digitale.\nPraticamente in tre mesi ci siamo dimenticati di ogni problema legato a prenotazioni, cancellazioni, pagamenti.\nUna piacevolissima scoperta, il team estremamente disponibile e pronto a creare su misura l'app.\nNota di merito per la creazione delle guide di gruppo!" },
+      { name: 'Mara M.', role: 'Autoscuola Macchiavello', date: '', photo: 'images/site/recensioni/av-mara.webp', title: "Un'app per programmare le lezioni di guida???", text: "Ma figurati, la buona vecchia carta (con l'agenda settimanale da tavolo) è insostituibile…\nRicevo una telefonata con la quale mi invitano a partecipare ad una dimostrazione (ovviamente on line) per valutare di passare ad una gestione che sembra stravolgere il lavoro che sono abituata a svolgere da più di 30 anni ma ci provo perchè…\n• Viene presentata da ragazzi giovani e vogliosi di ascoltare le mie esigenze specifiche (la stanno approntando \"su misura\" anche per me!)\n• Viene data in prova gratuita per un mese\n… ma soprattutto:\n• Evita errori di prenotare guide con lo stesso veicolo, alla stessa ora ad istruttori diversi\n• Ricorda automaticamente agli allievi la loro lezione\n• Permette di controllare la disponibilità di tutti gli istruttori\n• Permette agli istruttori di visualizzare le lezioni svolte e programmate da ogni allievo\n• Permette agli istruttori di inserire per ogni lezione svolta la propria valutazione (serve tantissimo quando più istruttori collaborano alla preparazione dello stesso candidato e permette di consultare l'avanzamento della preparazione degli allievi dall'ufficio quando chiama il genitore che chiede come va il figlio o quando si fa \"programmazione\" sugli esami da prenotare)\nOvviamente è possibile effettuare \"stampe dell'agenda settimanale\" da tenere in ufficio o consegnare agli istruttori.\nSnellisce e facilita la gestione dell'agenda permettendo persino agli allievi di prenotare le loro guide in autonomia." },
       { name: 'Francesca', role: 'Segreteria · Autoscuola Centrale', date: '3 apr 2026', title: 'Il centralino non lo faccio più io', text: "Il telefono squillava tutto il giorno, quasi sempre per spostare o disdire una guida. Ora quel giro passa dall'app, e la Segretaria AI risponde quando siamo chiuse. Io mi occupo delle pratiche, non del centralino." },
       { name: 'Giorgio', role: 'Titolare · due sedi', date: '18 giu 2026', title: 'Due sedi, una sola testa', text: 'Due sedi, due agende, gli stessi istruttori che girano tra le due. Con un solo account vedo tutto: chi è dove, quali veicoli, quali allievi. Prima erano due lavagne e un gruppo WhatsApp.' },
       { name: 'Martina', role: 'Istruttrice', date: '9 mag 2026', title: '«Sostituiscimi» mi ha salvato la settimana', text: 'Mi sono ammalata un lunedì con dodici guide in settimana. Ho premuto «Sostituiscimi» e le guide sono passate ai colleghi, con gli allievi avvisati in automatico. Nessuna telefonata dal letto.' },
@@ -5555,6 +5594,11 @@ class Component extends DCLogic {
     const mk = (r, i) => ({
       ...r,
       initials: '',
+      long: r.text.length > 700,
+      textStyle: r.text.length > 700
+        ? { margin: 0, fontSize: '14.5px', fontWeight: 500, lineHeight: 1.6, color: '#5a5a66', whiteSpace: 'pre-line', maxHeight: '11.2em', overflow: 'hidden', WebkitMaskImage: 'linear-gradient(to bottom, #000 55%, transparent)', maskImage: 'linear-gradient(to bottom, #000 55%, transparent)' }
+        : { margin: 0, fontSize: '14.5px', fontWeight: 500, lineHeight: 1.6, color: '#5a5a66', whiteSpace: 'pre-line' },
+      openFull: () => this.setState({ revOpen: r.title }),
       avatarStyle: {
         display: 'inline-block', width: '36px', height: '36px', borderRadius: '50%', flexShrink: 0,
         backgroundColor: '#f0f0f4',
@@ -6043,6 +6087,14 @@ class Component extends DCLogic {
       openApp: () => this.setState({ appOpen: true, store: null }),
       closeApp: () => this.setState({ appOpen: false, store: null }),
       stop: (e) => e.stopPropagation(),
+      revOpen: !!this.state.revOpen,
+      closeRev: () => this.setState({ revOpen: null }),
+      revFull: (() => {
+        const i = reviewsData.findIndex((r) => r.title === this.state.revOpen);
+        if (i < 0) return { title: '', text: '', date: '', name: '', role: '', avatarStyle: {} };
+        const m = mk(reviewsData[i], i);
+        return { ...m, avatarStyle: { ...m.avatarStyle, width: '44px', height: '44px' } };
+      })(),
       pickIos: () => this.setState({ store: 'ios' }),
       pickAndroid: () => this.setState({ store: 'android' }),
       iosBtnStyle: btn(store === 'ios'),

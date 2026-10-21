@@ -47,6 +47,12 @@ class RoutedSite extends Base {
     this.state = { ...this.state, page: pageForCurrentUrl() };
   }
 
+  /** Il pannello della recensione completa si chiude anche con Esc. */
+  private _onKey = (e: KeyboardEvent) => {
+    const st = this.state as { revOpen?: string | null };
+    if (e.key === 'Escape' && st.revOpen) this.setState({ revOpen: null } as never);
+  };
+
   private _onPop = () => {
     const page = pageForCurrentUrl();
     if (page !== this.state.page) this.setState({ page });
@@ -115,6 +121,7 @@ class RoutedSite extends Base {
     window.addEventListener('resize', this._rescaleMockups);
     this._lastPath = window.location.pathname;
     window.addEventListener('popstate', this._onPop);
+    window.addEventListener('keydown', this._onKey);
     // `/istruttori#video-autonoma` & co.: vedi ./deepLink.ts
     this._unwatchHash = watchHashChanges();
     scrollToHashTarget();
@@ -163,6 +170,7 @@ class RoutedSite extends Base {
   componentWillUnmount() {
     super.componentWillUnmount?.();
     window.removeEventListener('popstate', this._onPop);
+    window.removeEventListener('keydown', this._onKey);
     window.removeEventListener('resize', this._rescaleMockups);
     this._unwatchHash?.();
     this._unwatchHash = null;

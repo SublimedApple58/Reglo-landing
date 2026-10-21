@@ -2525,9 +2525,17 @@ export default function Home(v: any) {
                     {"\n        "}
                   </div>
                   {"\n        "}
-                  <p style={{margin: "0", fontSize: "14.5px", fontWeight: "500", lineHeight: "1.6", color: "#5a5a66", whiteSpace: "pre-line"}}>
+                  <p style={sty(rv?.textStyle)}>
                     <>{interp(rv?.text)}</>
                   </p>
+                  {"\n        "}
+                  {rv?.long ? <>
+                      {"\n          "}
+                      <span className={"scp4"} onClick={rv?.openFull} style={{alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "-4px", fontSize: "14px", fontWeight: "700", color: "#000000", cursor: "pointer", userSelect: "none", textDecoration: "underline", textUnderlineOffset: "3px", textDecorationThickness: "1.5px"}}>
+                      {"Leggi tutta la recensione"}
+                    </span>
+                      {"\n        "}
+                    </> : null}
                   {"\n        "}
                   {rv?.img ? <>
                       {"\n          "}
@@ -2648,7 +2656,7 @@ export default function Home(v: any) {
           <div style={{position: "absolute", left: "24px", right: "24px", bottom: "24px", pointerEvents: "none"}}>
             {"\n        "}
             <div style={{fontSize: "23px", fontWeight: "700", letterSpacing: "-0.4px", lineHeight: "1.25", color: "#ffffff", marginBottom: "20px"}}>
-              {"“Sono tornata ad avere fiducia negli allievi”"}
+              {"“Ero convinta che la carta fosse insostituibile”"}
             </div>
             {"\n        "}
             <div style={{display: "flex", gap: "28px"}}>
@@ -2752,13 +2760,13 @@ export default function Home(v: any) {
       {"\n  "}
       <div style={{display: "flex", justifyContent: "center", gap: "12px", padding: "34px 44px 0"}}>
         {"\n    "}
-        <span className={"scp4"} onClick={v.passaPrev} style={{display: "inline-flex", alignItems: "center", justifyContent: "center", width: "74px", height: "46px", border: "1.5px solid #ececf0", borderRadius: "12px", cursor: "pointer", userSelect: "none", background: "#ffffff", color: "#000000"}}>
+        <span className={"scp5"} onClick={v.passaPrev} style={{display: "inline-flex", alignItems: "center", justifyContent: "center", width: "74px", height: "46px", border: "1.5px solid #ececf0", borderRadius: "12px", cursor: "pointer", userSelect: "none", background: "#ffffff", color: "#000000"}}>
           <svg width={"20"} height={"20"} viewBox={"0 0 20 20"} fill={"none"}>
             <path d={"M16 10H4M9 5l-5 5 5 5"} stroke={"currentColor"} stroke-width={"1.8"} stroke-linecap={"round"} stroke-linejoin={"round"} />
           </svg>
         </span>
         {"\n    "}
-        <span className={"scp4"} onClick={v.passaNext} style={{display: "inline-flex", alignItems: "center", justifyContent: "center", width: "74px", height: "46px", border: "1.5px solid #ececf0", borderRadius: "12px", cursor: "pointer", userSelect: "none", background: "#ffffff", color: "#000000"}}>
+        <span className={"scp5"} onClick={v.passaNext} style={{display: "inline-flex", alignItems: "center", justifyContent: "center", width: "74px", height: "46px", border: "1.5px solid #ececf0", borderRadius: "12px", cursor: "pointer", userSelect: "none", background: "#ffffff", color: "#000000"}}>
           <svg width={"20"} height={"20"} viewBox={"0 0 20 20"} fill={"none"}>
             <path d={"M4 10h12M11 5l5 5-5 5"} stroke={"currentColor"} stroke-width={"1.8"} stroke-linecap={"round"} stroke-linejoin={"round"} />
           </svg>
@@ -2776,7 +2784,7 @@ export default function Home(v: any) {
         {"\n    "}
         <p style={{margin: "0", fontSize: "18px", fontWeight: "500", lineHeight: "1.6", color: "#6a6a74", maxWidth: "380px", textWrap: "pretty"}}>
           {"Abbiamo cercato di rispondere alle domande che riceviamo più spesso. Se la tua non c'è, saremo felici di darti la risposta: "}
-          <a className={"scp5"} href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "none"}}>
+          <a className={"scp6"} href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "none"}}>
             {"support@reglo.it"}
           </a>
         </p>
@@ -2790,7 +2798,7 @@ export default function Home(v: any) {
               {"\n      "}
               <div style={{borderBottom: "1px solid #ececf0"}}>
               {"\n        "}
-              <div className={"scp6"} onClick={fq?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
+              <div className={"scp7"} onClick={fq?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
                 {"\n          "}
                 <span style={{flex: "1", fontSize: "18px", fontWeight: "700", letterSpacing: "-0.3px", color: "#000000", lineHeight: "1.4"}}>
                   <>{interp(fq?.q)}</>

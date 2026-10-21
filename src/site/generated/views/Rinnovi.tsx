@@ -1537,7 +1537,7 @@ export default function Rinnovi(v: any) {
                 {"\n        "}
                 <div style={{borderBottom: "1px solid #ececf0"}}>
                 {"\n          "}
-                <div className={"scp6"} onClick={sf?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
+                <div className={"scp7"} onClick={sf?.onToggle} style={{display: "flex", alignItems: "center", gap: "20px", padding: "24px 2px", cursor: "pointer", userSelect: "none"}}>
                   {"\n            "}
                   <span style={{flex: "1", fontSize: "18px", fontWeight: "700", letterSpacing: "-0.3px", color: "#000000", lineHeight: "1.4"}}>
                     <>{interp(sf?.q)}</>

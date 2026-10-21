@@ -27,6 +27,7 @@ import Med from './generated/views/Med';
 import Novita from './generated/views/Novita';
 import Prezzi from './generated/views/Prezzi';
 import Privacy from './generated/views/Privacy';
+import RevOpen from './generated/views/RevOpen';
 import Rinnovi from './generated/views/Rinnovi';
 import Segretaria from './generated/views/Segretaria';
 import Soon from './generated/views/Soon';
@@ -641,6 +642,7 @@ class RegloSite extends React.Component<Record<string, never>, any> {
       { name: 'Marco', role: 'Istruttore · Scuola Guida Montreal', date: '29 gen 2026', title: 'La mia giornata sempre in tasca', text: "A me interessava una cosa sola: sapere chi ho in macchina e quando, senza dover chiamare in sede tra una guida e l'altra. Apro l'app e c'è la mia giornata. Se un allievo disdice, mi arriva la notifica e vedo lo slot riempirsi da solo." },
       { name: 'Vinicio', role: 'Titolare · Autoscuola New Drive', date: '14 mar 2026', title: 'Crediti chiari, zero discussioni', text: "I crediti guida sul quaderno erano discussioni continue: «io avevo pagato», «a me ne mancavano due»… Adesso allievo e segreteria vedono lo stesso numero, aggiornato a ogni guida. Non se ne parla più, letteralmente." },
       { name: 'Alessandro R.', role: 'Autoscuola Robatto', date: '22 mag 2026', photo: 'images/site/recensioni/av-alessandro.webp', title: 'Dalla carta al digitale, senza rimpianti', text: "Dopo diversi anni, abbiamo deciso di abbandonare l'agenda cartacea in favore del digitale.\nPraticamente in tre mesi ci siamo dimenticati di ogni problema legato a prenotazioni, cancellazioni, pagamenti.\nUna piacevolissima scoperta, il team estremamente disponibile e pronto a creare su misura l'app.\nNota di merito per la creazione delle guide di gruppo!" },
+      { name: 'Mara M.', role: 'Autoscuola Macchiavello', date: '', photo: 'images/site/recensioni/av-mara.webp', title: "Un'app per programmare le lezioni di guida???", text: "Ma figurati, la buona vecchia carta (con l'agenda settimanale da tavolo) è insostituibile…\nRicevo una telefonata con la quale mi invitano a partecipare ad una dimostrazione (ovviamente on line) per valutare di passare ad una gestione che sembra stravolgere il lavoro che sono abituata a svolgere da più di 30 anni ma ci provo perchè…\n• Viene presentata da ragazzi giovani e vogliosi di ascoltare le mie esigenze specifiche (la stanno approntando \"su misura\" anche per me!)\n• Viene data in prova gratuita per un mese\n… ma soprattutto:\n• Evita errori di prenotare guide con lo stesso veicolo, alla stessa ora ad istruttori diversi\n• Ricorda automaticamente agli allievi la loro lezione\n• Permette di controllare la disponibilità di tutti gli istruttori\n• Permette agli istruttori di visualizzare le lezioni svolte e programmate da ogni allievo\n• Permette agli istruttori di inserire per ogni lezione svolta la propria valutazione (serve tantissimo quando più istruttori collaborano alla preparazione dello stesso candidato e permette di consultare l'avanzamento della preparazione degli allievi dall'ufficio quando chiama il genitore che chiede come va il figlio o quando si fa \"programmazione\" sugli esami da prenotare)\nOvviamente è possibile effettuare \"stampe dell'agenda settimanale\" da tenere in ufficio o consegnare agli istruttori.\nSnellisce e facilita la gestione dell'agenda permettendo persino agli allievi di prenotare le loro guide in autonomia." },
       { name: 'Francesca', role: 'Segreteria · Autoscuola Centrale', date: '3 apr 2026', title: 'Il centralino non lo faccio più io', text: "Il telefono squillava tutto il giorno, quasi sempre per spostare o disdire una guida. Ora quel giro passa dall'app, e la Segretaria AI risponde quando siamo chiuse. Io mi occupo delle pratiche, non del centralino." },
       { name: 'Giorgio', role: 'Titolare · due sedi', date: '18 giu 2026', title: 'Due sedi, una sola testa', text: 'Due sedi, due agende, gli stessi istruttori che girano tra le due. Con un solo account vedo tutto: chi è dove, quali veicoli, quali allievi. Prima erano due lavagne e un gruppo WhatsApp.' },
       { name: 'Martina', role: 'Istruttrice', date: '9 mag 2026', title: '«Sostituiscimi» mi ha salvato la settimana', text: 'Mi sono ammalata un lunedì con dodici guide in settimana. Ho premuto «Sostituiscimi» e le guide sono passate ai colleghi, con gli allievi avvisati in automatico. Nessuna telefonata dal letto.' },
@@ -695,6 +697,11 @@ class RegloSite extends React.Component<Record<string, never>, any> {
     const mk = (r, i) => ({
       ...r,
       initials: '',
+      long: r.text.length > 700,
+      textStyle: r.text.length > 700
+        ? { margin: 0, fontSize: '14.5px', fontWeight: 500, lineHeight: 1.6, color: '#5a5a66', whiteSpace: 'pre-line', maxHeight: '11.2em', overflow: 'hidden', WebkitMaskImage: 'linear-gradient(to bottom, #000 55%, transparent)', maskImage: 'linear-gradient(to bottom, #000 55%, transparent)' }
+        : { margin: 0, fontSize: '14.5px', fontWeight: 500, lineHeight: 1.6, color: '#5a5a66', whiteSpace: 'pre-line' },
+      openFull: () => this.setState({ revOpen: r.title }),
       avatarStyle: {
         display: 'inline-block', width: '36px', height: '36px', borderRadius: '50%', flexShrink: 0,
         backgroundColor: '#f0f0f4',
@@ -1183,6 +1190,14 @@ class RegloSite extends React.Component<Record<string, never>, any> {
       openApp: () => this.setState({ appOpen: true, store: null }),
       closeApp: () => this.setState({ appOpen: false, store: null }),
       stop: (e) => e.stopPropagation(),
+      revOpen: !!this.state.revOpen,
+      closeRev: () => this.setState({ revOpen: null }),
+      revFull: (() => {
+        const i = reviewsData.findIndex((r) => r.title === this.state.revOpen);
+        if (i < 0) return { title: '', text: '', date: '', name: '', role: '', avatarStyle: {} };
+        const m = mk(reviewsData[i], i);
+        return { ...m, avatarStyle: { ...m.avatarStyle, width: '44px', height: '44px' } };
+      })(),
       pickIos: () => this.setState({ store: 'ios' }),
       pickAndroid: () => this.setState({ store: 'android' }),
       iosBtnStyle: btn(store === 'ios'),
@@ -1274,6 +1289,7 @@ class RegloSite extends React.Component<Record<string, never>, any> {
         {v.isMed ? Med(v) : null}
         {v.iscrivitiOpen ? IscrivitiOpen(v) : null}
         {v.appOpen ? AppOpen(v) : null}
+        {v.revOpen ? RevOpen(v) : null}
         {v.isTeam ? Team(v) : null}
         {v.isPrivacy ? Privacy(v) : null}
         {v.isTermini ? Termini(v) : null}
