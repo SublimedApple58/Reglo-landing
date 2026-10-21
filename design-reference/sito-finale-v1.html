@@ -1010,7 +1010,7 @@
         </sc-if>
         <sc-if value="{{ rv.img }}" hint-placeholder-val="{{ false }}">
           <div style="border-radius: 14px; overflow: hidden; background: #e9e9ee;">
-            <img src="images/site/cartaceo-agenda.jpg" alt="L'agenda cartacea prima di Reglo" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
+            <img src="{{ rv.img }}" alt="L'agenda cartacea prima di Reglo" loading="lazy" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
           </div>
         </sc-if>
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -1069,9 +1069,10 @@
       <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.62) 100%); pointer-events: none;"></div>
       <img src="images/site/logo-newdrive-bianco.png" alt="Autoscuola New Drive" style="position: absolute; top: 22px; left: 24px; height: 44px; width: auto; object-fit: contain; pointer-events: none; filter: drop-shadow(0 1px 6px rgba(0,0,0,0.25));">
       <div style="position: absolute; left: 24px; right: 24px; bottom: 24px; pointer-events: none;">
-        <div style="font-size: 23px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.25; color: #ffffff; margin-bottom: 20px;">“Prenotano da soli, anche la domenica sera”</div>
+        <div style="font-size: 23px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.25; color: #ffffff; margin-bottom: 20px;">“Più ordine, meno assenze”</div>
         <div style="display: flex; gap: 28px;">
           <div><div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-bottom: 8px;">Allievi</div><span style="display: inline-flex; padding: 6px 15px; background: #ffffff; border-radius: 12px; font-size: 13.5px; font-weight: 700; color: #000000;">200-250</span></div>
+          <div><div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-bottom: 8px;">Provincia</div><span style="display: inline-flex; padding: 6px 15px; background: rgba(20,20,20,0.55); border: 1px solid rgba(255,255,255,0.35); border-radius: 12px; font-size: 13.5px; font-weight: 700; color: #ffffff;">Trento</span></div>
         </div>
       </div>
     </div>
@@ -2611,7 +2612,7 @@ Salva posizione
         </sc-if>
         <sc-if value="{{ rv.img }}" hint-placeholder-val="{{ false }}">
           <div style="border-radius: 14px; overflow: hidden; background: #e9e9ee;">
-            <img src="images/site/cartaceo-agenda.jpg" alt="L'agenda cartacea prima di Reglo" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
+            <img src="{{ rv.img }}" alt="L'agenda cartacea prima di Reglo" loading="lazy" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
           </div>
         </sc-if>
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -2898,7 +2899,7 @@ Salva posizione
         </sc-if>
         <sc-if value="{{ rv.img }}" hint-placeholder-val="{{ false }}">
           <div style="border-radius: 14px; overflow: hidden; background: #e9e9ee;">
-            <img src="images/site/cartaceo-agenda.jpg" alt="L'agenda cartacea prima di Reglo" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
+            <img src="{{ rv.img }}" alt="L'agenda cartacea prima di Reglo" loading="lazy" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
           </div>
         </sc-if>
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -4480,7 +4481,7 @@ Salva posizione
         </sc-if>
         <sc-if value="{{ rv.img }}" hint-placeholder-val="{{ false }}">
           <div style="border-radius: 14px; overflow: hidden; background: #e9e9ee;">
-            <img src="images/site/cartaceo-agenda.jpg" alt="L'agenda cartacea prima di Reglo" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
+            <img src="{{ rv.img }}" alt="L'agenda cartacea prima di Reglo" loading="lazy" style="width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
           </div>
         </sc-if>
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -5535,11 +5536,11 @@ class Component extends DCLogic {
       { bg: '#ede9fe', fg: '#5b21b6' }, { bg: '#fff0dd', fg: '#b45309' }, { bg: '#d9f2f4', fg: '#0e7490' },
     ];
     const reviewsData = [
-      { name: 'n.mor95', role: 'Recensione su App Store', date: '4 mag', img: 1, title: 'Applicazione Fantastica e comodissima', text: "Applicazione comodissima… prima di questa eravamo abituati al cartaceo… tutto un altra storia fluidità nel gestire le guide il lavoro diventa molto più dinamico, il lavoro della segreteria diventa molto più snello… da non sottovalutare il lavoro dei moderatori !!! Sono fortissimi e sempre pronti a risolvere i problemi soggettivi che ogni autoscuola può avere… super consigliata !!" },
-      { name: 'Marco', role: 'Istruttore · Scuola Guida Montreal', date: '29 gen 2026', title: 'La mia giornata sempre in tasca', text: "A me interessava una cosa sola: sapere chi ho in macchina e quando, senza dover chiamare in sede tra una guida e l'altra. Apro l'app e c'è la mia giornata. Se un allievo disdice, mi arriva la notifica e vedo lo slot riempirsi da solo." },
-      { name: 'Vinicio', role: 'Titolare · Autoscuola New Drive', date: '14 mar 2026', title: 'Crediti chiari, zero discussioni', text: "I crediti guida sul quaderno erano discussioni continue: «io avevo pagato», «a me ne mancavano due»… Adesso allievo e segreteria vedono lo stesso numero, aggiornato a ogni guida. Non se ne parla più, letteralmente." },
+      { name: 'Nicola', role: 'Istruttore - Autoscuola New Drive', date: '4 mag', photo: 'images/site/recensioni/av-nicola.webp', title: 'Applicazione Fantastica e comodissima', text: "Applicazione comodissima… prima di questa eravamo abituati al cartaceo… tutto un altra storia fluidità nel gestire le guide il lavoro diventa molto più dinamico, il lavoro della segreteria diventa molto più snello… da non sottovalutare il lavoro dei moderatori !!! Sono fortissimi e sempre pronti a risolvere i problemi soggettivi che ogni autoscuola può avere… super consigliata !!" },
       { name: 'Alessandro R.', role: 'Autoscuola Robatto', date: '22 mag 2026', photo: 'images/site/recensioni/av-alessandro.webp', title: 'Dalla carta al digitale, senza rimpianti', text: "Dopo diversi anni, abbiamo deciso di abbandonare l'agenda cartacea in favore del digitale.\nPraticamente in tre mesi ci siamo dimenticati di ogni problema legato a prenotazioni, cancellazioni, pagamenti.\nUna piacevolissima scoperta, il team estremamente disponibile e pronto a creare su misura l'app.\nNota di merito per la creazione delle guide di gruppo!" },
+      { name: 'Autoscuola New Drive', role: 'Trento', date: '', photo: 'images/site/recensioni/av-newdrive.webp', img: 'images/site/recensioni/newdrive-agenda.webp', title: 'Più ordine, meno assenze', text: "Avevamo l'organizzazione delle guide in formato cartaceo, l'app REGLO ci ha dimezzato il tempo di prenotazione delle guide e la gestione di esse, i candidati hanno una migliore gestione delle proprie guide soprattutto grazie alle notifiche ricevute per la proprio guida diminuendo o quasi annullando l'assenze alle guide. Gli sviluppatori sono sempre disponibili e veloci nella risoluzione dei problemi/richieste avute. Consigliatissimo!" },
       { name: 'Mara M.', role: 'Autoscuola Macchiavello', date: '', photo: 'images/site/recensioni/av-mara.webp', title: "Un'app per programmare le lezioni di guida???", text: "Ma figurati, la buona vecchia carta (con l'agenda settimanale da tavolo) è insostituibile…\nRicevo una telefonata con la quale mi invitano a partecipare ad una dimostrazione (ovviamente on line) per valutare di passare ad una gestione che sembra stravolgere il lavoro che sono abituata a svolgere da più di 30 anni ma ci provo perchè…\n• Viene presentata da ragazzi giovani e vogliosi di ascoltare le mie esigenze specifiche (la stanno approntando \"su misura\" anche per me!)\n• Viene data in prova gratuita per un mese\n… ma soprattutto:\n• Evita errori di prenotare guide con lo stesso veicolo, alla stessa ora ad istruttori diversi\n• Ricorda automaticamente agli allievi la loro lezione\n• Permette di controllare la disponibilità di tutti gli istruttori\n• Permette agli istruttori di visualizzare le lezioni svolte e programmate da ogni allievo\n• Permette agli istruttori di inserire per ogni lezione svolta la propria valutazione (serve tantissimo quando più istruttori collaborano alla preparazione dello stesso candidato e permette di consultare l'avanzamento della preparazione degli allievi dall'ufficio quando chiama il genitore che chiede come va il figlio o quando si fa \"programmazione\" sugli esami da prenotare)\nOvviamente è possibile effettuare \"stampe dell'agenda settimanale\" da tenere in ufficio o consegnare agli istruttori.\nSnellisce e facilita la gestione dell'agenda permettendo persino agli allievi di prenotare le loro guide in autonomia." },
+      { name: 'Marco', role: 'Istruttore · Scuola Guida Montreal', date: '29 gen 2026', title: 'La mia giornata sempre in tasca', text: "A me interessava una cosa sola: sapere chi ho in macchina e quando, senza dover chiamare in sede tra una guida e l'altra. Apro l'app e c'è la mia giornata. Se un allievo disdice, mi arriva la notifica e vedo lo slot riempirsi da solo." },
       { name: 'Francesca', role: 'Segreteria · Autoscuola Centrale', date: '3 apr 2026', title: 'Il centralino non lo faccio più io', text: "Il telefono squillava tutto il giorno, quasi sempre per spostare o disdire una guida. Ora quel giro passa dall'app, e la Segretaria AI risponde quando siamo chiuse. Io mi occupo delle pratiche, non del centralino." },
       { name: 'Giorgio', role: 'Titolare · due sedi', date: '18 giu 2026', title: 'Due sedi, una sola testa', text: 'Due sedi, due agende, gli stessi istruttori che girano tra le due. Con un solo account vedo tutto: chi è dove, quali veicoli, quali allievi. Prima erano due lavagne e un gruppo WhatsApp.' },
       { name: 'Martina', role: 'Istruttrice', date: '9 mag 2026', title: '«Sostituiscimi» mi ha salvato la settimana', text: 'Mi sono ammalata un lunedì con dodici guide in settimana. Ho premuto «Sostituiscimi» e le guide sono passate ai colleghi, con gli allievi avvisati in automatico. Nessuna telefonata dal letto.' },

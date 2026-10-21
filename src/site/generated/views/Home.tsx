@@ -2541,7 +2541,7 @@ export default function Home(v: any) {
                       {"\n          "}
                       <div style={{borderRadius: "14px", overflow: "hidden", background: "#e9e9ee"}}>
                       {"\n            "}
-                      <img src={"images/site/cartaceo-agenda.jpg"} alt={"L'agenda cartacea prima di Reglo"} style={{width: "100%", display: "block", aspectRatio: "4 / 3", objectFit: "cover"}} />
+                      <img src={rv?.img} alt={"L'agenda cartacea prima di Reglo"} loading={"lazy"} style={{width: "100%", display: "block", aspectRatio: "4 / 3", objectFit: "cover"}} />
                       {"\n          "}
                     </div>
                       {"\n        "}
@@ -2696,7 +2696,7 @@ export default function Home(v: any) {
           <div style={{position: "absolute", left: "24px", right: "24px", bottom: "24px", pointerEvents: "none"}}>
             {"\n        "}
             <div style={{fontSize: "23px", fontWeight: "700", letterSpacing: "-0.4px", lineHeight: "1.25", color: "#ffffff", marginBottom: "20px"}}>
-              {"“Prenotano da soli, anche la domenica sera”"}
+              {"“Più ordine, meno assenze”"}
             </div>
             {"\n        "}
             <div style={{display: "flex", gap: "28px"}}>
@@ -2707,6 +2707,15 @@ export default function Home(v: any) {
                 </div>
                 <span style={{display: "inline-flex", padding: "6px 15px", background: "#ffffff", borderRadius: "12px", fontSize: "13.5px", fontWeight: "700", color: "#000000"}}>
                   {"200-250"}
+                </span>
+              </div>
+              {"\n          "}
+              <div>
+                <div style={{fontSize: "11px", fontWeight: "700", letterSpacing: "1px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", marginBottom: "8px"}}>
+                  {"Provincia"}
+                </div>
+                <span style={{display: "inline-flex", padding: "6px 15px", background: "rgba(20,20,20,0.55)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "12px", fontSize: "13.5px", fontWeight: "700", color: "#ffffff"}}>
+                  {"Trento"}
                 </span>
               </div>
               {"\n        "}

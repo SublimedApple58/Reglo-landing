@@ -1649,7 +1649,7 @@ export default function Prezzi(v: any) {
                       {"\n          "}
                       <div style={{borderRadius: "14px", overflow: "hidden", background: "#e9e9ee"}}>
                       {"\n            "}
-                      <img src={"images/site/cartaceo-agenda.jpg"} alt={"L'agenda cartacea prima di Reglo"} style={{width: "100%", display: "block", aspectRatio: "4 / 3", objectFit: "cover"}} />
+                      <img src={rv?.img} alt={"L'agenda cartacea prima di Reglo"} loading={"lazy"} style={{width: "100%", display: "block", aspectRatio: "4 / 3", objectFit: "cover"}} />
                       {"\n          "}
                     </div>
                       {"\n        "}
