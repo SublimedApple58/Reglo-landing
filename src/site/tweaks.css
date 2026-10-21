@@ -40,6 +40,13 @@
 [data-screen-label="Ferie e malattie"] img[src*="cursore-mano"] {
   left: auto !important;
   right: 8px !important;
+  /* REG-547: la mano sta dentro la riga di Martina e ne sborda in basso, ma
+   * la riga successiva (Carlo) e' anch'essa `position: relative`. Nella card
+   * (contesto di stacking per via del translateX) tutti e tre hanno z-index
+   * auto e si dipingono in ordine di DOM: Carlo viene dopo, quindi il suo
+   * "Sposta" copriva la punta della mano. Con uno z-index positivo la mano
+   * passa sopra a tutte le righe, sempre dentro la card. */
+  z-index: 2;
 }
 
 /* Il blocco globale del design contiene `*:focus, *:focus-visible { outline:
