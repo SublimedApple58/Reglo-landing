@@ -39,7 +39,18 @@
  * quei 331px finivano fuori schermo). */
 [data-screen-label="Ferie e malattie"] img[src*="cursore-mano"] {
   left: auto !important;
-  right: 8px !important;
+  right: 22px !important;
+  /* REG-547: il dito deve premere SUL tasto, non spuntare da sotto. Con
+   * `top: 35px` la punta finiva esattamente sul bordo inferiore del pulsante
+   * e sembrava uscire da sotto. Il pulsante e' centrato in verticale nella
+   * riga (align-items: center), quindi la mano si aggancia al centro della
+   * riga: la punta (a ~1px dal bordo alto dell'immagine) cade 4px sotto il
+   * centro del pulsante, sulla parte bassa del testo, a qualunque larghezza.
+   * `right` porta la punta a circa un terzo dal bordo destro del pulsante.
+   * Due ombre: una corta e netta (il contatto) e una larga e morbida che
+   * stacca la mano dal pulsante. */
+  top: calc(50% + 3px) !important;
+  filter: drop-shadow(0 1px 1.5px rgba(15, 15, 25, 0.3)) drop-shadow(0 6px 10px rgba(15, 15, 25, 0.24)) !important;
   /* REG-547: la mano sta dentro la riga di Martina e ne sborda in basso, ma
    * la riga successiva (Carlo) e' anch'essa `position: relative`. Nella card
    * (contesto di stacking per via del translateX) tutti e tre hanno z-index
