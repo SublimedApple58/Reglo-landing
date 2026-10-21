@@ -323,7 +323,13 @@ function emitElement(el, scope, ind) {
 /* ── main ────────────────────────────────────────────────────────────── */
 const raw = fs.readFileSync(SRC_HTML, 'utf8');
 const lines = raw.split('\n');
-const tplRaw = lines.slice(59, 4899).join('\n').replace(/<\/x-dc>\s*$/, '');
+// Il template sta tra </helmet> e </x-dc>. Prima erano numeri di riga fissi
+// (59, 4899): appena il riferimento cresce, il taglio cade dentro l'ultima
+// vista (il Login) e ne perde un pezzo senza nessun errore.
+const tplStart = lines.findIndex((l) => l.trim() === '</helmet>') + 1;
+const tplEnd = lines.findIndex((l) => l.includes('</x-dc>')) + 1;
+if (tplStart < 1 || tplEnd < 1) throw new Error('confini del template non trovati');
+const tplRaw = lines.slice(tplStart, tplEnd).join('\n').replace(/<\/x-dc>\s*$/, '');
 
 const { document } = parseHTML('<html><body></body></html>');
 const tpl = document.createElement('template');
