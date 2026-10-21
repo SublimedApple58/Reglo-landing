@@ -39,17 +39,13 @@ export default function Privacy(_v: any) {
               </div>
               {"\n          "}
               <div style={{marginTop: "10px", fontSize: "16px", fontWeight: "500", lineHeight: "1.7", color: "#55555f", textWrap: "pretty"}}>
-                {"Tiziano Di Felice, C.F. DFLTZN04H18H769I, P.IVA 02219500671, Via Nazionale 189 — 64030 Basciano (TE), che opera con il marchio Reglo. Contatti: "}
+                {"Reglo S.R.L., P.IVA e C.F. 18736761000, sede legale in Via della Bufalotta 5, Roma. Contatti: "}
                 <a href={"mailto:tiziano.difelice@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "underline"}}>
                   {"tiziano.difelice@reglo.it"}
                 </a>
                 {", assistenza "}
                 <a href={"mailto:support@reglo.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "underline"}}>
                   {"support@reglo.it"}
-                </a>
-                {", PEC "}
-                <a href={"mailto:tiziano.difelice@pec.it"} style={{fontWeight: "700", color: "#000000", textDecoration: "underline"}}>
-                  {"tiziano.difelice@pec.it"}
                 </a>
                 {"."}
               </div>

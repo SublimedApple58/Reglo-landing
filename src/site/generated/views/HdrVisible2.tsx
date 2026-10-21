@@ -169,10 +169,7 @@ export default function HdrVisible2(v: any) {
         <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", gap: "32px", marginTop: "44px", paddingTop: "28px", borderTop: "1px solid #262630", flexWrap: "wrap"}}>
           {"\n      "}
           <span style={{fontSize: "14px", fontWeight: "500", color: "#8a8a98"}}>
-            <>{"© "}{interp(v.anno)}{" Reglo | Reglo S.R.L. | P.IVA 18736761000 | PEC "}</>
-            <a className={"scph"} href={"mailto:reglosrl@pec.it"} style={{fontWeight: "500", color: "#8a8a98", textDecoration: "underline"}}>
-              {"reglosrl@pec.it"}
-            </a>
+            <>{"© "}{interp(v.anno)}{" Reglo | Reglo S.R.L. | P.IVA 18736761000"}</>
           </span>
           {"\n      "}
           <span style={{display: "flex", alignItems: "center", gap: "26px"}}>

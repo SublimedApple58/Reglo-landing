@@ -39,7 +39,7 @@ export default function Termini(_v: any) {
               </div>
               {"\n          "}
               <div style={{marginTop: "10px", fontSize: "16px", fontWeight: "500", lineHeight: "1.7", color: "#55555f", textWrap: "pretty"}}>
-                {"Reglo è una piattaforma SaaS per autoscuole (pannello amministrativo, portale allievi, calendario delle guide con slot, istruttori e veicoli, notifiche e promemoria automatici) fornita da Tiziano Di Felice, P.IVA 02219500671. Il servizio è rivolto a soggetti che operano in ambito professionale."}
+                {"Reglo è una piattaforma SaaS per autoscuole (pannello amministrativo, portale allievi, calendario delle guide con slot, istruttori e veicoli, notifiche e promemoria automatici) fornita da Reglo S.R.L., P.IVA 18736761000. Il servizio è rivolto a soggetti che operano in ambito professionale."}
               </div>
               {"\n        "}
             </div>
