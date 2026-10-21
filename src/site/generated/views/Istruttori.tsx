@@ -401,7 +401,7 @@ export default function Istruttori(v: any) {
                       {"\n        "}
                     </div>
                     {"\n        "}
-                    <p style={{margin: "0", fontSize: "14.5px", fontWeight: "500", lineHeight: "1.6", color: "#5a5a66"}}>
+                    <p style={{margin: "0", fontSize: "14.5px", fontWeight: "500", lineHeight: "1.6", color: "#5a5a66", whiteSpace: "pre-line"}}>
                       <>{interp(rv?.text)}</>
                     </p>
                     {"\n        "}

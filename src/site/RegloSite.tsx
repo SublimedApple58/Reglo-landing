@@ -640,7 +640,7 @@ class RegloSite extends React.Component<Record<string, never>, any> {
       { name: 'n.mor95', role: 'Recensione su App Store', date: '4 mag', img: 1, title: 'Applicazione Fantastica e comodissima', text: "Applicazione comodissima… prima di questa eravamo abituati al cartaceo… tutto un altra storia fluidità nel gestire le guide il lavoro diventa molto più dinamico, il lavoro della segreteria diventa molto più snello… da non sottovalutare il lavoro dei moderatori !!! Sono fortissimi e sempre pronti a risolvere i problemi soggettivi che ogni autoscuola può avere… super consigliata !!" },
       { name: 'Marco', role: 'Istruttore · Scuola Guida Montreal', date: '29 gen 2026', title: 'La mia giornata sempre in tasca', text: "A me interessava una cosa sola: sapere chi ho in macchina e quando, senza dover chiamare in sede tra una guida e l'altra. Apro l'app e c'è la mia giornata. Se un allievo disdice, mi arriva la notifica e vedo lo slot riempirsi da solo." },
       { name: 'Vinicio', role: 'Titolare · Autoscuola New Drive', date: '14 mar 2026', title: 'Crediti chiari, zero discussioni', text: "I crediti guida sul quaderno erano discussioni continue: «io avevo pagato», «a me ne mancavano due»… Adesso allievo e segreteria vedono lo stesso numero, aggiornato a ogni guida. Non se ne parla più, letteralmente." },
-      { name: 'Autoscuola Robatto', role: 'Da un loro suggerimento sono nate le guide di gruppo', date: '22 mag 2026', title: 'Ci hanno ascoltato davvero', text: "Le uscite collettive erano un incastro impossibile da segnare in agenda: uno slot per allievo, tutto a mano.\n\nL'abbiamo detto a Reglo e qualche mese dopo c'era la funzione: crei l'uscita con i posti, gli allievi abilitati si iscrivono da soli. Oggi le guide di gruppo le facciamo ogni settimana." },
+      { name: 'Alessandro R.', role: 'Autoscuola Robatto', date: '22 mag 2026', photo: 'images/site/recensioni/av-alessandro.webp', title: 'Dalla carta al digitale, senza rimpianti', text: "Dopo diversi anni, abbiamo deciso di abbandonare l'agenda cartacea in favore del digitale.\nPraticamente in tre mesi ci siamo dimenticati di ogni problema legato a prenotazioni, cancellazioni, pagamenti.\nUna piacevolissima scoperta, il team estremamente disponibile e pronto a creare su misura l'app.\nNota di merito per la creazione delle guide di gruppo!" },
       { name: 'Francesca', role: 'Segreteria · Autoscuola Centrale', date: '3 apr 2026', title: 'Il centralino non lo faccio più io', text: "Il telefono squillava tutto il giorno, quasi sempre per spostare o disdire una guida. Ora quel giro passa dall'app, e la Segretaria AI risponde quando siamo chiuse. Io mi occupo delle pratiche, non del centralino." },
       { name: 'Giorgio', role: 'Titolare · due sedi', date: '18 giu 2026', title: 'Due sedi, una sola testa', text: 'Due sedi, due agende, gli stessi istruttori che girano tra le due. Con un solo account vedo tutto: chi è dove, quali veicoli, quali allievi. Prima erano due lavagne e un gruppo WhatsApp.' },
       { name: 'Martina', role: 'Istruttrice', date: '9 mag 2026', title: '«Sostituiscimi» mi ha salvato la settimana', text: 'Mi sono ammalata un lunedì con dodici guide in settimana. Ho premuto «Sostituiscimi» e le guide sono passate ai colleghi, con gli allievi avvisati in automatico. Nessuna telefonata dal letto.' },
@@ -689,18 +689,17 @@ class RegloSite extends React.Component<Record<string, never>, any> {
       { q: 'Ho un istruttore che ha tutto un suo modo di gestire l\u2019agenda.', a: "Abbiamo pensato anche ai più esigenti: con la modalità autonoma gestisce da solo allievi e regole, dentro i confini che decidi tu. E sappiamo che l\u2019età media degli istruttori è alta: per questo l\u2019app e il modo di gestire le cose sono semplici davvero per tutti." },
     ];
     const PHOTOS = [
-      'uploads/7-99ac5f3b.png', 'uploads/1.png', 'uploads/2.png', 'uploads/8.png', 'uploads/3.png',
-      'uploads/4.png', 'uploads/5.png', 'uploads/10.png', 'uploads/6.png', 'uploads/11.png',
+      'images/site/recensioni/av-7-99ac5f3b.webp', 'images/site/recensioni/av-1.webp', 'images/site/recensioni/av-2.webp', 'images/site/recensioni/av-8.webp', 'images/site/recensioni/av-3.webp',
+      'images/site/recensioni/av-4.webp', 'images/site/recensioni/av-5.webp', 'images/site/recensioni/av-10.webp', 'images/site/recensioni/av-6.webp', 'images/site/recensioni/av-11.webp',
     ];
     const mk = (r, i) => ({
       ...r,
-      text: r.text.replace(/\n+/g, ' '),
       initials: '',
       avatarStyle: {
         display: 'inline-block', width: '36px', height: '36px', borderRadius: '50%', flexShrink: 0,
         backgroundColor: '#f0f0f4',
-        backgroundImage: 'url(' + PHOTOS[i % PHOTOS.length] + ')',
-        backgroundSize: 'cover', backgroundPosition: 'center 22%',
+        backgroundImage: 'url(' + (r.photo || PHOTOS[i % PHOTOS.length]) + ')',
+        backgroundSize: 'cover', backgroundPosition: r.photo ? 'center' : 'center 22%',
       },
     });
     const half = Math.ceil(reviewsData.length / 2);

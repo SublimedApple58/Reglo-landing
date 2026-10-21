@@ -2525,7 +2525,7 @@ export default function Home(v: any) {
                     {"\n        "}
                   </div>
                   {"\n        "}
-                  <p style={{margin: "0", fontSize: "14.5px", fontWeight: "500", lineHeight: "1.6", color: "#5a5a66"}}>
+                  <p style={{margin: "0", fontSize: "14.5px", fontWeight: "500", lineHeight: "1.6", color: "#5a5a66", whiteSpace: "pre-line"}}>
                     <>{interp(rv?.text)}</>
                   </p>
                   {"\n        "}
@@ -2719,7 +2719,7 @@ export default function Home(v: any) {
           <div style={{position: "absolute", left: "24px", right: "24px", bottom: "24px", pointerEvents: "none"}}>
             {"\n        "}
             <div style={{fontSize: "23px", fontWeight: "700", letterSpacing: "-0.4px", lineHeight: "1.25", color: "#ffffff", marginBottom: "20px"}}>
-              {"“Le guide di gruppo sono nate da una nostra richiesta”"}
+              {"“Ci siamo dimenticati di ogni problema”"}
             </div>
             {"\n        "}
             <div style={{display: "flex", gap: "28px"}}>
