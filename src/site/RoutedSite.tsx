@@ -8,6 +8,7 @@ import { applyMobileMockupScale } from './mobileScale';
 import { applySeo } from './seo';
 import { enhanceNavKeyboard } from './a11y';
 import { scrollToHashTarget, watchHashChanges } from './deepLink';
+import { attachPassa, passaPrev, passaNext } from './carousel';
 
 /**
  * Sincronizza la navigazione interna del design (state.page) con l'URL.
@@ -34,6 +35,12 @@ const Base = RegloSite as unknown as new (props: Record<string, never>) => React
 class RoutedSite extends Base {
   private _lastPath = '';
   private _unwatchHash: (() => void) | null = null;
+
+  /** Ref stabile del carosello Storie: tiene vivo anche `_passaEl` del design. */
+  private _passaRef = (el: HTMLElement | null) => {
+    (this as unknown as { _passaEl: HTMLElement | null })._passaEl = el;
+    attachPassa(el);
+  };
 
   constructor(props: Record<string, never>) {
     super(props);
@@ -66,6 +73,11 @@ class RoutedSite extends Base {
     return {
       ...v,
       goLogin: () => { window.location.href = loginTarget(); },
+
+      // frecce del carosello Storie: un passo esatto per card, vedi ./carousel.ts
+      passaRef: this._passaRef,
+      passaPrev,
+      passaNext,
 
       // TAMPONE: i form del design non inviano niente, vedi ./mailto.ts
       sendVendite: () => {

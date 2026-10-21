@@ -171,3 +171,38 @@ textarea:focus-visible {
   position: relative;
   z-index: 3;
 }
+
+/* ------------------------------------------- carosello Storie (REG-546)
+ *
+ * Le frecce le guida ./carousel.ts, che segna con `data-passa-off` quella
+ * che a fine corsa non porterebbe da nessuna parte: si spegne invece di
+ * restare cliccabile a vuoto, ed e' anche il segnale che frecce e swipe
+ * sono allineati. `touch-action: manipulation` toglie il ritardo (e lo
+ * zoom) del doppio tocco su iOS quando si preme in fretta.
+ *
+ * `overscroll-behavior-x: contain`: arrivati all'ultima card, la spinta
+ * non passa alla pagina (niente "indietro" di Safari per sbaglio). */
+[data-screen-label="Storie"] div[style*="scroll-snap-type"] {
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+[data-screen-label="Storie"] div[style*="scroll-snap-type"] + div > span {
+  touch-action: manipulation;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+}
+[data-screen-label="Storie"] div[style*="scroll-snap-type"] + div > span[data-passa-off] {
+  opacity: 0.35;
+  cursor: default !important;
+  border-color: #ececf0 !important;
+}
+/* su touch l'hover del design resta "appiccicato" alla freccia dopo il tocco
+ * (iOS tiene :hover sull'ultimo elemento toccato): li' vale solo la pressione */
+@media (hover: none) {
+  [data-screen-label="Storie"] div[style*="scroll-snap-type"] + div > span:hover {
+    border-color: #ececf0 !important;
+  }
+}
+[data-screen-label="Storie"] div[style*="scroll-snap-type"] + div > span:active:not([data-passa-off]) {
+  transform: scale(0.96);
+  border-color: #000000 !important;
+}
