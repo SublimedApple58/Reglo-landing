@@ -19,7 +19,7 @@ export default function Privacy(_v: any) {
           </h1>
           {"\n      "}
           <div style={{fontSize: "15.5px", fontWeight: "500", color: "#8a8a98"}}>
-            {"Ultimo aggiornamento: 15 settembre 2026"}
+            {"Ultimo aggiornamento: 22 ottobre 2026"}
           </div>
           {"\n    "}
         </div>
@@ -123,11 +123,23 @@ export default function Privacy(_v: any) {
             <div>
               {"\n          "}
               <div style={{fontSize: "19px", fontWeight: "700", letterSpacing: "-0.4px", color: "#000000"}}>
-                {"Fornitori e trasferimenti"}
+                {"Avvisi su WhatsApp"}
               </div>
               {"\n          "}
               <div style={{marginTop: "10px", fontSize: "16px", fontWeight: "500", lineHeight: "1.7", color: "#55555f", textWrap: "pretty"}}>
-                {"Ci avvaliamo di fornitori terzi per hosting, invio delle comunicazioni e servizi di intelligenza artificiale, vincolati alle stesse tutele e di cui rispondiamo; l'elenco aggiornato è disponibile su richiesta. Eventuali trasferimenti fuori dall'Unione Europea avvengono solo con le garanzie del capo V del GDPR."}
+                {"Per conto della tua autoscuola, Reglo invia agli allievi e agli istruttori avvisi di servizio sulle guide e sugli esami: promemoria, spostamenti, annullamenti, cambi del luogo di ritrovo, scadenze dei documenti. Li mandiamo prima come notifica dell'app; a chi non ha l'app li inviamo su WhatsApp, dal numero aziendale di Reglo; in mancanza di entrambi, via email. Ogni avviso arriva su un solo canale."}
+              </div>
+              {"\n          "}
+              <div style={{marginTop: "10px", fontSize: "16px", fontWeight: "500", lineHeight: "1.7", color: "#55555f", textWrap: "pretty"}}>
+                {"Su WhatsApp usiamo solo il nome di battesimo, il numero di cellulare e i dati dell'appuntamento (data, ora, durata, luogo). Non inviamo messaggi promozionali."}
+              </div>
+              {"\n          "}
+              <div style={{marginTop: "10px", fontSize: "16px", fontWeight: "500", lineHeight: "1.7", color: "#55555f", textWrap: "pretty"}}>
+                {"Smettere è sempre possibile: basta rispondere STOP a uno dei nostri messaggi, oppure spegnere «Avvisi su WhatsApp» nel profilo dell'app. Da quel momento non riceverai più messaggi WhatsApp da Reglo e gli avvisi arriveranno solo come notifica o email. Registriamo il momento della scelta per poterla rispettare."}
+              </div>
+              {"\n          "}
+              <div style={{marginTop: "10px", fontSize: "16px", fontWeight: "500", lineHeight: "1.7", color: "#55555f", textWrap: "pretty"}}>
+                {"Il servizio WhatsApp è fornito da Meta Platforms Ireland Ltd. tramite il nostro fornitore di comunicazioni Telnyx: entrambi trattano il numero e il contenuto del messaggio solo per consegnarlo, secondo le loro condizioni per le aziende. I dati possono essere trasferiti fuori dall'Unione Europea con le garanzie previste dal capo V del GDPR (clausole contrattuali standard e, dove applicabile, EU-US Data Privacy Framework)."}
               </div>
               {"\n        "}
             </div>
@@ -138,6 +150,26 @@ export default function Privacy(_v: any) {
             {"\n        "}
             <div style={{fontSize: "15px", fontWeight: "800", color: "#b6b6c0"}}>
               {"06"}
+            </div>
+            {"\n        "}
+            <div>
+              {"\n          "}
+              <div style={{fontSize: "19px", fontWeight: "700", letterSpacing: "-0.4px", color: "#000000"}}>
+                {"Fornitori e trasferimenti"}
+              </div>
+              {"\n          "}
+              <div style={{marginTop: "10px", fontSize: "16px", fontWeight: "500", lineHeight: "1.7", color: "#55555f", textWrap: "pretty"}}>
+                {"Ci avvaliamo di fornitori terzi per hosting, invio delle comunicazioni e servizi di intelligenza artificiale, vincolati alle stesse tutele e di cui rispondiamo; l'elenco aggiornato è disponibile su richiesta. Per gli avvisi su WhatsApp ci avvaliamo di Telnyx (invio dei messaggi) e di Meta Platforms Ireland Ltd. (servizio WhatsApp Business). Eventuali trasferimenti fuori dall'Unione Europea avvengono solo con le garanzie del capo V del GDPR."}
+              </div>
+              {"\n        "}
+            </div>
+            {"\n      "}
+          </div>
+          {"\n      "}
+          <div style={{display: "grid", gridTemplateColumns: "56px minmax(0, 1fr)", gap: "20px", padding: "28px 0", borderBottom: "1px solid #ececf0"}}>
+            {"\n        "}
+            <div style={{fontSize: "15px", fontWeight: "800", color: "#b6b6c0"}}>
+              {"07"}
             </div>
             {"\n        "}
             <div>
@@ -157,7 +189,7 @@ export default function Privacy(_v: any) {
           <div style={{display: "grid", gridTemplateColumns: "56px minmax(0, 1fr)", gap: "20px", padding: "28px 0", borderBottom: "1px solid #ececf0"}}>
             {"\n        "}
             <div style={{fontSize: "15px", fontWeight: "800", color: "#b6b6c0"}}>
-              {"07"}
+              {"08"}
             </div>
             {"\n        "}
             <div>
@@ -177,7 +209,7 @@ export default function Privacy(_v: any) {
           <div style={{display: "grid", gridTemplateColumns: "56px minmax(0, 1fr)", gap: "20px", padding: "28px 0", borderBottom: "1px solid #ececf0"}}>
             {"\n        "}
             <div style={{fontSize: "15px", fontWeight: "800", color: "#b6b6c0"}}>
-              {"08"}
+              {"09"}
             </div>
             {"\n        "}
             <div>
@@ -205,7 +237,7 @@ export default function Privacy(_v: any) {
           <div style={{display: "grid", gridTemplateColumns: "56px minmax(0, 1fr)", gap: "20px", padding: "28px 0", borderBottom: "1px solid #ececf0"}}>
             {"\n        "}
             <div style={{fontSize: "15px", fontWeight: "800", color: "#b6b6c0"}}>
-              {"09"}
+              {"10"}
             </div>
             {"\n        "}
             <div>
@@ -225,7 +257,7 @@ export default function Privacy(_v: any) {
           <div style={{display: "grid", gridTemplateColumns: "56px minmax(0, 1fr)", gap: "20px", padding: "28px 0", borderBottom: "1px solid #ececf0"}}>
             {"\n        "}
             <div style={{fontSize: "15px", fontWeight: "800", color: "#b6b6c0"}}>
-              {"10"}
+              {"11"}
             </div>
             {"\n        "}
             <div>
